@@ -1,33 +1,312 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>หน้าแนะนำตัวของฉัน</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puttikan Portfolio</title>
+
 <style>
-body {
-background-color: #2563EB; color: #333;
-text-align: center; padding: 50px;
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-.card {
-background: white; border-radius: 50px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-max-width: 500px; margin: 0 auto; padding: 30px;
 
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI',sans-serif;
+
+    background:linear-gradient(
+        135deg,
+        #020617,
+        #0f172a,
+        #1e3a8a
+    );
 }
-h1 { color: #2c3e50; }
-p { font-size: 18px; line-height: 1.6; }
+
+/* ดาวพื้นหลัง */
+
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+    }
+    50%{
+        opacity:1;
+    }
+}
+
+/* ดาวตก */
+
+.shooting-star{
+    position:absolute;
+    width:150px;
+    height:2px;
+    background:linear-gradient(
+        90deg,
+        white,
+        transparent
+    );
+    border-radius:50%;
+    transform:rotate(-45deg);
+    animation:shoot 5s linear infinite;
+}
+
+.s1{
+    top:15%;
+    left:-20%;
+    animation-delay:0s;
+}
+
+.s2{
+    top:40%;
+    left:-20%;
+    animation-delay:2s;
+}
+
+.s3{
+    top:70%;
+    left:-20%;
+    animation-delay:4s;
+}
+
+@keyframes shoot{
+    0%{
+        transform:
+        translateX(0)
+        translateY(0)
+        rotate(-45deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateX(1500px)
+        translateY(500px)
+        rotate(-45deg);
+        opacity:0;
+    }
+}
+
+/* กล่องหลัก */
+
+.card{
+    position:relative;
+    z-index:100;
+
+    width:550px;
+    padding:40px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    border-radius:30px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:
+    0 0 40px rgba(59,130,246,.3);
+
+    animation:
+    float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.avatar{
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:60px;
+
+    background:rgba(255,255,255,.15);
+
+    border:3px solid rgba(255,255,255,.4);
+
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.name{
+    color:#60a5fa;
+    font-weight:bold;
+}
+
+p{
+    font-size:18px;
+    margin:10px 0;
+    line-height:1.8;
+}
+
+/* ECG */
+
+.ecg{
+    margin-top:25px;
+    font-size:30px;
+    color:#22c55e;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        45deg,
+        #3b82f6,
+        #60a5fa
+    );
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    box-shadow:
+    0 0 20px #60a5fa;
+}
+
 </style>
 </head>
 <body>
-<div class="card">
-<h1>ยินดีต้อนรับสู่โปรไฟล์ของผม </h1>
-<p>สวัสดีครับ! ผมชื่อ <strong>พุฒิกันย์ (Puttikan)</strong></p>
-<p>ขณะนี้กำลังศึกษา/สนใจด้าน  Science & Medical </p>
-<p>นี่คือเว็บไซต์แรกของผมที่โฮสต์บน GitHub Pages!</p>
+
+<div class="stars">
+
+<div class="shooting-star s1"></div>
+<div class="shooting-star s2"></div>
+<div class="shooting-star s3"></div>
+
 </div>
+
+<div class="card">
+
+<div class="avatar">
+🩺
+</div>
+
+<h1>
+Medical Portfolio
+</h1>
+
+<p>
+สวัสดีครับ ผมชื่อ
+<span class="name">
+Puttikan
+</span>
+</p>
+
+<p>
+🔬 สนใจด้าน Science & Medical
+</p>
+
+<p>
+📚 กำลังศึกษาและพัฒนาทักษะทางวิทยาศาสตร์
+และการแพทย์
+</p>
+
+<p>
+🚀 เว็บไซต์แรกของผมบน GitHub Pages
+</p>
+
+<div class="ecg">
+❤️‍🩹
+</div>
+
+<a href="#" class="btn">
+Explore My Profile
+</a>
+
+</div>
+
+<script>
+
+/* สุ่มดาว 120 ดวง */
+
+const stars=document.querySelector('.stars');
+
+for(let i=0;i<120;i++){
+
+    const star=document.createElement('div');
+
+    star.classList.add('star');
+
+    star.style.left=Math.random()*100+'%';
+    star.style.top=Math.random()*100+'%';
+
+    star.style.animationDelay=
+    Math.random()*3+'s';
+
+    stars.appendChild(star);
+}
+
+</script>
+
 </body>
 </html>
+```
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
