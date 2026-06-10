@@ -16,27 +16,19 @@
 
 body{
     font-family:'Segoe UI',sans-serif;
-    overflow:hidden;
     min-height:100vh;
+    overflow:hidden;
 
     display:flex;
     justify-content:center;
     align-items:center;
-
-    color:#000;
 }
 
-/* ======================
-   BACKGROUND
-====================== */
+/* Background */
 
 .background{
     position:fixed;
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
+    inset:0;
 
     background:
     linear-gradient(
@@ -47,7 +39,6 @@ body{
 
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
 
     z-index:-3;
 
@@ -58,29 +49,90 @@ body{
     position:fixed;
     inset:0;
 
-    background:
-    rgba(255,255,255,.15);
+    background:rgba(255,255,255,.15);
 
-    backdrop-filter:
-    blur(2px);
+    backdrop-filter:blur(2px);
 
     z-index:-2;
 }
 
-/* ======================
-   LEAVES
-====================== */
+/* Card */
+
+.card{
+    width:90%;
+    max-width:650px;
+
+    padding:45px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.22);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.15);
+
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.avatar{
+    width:140px;
+    height:140px;
+
+    margin:auto auto 25px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:70px;
+
+    background:rgba(255,255,255,.4);
+
+    border:4px solid #2563eb;
+}
+
+h1{
+    color:#111827;
+    margin-bottom:20px;
+}
+
+p{
+    color:#111827;
+    font-size:18px;
+    line-height:1.9;
+    margin:10px 0;
+}
+
+.name{
+    color:#2563eb;
+    font-weight:bold;
+}
+
+/* Leaves */
 
 .leaf{
     position:fixed;
-
     top:-100px;
 
     pointer-events:none;
-
-    z-index:1;
-
-    user-select:none;
 }
 
 @keyframes leafFall{
@@ -92,328 +144,29 @@ body{
         opacity:1;
     }
 
-    25%{
-        transform:
-        translate(25px,25vh)
-        rotate(180deg);
-    }
-
-    50%{
-        transform:
-        translate(-20px,55vh)
-        rotate(360deg);
-    }
-
-    75%{
-        transform:
-        translate(15px,85vh)
-        rotate(540deg);
-    }
-
     100%{
         transform:
-        translate(-10px,120vh)
+        translate(-30px,120vh)
         rotate(720deg);
 
         opacity:.2;
     }
 }
 
-/* ======================
-   CARD
-====================== */
-
-.card{
-
-    position:relative;
-
-    z-index:100;
-
-    width:90%;
-    max-width:650px;
-
-    padding:45px;
-
-    text-align:center;
-
-    border-radius:30px;
-
-    background:
-    rgba(255,255,255,.22);
-
-    border:
-    1px solid
-    rgba(255,255,255,.35);
-
-    backdrop-filter:
-    blur(20px);
-
-    -webkit-backdrop-filter:
-    blur(20px);
-
-    box-shadow:
-    0 15px 40px
-    rgba(0,0,0,.15);
-
-    animation:
-    float 5s ease-in-out infinite;
-}
-
-@keyframes float{
-
-    0%,100%{
-        transform:
-        translateY(0);
-    }
-
-    50%{
-        transform:
-        translateY(-15px);
-    }
-}
-
-.avatar{
-
-    width:140px;
-    height:140px;
-
-    margin:auto;
-
-    border-radius:50%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:70px;
-
-    background:
-    rgba(255,255,255,.4);
-
-    border:
-    4px solid #2563eb;
-
-    margin-bottom:25px;
-}
-
-h1{
-
-    color:#111827;
-
-    margin-bottom:20px;
-
-    font-size:2rem;
-}
-
-p{
-
-    color:#111827;
-
-    font-size:18px;
-
-    line-height:1.9;
-
-    margin:10px 0;
-}
-
-.name{
-
-    color:#1d4ed8;
-
-    font-weight:700;
-}
-html
-/* ======================
-   BUTTON
-====================== */
-
-.btn{
-
-    margin-top:25px;
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:50px;
-
-    cursor:pointer;
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:600;
-
-    background:
-    linear-gradient(
-    135deg,
-    #2563eb,
-    #60a5fa
-    );
-
-    box-shadow:
-    0 0 20px
-    rgba(59,130,246,.4);
-
-    transition:.3s;
-}
-
-.btn:hover{
-
-    transform:
-    translateY(-3px)
-    scale(1.05);
-
-    box-shadow:
-    0 0 35px
-    rgba(59,130,246,.6);
-}
-
-/* ======================
-   MODAL
-====================== */
-
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    background:
-    rgba(0,0,0,.35);
-
-    backdrop-filter:
-    blur(8px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s;
-
-    z-index:999;
-}
-
-.modal.show{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-.modal-content{
-
-    width:90%;
-    max-width:400px;
-
-    background:
-    rgba(255,255,255,.9);
-
-    border-radius:25px;
-
-    padding:30px;
-
-    text-align:center;
-
-    animation:
-    popup .3s ease;
-}
-
-@keyframes popup{
-
-    from{
-
-        opacity:0;
-
-        transform:
-        scale(.7);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-        scale(1);
-    }
-}
-
-.modal-content h2{
-
-    margin-bottom:15px;
-}
-
-.modal-content p{
-
-    margin-bottom:20px;
-}
-
-.popup-btn{
-
-    border:none;
-
-    padding:12px 20px;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-    color:white;
-
-    margin:5px;
-
-    transition:.3s;
-}
-
-.popup-btn:hover{
-
-    transform:
-    scale(1.05);
-}
-
-.confirm{
-
-    background:#22c55e;
-}
-
-.cancel{
-
-    background:#ef4444;
-}
-
-/* ======================
-   MOBILE
-====================== */
-
 @media(max-width:768px){
 
     .card{
-
         padding:30px 20px;
     }
 
-    h1{
-
-        font-size:1.5rem;
+    .avatar{
+        width:110px;
+        height:110px;
+        font-size:55px;
     }
 
     p{
-
         font-size:16px;
-    }
-
-    .avatar{
-
-        width:110px;
-        height:110px;
-
-        font-size:55px;
     }
 }
 
@@ -431,82 +184,34 @@ html
         🌿
     </div>
 
-    <h1>
-        ยินดีต้อนรับสู่ Portfolio
-    </h1>
+    <h1>สวัสดีครับ</h1>
 
     <p>
-        สวัสดีครับ ผมชื่อ
-        <span class="name">
-            พุฒิกันย์
-        </span>
+        ผมชื่อ
+        <span class="name">พุฒิกันย์</span>
     </p>
 
     <p>
-        🔬 สนใจด้าน Science
-        และ Medical
+        🔬 สนใจด้าน Science และ Medical
     </p>
 
     <p>
-        🌱 รักธรรมชาติ
-        และการเรียนรู้
+        🌱 รักธรรมชาติ และการเรียนรู้สิ่งใหม่
     </p>
 
     <p>
-        🚀 เว็บไซต์แรก
-        บน GitHub Pages
+        💻 กำลังพัฒนาทักษะด้านเว็บไซต์และเทคโนโลยี
     </p>
 
-    <button
-    class="btn"
-    onclick="openModal()">
+    <p>
+        🚀 ยินดีต้อนรับสู่ Portfolio ของผม
+    </p>
 
-        Explore My Profile
-
-    </button>
-
-</div>
-
-<div
-id="myModal"
-class="modal">
-
-<div class="modal-content">
-
-<h2>
-🌿 Portfolio
-</h2>
-
-<p>
-ต้องการเข้าสู่หน้าถัดไปหรือไม่
-</p>
-
-<button
-class="popup-btn confirm"
-onclick="goNext()">
-
-ตกลง
-
-</button>
-
-<button
-class="popup-btn cancel"
-onclick="closeModal()">
-
-ยกเลิก
-
-</button>
-
-</div>
 </div>
 
 <script>
-```
-```html id="z8xg71"
 
-/* ======================
-   FALLING LEAVES
-====================== */
+/* Falling Leaves */
 
 function createLeaf(){
 
@@ -530,8 +235,7 @@ function createLeaf(){
     ];
 
     leaf.style.left =
-    Math.random() * 100 +
-    "vw";
+    Math.random()*100 + "vw";
 
     leaf.style.fontSize =
     (15 + Math.random()*25)
@@ -542,29 +246,19 @@ function createLeaf(){
         8 + Math.random()*8
     }s linear forwards`;
 
-    document.body
-    .appendChild(leaf);
+    document.body.appendChild(leaf);
 
     setTimeout(()=>{
-
         leaf.remove();
-
     },16000);
 }
 
-setInterval(
-    createLeaf,
-    350
-);
+setInterval(createLeaf,350);
 
-/* ======================
-   PARALLAX
-====================== */
+/* Parallax Background */
 
 const background =
-document.querySelector(
-".background"
-);
+document.querySelector(".background");
 
 document.addEventListener(
 "mousemove",
@@ -572,76 +266,16 @@ document.addEventListener(
 
     const x =
     (window.innerWidth/2
-    - e.clientX) / 50;
+    - e.clientX)/50;
 
     const y =
     (window.innerHeight/2
-    - e.clientY) / 50;
+    - e.clientY)/50;
 
     background.style.transform =
     `translate(${x}px,${y}px) scale(1.05)`;
 
 });
-
-/* ======================
-   MODAL
-====================== */
-
-function openModal(){
-
-    document
-    .getElementById(
-        "myModal"
-    )
-    .classList
-    .add("show");
-}
-
-function closeModal(){
-
-    document
-    .getElementById(
-        "myModal"
-    )
-    .classList
-    .remove("show");
-}
-
-function goNext(){
-
-    /*
-       เปลี่ยนชื่อไฟล์
-       เป็นหน้าถัดไปจริง
-
-       เช่น
-       portfolio.html
-       about.html
-    */
-
-    window.location.href =
-    "portfolio.html";
-}
-
-/* ======================
-   CLOSE MODAL
-====================== */
-
-window.onclick =
-function(event){
-
-    let modal =
-    document
-    .getElementById(
-        "myModal"
-    );
-
-    if(
-        event.target === modal
-    ){
-
-        closeModal();
-    }
-};
 
 </script>
 
