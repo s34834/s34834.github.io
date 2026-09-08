@@ -1,1328 +1,1728 @@
-<!DOCTYPE html>
-<html lang="th">
+<!DOCTYPE html><html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Portfolio | Puttikan Ruekraisri</title>
-
-    <style>
-
-        /* =====================================================
-           RESET
-        ===================================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Tahoma", "Arial", sans-serif;
-            color: #ffffff;
-            background: #090b10;
-            overflow-x: hidden;
-        }
-
-
-        /* =====================================================
-           MAIN BACKGROUND
-        ===================================================== */
-
-        .page {
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-
-            background:
-                radial-gradient(circle at 20% 20%, rgba(160, 25, 55, 0.25), transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(100, 20, 40, 0.25), transparent 25%),
-                linear-gradient(135deg, #08090d, #15171d 50%, #090a0e);
-
-            background-attachment: fixed;
-        }
-
-
-        /* =====================================================
-           ANATOMICAL BACKGROUND PATTERN
-        ===================================================== */
-
-        .page::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-
-            background-image:
-                radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px),
-                linear-gradient(
-                    90deg,
-                    transparent 49%,
-                    rgba(255,255,255,0.025) 50%,
-                    transparent 51%
-                );
-
-            background-size: 35px 35px, 100% 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-
-        /* =====================================================
-           FLOATING MUSCLE / BONE SYMBOLS
-        ===================================================== */
-
-        .anatomy {
-            position: fixed;
-            z-index: 1;
-            pointer-events: none;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Portfolio | Puttikan Ruekraisri</title><style>
 
-            color: rgba(255, 255, 255, 0.08);
+/* =========================================================
+   RESET & GLOBAL
+   ========================================================= */
 
-            font-size: 70px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            animation: floating 8s ease-in-out infinite;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .anatomy:nth-child(1) {
-            left: 7%;
-            top: 18%;
-            animation-duration: 9s;
-        }
+body {
+    font-family: "Tahoma", "Arial", sans-serif;
+    color: #163333;
+    background: #f4fbfa;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   LOADING SCREEN
+   โหลดหน้าแบบเบา ๆ ไม่ใช้ library
+   ========================================================= */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f4fbfa;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    color: #087f7b;
+}
+
+.loader-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+
+    animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.loader-bar {
+    width: 180px;
+    height: 4px;
+
+    margin-top: 15px;
+
+    background: #d8eeeb;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.loader-bar::after {
+    content: "";
+
+    display: block;
+
+    width: 50%;
+    height: 100%;
 
-        .anatomy:nth-child(2) {
-            right: 8%;
-            top: 30%;
-            font-size: 90px;
-            animation-duration: 11s;
-            animation-delay: -3s;
-        }
+    background: #0b9f98;
 
-        .anatomy:nth-child(3) {
-            left: 15%;
-            bottom: 12%;
-            font-size: 55px;
-            animation-duration: 10s;
-            animation-delay: -5s;
-        }
+    animation: loading 1.2s ease-in-out infinite;
+}
 
-        .anatomy:nth-child(4) {
-            right: 18%;
-            bottom: 18%;
-            font-size: 75px;
-            animation-duration: 12s;
-            animation-delay: -2s;
-        }
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(200%);
+    }
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
 
-        .anatomy:nth-child(5) {
-            left: 48%;
-            top: 12%;
-            font-size: 45px;
-            animation-duration: 13s;
-            animation-delay: -6s;
-        }
+/* =========================================================
+   MAIN BACKGROUND
+   ========================================================= */
 
+.page {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 
-        @keyframes floating {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(52, 190, 181, 0.14),
+            transparent 30%
+        ),
 
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(255, 110, 130, 0.10),
+            transparent 30%
+        ),
 
-            25% {
-                transform: translate(30px, -30px) rotate(5deg);
-            }
+        linear-gradient(
+            135deg,
+            #f7fcfb,
+            #edf8f7 50%,
+            #f8fcfc
+        );
+}
 
-            50% {
-                transform: translate(-25px, -50px) rotate(-5deg);
-            }
+/* =========================================================
+   DECORATIVE MEDICAL PATTERN
+   ลวดลายเบา ๆ ไม่รบกวนการอ่าน
+   ========================================================= */
 
-            75% {
-                transform: translate(25px, -20px) rotate(4deg);
-            }
+.page::before {
+    content: "";
 
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-        }
+    position: fixed;
+    inset: 0;
 
+    z-index: 0;
+    pointer-events: none;
 
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
+    opacity: 0.5;
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(8, 127, 123, 0.08) 1px,
+            transparent 1px
+        );
 
-            width: 100%;
-            z-index: 100;
+    background-size: 32px 32px;
+}
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+/* เส้น ECG */
 
-            gap: 10px;
-            padding: 15px 20px;
+.page::after {
+    content: "";
 
-            background: rgba(5, 6, 9, 0.92);
+    position: fixed;
 
-            border-bottom: 2px solid #b91c3c;
+    width: 100%;
+    height: 180px;
 
-            backdrop-filter: blur(12px);
-        }
+    left: 0;
+    bottom: 5%;
 
-        nav a {
-            color: #f1f1f1;
+    opacity: 0.06;
 
-            text-decoration: none;
+    pointer-events: none;
 
-            font-size: 16px;
-            font-weight: bold;
+    background:
+        linear-gradient(
+            135deg,
+            transparent 48%,
+            #087f7b 49%,
+            #087f7b 50%,
+            transparent 51%
+        );
 
-            padding: 11px 20px;
+    z-index: 0;
+}
 
-            border: 1px solid rgba(255,255,255,0.25);
+/* =========================================================
+   FLOATING ANATOMY SYMBOLS
+   ========================================================= */
 
-            background: rgba(255,255,255,0.04);
+.anatomy {
+    position: fixed;
 
-            transition: 0.3s ease;
-        }
+    z-index: 1;
+    pointer-events: none;
 
-        nav a:hover,
-        nav a.active {
+    font-size: 70px;
 
-            color: #ffffff;
+    opacity: 0.10;
 
-            background: #a71938;
+    filter: grayscale(20%);
 
-            border-color: #e84865;
+    animation: floating 9s ease-in-out infinite;
+}
 
-            transform: translateY(-3px);
+.anatomy:nth-child(1) {
+    left: 6%;
+    top: 20%;
+}
 
-            box-shadow:
-                0 8px 25px rgba(180, 25, 60, 0.35);
-        }
+.anatomy:nth-child(2) {
+    right: 7%;
+    top: 30%;
 
+    font-size: 90px;
 
-        /* =====================================================
-           CONTENT
-        ===================================================== */
+    animation-duration: 11s;
+    animation-delay: -3s;
+}
 
-        main {
-            position: relative;
-            z-index: 5;
-        }
+.anatomy:nth-child(3) {
+    left: 15%;
+    bottom: 12%;
 
-        section {
-            min-height: 100vh;
+    font-size: 55px;
 
-            display: none;
+    animation-duration: 10s;
+    animation-delay: -5s;
+}
 
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+.anatomy:nth-child(4) {
+    right: 18%;
+    bottom: 18%;
 
-            padding: 120px 8% 70px;
-        }
+    font-size: 75px;
 
-        section.active {
-            display: flex;
-            animation: fadeIn 0.5s ease;
-        }
+    animation-duration: 12s;
+}
 
+.anatomy:nth-child(5) {
+    left: 48%;
+    top: 12%;
 
-        @keyframes fadeIn {
+    font-size: 45px;
 
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+    animation-duration: 13s;
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@keyframes floating {
 
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            rotate(0deg);
+    }
 
-        /* =====================================================
-           SECTION TITLE
-        ===================================================== */
+    50% {
+        transform:
+            translate(-20px, -35px)
+            rotate(5deg);
+    }
+}
 
-        .title {
-            color: #ffffff;
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
-            font-size: clamp(50px, 8vw, 100px);
+nav {
+    position: fixed;
 
-            font-weight: 900;
+    top: 15px;
+    left: 50%;
 
-            text-align: center;
+    transform: translateX(-50%);
 
-            text-transform: uppercase;
+    width: min(1100px, calc(100% - 30px));
 
-            margin-bottom: 45px;
+    z-index: 100;
 
-            letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-            text-shadow:
-                3px 3px 0 #72152a,
-                0 0 25px rgba(190, 30, 65, 0.45);
-        }
+    gap: 8px;
 
+    padding: 10px;
 
-        /* =====================================================
-           CONTENT BOX
-        ===================================================== */
+    background:
+        rgba(255,255,255,0.82);
 
-        .content-box {
+    border: 1px solid rgba(8,127,123,0.15);
 
-            width: min(1000px, 95%);
+    border-radius: 18px;
 
-            padding: 35px;
+    backdrop-filter: blur(18px);
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(25, 27, 34, 0.96),
-                    rgba(10, 11, 15, 0.96)
-                );
+    box-shadow:
+        0 10px 40px rgba(0, 70, 70, 0.10);
+}
 
-            border: 1px solid rgba(255,255,255,0.25);
+nav a {
+    position: relative;
 
-            box-shadow:
-                0 0 0 4px rgba(160, 25, 55, 0.55),
-                0 20px 60px rgba(0,0,0,0.7);
+    color: #356363;
 
-            line-height: 1.9;
+    text-decoration: none;
 
-            position: relative;
-        }
+    font-size: 15px;
+    font-weight: bold;
 
+    padding: 11px 18px;
 
-        /* Medical decorative line */
+    border-radius: 12px;
 
-        .content-box::before {
+    transition:
+        color 0.3s ease-in-out,
+        background 0.3s ease-in-out,
+        transform 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out;
+}
 
-            content: "";
+nav a:hover {
+    color: #087f7b;
 
-            position: absolute;
+    background: #e7f6f4;
 
-            top: 0;
-            left: 0;
+    transform: translateY(-2px);
+}
 
-            width: 100%;
-            height: 4px;
+nav a.active {
+    color: white;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    #b91c3c,
-                    #ffffff,
-                    #b91c3c,
-                    transparent
-                );
-        }
+    background:
+        linear-gradient(
+            135deg,
+            #087f7b,
+            #12aaa2
+        );
 
+    box-shadow:
+        0 7px 20px rgba(8,127,123,0.25);
+}
 
-        .content-box h2 {
+nav a.active::after {
+    content: "";
 
-            color: #e84865;
+    position: absolute;
 
-            font-size: 30px;
+    left: 50%;
+    bottom: 5px;
 
-            margin-bottom: 20px;
-        }
+    width: 18px;
+    height: 2px;
 
+    transform: translateX(-50%);
 
-        .content-box p {
+    background: #ffffff;
 
-            color: #eeeeee;
+    border-radius: 10px;
+}
 
-            font-size: 20px;
+/* =========================================================
+   MAIN
+   ========================================================= */
 
-            margin-bottom: 8px;
-        }
+main {
+    position: relative;
+    z-index: 5;
+}
 
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
-        .label {
+section {
+    min-height: 100vh;
 
-            color: #e84865;
+    display: flex;
 
-            font-weight: bold;
-        }
+    flex-direction: column;
 
+    justify-content: center;
+    align-items: center;
 
-        /* =====================================================
-           HOME
-        ===================================================== */
+    padding:
+        130px 7%
+        80px;
 
-        .home-box {
-            text-align: center;
-        }
+    scroll-margin-top: 100px;
 
-        .home-box .title {
-            margin-bottom: 25px;
-        }
+    opacity: 0;
 
+    transform:
+        translateY(50px);
 
-        /* =====================================================
-           EMPTY IMAGE PLACEHOLDER
-        ===================================================== */
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
 
-        .image-placeholder {
+/* Intersection Observer จะเติม class นี้ */
 
-            width: min(33vw, 400px);
+section.visible {
+    opacity: 1;
 
-            min-width: 230px;
+    transform:
+        translateY(0);
+}
 
-            aspect-ratio: 3 / 4;
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
 
-            margin: 20px auto 35px;
+.title {
+    position: relative;
 
-            display: flex;
+    color: #123f3e;
 
-            align-items: center;
-            justify-content: center;
+    font-size:
+        clamp(42px, 7vw, 88px);
 
-            border: 2px dashed rgba(255,255,255,0.35);
+    font-weight: 900;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.03),
-                    rgba(170,20,50,0.08)
-                );
+    text-align: center;
 
-            color: rgba(255,255,255,0.35);
+    margin-bottom: 45px;
 
-            font-size: 18px;
+    letter-spacing: 2px;
 
-            text-align: center;
-        }
+    text-shadow:
+        0 5px 20px rgba(8,127,123,0.10);
+}
 
+.title::after {
+    content: "";
 
-        .home-info {
-            text-align: center;
-        }
+    display: block;
 
+    width: 70px;
+    height: 4px;
 
-        .home-info .name {
+    margin:
+        16px auto 0;
 
-            color: #ffffff;
+    border-radius: 20px;
 
-            font-size: clamp(25px, 3vw, 40px);
+    background:
+        linear-gradient(
+            90deg,
+            #087f7b,
+            #53cfc4
+        );
+}
 
-            font-weight: bold;
+/* =========================================================
+   CONTENT BOX
+   ========================================================= */
 
-            margin-bottom: 10px;
-        }
+.content-box {
+    width:
+        min(1050px, 95%);
 
+    padding: 40px;
 
-        .home-info .english {
+    position: relative;
 
-            color: #dddddd;
+    background:
+        rgba(255,255,255,0.82);
 
-            font-size: clamp(20px, 2.5vw, 30px);
+    border:
+        1px solid rgba(8,127,123,0.14);
 
-            margin-bottom: 20px;
-        }
+    border-radius: 24px;
 
+    box-shadow:
+        0 20px 60px rgba(0,70,70,0.09);
 
-        .home-info .nickname {
+    backdrop-filter: blur(15px);
 
-            color: #e84865;
+    line-height: 1.9;
 
-            font-size: 25px;
+    transition:
+        transform 0.35s ease-in-out,
+        box-shadow 0.35s ease-in-out;
+}
 
-            margin-bottom: 10px;
-        }
+.content-box:hover {
+    transform: translateY(-4px);
 
+    box-shadow:
+        0 25px 70px rgba(0,70,70,0.13);
+}
 
-        .home-info .school {
+/* Medical decorative line */
 
-            color: #ffffff;
+.content-box::before {
+    content: "";
 
-            font-size: 23px;
-        }
+    position: absolute;
 
+    top: 0;
+    left: 8%;
 
-        /* =====================================================
-           PROFILE
-        ===================================================== */
+    width: 84%;
+    height: 3px;
 
-        .profile-grid {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #0b9f98,
+            #ff7185,
+            #0b9f98,
+            transparent
+        );
 
-            display: grid;
+    border-radius: 20px;
+}
 
-            grid-template-columns: 1fr 1fr;
+.content-box h2 {
+    color: #087f7b;
 
-            gap: 20px;
-        }
+    font-size: 29px;
 
+    margin-bottom: 20px;
+}
 
-        .profile-item {
+.content-box p {
+    color: #416060;
 
-            padding: 18px 20px;
+    font-size: 18px;
 
-            border: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 10px;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(160,25,55,0.20),
-                    rgba(255,255,255,0.03)
-                );
+.label {
+    color: #087f7b;
 
-            transition: 0.3s ease;
-        }
+    font-weight: bold;
+}
 
+/* =========================================================
+   HOME
+   ========================================================= */
 
-        .profile-item:hover {
+.home-box {
+    text-align: center;
+}
 
-            transform: translateY(-3px);
+/* =========================================================
+   PHOTO
+   ========================================================= */
 
-            border-color: #d93658;
+.image-placeholder {
+    width:
+        min(320px, 65vw);
 
-            box-shadow:
-                0 8px 25px rgba(160,25,55,0.18);
-        }
+    aspect-ratio:
+        3 / 4;
 
+    margin:
+        20px auto 35px;
 
-        .profile-item strong {
+    display: flex;
 
-            display: block;
+    align-items: center;
+    justify-content: center;
 
-            color: #e84865;
+    position: relative;
 
-            font-size: 18px;
+    border:
+        2px dashed #8ccfca;
 
-            margin-bottom: 5px;
-        }
+    border-radius: 25px;
 
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #e8f7f5
+        );
 
-        .profile-item span {
+    color:
+        rgba(8,127,123,0.45);
 
-            color: #ffffff;
+    font-size: 18px;
 
-            font-size: 18px;
-        }
+    overflow: hidden;
 
+    transition:
+        transform 0.4s ease-in-out,
+        box-shadow 0.4s ease-in-out,
+        border-color 0.4s ease-in-out;
+}
 
-        .education {
-            margin-top: 25px;
-        }
+.image-placeholder:hover {
+    transform:
+        translateY(-6px)
+        scale(1.01);
 
+    border-color: #0b9f98;
 
-        /* =====================================================
-           ACTIVITIES
-        ===================================================== */
+    box-shadow:
+        0 20px 50px rgba(8,127,123,0.15);
+}
 
-        .gallery {
+/* =========================================================
+   HOME INFO
+   ========================================================= */
 
-            display: grid;
+.home-info {
+    text-align: center;
+}
 
-            grid-template-columns:
-                repeat(3, 1fr);
+.home-info .name {
+    color: #163f3e;
 
-            gap: 25px;
-        }
+    font-size:
+        clamp(25px, 3vw, 40px);
 
+    font-weight: bold;
 
-        .gallery-item {
-            text-align: center;
-        }
+    margin-bottom: 8px;
+}
 
+.home-info .english {
+    color: #527171;
 
-        .gallery-placeholder {
+    font-size:
+        clamp(20px, 2.5vw, 30px);
 
-            width: 100%;
+    margin-bottom: 18px;
+}
 
-            aspect-ratio: 1 / 1;
+.home-info .nickname {
+    display: inline-block;
 
-            display: flex;
+    color: #e9576d;
 
-            align-items: center;
-            justify-content: center;
+    background: #fff0f2;
 
-            border: 2px dashed rgba(255,255,255,0.3);
+    padding:
+        5px 15px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.025),
-                    rgba(160,25,55,0.12)
-                );
+    border-radius: 20px;
 
-            color: rgba(255,255,255,0.35);
+    font-size: 20px;
 
-            transition: 0.3s ease;
-        }
+    margin-bottom: 12px;
+}
 
+.home-info .school {
+    color: #087f7b;
 
-        .gallery-placeholder:hover {
+    font-size: 22px;
 
-            border-color: #e84865;
+    font-weight: bold;
+}
 
-            background:
-                rgba(160,25,55,0.15);
+/* =========================================================
+   MEDICAL ICON STRIP
+   ========================================================= */
 
-            transform: scale(1.02);
-        }
+.medical-icons {
+    display: flex;
 
+    justify-content: center;
 
-        .gallery-item p {
+    gap: 18px;
 
-            margin-top: 10px;
+    margin-top: 25px;
+}
 
-            font-size: 16px;
+.medical-icons span {
+    width: 48px;
+    height: 48px;
 
-            color: #ffffff;
-        }
+    display: flex;
 
+    justify-content: center;
+    align-items: center;
 
-        /* =====================================================
-           CONTACT
-        ===================================================== */
+    background: #ffffff;
 
-        .contact-list {
+    border:
+        1px solid #d4ece9;
 
-            display: flex;
+    border-radius: 50%;
 
-            flex-direction: column;
+    font-size: 23px;
 
-            gap: 20px;
-        }
+    box-shadow:
+        0 8px 20px rgba(0,70,70,0.08);
 
+    transition:
+        transform 0.3s ease-in-out;
+}
 
-        .contact-item {
+.medical-icons span:hover {
+    transform:
+        translateY(-5px)
+        rotate(5deg);
+}
 
-            display: flex;
+/* =========================================================
+   PROFILE
+   ========================================================= */
 
-            align-items: center;
+.profile-grid {
+    display: grid;
 
-            gap: 20px;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-            padding: 20px 25px;
+    gap: 18px;
+}
 
-            border: 1px solid rgba(255,255,255,0.2);
+.profile-item {
+    padding: 20px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(160,25,55,0.2),
-                    rgba(255,255,255,0.03)
-                );
+    border:
+        1px solid #dceeed;
 
-            font-size: 21px;
-        }
+    border-radius: 16px;
 
+    background:
+        linear-gradient(
+            135deg,
+            #f9fefe,
+            #edf8f6
+        );
 
-        .contact-icon {
+    transition:
+        transform 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out,
+        border-color 0.3s ease-in-out;
+}
 
-            font-size: 32px;
+.profile-item:hover {
+    transform:
+        translateY(-5px);
 
-            width: 45px;
+    border-color:
+        #7bcac5;
 
-            text-align: center;
-        }
+    box-shadow:
+        0 12px 30px rgba(8,127,123,0.10);
+}
 
+.profile-item strong {
+    display: block;
 
-        .contact-label {
+    color: #087f7b;
 
-            color: #e84865;
+    font-size: 17px;
 
-            font-weight: bold;
+    margin-bottom: 4px;
+}
 
-            min-width: 100px;
-        }
+.profile-item span {
+    color: #284f4e;
 
+    font-size: 17px;
+}
 
-        /* =====================================================
-           MEDICAL DECORATION
-        ===================================================== */
+.education {
+    margin-top: 22px;
+}
 
-        .medical-line {
+.career-box {
+    margin-top: 22px;
 
-            width: 100%;
+    padding: 25px;
 
-            height: 2px;
+    border-left:
+        4px solid #ef6d80;
 
-            margin: 25px 0;
+    border-radius:
+        0 16px 16px 0;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    #b91c3c,
-                    #ffffff,
-                    #b91c3c,
-                    transparent
-                );
-        }
+    background:
+        linear-gradient(
+            90deg,
+            #fff1f3,
+            #fffafb
+        );
+}
 
+.career-box h3 {
+    color: #dc5368;
 
-        .career-box {
+    margin-bottom: 8px;
 
-            margin-top: 25px;
+    font-size: 23px;
+}
 
-            padding: 25px;
+/* =========================================================
+   ACTIVITIES
+   ========================================================= */
 
-            border-left: 4px solid #e84865;
+.gallery {
+    display: grid;
 
-            background:
-                rgba(160,25,55,0.12);
-        }
+    grid-template-columns:
+        repeat(3, 1fr);
 
+    gap: 22px;
+}
 
-        .career-box h3 {
+.gallery-item {
+    text-align: center;
+}
 
-            color: #e84865;
+.gallery-placeholder {
+    width: 100%;
 
-            margin-bottom: 10px;
+    aspect-ratio: 1 / 1;
 
-            font-size: 24px;
-        }
+    display: flex;
 
+    align-items: center;
+    justify-content: center;
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+    border:
+        2px dashed #9bd4d0;
 
-        @media (max-width: 900px) {
+    border-radius: 18px;
 
-            nav {
+    background:
+        linear-gradient(
+            145deg,
+            #f9fefe,
+            #eaf7f5
+        );
 
-                flex-wrap: wrap;
+    color:
+        rgba(8,127,123,0.45);
 
-                gap: 6px;
+    transition:
+        transform 0.35s ease-in-out,
+        border-color 0.35s ease-in-out,
+        box-shadow 0.35s ease-in-out;
+}
 
-                padding: 10px;
-            }
+.gallery-placeholder:hover {
+    transform:
+        translateY(-6px);
 
+    border-color:
+        #0b9f98;
 
-            nav a {
+    box-shadow:
+        0 15px 35px rgba(8,127,123,0.12);
+}
 
-                font-size: 13px;
+.gallery-item p {
+    margin-top: 12px;
 
-                padding: 8px 12px;
-            }
+    font-size: 16px;
 
+    color: #315756;
 
-            section {
+    font-weight: bold;
+}
 
-                padding-top: 150px;
-            }
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
+.contact-list {
+    display: flex;
 
-            .profile-grid {
+    flex-direction: column;
 
-                grid-template-columns: 1fr;
-            }
+    gap: 16px;
+}
 
+.contact-item {
+    display: flex;
 
-            .gallery {
+    align-items: center;
 
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
+    gap: 18px;
 
+    padding: 20px 24px;
 
-            .contact-item {
+    border:
+        1px solid #d8ecea;
 
-                font-size: 17px;
-            }
-        }
+    border-radius: 17px;
 
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #eff9f8
+        );
 
-        @media (max-width: 500px) {
+    font-size: 19px;
 
-            .title {
+    transition:
+        transform 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out;
+}
 
-                font-size: 45px;
-            }
+.contact-item:hover {
+    transform:
+        translateX(6px);
 
+    box-shadow:
+        0 10px 30px rgba(8,127,123,0.10);
+}
 
-            .content-box {
+.contact-icon {
+    width: 48px;
+    height: 48px;
 
-                padding: 22px;
-            }
+    display: flex;
 
+    justify-content: center;
+    align-items: center;
 
-            .content-box p {
+    border-radius: 50%;
 
-                font-size: 16px;
-            }
+    background: #e4f5f2;
 
+    font-size: 25px;
+}
 
-            .gallery {
+.contact-label {
+    color: #087f7b;
 
-                grid-template-columns: 1fr;
-            }
+    font-weight: bold;
 
+    min-width: 80px;
+}
 
-            .contact-item {
+/* =========================================================
+   MEDICAL DECORATION
+   ========================================================= */
 
-                flex-direction: column;
+.medical-line {
+    width: 100%;
 
-                text-align: center;
-            }
+    height: 2px;
 
+    margin: 25px 0;
 
-            .image-placeholder {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #8ed5d0,
+            #ff9aaa,
+            #8ed5d0,
+            transparent
+        );
+}
 
-                width: 65vw;
-            }
-        }
+/* =========================================================
+   RESPONSIVE TABLET
+   ========================================================= */
 
-    </style>
-</head>
+@media (max-width: 900px) {
 
+    nav {
+        flex-wrap: wrap;
 
-<body>
+        width:
+            calc(100% - 20px);
 
-<div class="page">
+        top: 10px;
+    }
 
+    nav a {
+        font-size: 13px;
 
-    <!-- =====================================================
-         FLOATING ANATOMY SYMBOLS
-    ===================================================== -->
+        padding:
+            8px 11px;
+    }
 
-    <div class="anatomy">🦴</div>
-    <div class="anatomy">🫀</div>
-    <div class="anatomy">🦴</div>
-    <div class="anatomy">💪</div>
-    <div class="anatomy">🦴</div>
+    section {
+        padding:
+            140px 5%
+            70px;
+    }
 
+    .profile-grid {
+        grid-template-columns:
+            1fr;
+    }
 
-    <!-- =====================================================
-         NAVIGATION
-    ===================================================== -->
+    .gallery {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
 
-    <nav>
+    .content-box {
+        padding: 30px;
+    }
+}
 
-        <a href="#" class="nav-link active" data-page="home">
-            หน้าหลัก
-        </a>
+/* =========================================================
+   RESPONSIVE MOBILE
+   ========================================================= */
 
-        <a href="#" class="nav-link" data-page="preface">
-            คำนำ
-        </a>
+@media (max-width: 600px) {
 
-        <a href="#" class="nav-link" data-page="profile">
-            ประวัติส่วนตัว
-        </a>
+    nav {
+        border-radius: 15px;
 
-        <a href="#" class="nav-link" data-page="activities">
-            ผลงานและกิจกรรม
-        </a>
+        gap: 4px;
+    }
 
-        <a href="#" class="nav-link" data-page="contact">
-            ช่องทางการติดต่อ
-        </a>
+    nav a {
+        font-size: 11px;
 
-    </nav>
+        padding:
+            8px 7px;
+    }
 
+    section {
+        padding:
+            135px 16px
+            60px;
+    }
 
-    <main>
+    .title {
+        font-size: 42px;
 
+        margin-bottom: 32px;
+    }
 
-        <!-- =====================================================
-             HOME
-        ===================================================== -->
+    .content-box {
+        width: 100%;
 
-        <section id="home" class="active">
+        padding: 22px;
 
-            <div class="home-box">
+        border-radius: 18px;
+    }
 
-                <h1 class="title">
-                    PORTFOLIO
-                </h1>
+    .content-box p {
+        font-size: 16px;
+    }
 
+    .gallery {
+        grid-template-columns:
+            1fr;
+    }
 
-                <!--
-                    ช่องว่างสำหรับใส่รูปโปรไฟล์ภายหลัง
-                -->
+    .contact-item {
+        flex-wrap: wrap;
 
-                <div class="image-placeholder">
-                    PHOTO
-                </div>
+        font-size: 16px;
+    }
 
+    .contact-label {
+        min-width: auto;
+    }
 
-                <div class="content-box home-info">
+    .medical-icons span {
+        width: 42px;
+        height: 42px;
 
-                    <div class="name">
-                        นายพุฒิกันย์ ฤๅไกรศรี
-                    </div>
+        font-size: 20px;
+    }
 
-                    <div class="english">
-                        Puttikan Ruekraisri
-                    </div>
+    .anatomy {
+        opacity: 0.05;
+    }
+}
 
-                    <div class="nickname">
-                        ใบภู / Baipooh
-                    </div>
+/* =========================================================
+   ACCESSIBILITY
+   ลด animation ถ้าผู้ใช้ตั้งค่า reduced motion
+   ========================================================= */
 
-                    <div class="school">
-                        มัธยมศึกษาปีที่ 6/2
-                    </div>
+@media (prefers-reduced-motion: reduce) {
 
-                </div>
+    html {
+        scroll-behavior: auto;
+    }
 
-            </div>
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 
-        </section>
+</style></head><body><!-- =========================================================
+     LOADING SCREEN
+     ========================================================= --><div class="loader" id="loader"><div class="loader-content">
 
+    <div class="loader-icon">
+        ❤️
+    </div>
 
-        <!-- =====================================================
-             PREFACE
-        ===================================================== -->
+    <div>
+        Loading Portfolio...
+    </div>
 
-        <section id="preface">
-
-            <h1 class="title">
-                คำนำ
-            </h1>
-
-
-            <div class="content-box">
-
-                <h2>
-                    คำนำ
-                </h2>
-
-
-                <p>
-                    แฟ้มสะสมผลงาน (Portfolio) เล่มนี้
-                    จัดทำขึ้นเพื่อเป็นตัวแทนในการนำเสนอข้อมูล
-                    เกี่ยวกับประวัติส่วนตัว ความรู้ ความสามารถ
-                    ทักษะ และกิจกรรมต่าง ๆ ของข้าพเจ้า
-                </p>
-
-
-                <p>
-                    ข้าพเจ้ามีความสนใจในด้านวิทยาศาสตร์สุขภาพ
-                    โดยเฉพาะด้านกายภาพบำบัด
-                    ซึ่งเป็นศาสตร์ที่เกี่ยวข้องกับการทำงานของ
-                    กล้ามเนื้อ กระดูก ข้อต่อ และการเคลื่อนไหวของร่างกาย
-                </p>
-
-
-                <p>
-                    เป้าหมายในการศึกษาต่อของข้าพเจ้าคือ
-                    คณะกายภาพบำบัด มหาวิทยาลัยมหิดล
-                    (Mahidol University)
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             PROFILE
-        ===================================================== -->
-
-        <section id="profile">
-
-            <h1 class="title">
-                ประวัติส่วนตัว
-            </h1>
-
-
-            <div class="content-box">
-
-                <h2>
-                    Personal Profile
-                </h2>
-
-
-                <div class="profile-grid">
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            ชื่อ-นามสกุล
-                        </strong>
-
-                        <span>
-                            นายพุฒิกันย์ ฤๅไกรศรี
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            Name
-                        </strong>
-
-                        <span>
-                            Puttikan Ruekraisri
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            ชื่อเล่น
-                        </strong>
-
-                        <span>
-                            ใบภู
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            Nickname
-                        </strong>
-
-                        <span>
-                            Baipooh
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            วันเกิด
-                        </strong>
-
-                        <span>
-                            3 กันยายน พ.ศ. 2551
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            ระดับชั้น
-                        </strong>
-
-                        <span>
-                            มัธยมศึกษาปีที่ 6/2
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            สายการเรียน
-                        </strong>
-
-                        <span>
-                            Gifted
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <strong>
-                            ความสนใจ
-                        </strong>
-
-                        <span>
-                            วิทยาศาสตร์สุขภาพ
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="education">
-
-                    <div class="profile-item">
-
-                        <strong>
-                            คณะและมหาวิทยาลัยที่สนใจศึกษาต่อ
-                        </strong>
-
-                        <span>
-                            คณะกายภาพบำบัด
-                            <br>
-                            มหาวิทยาลัยมหิดล
-                            (Mahidol University)
-                        </span>
-
-                    </div>
-
-
-                    <div class="career-box">
-
-                        <h3>
-                            Physical Therapy
-                        </h3>
-
-                        <p>
-                            สนใจการทำงานของระบบกล้ามเนื้อ
-                            กระดูก ข้อต่อ และการเคลื่อนไหว
-                            รวมถึงการฟื้นฟูสมรรถภาพร่างกาย
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             ACTIVITIES
-        ===================================================== -->
-
-        <section id="activities">
-
-            <h1 class="title">
-                ผลงานและกิจกรรม
-            </h1>
-
-
-            <div class="content-box">
-
-                <div class="gallery">
-
-
-                    <div class="gallery-item">
-
-                        <div class="gallery-placeholder">
-                            รูปผลงานที่ 1
-                        </div>
-
-                        <p>
-                            ผลงานและกิจกรรมที่ 1
-                        </p>
-
-                    </div>
-
-
-                    <div class="gallery-item">
-
-                        <div class="gallery-placeholder">
-                            รูปผลงานที่ 2
-                        </div>
-
-                        <p>
-                            ผลงานและกิจกรรมที่ 2
-                        </p>
-
-                    </div>
-
-
-                    <div class="gallery-item">
-
-                        <div class="gallery-placeholder">
-                            รูปผลงานที่ 3
-                        </div>
-
-                        <p>
-                            ผลงานและกิจกรรมที่ 3
-                        </p>
-
-                    </div>
-
-
-                    <div class="gallery-item">
-
-                        <div class="gallery-placeholder">
-                            รูปผลงานที่ 4
-                        </div>
-
-                        <p>
-                            ผลงานและกิจกรรมที่ 4
-                        </p>
-
-                    </div>
-
-
-                    <div class="gallery-item">
-
-                        <div class="gallery-placeholder">
-                            รูปผลงานที่ 5
-                        </div>
-
-                        <p>
-                            ผลงานและกิจกรรมที่ 5
-                        </p>
-
-                    </div>
-
-
-                    <div class="gallery-item">
-
-                        <div class="gallery-placeholder">
-                            รูปผลงานที่ 6
-                        </div>
-
-                        <p>
-                            ผลงานและกิจกรรมที่ 6
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             CONTACT
-        ===================================================== -->
-
-        <section id="contact">
-
-            <h1 class="title">
-                ช่องทางการติดต่อ
-            </h1>
-
-
-            <div class="content-box">
-
-                <div class="contact-list">
-
-
-                    <!-- EMAIL -->
-
-                    <div class="contact-item">
-
-                        <div class="contact-icon">
-                            ✉
-                        </div>
-
-                        <div class="contact-label">
-                            Email
-                        </div>
-
-                        <div>
-                            baipoohnoi@gmail.com
-                        </div>
-
-                    </div>
-
-
-                    <!-- PHONE -->
-
-                    <div class="contact-item">
-
-                        <div class="contact-icon">
-                            ☎
-                        </div>
-
-                        <div class="contact-label">
-                            Tel
-                        </div>
-
-                        <div>
-                            066-109-6395
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    </main>
+    <div class="loader-bar"></div>
 
 </div>
 
+</div><div class="page"><!-- =====================================================
+     FLOATING MEDICAL SYMBOLS
+     ใช้ emoji แทนภาพ anatomy จริง
+     ===================================================== -->
+
+<div class="anatomy">🦴</div>
+<div class="anatomy">❤️</div>
+<div class="anatomy">🦴</div>
+<div class="anatomy">💪</div>
+<div class="anatomy">🫀</div>
+
 
 <!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+     NAVIGATION
+     ระบบ active จะควบคุมด้วย JavaScript
+     ===================================================== -->
 
-<script>
+<nav>
 
-    const navLinks =
-        document.querySelectorAll(".nav-link");
+    <a href="#home"
+       class="nav-link active"
+       data-page="home">
+        หน้าหลัก
+    </a>
 
-    const sections =
-        document.querySelectorAll("section");
+    <a href="#preface"
+       class="nav-link"
+       data-page="preface">
+        คำนำ
+    </a>
+
+    <a href="#profile"
+       class="nav-link"
+       data-page="profile">
+        ประวัติส่วนตัว
+    </a>
+
+    <a href="#activities"
+       class="nav-link"
+       data-page="activities">
+        ผลงานและกิจกรรม
+    </a>
+
+    <a href="#contact"
+       class="nav-link"
+       data-page="contact">
+        ช่องทางการติดต่อ
+    </a>
+
+</nav>
 
 
-    navLinks.forEach(link => {
+<main>
 
-        link.addEventListener("click", function(event) {
+    <!-- =================================================
+         HOME
+         ================================================= -->
 
-            event.preventDefault();
+    <section id="home">
+
+        <div class="home-box">
+
+            <h1 class="title">
+                PORTFOLIO
+            </h1>
+
+            <div class="image-placeholder">
+                PHOTO
+            </div>
+
+            <div class="content-box home-info">
+
+                <div class="name">
+                    นายพุฒิกันย์ ฤๅไกรศรี
+                </div>
+
+                <div class="english">
+                    Puttikan Ruekraisri
+                </div>
+
+                <div class="nickname">
+                    ใบภู / Baipooh
+                </div>
+
+                <div class="school">
+                    มัธยมศึกษาปีที่ 6/2
+                </div>
+
+                <!-- ไอคอนธีมกายภาพบำบัด -->
+
+                <div class="medical-icons">
+
+                    <span>🦴</span>
+                    <span>💪</span>
+                    <span>❤️</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-            const page =
-                this.getAttribute("data-page");
+    <!-- =================================================
+         PREFACE
+         ================================================= -->
+
+    <section id="preface">
+
+        <h1 class="title">
+            คำนำ
+        </h1>
+
+        <div class="content-box">
+
+            <h2>
+                คำนำ
+            </h2>
+
+            <p>
+                แฟ้มสะสมผลงาน (Portfolio) เล่มนี้
+                จัดทำขึ้นเพื่อเป็นตัวแทนในการนำเสนอข้อมูล
+                เกี่ยวกับประวัติส่วนตัว ความรู้ ความสามารถ
+                ทักษะ และกิจกรรมต่าง ๆ ของข้าพเจ้า
+            </p>
+
+            <p>
+                ข้าพเจ้ามีความสนใจในด้านวิทยาศาสตร์สุขภาพ
+                โดยเฉพาะด้านกายภาพบำบัด
+                ซึ่งเป็นศาสตร์ที่เกี่ยวข้องกับการทำงานของ
+                กล้ามเนื้อ กระดูก ข้อต่อ และการเคลื่อนไหวของร่างกาย
+            </p>
+
+            <p>
+                เป้าหมายในการศึกษาต่อของข้าพเจ้าคือ
+                คณะกายภาพบำบัด มหาวิทยาลัยมหิดล
+                (Mahidol University)
+            </p>
+
+        </div>
+
+    </section>
 
 
-            /* เปลี่ยนปุ่มเมนู */
+    <!-- =================================================
+         PROFILE
+         ================================================= -->
 
-            navLinks.forEach(item => {
+    <section id="profile">
 
-                item.classList.remove("active");
+        <h1 class="title">
+            ประวัติส่วนตัว
+        </h1>
+
+        <div class="content-box">
+
+            <h2>
+                Personal Profile
+            </h2>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+
+                    <strong>
+                        ชื่อ-นามสกุล
+                    </strong>
+
+                    <span>
+                        นายพุฒิกันย์ ฤๅไกรศรี
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <strong>
+                        Name
+                    </strong>
+
+                    <span>
+                        Puttikan Ruekraisri
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <strong>
+                        ชื่อเล่น
+                    </strong>
+
+                    <span>
+                        ใบภู
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <strong>
+                        Nickname
+                    </strong>
+
+                    <span>
+                        Baipooh
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <strong>
+                        วันเกิด
+                    </strong>
+
+                    <span>
+                        3 กันยายน พ.ศ. 2551
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <strong>
+                        ระดับชั้น
+                    </strong>
+
+                    <span>
+                        มัธยมศึกษาปีที่ 6/2
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <strong>
+                        สายการเรียน
+                    </strong>
+
+                    <span>
+                        Gifted
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <strong>
+                        ความสนใจ
+                    </strong>
+
+                    <span>
+                        วิทยาศาสตร์สุขภาพ
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="education">
+
+                <div class="profile-item">
+
+                    <strong>
+                        คณะและมหาวิทยาลัยที่สนใจศึกษาต่อ
+                    </strong>
+
+                    <span>
+                        คณะกายภาพบำบัด
+                        <br>
+                        มหาวิทยาลัยมหิดล
+                        (Mahidol University)
+                    </span>
+
+                </div>
+
+                <div class="career-box">
+
+                    <h3>
+                        Physical Therapy
+                    </h3>
+
+                    <p>
+                        สนใจการทำงานของระบบกล้ามเนื้อ
+                        กระดูก ข้อต่อ และการเคลื่อนไหว
+                        รวมถึงการฟื้นฟูสมรรถภาพร่างกาย
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         ACTIVITIES
+         ================================================= -->
+
+    <section id="activities">
+
+        <h1 class="title">
+            ผลงานและกิจกรรม
+        </h1>
+
+        <div class="content-box">
+
+            <div class="gallery">
+
+                <div class="gallery-item">
+
+                    <div class="gallery-placeholder">
+                        รูปผลงานที่ 1
+                    </div>
+
+                    <p>
+                        ผลงานและกิจกรรมที่ 1
+                    </p>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <div class="gallery-placeholder">
+                        รูปผลงานที่ 2
+                    </div>
+
+                    <p>
+                        ผลงานและกิจกรรมที่ 2
+                    </p>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <div class="gallery-placeholder">
+                        รูปผลงานที่ 3
+                    </div>
+
+                    <p>
+                        ผลงานและกิจกรรมที่ 3
+                    </p>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <div class="gallery-placeholder">
+                        รูปผลงานที่ 4
+                    </div>
+
+                    <p>
+                        ผลงานและกิจกรรมที่ 4
+                    </p>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <div class="gallery-placeholder">
+                        รูปผลงานที่ 5
+                    </div>
+
+                    <p>
+                        ผลงานและกิจกรรมที่ 5
+                    </p>
+
+                </div>
+
+                <div class="gallery-item">
+
+                    <div class="gallery-placeholder">
+                        รูปผลงานที่ 6
+                    </div>
+
+                    <p>
+                        ผลงานและกิจกรรมที่ 6
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CONTACT
+         ================================================= -->
+
+    <section id="contact">
+
+        <h1 class="title">
+            ช่องทางการติดต่อ
+        </h1>
+
+        <div class="content-box">
+
+            <div class="contact-list">
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        ✉
+                    </div>
+
+                    <div class="contact-label">
+                        Email
+                    </div>
+
+                    <div>
+                        baipoohnoi@gmail.com
+                    </div>
+
+                </div>
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        ☎
+                    </div>
+
+                    <div class="contact-label">
+                        Tel
+                    </div>
+
+                    <div>
+                        066-109-6395
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</div><script>
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+window.addEventListener("load", () => {
+
+    const loader =
+        document.getElementById("loader");
+
+    setTimeout(() => {
+
+        loader.classList.add("hidden");
+
+    }, 500);
+
+});
+
+
+/* =========================================================
+   INTERSECTION OBSERVER
+   ทำให้ section fade-in / slide-in ตอนเลื่อนถึง
+   ========================================================= */
+
+const sections =
+    document.querySelectorAll("section");
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                }
 
             });
 
+        },
 
-            this.classList.add("active");
+        {
+            threshold: 0.15
+        }
+
+    );
 
 
-            /* เปลี่ยนหน้า */
+sections.forEach(section => {
 
-            sections.forEach(section => {
+    observer.observe(section);
 
-                section.classList.remove("active");
+});
 
+
+/* =========================================================
+   NAVIGATION
+   คลิกแล้ว smooth scroll ไป section
+   ========================================================= */
+
+const navLinks =
+    document.querySelectorAll(".nav-link");
+
+navLinks.forEach(link => {
+
+    link.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        const targetId =
+            link.dataset.page;
+
+        const target =
+            document.getElementById(targetId);
+
+        if (target) {
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
 
-
-            document
-                .getElementById(page)
-                .classList.add("active");
-
-
-            /* เลื่อนกลับด้านบน */
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        });
+        }
 
     });
 
-</script>
+});
 
 
-</body>
-</html>    
+/* =========================================================
+   SCROLL SPY
+   เปลี่ยน active menu ตาม section ที่กำลังดู
+   ========================================================= */
+
+const spyObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    const id =
+                        entry.target.id;
+
+                    navLinks.forEach(link => {
+
+                        link.classList.remove("active");
+
+                        if (
+                            link.dataset.page === id
+                        ) {
+
+                            link.classList.add("active");
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.45
+        }
+
+    );
+
+
+sections.forEach(section => {
+
+    spyObserver.observe(section);
+
+});
+
+
+/* =========================================================
+   INITIAL STATE
+   ให้หน้าแรกแสดง animation ทันที
+   ========================================================= */
+
+window.addEventListener("load", () => {
+
+    const home =
+        document.getElementById("home");
+
+    home.classList.add("visible");
+
+});
+
+</script></body>
+</html>
