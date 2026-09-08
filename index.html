@@ -2,44 +2,27 @@
 <html lang="th">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Portfolio | Puttikan Ruekraisri</title>
 
 <style>
 
-/* =====================================================
-   ROOT
-===================================================== */
-
 :root {
     --navy: #071a35;
     --navy-2: #0b2a52;
     --blue: #1565a9;
-
     --white: #ffffff;
     --bg: #f4f7fa;
-
     --text: #172b40;
     --text-light: #607286;
 
-    --shadow:
-        0 20px 55px rgba(7,26,53,.10);
-
-    --shadow-hover:
-        0 25px 70px rgba(7,26,53,.17);
+    --shadow: 0 20px 55px rgba(7,26,53,.10);
+    --shadow-hover: 0 25px 70px rgba(7,26,53,.17);
 
     --radius: 22px;
 }
-
-
-/* =====================================================
-   RESET
-===================================================== */
 
 * {
     margin: 0;
@@ -47,34 +30,22 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-
-    font-family:
-        "Segoe UI",
-        Tahoma,
-        Arial,
-        sans-serif;
-
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
     background: var(--bg);
-
     color: var(--text);
-
     min-height: 100vh;
-
     overflow-x: hidden;
 }
 
-
-/* =====================================================
-   BACKGROUND
-===================================================== */
-
 .page {
-
     min-height: 100vh;
 
     background:
-
         radial-gradient(
             circle at 10% 10%,
             rgba(21,101,169,.08),
@@ -100,56 +71,42 @@ body {
 ===================================================== */
 
 nav {
-
     position: fixed;
-
     top: 18px;
     left: 50%;
+    transform: translateX(-50%);
 
-    transform:
-        translateX(-50%);
-
-    width:
-        min(1050px, calc(100% - 30px));
+    width: min(1050px, calc(100% - 30px));
 
     z-index: 100;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     gap: 5px;
 
     padding: 8px;
 
-    background:
-        rgba(255,255,255,.88);
+    background: rgba(255,255,255,.88);
 
-    border:
-        1px solid rgba(7,26,53,.10);
+    border: 1px solid rgba(7,26,53,.10);
 
     border-radius: 16px;
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter: blur(18px);
 
     box-shadow:
         0 12px 35px rgba(7,26,53,.12);
 }
 
 nav a {
-
     color: #536579;
-
     text-decoration: none;
 
     font-size: 14px;
-
     font-weight: 600;
 
-    padding:
-        10px 15px;
+    padding: 10px 15px;
 
     border-radius: 10px;
 
@@ -159,18 +116,12 @@ nav a {
 }
 
 nav a:hover {
-
     color: var(--blue);
-
-    background:
-        #edf4fa;
-
-    transform:
-        translateY(-2px);
+    background: #edf4fa;
+    transform: translateY(-2px);
 }
 
 nav a.active {
-
     color: white;
 
     background:
@@ -190,43 +141,30 @@ nav a.active {
 ===================================================== */
 
 .page-content {
-
     min-height: 100vh;
 
-    padding:
-        125px 7% 65px;
+    padding: 125px 7% 65px;
 
     display: none;
 
-    animation:
-        pageIn .45s ease;
+    animation: pageIn .45s ease;
 }
 
 .page-content.active {
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 }
 
 @keyframes pageIn {
-
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(15px);
+        transform: translateY(15px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -236,17 +174,13 @@ nav a.active {
 ===================================================== */
 
 .home-container {
+    width: min(1050px, 100%);
 
-    width:
-        min(1050px, 100%);
-
-    min-height:
-        calc(100vh - 190px);
+    min-height: calc(100vh - 190px);
 
     display: grid;
 
-    grid-template-columns:
-        .85fr 1.15fr;
+    grid-template-columns: .85fr 1.15fr;
 
     gap: 60px;
 
@@ -254,12 +188,9 @@ nav a.active {
 }
 
 .photo-frame {
+    width: min(330px, 80vw);
 
-    width:
-        min(330px, 80vw);
-
-    aspect-ratio:
-        3 / 4;
+    aspect-ratio: 3 / 4;
 
     margin: auto;
 
@@ -275,8 +206,7 @@ nav a.active {
     border:
         1px solid rgba(21,101,169,.18);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 
     overflow: hidden;
 
@@ -284,36 +214,27 @@ nav a.active {
 }
 
 .photo-frame:hover {
-
     transform:
         translateY(-8px)
         rotate(-1deg);
 
-    box-shadow:
-        var(--shadow-hover);
+    box-shadow: var(--shadow-hover);
 }
 
 .photo-frame img {
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
 .small-label {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 8px;
 
-    color:
-        var(--blue);
+    color: var(--blue);
 
     font-size: 13px;
-
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -322,101 +243,73 @@ nav a.active {
 }
 
 .small-label::before {
-
     content: "";
 
     width: 28px;
     height: 2px;
 
-    background:
-        var(--blue);
+    background: var(--blue);
 }
 
 .home-title {
-
-    color:
-        var(--navy);
+    color: var(--navy);
 
     font-size:
         clamp(38px, 5vw, 68px);
 
-    line-height:
-        1.05;
+    line-height: 1.05;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    margin-bottom:
-        15px;
+    margin-bottom: 15px;
 }
 
 .home-name {
-
-    color:
-        #496176;
+    color: #496176;
 
     font-size:
         clamp(18px, 2vw, 25px);
 
-    margin-bottom:
-        20px;
+    margin-bottom: 20px;
 }
 
 .home-school {
+    display: inline-block;
 
-    display:
-        inline-block;
+    padding: 9px 15px;
 
-    padding:
-        9px 15px;
+    border-radius: 10px;
 
-    border-radius:
-        10px;
+    background: #e9f1f8;
 
-    background:
-        #e9f1f8;
+    color: var(--blue);
 
-    color:
-        var(--blue);
-
-    font-weight:
-        700;
+    font-weight: 700;
 }
 
 .medical-tags {
+    display: flex;
+    flex-wrap: wrap;
 
-    display:
-        flex;
+    gap: 8px;
 
-    flex-wrap:
-        wrap;
-
-    gap:
-        8px;
-
-    margin-top:
-        25px;
+    margin-top: 25px;
 }
 
 .medical-tags span {
-
-    padding:
-        7px 12px;
+    padding: 7px 12px;
 
     border:
         1px solid rgba(21,101,169,.15);
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
     background:
         rgba(255,255,255,.75);
 
-    color:
-        #536579;
+    color: #536579;
 
-    font-size:
-        13px;
+    font-size: 13px;
 }
 
 
@@ -425,59 +318,41 @@ nav a.active {
 ===================================================== */
 
 .section-header {
-
-    width:
-        min(1050px, 100%);
-
-    margin-bottom:
-        25px;
+    width: min(1050px, 100%);
+    margin-bottom: 25px;
 }
 
 .section-number {
+    color: var(--blue);
 
-    color:
-        var(--blue);
+    font-size: 12px;
 
-    font-size:
-        12px;
+    font-weight: 800;
 
-    font-weight:
-        800;
+    letter-spacing: 3px;
 
-    letter-spacing:
-        3px;
-
-    margin-bottom:
-        7px;
+    margin-bottom: 7px;
 }
 
 .title {
-
-    color:
-        var(--navy);
+    color: var(--navy);
 
     font-size:
         clamp(32px, 5vw, 52px);
 
-    font-weight:
-        800;
+    font-weight: 800;
 }
 
 .title::after {
-
     content: "";
 
-    display:
-        block;
+    display: block;
 
-    width:
-        55px;
+    width: 55px;
 
-    height:
-        3px;
+    height: 3px;
 
-    margin-top:
-        12px;
+    margin-top: 12px;
 
     background:
         linear-gradient(
@@ -493,15 +368,11 @@ nav a.active {
 ===================================================== */
 
 .content-box {
+    width: min(1050px, 100%);
 
-    width:
-        min(1050px, 100%);
+    padding: 35px;
 
-    padding:
-        35px;
-
-    position:
-        relative;
+    position: relative;
 
     background:
         rgba(255,255,255,.91);
@@ -509,22 +380,17 @@ nav a.active {
     border:
         1px solid rgba(7,26,53,.09);
 
-    border-radius:
-        var(--radius);
+    border-radius: var(--radius);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 
-    overflow:
-        hidden;
+    overflow: hidden;
 }
 
 .content-box::before {
-
     content: "";
 
-    position:
-        absolute;
+    position: absolute;
 
     top: 0;
     left: 0;
@@ -542,18 +408,13 @@ nav a.active {
 }
 
 .content-box p {
+    color: var(--text-light);
 
-    color:
-        var(--text-light);
+    font-size: 17px;
 
-    font-size:
-        17px;
+    line-height: 1.9;
 
-    line-height:
-        1.9;
-
-    margin-bottom:
-        14px;
+    margin-bottom: 14px;
 }
 
 
@@ -562,45 +423,29 @@ nav a.active {
 ===================================================== */
 
 .sop {
+    display: grid;
 
-    display:
-        grid;
+    grid-template-columns: 70px 1fr;
 
-    grid-template-columns:
-        70px 1fr;
-
-    gap:
-        25px;
+    gap: 25px;
 }
 
 .sop-mark {
+    width: 55px;
+    height: 55px;
 
-    width:
-        55px;
+    border-radius: 15px;
 
-    height:
-        55px;
+    background: var(--navy);
 
-    border-radius:
-        15px;
+    color: white;
 
-    background:
-        var(--navy);
+    display: flex;
 
-    color:
-        white;
+    align-items: center;
+    justify-content: center;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    font-size:
-        20px;
+    font-size: 20px;
 }
 
 
@@ -609,93 +454,188 @@ nav a.active {
 ===================================================== */
 
 .content-box h2 {
+    color: var(--navy);
 
-    color:
-        var(--navy);
+    font-size: 24px;
 
-    font-size:
-        24px;
-
-    margin-bottom:
-        18px;
+    margin-bottom: 18px;
 }
 
 .profile-grid {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap:
-        14px;
+    gap: 14px;
 }
 
 .profile-item {
-
-    padding:
-        18px;
+    padding: 18px;
 
     border:
         1px solid #dce5ec;
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    background:
-        #f8fafc;
+    background: #f8fafc;
 
-    transition:
-        .3s ease;
+    transition: .3s ease;
 }
 
 .profile-item:hover {
+    transform: translateY(-4px);
 
-    transform:
-        translateY(-4px);
-
-    background:
-        white;
+    background: white;
 
     box-shadow:
         0 10px 30px rgba(7,26,53,.08);
 }
 
 .profile-item strong {
+    display: block;
 
-    display:
-        block;
+    color: var(--blue);
 
-    color:
-        var(--blue);
+    font-size: 13px;
 
-    font-size:
-        13px;
-
-    margin-bottom:
-        5px;
+    margin-bottom: 5px;
 }
 
 .profile-item span {
+    color: #263e55;
 
-    color:
-        #263e55;
-
-    font-size:
-        16px;
+    font-size: 16px;
 }
 
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+.education-section {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+    margin-top: 5px;
+}
+
+.education-item {
+    padding: 18px;
+
+    border:
+        1px solid #dce5ec;
+
+    border-radius: 17px;
+
+    background: #f8fafc;
+
+    transition: .3s ease;
+}
+
+.education-item:hover {
+    transform: translateY(-4px);
+
+    background: white;
+
+    box-shadow:
+        0 10px 30px rgba(7,26,53,.08);
+}
+
+
+/* ช่องสำหรับใส่รูป */
+
+.education-image {
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    border-radius: 13px;
+
+    background: #e4ebf1;
+
+    border:
+        2px dashed #b8c7d5;
+
+    margin-bottom: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #8191a0;
+
+    font-size: 13px;
+
+    overflow: hidden;
+}
+
+.education-image::after {
+    content: "พื้นที่สำหรับรูป";
+}
+
+.education-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 13px;
+}
+
+.education-image:has(img)::after {
+    display: none;
+}
+
+.education-info strong {
+    display: block;
+
+    color: var(--blue);
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+}
+
+.education-info span {
+    display: block;
+
+    color: #263e55;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.education-info p {
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   CAREER
+===================================================== */
+
 .career-box {
+    margin-top: 25px;
 
-    margin-top:
-        18px;
+    padding: 22px;
 
-    padding:
-        22px;
-
-    border-radius:
-        16px;
+    border-radius: 16px;
 
     background:
         linear-gradient(
@@ -704,26 +644,20 @@ nav a.active {
             #123e6e
         );
 
-    color:
-        white;
+    color: white;
 }
 
 .career-box h3 {
+    font-size: 22px;
 
-    font-size:
-        22px;
-
-    margin-bottom:
-        8px;
+    margin-bottom: 8px;
 }
 
 .career-box p {
-
     color:
         rgba(255,255,255,.75);
 
-    margin:
-        0;
+    margin: 0;
 }
 
 
@@ -732,96 +666,71 @@ nav a.active {
 ===================================================== */
 
 .gallery {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap:
-        24px;
+    gap: 24px;
 }
 
 .gallery-item {
+    overflow: hidden;
 
-    overflow:
-        hidden;
+    border-radius: 17px;
 
-    border-radius:
-        17px;
-
-    background:
-        #f8fafc;
+    background: #f8fafc;
 
     border:
         1px solid #dce5ec;
 
-    padding:
-        12px;
+    padding: 12px;
 
-    transition:
-        .35s ease;
+    transition: .35s ease;
 }
 
 .gallery-item:hover {
-
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 
     box-shadow:
         0 12px 30px rgba(7,26,53,.09);
 }
 
 .gallery-img-wrapper {
+    aspect-ratio: 4 / 3;
 
-    aspect-ratio:
-        4 / 3;
+    overflow: hidden;
 
-    overflow:
-        hidden;
+    border-radius: 12px;
 
-    border-radius:
-        12px;
-
-    background:
-        #e4ebf1;
+    background: #e4ebf1;
 }
 
 .gallery-img-wrapper img {
-
     width: 100%;
     height: 100%;
 
-    object-fit:
-        cover;
+    object-fit: cover;
 
     transition:
         transform .4s ease;
 }
 
 .gallery-item:hover img {
-
-    transform:
-        scale(1.04);
+    transform: scale(1.04);
 }
 
 .gallery-item p {
-
     padding:
         12px 5px 4px;
 
-    color:
-        #263e55;
+    color: #263e55;
 
-    font-size:
-        15px;
+    font-size: 15px;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
-    text-align:
-        center;
+    text-align: center;
 }
 
 
@@ -830,102 +739,69 @@ nav a.active {
 ===================================================== */
 
 .contact-list {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap:
-        15px;
+    gap: 15px;
 }
 
 .contact-item {
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
 
-    align-items:
-        center;
+    gap: 15px;
 
-    gap:
-        15px;
-
-    padding:
-        18px;
+    padding: 18px;
 
     border:
         1px solid #dce5ec;
 
-    border-radius:
-        16px;
+    border-radius: 16px;
 
-    background:
-        #f8fafc;
+    background: #f8fafc;
 }
 
 .contact-icon {
+    width: 45px;
+    height: 45px;
 
-    width:
-        45px;
+    flex-shrink: 0;
 
-    height:
-        45px;
+    display: flex;
 
-    flex-shrink:
-        0;
+    align-items: center;
+    justify-content: center;
 
-    display:
-        flex;
+    border-radius: 13px;
 
-    align-items:
-        center;
+    background: #e8f0f7;
 
-    justify-content:
-        center;
+    color: var(--blue);
 
-    border-radius:
-        13px;
-
-    background:
-        #e8f0f7;
-
-    color:
-        var(--blue);
-
-    font-size:
-        20px;
+    font-size: 20px;
 }
 
 .contact-label {
+    display: block;
 
-    display:
-        block;
+    color: var(--blue);
 
-    color:
-        var(--blue);
+    font-size: 12px;
 
-    font-size:
-        12px;
+    font-weight: 700;
 
-    font-weight:
-        700;
-
-    margin-bottom:
-        3px;
+    margin-bottom: 3px;
 }
 
 .contact-value {
+    color: #293f55;
 
-    color:
-        #293f55;
+    font-size: 15px;
 
-    font-size:
-        15px;
-
-    word-break:
-        break-word;
+    word-break: break-word;
 }
 
 
@@ -934,18 +810,13 @@ nav a.active {
 ===================================================== */
 
 footer {
+    padding: 25px;
 
-    padding:
-        25px;
+    text-align: center;
 
-    text-align:
-        center;
+    color: #8191a0;
 
-    color:
-        #8191a0;
-
-    font-size:
-        12px;
+    font-size: 12px;
 
     border-top:
         1px solid rgba(7,26,53,.08);
@@ -959,39 +830,31 @@ footer {
 @media (max-width: 900px) {
 
     .home-container {
+        grid-template-columns: 1fr;
 
-        grid-template-columns:
-            1fr;
+        gap: 35px;
 
-        gap:
-            35px;
-
-        text-align:
-            center;
+        text-align: center;
     }
 
     .home-text {
+        display: flex;
 
-        display:
-            flex;
+        flex-direction: column;
 
-        flex-direction:
-            column;
-
-        align-items:
-            center;
+        align-items: center;
     }
 
     .medical-tags {
-
-        justify-content:
-            center;
+        justify-content: center;
     }
 
     .contact-list {
+        grid-template-columns: 1fr;
+    }
 
-        grid-template-columns:
-            1fr;
+    .education-section {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -999,88 +862,70 @@ footer {
 @media (max-width: 600px) {
 
     nav {
-
-        top:
-            9px;
+        top: 9px;
 
         width:
             calc(100% - 14px);
 
-        padding:
-            5px;
+        padding: 5px;
 
-        gap:
-            2px;
+        gap: 2px;
     }
 
     nav a {
-
-        font-size:
-            10px;
+        font-size: 10px;
 
         padding:
             8px 7px;
     }
 
     .page-content {
-
         padding:
             105px 15px 45px;
     }
 
     .content-box {
+        padding: 22px;
 
-        padding:
-            22px;
-
-        border-radius:
-            18px;
+        border-radius: 18px;
     }
 
     .content-box p {
+        font-size: 15px;
 
-        font-size:
-            15px;
-
-        line-height:
-            1.85;
+        line-height: 1.85;
     }
 
     .profile-grid {
-
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .gallery {
-
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .sop {
+        grid-template-columns: 1fr;
 
-        grid-template-columns:
-            1fr;
+        gap: 15px;
+    }
 
-        gap:
-            15px;
+    .education-section {
+        grid-template-columns: 1fr;
     }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
 <div class="page">
 
 
 <!-- =====================================================
-     NAV
+     NAVIGATION
 ===================================================== -->
 
 <nav>
@@ -1119,12 +964,11 @@ footer {
 
 
 <!-- =====================================================
-     HOME PAGE
+     HOME
 ===================================================== -->
 
-<section
-    id="home"
-    class="page-content active">
+<section id="home"
+         class="page-content active">
 
     <div class="home-container">
 
@@ -1178,12 +1022,11 @@ footer {
 
 
 <!-- =====================================================
-     PREFACE PAGE
+     PREFACE
 ===================================================== -->
 
-<section
-    id="preface"
-    class="page-content">
+<section id="preface"
+         class="page-content">
 
     <div class="section-header">
 
@@ -1283,12 +1126,11 @@ footer {
 
 
 <!-- =====================================================
-     PROFILE PAGE
+     PROFILE
 ===================================================== -->
 
-<section
-    id="profile"
-    class="page-content">
+<section id="profile"
+         class="page-content">
 
     <div class="section-header">
 
@@ -1308,6 +1150,7 @@ footer {
         <h2>
             Personal Profile
         </h2>
+
 
         <div class="profile-grid">
 
@@ -1354,6 +1197,76 @@ footer {
         </div>
 
 
+        <!-- =================================================
+             EDUCATION
+        ================================================= -->
+
+        <h2 style="margin-top: 40px;">
+            ประวัติการศึกษา
+        </h2>
+
+
+        <div class="education-section">
+
+
+            <!-- ประถมศึกษา -->
+
+            <div class="education-item">
+
+                <div class="education-image">
+                </div>
+
+                <div class="education-info">
+
+                    <strong>
+                        ระดับประถมศึกษา
+                    </strong>
+
+                    <span>
+                        โรงเรียนกุญแจคริสเตียนวิทยา
+                    </span>
+
+                    <p>
+                        จบชั้นประถมศึกษาจากโรงเรียนกุญแจคริสเตียนวิทยา
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- มัธยมศึกษา -->
+
+            <div class="education-item">
+
+                <div class="education-image">
+                </div>
+
+                <div class="education-info">
+
+                    <strong>
+                        ระดับมัธยมศึกษา
+                    </strong>
+
+                    <span>
+                        โรงเรียนบ้านบึงอุตสาหกรรมนุเคราะห์
+                    </span>
+
+                    <p>
+                        จบชั้นมัธยมศึกษาจากโรงเรียนบ้านบึงอุตสาหกรรมนุเคราะห์
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CAREER
+        ================================================= -->
+
         <div class="career-box">
 
             <h3>
@@ -1375,12 +1288,11 @@ footer {
 
 
 <!-- =====================================================
-     ACTIVITIES PAGE
+     ACTIVITIES
 ===================================================== -->
 
-<section
-    id="activities"
-    class="page-content">
+<section id="activities"
+         class="page-content">
 
     <div class="section-header">
 
@@ -1399,11 +1311,14 @@ footer {
 
         <div class="gallery">
 
+
             <div class="gallery-item">
 
                 <div class="gallery-img-wrapper">
 
-                    <img src="เกียรติบัตรอบรมปฐมพยาบาล.jpg">
+                    <img
+                        src="เกียรติบัตรอบรมปฐมพยาบาล.jpg"
+                        alt="กิจกรรมโรงพยาบาลบ้านบึง">
 
                 </div>
 
@@ -1419,7 +1334,9 @@ footer {
 
                 <div class="gallery-img-wrapper">
 
-                    <img src="1000050313.jpg">
+                    <img
+                        src="1000050313.jpg"
+                        alt="อบรม CPR และ First Aid">
 
                 </div>
 
@@ -1437,7 +1354,9 @@ footer {
 
                 <div class="gallery-img-wrapper">
 
-                    <img src="เกียรติบัตรอบรมแพทย์.jpg">
+                    <img
+                        src="เกียรติบัตรอบรมแพทย์.jpg"
+                        alt="อบรมสายวิทยาศาสตร์สุขภาพ">
 
                 </div>
 
@@ -1454,7 +1373,9 @@ footer {
 
                 <div class="gallery-img-wrapper">
 
-                    <img src="เกียรติบัตรคลินิกฟัน.jpg">
+                    <img
+                        src="เกียรติบัตรคลินิกฟัน.jpg"
+                        alt="ศึกษาดูงานคลินิกทันตกรรม">
 
                 </div>
 
@@ -1470,7 +1391,9 @@ footer {
 
                 <div class="gallery-img-wrapper">
 
-                    <img src="เกียรติบัตรแข่งสภา.jpg">
+                    <img
+                        src="เกียรติบัตรแข่งสภา.jpg"
+                        alt="กิจกรรมสภานักเรียน">
 
                 </div>
 
@@ -1490,12 +1413,11 @@ footer {
 
 
 <!-- =====================================================
-     CONTACT PAGE
+     CONTACT
 ===================================================== -->
 
-<section
-    id="contact"
-    class="page-content">
+<section id="contact"
+         class="page-content">
 
     <div class="section-header">
 
@@ -1513,6 +1435,7 @@ footer {
     <div class="content-box">
 
         <div class="contact-list">
+
 
             <div class="contact-item">
 
@@ -1555,6 +1478,7 @@ footer {
 
             </div>
 
+
         </div>
 
     </div>
@@ -1563,9 +1487,7 @@ footer {
 
 
 <footer>
-
     Puttikan Ruekraisri · Physical Therapy Portfolio
-
 </footer>
 
 
@@ -1588,21 +1510,18 @@ const pages =
 function showPage(pageId) {
 
     pages.forEach(function(page) {
-
         page.classList.remove("active");
-
     });
 
 
     navLinks.forEach(function(link) {
-
         link.classList.remove("active");
-
     });
 
 
     const target =
         document.getElementById(pageId);
+
 
     const activeLink =
         document.querySelector(
@@ -1617,9 +1536,7 @@ function showPage(pageId) {
 
 
     if (activeLink) {
-
         activeLink.classList.add("active");
-
     }
 
 
@@ -1665,8 +1582,8 @@ navLinks.forEach(function(link) {
 ===================================================== */
 
 const initialPage =
-    window.location.hash
-        .replace("#", "");
+    window.location.hash.replace("#", "");
+
 
 if (
     initialPage &&
@@ -1684,5 +1601,4 @@ if (
 </script>
 
 </body>
-
 </html>
