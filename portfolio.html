@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio | Puttikan Ruekraisri</title>
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        "Noto Sans Thai",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    min-height: 100vh;
+    color: #172b40;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(0, 153, 255, .16),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(30, 80, 180, .13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 75% 90%,
+            rgba(0, 220, 255, .10),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #edf4fa 45%,
+            #e7eef6 100%
+        );
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(21, 101, 169, .045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(21, 101, 169, .045) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.8),
+            transparent
+        );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   FLOATING BLOBS
+========================================================= */
+
+.background-shape {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+
+    top: -120px;
+    left: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(21, 101, 169, .22),
+            rgba(21, 101, 169, 0)
+        );
+
+    animation: floatOne 9s ease-in-out infinite;
+}
+
+.shape-2 {
+    width: 350px;
+    height: 350px;
+
+    right: -150px;
+    bottom: -140px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 180, 255, .18),
+            rgba(0, 180, 255, 0)
+        );
+
+    animation: floatTwo 11s ease-in-out infinite;
+}
+
+.shape-3 {
+    width: 170px;
+    height: 170px;
+
+    right: 25%;
+    top: 8%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100, 180, 255, .12),
+            transparent 70%
+        );
+
+    animation: floatThree 7s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: min(1120px, 100%);
+
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   IMAGE SECTION
+========================================================= */
+
+.visual-area {
+    position: relative;
+
+    width: min(370px, 82vw);
+
+    margin: auto;
+
+    perspective: 1200px;
+}
+
+
+/* Decorative rings */
+
+.visual-area::before,
+.visual-area::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(21, 101, 169, .15);
+
+    pointer-events: none;
+}
+
+.visual-area::before {
+    width: 115%;
+    height: 75%;
+
+    left: -7%;
+    top: 12%;
+
+    transform: rotate(-28deg);
+
+    animation: ringRotate 14s linear infinite;
+}
+
+.visual-area::after {
+    width: 105%;
+    height: 65%;
+
+    left: -2%;
+    top: 17%;
+
+    transform: rotate(28deg);
+
+    border-color: rgba(0, 170, 255, .12);
+
+    animation: ringRotateReverse 18s linear infinite;
+}
+
+
+/* =========================================================
+   PHOTO FRAME
+========================================================= */
+
+.photo-frame {
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    position: relative;
+
+    border-radius: 30px;
+
+    padding: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            rgba(205,225,242,.8)
+        );
+
+    border: 1px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 35px 80px rgba(7,26,53,.16),
+        0 10px 30px rgba(21,101,169,.10),
+        inset 0 0 0 1px rgba(21,101,169,.10);
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
+}
+
+
+/* animated border */
+
+.photo-frame::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180%;
+    height: 180%;
+
+    left: -40%;
+    top: -40%;
+
+    background:
+        conic-gradient(
+            transparent,
+            rgba(0,180,255,.6),
+            transparent 20%,
+            rgba(21,101,169,.5),
+            transparent 40%
+        );
+
+    animation: borderSpin 7s linear infinite;
+}
+
+
+/* inner layer */
+
+.photo-frame::after {
+    content: "";
+
+    position: absolute;
+    inset: 8px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.85),
+            rgba(230,240,248,.65)
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* image */
+
+.photo-frame img {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    z-index: 2;
+
+    transition:
+        transform .7s cubic-bezier(.2,.8,.2,1),
+        filter .5s ease;
+}
+
+
+/* shine */
+
+.photo-frame .shine {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 30%,
+            rgba(255,255,255,.4) 45%,
+            transparent 60%
+        );
+
+    transform: translateX(-120%);
+
+    animation: shine 5s ease-in-out infinite;
+}
+
+
+/* hover */
+
+.photo-frame:hover {
+    transform:
+        translateY(-14px)
+        rotateX(3deg)
+        rotateY(-4deg)
+        scale(1.015);
+
+    box-shadow:
+        0 45px 100px rgba(7,26,53,.22),
+        0 20px 50px rgba(21,101,169,.18);
+}
+
+.photo-frame:hover img {
+    transform: scale(1.035);
+}
+
+
+/* =========================================================
+   FLOATING BADGE
+========================================================= */
+
+.image-badge {
+    position: absolute;
+
+    right: -25px;
+    bottom: 35px;
+
+    padding: 12px 17px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.72);
+
+    border:
+        1px solid rgba(255,255,255,.9);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 35px rgba(7,26,53,.12);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #1565a9;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    animation: badgeFloat 4s ease-in-out infinite;
+
+    z-index: 8;
+}
+
+.image-badge .dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #00b8ff;
+
+    box-shadow:
+        0 0 0 5px rgba(0,184,255,.10),
+        0 0 18px rgba(0,184,255,.55);
+
+    animation: pulse 2s infinite;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+    position: relative;
+
+    animation: contentReveal 1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.small-label {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 10px;
+
+    color: #1565a9;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .8s .15s forwards;
+}
+
+.small-label::before {
+    content: "";
+
+    width: 42px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #071a35,
+            #00aaff
+        );
+
+    border-radius: 99px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title {
+    position: relative;
+
+    color: #071a35;
+
+    font-size: clamp(48px, 7vw, 82px);
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 20px;
+
+    opacity: 0;
+
+    animation:
+        titleReveal 1s .25s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+
+/* gradient word */
+
+.title::after {
+    content: "PORTFOLIO";
+
+    position: absolute;
+
+    left: 3px;
+    top: 3px;
+
+    z-index: -1;
+
+    color: transparent;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,.25),
+            transparent 65%
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    filter: blur(12px);
+
+    opacity: .7;
+}
+
+
+/* =========================================================
+   NAME
+========================================================= */
+
+.name {
+    color: #496176;
+
+    font-size: clamp(18px, 2vw, 25px);
+
+    line-height: 1.55;
+
+    margin-bottom: 22px;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .8s .45s forwards;
+}
+
+.name br + * {
+    color: #172b40;
+}
+
+
+/* =========================================================
+   SCHOOL
+========================================================= */
+
+.school {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(233,241,248,.95),
+            rgba(255,255,255,.8)
+        );
+
+    border:
+        1px solid rgba(21,101,169,.12);
+
+    color: #1565a9;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 25px rgba(21,101,169,.08);
+
+    position: relative;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .8s .6s forwards;
+}
+
+.school::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    margin-right: 9px;
+
+    background: #00aaff;
+
+    box-shadow:
+        0 0 12px rgba(0,170,255,.7);
+}
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 25px;
+}
+
+.tags span {
+    position: relative;
+
+    padding: 8px 14px;
+
+    border:
+        1px solid rgba(21,101,169,.13);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255,255,255,.62);
+
+    backdrop-filter: blur(10px);
+
+    color: #536579;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 5px 15px rgba(7,26,53,.035);
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease,
+        box-shadow .3s ease;
+
+    opacity: 0;
+
+    animation:
+        tagReveal .6s forwards;
+}
+
+
+/* stagger */
+
+.tags span:nth-child(1) {
+    animation-delay: .75s;
+}
+
+.tags span:nth-child(2) {
+    animation-delay: .82s;
+}
+
+.tags span:nth-child(3) {
+    animation-delay: .89s;
+}
+
+.tags span:nth-child(4) {
+    animation-delay: .96s;
+}
+
+.tags span:hover {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071a35,
+            #1565a9
+        );
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 12px 25px rgba(21,101,169,.18);
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.button {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 32px;
+
+    padding: 15px 25px;
+
+    border-radius: 14px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071a35,
+            #1565a9 65%,
+            #00aaff
+        );
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    letter-spacing: .3px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 35px rgba(7,26,53,.18),
+        0 0 0 1px rgba(255,255,255,.15) inset;
+
+    opacity: 0;
+
+    animation:
+        buttonReveal .8s 1.05s forwards;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* button shine */
+
+.button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            100deg,
+            transparent,
+            rgba(255,255,255,.4),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left .7s ease;
+}
+
+.button:hover::before {
+    left: 130%;
+}
+
+.button:hover {
+    transform:
+        translateY(-5px)
+        scale(1.03);
+
+    box-shadow:
+        0 20px 45px rgba(7,26,53,.25),
+        0 0 30px rgba(0,170,255,.15);
+}
+
+.button:active {
+    transform: translateY(-1px) scale(.99);
+}
+
+
+/* =========================================================
+   DECORATIVE ORBIT DOTS
+========================================================= */
+
+.orbit-dot {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00aaff;
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,.8);
+}
+
+.dot-a {
+    top: 8%;
+    left: 7%;
+
+    animation:
+        orbitFloat 5s ease-in-out infinite;
+}
+
+.dot-b {
+    right: 8%;
+    top: 24%;
+
+    background: #1565a9;
+
+    animation:
+        orbitFloat 7s 1s ease-in-out infinite;
+}
+
+.dot-c {
+    bottom: 12%;
+    left: 10%;
+
+    animation:
+        orbitFloat 6s 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes floatOne {
+    0%,100% {
+        transform: translate(0,0);
+    }
+
+    50% {
+        transform: translate(30px,25px);
+    }
+}
+
+@keyframes floatTwo {
+    0%,100% {
+        transform: translate(0,0);
+    }
+
+    50% {
+        transform: translate(-35px,-25px);
+    }
+}
+
+@keyframes floatThree {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(25px);
+    }
+}
+
+@keyframes ringRotate {
+    from {
+        transform: rotate(-28deg);
+    }
+
+    to {
+        transform: rotate(332deg);
+    }
+}
+
+@keyframes ringRotateReverse {
+    from {
+        transform: rotate(28deg);
+    }
+
+    to {
+        transform: rotate(-332deg);
+    }
+}
+
+@keyframes borderSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    35%,
+    100% {
+        transform: translateX(130%);
+    }
+}
+
+@keyframes badgeFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: .65;
+    }
+}
+
+@keyframes contentReveal {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes tagReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px)
+            scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes buttonReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes orbitFloat {
+    0%,100% {
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(12px,-15px)
+            scale(1.4);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .page {
+        padding:
+            70px
+            20px
+            50px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        text-align: center;
+    }
+
+    .visual-area {
+        width: min(340px, 78vw);
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .small-label {
+        justify-content: center;
+    }
+
+    .tags {
+        justify-content: center;
+    }
+
+    .image-badge {
+        right: -10px;
+    }
+
+    .title {
+        letter-spacing: -2px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .page {
+        padding:
+            45px
+            16px
+            45px;
+    }
+
+    .container {
+        gap: 32px;
+    }
+
+    .visual-area {
+        width: min(280px, 78vw);
+    }
+
+    .photo-frame {
+        border-radius: 24px;
+        padding: 7px;
+    }
+
+    .photo-frame::after {
+        inset: 6px;
+        border-radius: 19px;
+    }
+
+    .photo-frame img {
+        border-radius: 18px;
+    }
+
+    .image-badge {
+        right: -7px;
+        bottom: 18px;
+
+        padding: 9px 12px;
+
+        font-size: 10px;
+    }
+
+    .title {
+        font-size: 44px;
+        letter-spacing: -2px;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+
+    .school {
+        font-size: 13px;
+    }
+
+    .tags span {
+        font-size: 12px;
+        padding: 7px 11px;
+    }
+
+    .button {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .shape-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .shape-2 {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =======================================================
+     BACKGROUND
+======================================================= -->
+
+<div class="background-shape shape-1"></div>
+<div class="background-shape shape-2"></div>
+<div class="background-shape shape-3"></div>
+
+<div class="orbit-dot dot-a"></div>
+<div class="orbit-dot dot-b"></div>
+<div class="orbit-dot dot-c"></div>
+
+
+<!-- =======================================================
+     MAIN PAGE
+======================================================= -->
+
+<div class="page">
+
+    <div class="container">
+
+
+        <!-- =================================================
+             IMAGE
+        ================================================== -->
+
+        <div class="visual-area">
+
+            <div class="photo-frame">
+
+                <!-- รูปใหม่ที่คุณส่งมา -->
+                <img
+                    src="https://i.postimg.cc/Wb6XFxvc/270455.jpg"
+                    alt="Portfolio image ของนายพุฒิกันย์ ฤๅไกรศรี"
+                >
+
+                <div class="shine"></div>
+
+            </div>
+
+
+            <div class="image-badge">
+                <span class="dot"></span>
+                PHYSICAL THERAPY
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div class="content">
+
+            <div class="small-label">
+                PHYSICAL THERAPY
+            </div>
+
+
+            <h1 class="title">
+                PORTFOLIO
+            </h1>
+
+
+            <div class="name">
+
+                นายพุฒิกันย์ ฤๅไกรศรี
+
+                <br>
+
+                Puttikan Ruekraisri
+
+            </div>
+
+
+            <div class="school">
+                มัธยมศึกษาปีที่ 6/2
+            </div>
+
+
+            <div class="tags">
+
+                <span>
+                    Anatomy
+                </span>
+
+                <span>
+                    Movement
+                </span>
+
+                <span>
+                    Rehabilitation
+                </span>
+
+                <span>
+                    Health Science
+                </span>
+
+            </div>
+
+
+            <a
+                href="portfolio.html"
+                class="button"
+            >
+                เข้าสู่ Portfolio
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+     3D MOUSE TILT EFFECT
+======================================================= -->
+
+<script>
+
+const frame = document.querySelector(".photo-frame");
+
+const visualArea = document.querySelector(".visual-area");
+
+if (window.innerWidth > 900) {
+
+    visualArea.addEventListener("mousemove", (e) => {
+
+        const rect = visualArea.getBoundingClientRect();
+
+        const x =
+            (e.clientX - rect.left) /
+            rect.width;
+
+        const y =
+            (e.clientY - rect.top) /
+            rect.height;
+
+        const rotateY =
+            (x - 0.5) * 10;
+
+        const rotateX =
+            (0.5 - y) * 10;
+
+        frame.style.transform = `
+            translateY(-10px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            scale(1.015)
+        `;
+    });
+
+
+    visualArea.addEventListener("mouseleave", () => {
+
+        frame.style.transform = "";
+
+    });
+
+}
+
+
+/* =========================================================
+   MOUSE GLOW
+========================================================= */
+
+const glow = document.createElement("div");
+
+glow.style.position = "fixed";
+glow.style.width = "220px";
+glow.style.height = "220px";
+glow.style.borderRadius = "50%";
+glow.style.pointerEvents = "none";
+glow.style.zIndex = "1";
+glow.style.background =
+    "radial-gradient(circle, rgba(0,170,255,.10), transparent 70%)";
+glow.style.transform = "translate(-50%, -50%)";
+glow.style.opacity = "0";
+glow.style.transition = "opacity .3s ease";
+
+document.body.appendChild(glow);
+
+document.addEventListener("mousemove", (e) => {
+
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+    glow.style.opacity = "1";
+
+});
+
+document.addEventListener("mouseleave", () => {
+
+    glow.style.opacity = "0";
+
+});
+
+</script>
+
+</body>
+</html>
