@@ -1,1604 +1,407 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Portfolio | Puttikan Ruekraisri</title>
 
 <style>
-
-:root {
-    --navy: #071a35;
-    --navy-2: #0b2a52;
-    --blue: #1565a9;
-    --white: #ffffff;
-    --bg: #f4f7fa;
-    --text: #172b40;
-    --text-light: #607286;
-
-    --shadow: 0 20px 55px rgba(7,26,53,.10);
-    --shadow-hover: 0 25px 70px rgba(7,26,53,.17);
-
-    --radius: 22px;
+:root{
+    --navy:#071a35;
+    --blue:#1565a9;
+    --bg:#f4f7fa;
+    --text:#172b40;
+    --light:#607286;
+    --white:#fff;
+    --shadow:0 20px 55px rgba(7,26,53,.10);
+    --radius:22px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
+body{
+    font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
 }
 
-.page {
-    min-height: 100vh;
-
+.page{
+    min-height:100vh;
+    padding-bottom:40px;
     background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(21,101,169,.08),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 90% 85%,
-            rgba(7,26,53,.07),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #f8fafc,
-            #edf2f6
-        );
+        radial-gradient(circle at 10% 10%,rgba(21,101,169,.08),transparent 28%),
+        radial-gradient(circle at 90% 85%,rgba(7,26,53,.07),transparent 30%),
+        linear-gradient(135deg,#f8fafc,#edf2f6);
 }
 
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-nav {
-    position: fixed;
-    top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: min(1050px, calc(100% - 30px));
-
-    z-index: 100;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-
-    padding: 8px;
-
-    background: rgba(255,255,255,.88);
-
-    border: 1px solid rgba(7,26,53,.10);
-
-    border-radius: 16px;
-
-    backdrop-filter: blur(18px);
-
-    box-shadow:
-        0 12px 35px rgba(7,26,53,.12);
+/* NAV */
+nav{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1050px,calc(100% - 30px));
+    z-index:100;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    padding:8px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(7,26,53,.10);
+    border-radius:16px;
+    backdrop-filter:blur(18px);
+    box-shadow:0 12px 35px rgba(7,26,53,.12);
 }
 
-nav a {
-    color: #536579;
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    padding: 10px 15px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    transition: .25s ease;
+nav a{
+    color:#536579;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    padding:10px 15px;
+    border-radius:10px;
+    transition:.25s ease;
 }
 
-nav a:hover {
-    color: var(--blue);
-    background: #edf4fa;
-    transform: translateY(-2px);
+nav a:hover{
+    color:var(--blue);
+    background:#edf4fa;
+    transform:translateY(-2px);
 }
 
-nav a.active {
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--navy),
-            var(--blue)
-        );
-
-    box-shadow:
-        0 7px 20px rgba(7,26,53,.20);
+nav a.active{
+    color:white;
+    background:linear-gradient(135deg,var(--navy),var(--blue));
+    box-shadow:0 7px 20px rgba(7,26,53,.20);
 }
 
-
-/* =====================================================
-   PAGES
-===================================================== */
-
-.page-content {
-    min-height: 100vh;
-
-    padding: 125px 7% 65px;
-
-    display: none;
-
-    animation: pageIn .45s ease;
+/* CONTENT */
+main{
+    width:min(1050px,calc(100% - 30px));
+    margin:auto;
+    padding-top:125px;
 }
 
-.page-content.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.hero{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:55px;
+    align-items:center;
+    min-height:500px;
 }
 
-@keyframes pageIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+.photo-frame{
+    width:330px;
+    aspect-ratio:3/4;
+    margin:auto;
+    border-radius:28px;
+    overflow:hidden;
+    background:#e8eef4;
+    border:1px solid rgba(21,101,169,.18);
+    box-shadow:var(--shadow);
+}
+
+.photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.small-label{
+    color:var(--blue);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.title{
+    color:var(--navy);
+    font-size:clamp(38px,5vw,68px);
+    line-height:1.05;
+    margin-bottom:15px;
+}
+
+.name{
+    color:#496176;
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.school{
+    display:inline-block;
+    padding:9px 15px;
+    border-radius:10px;
+    background:#e9f1f8;
+    color:var(--blue);
+    font-weight:700;
+}
+
+/* INFO */
+.box{
+    margin-top:35px;
+    padding:35px;
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(7,26,53,.09);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.box h2{
+    color:var(--navy);
+    font-size:25px;
+    margin-bottom:22px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.info{
+    padding:18px;
+    border:1px solid #dce5ec;
+    border-radius:15px;
+    background:#f8fafc;
+}
+
+.info strong{
+    display:block;
+    color:var(--blue);
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.info span{
+    color:#263e55;
+    font-size:16px;
+}
+
+/* QUESTIONS */
+.question{
+    margin-bottom:18px;
+}
+
+.question label{
+    display:block;
+    color:var(--blue);
+    font-weight:700;
+    margin-bottom:7px;
+}
+
+.question input,
+.question textarea{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #d5e0e8;
+    border-radius:12px;
+    background:#f8fafc;
+    font-family:inherit;
+    font-size:15px;
+    outline:none;
+}
+
+.question textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.question input:focus,
+.question textarea:focus{
+    border-color:var(--blue);
+    background:white;
+}
+
+footer{
+    margin-top:45px;
+    text-align:center;
+    color:#8191a0;
+    font-size:12px;
+}
+
+@media(max-width:800px){
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:35px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* =====================================================
-   HOME
-===================================================== */
-
-.home-container {
-    width: min(1050px, 100%);
-
-    min-height: calc(100vh - 190px);
-
-    display: grid;
-
-    grid-template-columns: .85fr 1.15fr;
-
-    gap: 60px;
-
-    align-items: center;
-}
-
-.photo-frame {
-    width: min(330px, 80vw);
-
-    aspect-ratio: 3 / 4;
-
-    margin: auto;
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #e8eef4
-        );
-
-    border:
-        1px solid rgba(21,101,169,.18);
-
-    box-shadow: var(--shadow);
-
-    overflow: hidden;
-
-    transition: .4s ease;
-}
-
-.photo-frame:hover {
-    transform:
-        translateY(-8px)
-        rotate(-1deg);
-
-    box-shadow: var(--shadow-hover);
-}
-
-.photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.small-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    color: var(--blue);
-
-    font-size: 13px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 15px;
-}
-
-.small-label::before {
-    content: "";
-
-    width: 28px;
-    height: 2px;
-
-    background: var(--blue);
-}
-
-.home-title {
-    color: var(--navy);
-
-    font-size:
-        clamp(38px, 5vw, 68px);
-
-    line-height: 1.05;
-
-    font-weight: 800;
-
-    margin-bottom: 15px;
-}
-
-.home-name {
-    color: #496176;
-
-    font-size:
-        clamp(18px, 2vw, 25px);
-
-    margin-bottom: 20px;
-}
-
-.home-school {
-    display: inline-block;
-
-    padding: 9px 15px;
-
-    border-radius: 10px;
-
-    background: #e9f1f8;
-
-    color: var(--blue);
-
-    font-weight: 700;
-}
-
-.medical-tags {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin-top: 25px;
-}
-
-.medical-tags span {
-    padding: 7px 12px;
-
-    border:
-        1px solid rgba(21,101,169,.15);
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.75);
-
-    color: #536579;
-
-    font-size: 13px;
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.section-header {
-    width: min(1050px, 100%);
-    margin-bottom: 25px;
-}
-
-.section-number {
-    color: var(--blue);
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 7px;
-}
-
-.title {
-    color: var(--navy);
-
-    font-size:
-        clamp(32px, 5vw, 52px);
-
-    font-weight: 800;
-}
-
-.title::after {
-    content: "";
-
-    display: block;
-
-    width: 55px;
-
-    height: 3px;
-
-    margin-top: 12px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            transparent
-        );
-}
-
-
-/* =====================================================
-   CONTENT BOX
-===================================================== */
-
-.content-box {
-    width: min(1050px, 100%);
-
-    padding: 35px;
-
-    position: relative;
-
-    background:
-        rgba(255,255,255,.91);
-
-    border:
-        1px solid rgba(7,26,53,.09);
-
-    border-radius: var(--radius);
-
-    box-shadow: var(--shadow);
-
-    overflow: hidden;
-}
-
-.content-box::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 3px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--navy),
-            var(--blue),
-            transparent
-        );
-}
-
-.content-box p {
-    color: var(--text-light);
-
-    font-size: 17px;
-
-    line-height: 1.9;
-
-    margin-bottom: 14px;
-}
-
-
-/* =====================================================
-   PREFACE
-===================================================== */
-
-.sop {
-    display: grid;
-
-    grid-template-columns: 70px 1fr;
-
-    gap: 25px;
-}
-
-.sop-mark {
-    width: 55px;
-    height: 55px;
-
-    border-radius: 15px;
-
-    background: var(--navy);
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    font-size: 20px;
-}
-
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
-.content-box h2 {
-    color: var(--navy);
-
-    font-size: 24px;
-
-    margin-bottom: 18px;
-}
-
-.profile-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 14px;
-}
-
-.profile-item {
-    padding: 18px;
-
-    border:
-        1px solid #dce5ec;
-
-    border-radius: 15px;
-
-    background: #f8fafc;
-
-    transition: .3s ease;
-}
-
-.profile-item:hover {
-    transform: translateY(-4px);
-
-    background: white;
-
-    box-shadow:
-        0 10px 30px rgba(7,26,53,.08);
-}
-
-.profile-item strong {
-    display: block;
-
-    color: var(--blue);
-
-    font-size: 13px;
-
-    margin-bottom: 5px;
-}
-
-.profile-item span {
-    color: #263e55;
-
-    font-size: 16px;
-}
-
-
-/* =====================================================
-   EDUCATION
-===================================================== */
-
-.education-section {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 20px;
-
-    margin-top: 5px;
-}
-
-.education-item {
-    padding: 18px;
-
-    border:
-        1px solid #dce5ec;
-
-    border-radius: 17px;
-
-    background: #f8fafc;
-
-    transition: .3s ease;
-}
-
-.education-item:hover {
-    transform: translateY(-4px);
-
-    background: white;
-
-    box-shadow:
-        0 10px 30px rgba(7,26,53,.08);
-}
-
-
-/* ช่องสำหรับใส่รูป */
-
-.education-image {
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    border-radius: 13px;
-
-    background: #e4ebf1;
-
-    border:
-        2px dashed #b8c7d5;
-
-    margin-bottom: 17px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    color: #8191a0;
-
-    font-size: 13px;
-
-    overflow: hidden;
-}
-
-.education-image::after {
-    content: "พื้นที่สำหรับรูป";
-}
-
-.education-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    border-radius: 13px;
-}
-
-.education-image:has(img)::after {
-    display: none;
-}
-
-.education-info strong {
-    display: block;
-
-    color: var(--blue);
-
-    font-size: 13px;
-
-    margin-bottom: 7px;
-}
-
-.education-info span {
-    display: block;
-
-    color: #263e55;
-
-    font-size: 17px;
-
-    font-weight: 700;
-
-    margin-bottom: 8px;
-}
-
-.education-info p {
-    margin: 0;
-
-    color: var(--text-light);
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* =====================================================
-   CAREER
-===================================================== */
-
-.career-box {
-    margin-top: 25px;
-
-    padding: 22px;
-
-    border-radius: 16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #071a35,
-            #123e6e
-        );
-
-    color: white;
-}
-
-.career-box h3 {
-    font-size: 22px;
-
-    margin-bottom: 8px;
-}
-
-.career-box p {
-    color:
-        rgba(255,255,255,.75);
-
-    margin: 0;
-}
-
-
-/* =====================================================
-   GALLERY
-===================================================== */
-
-.gallery {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 24px;
-}
-
-.gallery-item {
-    overflow: hidden;
-
-    border-radius: 17px;
-
-    background: #f8fafc;
-
-    border:
-        1px solid #dce5ec;
-
-    padding: 12px;
-
-    transition: .35s ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 12px 30px rgba(7,26,53,.09);
-}
-
-.gallery-img-wrapper {
-    aspect-ratio: 4 / 3;
-
-    overflow: hidden;
-
-    border-radius: 12px;
-
-    background: #e4ebf1;
-}
-
-.gallery-img-wrapper img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform .4s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.04);
-}
-
-.gallery-item p {
-    padding:
-        12px 5px 4px;
-
-    color: #263e55;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    text-align: center;
-}
-
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact-list {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 15px;
-}
-
-.contact-item {
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    padding: 18px;
-
-    border:
-        1px solid #dce5ec;
-
-    border-radius: 16px;
-
-    background: #f8fafc;
-}
-
-.contact-icon {
-    width: 45px;
-    height: 45px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 13px;
-
-    background: #e8f0f7;
-
-    color: var(--blue);
-
-    font-size: 20px;
-}
-
-.contact-label {
-    display: block;
-
-    color: var(--blue);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    margin-bottom: 3px;
-}
-
-.contact-value {
-    color: #293f55;
-
-    font-size: 15px;
-
-    word-break: break-word;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-    padding: 25px;
-
-    text-align: center;
-
-    color: #8191a0;
-
-    font-size: 12px;
-
-    border-top:
-        1px solid rgba(7,26,53,.08);
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 900px) {
-
-    .home-container {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-
-        text-align: center;
-    }
-
-    .home-text {
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-    .medical-tags {
-        justify-content: center;
-    }
-
-    .contact-list {
-        grid-template-columns: 1fr;
-    }
-
-    .education-section {
-        grid-template-columns: 1fr;
+    .info-grid{
+        grid-template-columns:1fr;
     }
 }
 
-
-@media (max-width: 600px) {
-
-    nav {
-        top: 9px;
-
-        width:
-            calc(100% - 14px);
-
-        padding: 5px;
-
-        gap: 2px;
+@media(max-width:600px){
+    nav{
+        top:9px;
+        width:calc(100% - 14px);
+        padding:5px;
+        gap:2px;
     }
 
-    nav a {
-        font-size: 10px;
-
-        padding:
-            8px 7px;
+    nav a{
+        font-size:10px;
+        padding:8px 7px;
     }
 
-    .page-content {
-        padding:
-            105px 15px 45px;
+    main{
+        padding-top:105px;
     }
 
-    .content-box {
-        padding: 22px;
-
-        border-radius: 18px;
+    .photo-frame{
+        width:min(300px,85vw);
     }
 
-    .content-box p {
-        font-size: 15px;
-
-        line-height: 1.85;
-    }
-
-    .profile-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .sop {
-        grid-template-columns: 1fr;
-
-        gap: 15px;
-    }
-
-    .education-section {
-        grid-template-columns: 1fr;
+    .box{
+        padding:22px;
     }
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div class="page">
 
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
 <nav>
-
-    <a href="#home"
-       class="nav-link active"
-       data-page="home">
-        หน้าหลัก
-    </a>
-
-    <a href="#preface"
-       class="nav-link"
-       data-page="preface">
-        คำนำ
-    </a>
-
-    <a href="#profile"
-       class="nav-link"
-       data-page="profile">
-        ประวัติ
-    </a>
-
-    <a href="#activities"
-       class="nav-link"
-       data-page="activities">
-        ผลงาน
-    </a>
-
-    <a href="#contact"
-       class="nav-link"
-       data-page="contact">
-        ติดต่อ
-    </a>
-
+    <a href="portfolio.html" class="active">หน้าหลัก</a>
+    <a href="cumnum.html">คำนำ</a>
+    <a href="profile.html">ประวัติ</a>
+    <a href="work.html">ผลงาน</a>
+    <a href="university.html">มหาวิทยาลัย</a>
+    <a href="contract.html">ติดต่อ</a>
 </nav>
 
+<main>
 
-<!-- =====================================================
-     HOME
-===================================================== -->
+<section class="hero">
 
-<section id="home"
-         class="page-content active">
-
-    <div class="home-container">
-
-        <div class="photo-frame">
-
-            <img
-                src="ใบภู.jpg"
-                alt="รูปโปรไฟล์ นายพุฒิกันย์ ฤๅไกรศรี">
-
-        </div>
-
-
-        <div class="home-text">
-
-            <div class="small-label">
-                PHYSICAL THERAPY
-            </div>
-
-            <h1 class="home-title">
-                PORTFOLIO
-            </h1>
-
-            <div class="home-name">
-
-                นายพุฒิกันย์ ฤๅไกรศรี
-
-                <br>
-
-                Puttikan Ruekraisri
-
-            </div>
-
-            <div class="home-school">
-                มัธยมศึกษาปีที่ 6/2
-            </div>
-
-            <div class="medical-tags">
-
-                <span>Anatomy</span>
-                <span>Movement</span>
-                <span>Rehabilitation</span>
-                <span>Health Science</span>
-
-            </div>
-
-        </div>
-
+    <div class="photo-frame">
+        <img src="ใบภู.jpg" alt="รูปโปรไฟล์">
     </div>
 
-</section>
-
-
-<!-- =====================================================
-     PREFACE
-===================================================== -->
-
-<section id="preface"
-         class="page-content">
-
-    <div class="section-header">
-
-        <div class="section-number">
-            01 / INTRODUCTION
-        </div>
+    <div>
+        <div class="small-label">PORTFOLIO</div>
 
         <h1 class="title">
-            คำนำ
+            PORTFOLIO
         </h1>
 
-    </div>
-
-
-    <div class="content-box sop">
-
-        <div class="sop-mark">
-            PT
+        <div class="name">
+            นายพุฒิกันย์ ฤๅไกรศรี<br>
+            Puttikan Ruekraisri
         </div>
 
+        <div class="school">
+            มัธยมศึกษาปีที่ 6/2
+        </div>
+    </div>
 
-        <div>
+</section>
 
-            <p>
-                ในปัจจุบันที่สังคมไทยก้าวเข้าสู่สังคมผู้สูงอายุ
-                และมีแนวโน้มที่ผู้คนหันมาใส่ใจสุขภาพมากขึ้น
-                ส่งผลให้งานด้านการฟื้นฟูสมรรถภาพร่างกายมีบทบาทสำคัญ
-                ต่อการพัฒนาคุณภาพชีวิตของประชาชน
-                “นักกายภาพบำบัด” จึงไม่ได้มีบทบาทเพียงแค่การรักษา
-                ผู้ป่วยให้หายจากอาการเจ็บปวดทางร่างกายเท่านั้น
-                แต่ยังเป็นศาสตร์ที่มีส่วนช่วยลดภาระของระบบสาธารณสุข
-                ในระยะยาว ส่งเสริมให้ประชาชนสามารถกลับไปใช้ชีวิต
-                ได้อย่างปกติ และลดโอกาสในการเกิดภาวะแทรกซ้อนในอนาคต
-            </p>
+<section class="box">
 
-            <p>
-                การมีบุคลากรด้านกายภาพบำบัดที่มีความรู้ ความสามารถ
-                และจิตวิญญาณของการเป็นผู้ให้ จึงถือเป็นส่วนสำคัญ
-                ของระบบสุขภาพ และเป็นอีกหนึ่งกำลังในการสร้างสังคม
-                ที่มีคุณภาพและยั่งยืน
-            </p>
+    <h2>ข้อมูลส่วนตัว</h2>
 
-            <p>
-                สวัสดีครับ ผมชื่อนายพุฒิกันย์ ฤๅไกรศรี
-                กำลังศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 6/2
-                แผนการเรียน Gifted ณ โรงเรียนบ้านบึง
-                “อุตสาหกรรมนุเคราะห์”
-                ด้วยความสนใจในวิชาชีววิทยาเป็นพิเศษ
-                ทำให้ผมชื่นชอบการศึกษาเกี่ยวกับโครงสร้าง
-                และการทำงานของร่างกายมนุษย์ โดยเฉพาะระบบกล้ามเนื้อ
-                กระดูก และระบบประสาท
-            </p>
+    <div class="info-grid">
 
-            <p>
-                จุดเปลี่ยนสำคัญที่ทำให้ผมสนใจด้านกายภาพบำบัดมากขึ้น
-                คือการได้มีโอกาสฝึกงานและทำจิตอาสาที่โรงพยาบาล
-                ผมได้เห็นพี่ ๆ นักกายภาพบำบัดทำงานกับผู้ป่วย
-                อย่างตั้งใจและเป็นระบบ รวมถึงการอธิบายกระบวนการรักษา
-                ด้วยความรู้และความเข้าใจ สิ่งเหล่านี้ช่วยสร้างความมั่นใจ
-                และความหวังให้กับผู้ป่วย ทำให้ผมรู้สึกชื่นชม
-                และอยากเป็นนักกายภาพบำบัดที่สามารถช่วยเหลือผู้อื่น
-                ได้เช่นเดียวกัน
-            </p>
+        <div class="info">
+            <strong>ชื่อ-นามสกุล</strong>
+            <span>พิมพ์ข้อมูลที่นี่</span>
+        </div>
 
-            <p>
-                นอกจากนี้ ผมยังมีประสบการณ์ในการดูแลคุณยายที่เคยล้ม
-                และต้องทำกายภาพบำบัดอย่างต่อเนื่อง
-                ผมได้พาท่านไปโรงพยาบาลเป็นประจำและได้เห็นขั้นตอนการรักษา
-                รวมถึงความใส่ใจของนักกายภาพบำบัดในแต่ละครั้ง
-                ประสบการณ์นี้ทำให้ผมเข้าใจคุณค่าของวิชาชีพมากขึ้น
-                ทั้งความเอาใจใส่ ความอดทน และความรู้ที่นักกายภาพบำบัด
-                นำมาใช้ ไม่เพียงช่วยฟื้นฟูร่างกายของผู้ป่วย
-                แต่ยังช่วยให้ผู้ป่วยมีกำลังใจและพร้อมกลับไปใช้ชีวิต
-                ประจำวันได้อีกครั้ง
-            </p>
+        <div class="info">
+            <strong>ชื่อเล่น</strong>
+            <span>พิมพ์ข้อมูลที่นี่</span>
+        </div>
 
-            <p>
-                หากผมได้รับโอกาสเข้าศึกษาในหลักสูตรกายภาพบำบัด
-                ผมจะตั้งใจเรียนและพัฒนาตนเองอย่างเต็มที่
-                พร้อมนำความรู้ที่ได้รับไปต่อยอดในการประกอบอาชีพ
-                และการดูแลสุขภาพของคนรอบข้าง
-                ผมมุ่งหวังที่จะเป็นนักกายภาพบำบัดที่มีทั้งความรู้
-                ความสามารถ และความเข้าใจผู้ป่วย
-            </p>
+        <div class="info">
+            <strong>อายุ</strong>
+            <span>พิมพ์ข้อมูลที่นี่</span>
+        </div>
 
-            <p>
-                ผมเชื่อว่าวิชาชีพกายภาพบำบัดไม่ได้ช่วยเพียงฟื้นฟูร่างกาย
-                แต่ยังเป็นส่วนหนึ่งในการสร้างคุณภาพชีวิตที่ดีขึ้น
-                ให้กับผู้คนและสังคมไทย
-            </p>
+        <div class="info">
+            <strong>วันเกิด</strong>
+            <span>พิมพ์ข้อมูลที่นี่</span>
+        </div>
 
+        <div class="info">
+            <strong>โรงเรียน</strong>
+            <span>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</span>
+        </div>
+
+        <div class="info">
+            <strong>ระดับชั้น</strong>
+            <span>มัธยมศึกษาปีที่ 6/2</span>
+        </div>
+
+        <div class="info">
+            <strong>แผนการเรียน</strong>
+            <span>Gifted</span>
+        </div>
+
+        <div class="info">
+            <strong>ความสนใจ</strong>
+            <span>พิมพ์ข้อมูลที่นี่</span>
         </div>
 
     </div>
 
 </section>
 
+<section class="box">
 
-<!-- =====================================================
-     PROFILE
-===================================================== -->
+    <h2>คำถามเกี่ยวกับตัวฉัน</h2>
 
-<section id="profile"
-         class="page-content">
-
-    <div class="section-header">
-
-        <div class="section-number">
-            02 / PROFILE
-        </div>
-
-        <h1 class="title">
-            ประวัติส่วนตัว
-        </h1>
-
+    <div class="question">
+        <label>ฉันเป็นคนอย่างไร?</label>
+        <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
     </div>
 
+    <div class="question">
+        <label>จุดเด่นของฉันคืออะไร?</label>
+        <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+    </div>
 
-    <div class="content-box">
+    <div class="question">
+        <label>งานอดิเรกของฉันคืออะไร?</label>
+        <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+    </div>
 
-        <h2>
-            Personal Profile
-        </h2>
+    <div class="question">
+        <label>ความสามารถพิเศษ</label>
+        <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+    </div>
 
+    <div class="question">
+        <label>ทำไมถึงสนใจกายภาพบำบัด?</label>
+        <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+    </div>
 
-        <div class="profile-grid">
-
-            <div class="profile-item">
-                <strong>ชื่อ-นามสกุล</strong>
-                <span>นายพุฒิกันย์ ฤๅไกรศรี</span>
-            </div>
-
-            <div class="profile-item">
-                <strong>Name</strong>
-                <span>Puttikan Ruekraisri</span>
-            </div>
-
-            <div class="profile-item">
-                <strong>ชื่อเล่น</strong>
-                <span>ใบภู</span>
-            </div>
-
-            <div class="profile-item">
-                <strong>Nickname</strong>
-                <span>Baipooh</span>
-            </div>
-
-            <div class="profile-item">
-                <strong>วันเกิด</strong>
-                <span>3 กันยายน พ.ศ. 2551</span>
-            </div>
-
-            <div class="profile-item">
-                <strong>ระดับชั้น</strong>
-                <span>มัธยมศึกษาปีที่ 6/2</span>
-            </div>
-
-            <div class="profile-item">
-                <strong>แผนการเรียน</strong>
-                <span>Gifted</span>
-            </div>
-
-            <div class="profile-item">
-                <strong>ความสนใจ</strong>
-                <span>วิทยาศาสตร์สุขภาพ</span>
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             EDUCATION
-        ================================================= -->
-
-        <h2 style="margin-top: 40px;">
-            ประวัติการศึกษา
-        </h2>
-
-
-        <div class="education-section">
-
-
-            <!-- ประถมศึกษา -->
-
-            <div class="education-item">
-
-                <div class="education-image">
-                </div>
-
-                <div class="education-info">
-
-                    <strong>
-                        ระดับประถมศึกษา
-                    </strong>
-
-                    <span>
-                        โรงเรียนกุญแจคริสเตียนวิทยา
-                    </span>
-
-                    <p>
-                        จบชั้นประถมศึกษาจากโรงเรียนกุญแจคริสเตียนวิทยา
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- มัธยมศึกษา -->
-
-            <div class="education-item">
-
-                <div class="education-image">
-                </div>
-
-                <div class="education-info">
-
-                    <strong>
-                        ระดับมัธยมศึกษา
-                    </strong>
-
-                    <span>
-                        โรงเรียนบ้านบึงอุตสาหกรรมนุเคราะห์
-                    </span>
-
-                    <p>
-                        จบชั้นมัธยมศึกษาจากโรงเรียนบ้านบึงอุตสาหกรรมนุเคราะห์
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             CAREER
-        ================================================= -->
-
-        <div class="career-box">
-
-            <h3>
-                Physical Therapy
-            </h3>
-
-            <p>
-                สนใจการทำงานของระบบกล้ามเนื้อ กระดูก ข้อต่อ
-                ระบบประสาท และการเคลื่อนไหว
-                รวมถึงการฟื้นฟูและส่งเสริมคุณภาพชีวิตของผู้คน
-                ในแต่ละช่วงวัย
-            </p>
-
-        </div>
-
+    <div class="question">
+        <label>คติประจำใจ</label>
+        <textarea placeholder="ทำสิ่งที่จะไม่เสียใจภายหลัง"></textarea>
     </div>
 
 </section>
-
-
-<!-- =====================================================
-     ACTIVITIES
-===================================================== -->
-
-<section id="activities"
-         class="page-content">
-
-    <div class="section-header">
-
-        <div class="section-number">
-            03 / ACTIVITIES
-        </div>
-
-        <h1 class="title">
-            ผลงานและกิจกรรม
-        </h1>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <div class="gallery">
-
-
-            <div class="gallery-item">
-
-                <div class="gallery-img-wrapper">
-
-                    <img
-                        src="เกียรติบัตรอบรมปฐมพยาบาล.jpg"
-                        alt="กิจกรรมโรงพยาบาลบ้านบึง">
-
-                </div>
-
-                <p>
-                    กิจกรรมศึกษาและฝึกประสบการณ์
-                    ณ โรงพยาบาลบ้านบึง
-                </p>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <div class="gallery-img-wrapper">
-
-                    <img
-                        src="1000050313.jpg"
-                        alt="อบรม CPR และ First Aid">
-
-                </div>
-
-                <p>
-                    อบรมเชิงปฏิบัติการ
-                    การปฐมพยาบาลฉุกเฉิน
-                    และการกู้ชีพขั้นพื้นฐาน
-                    (CPR & First Aid)
-                </p>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <div class="gallery-img-wrapper">
-
-                    <img
-                        src="เกียรติบัตรอบรมแพทย์.jpg"
-                        alt="อบรมสายวิทยาศาสตร์สุขภาพ">
-
-                </div>
-
-                <p>
-                    อบรมเชิงปฏิบัติการ
-                    ความถนัดทางสายวิทยาศาสตร์สุขภาพ
-                    (เป็นหมอ ACADEMY)
-                </p>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <div class="gallery-img-wrapper">
-
-                    <img
-                        src="เกียรติบัตรคลินิกฟัน.jpg"
-                        alt="ศึกษาดูงานคลินิกทันตกรรม">
-
-                </div>
-
-                <p>
-                    ศึกษาดูงาน
-                    ณ คลินิกทันตกรรมเอสซี
-                </p>
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <div class="gallery-img-wrapper">
-
-                    <img
-                        src="เกียรติบัตรแข่งสภา.jpg"
-                        alt="กิจกรรมสภานักเรียน">
-
-                </div>
-
-                <p>
-                    รางวัลเหรียญทอง
-                    กิจกรรมสภานักเรียน
-                    งานศิลปหัตถกรรมนักเรียน ครั้งที่ 71
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section id="contact"
-         class="page-content">
-
-    <div class="section-header">
-
-        <div class="section-number">
-            04 / CONTACT
-        </div>
-
-        <h1 class="title">
-            ช่องทางการติดต่อ
-        </h1>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <div class="contact-list">
-
-
-            <div class="contact-item">
-
-                <div class="contact-icon">
-                    @
-                </div>
-
-                <div>
-
-                    <div class="contact-label">
-                        EMAIL
-                    </div>
-
-                    <div class="contact-value">
-                        baipoohnoi@gmail.com
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="contact-item">
-
-                <div class="contact-icon">
-                    ☎
-                </div>
-
-                <div>
-
-                    <div class="contact-label">
-                        TELEPHONE
-                    </div>
-
-                    <div class="contact-value">
-                        066-109-6395
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
 
 <footer>
-    Puttikan Ruekraisri · Physical Therapy Portfolio
+    Puttikan Ruekraisri · Portfolio
 </footer>
 
+</main>
 
 </div>
-
-
-<script>
-
-/* =====================================================
-   PAGE SWITCHING
-===================================================== */
-
-const navLinks =
-    document.querySelectorAll(".nav-link");
-
-const pages =
-    document.querySelectorAll(".page-content");
-
-
-function showPage(pageId) {
-
-    pages.forEach(function(page) {
-        page.classList.remove("active");
-    });
-
-
-    navLinks.forEach(function(link) {
-        link.classList.remove("active");
-    });
-
-
-    const target =
-        document.getElementById(pageId);
-
-
-    const activeLink =
-        document.querySelector(
-            '[data-page="' + pageId + '"]'
-        );
-
-
-    if (!target) return;
-
-
-    target.classList.add("active");
-
-
-    if (activeLink) {
-        activeLink.classList.add("active");
-    }
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-
-
-    history.replaceState(
-        null,
-        "",
-        "#" + pageId
-    );
-}
-
-
-/* =====================================================
-   NAV CLICK
-===================================================== */
-
-navLinks.forEach(function(link) {
-
-    link.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            const page =
-                this.dataset.page;
-
-            showPage(page);
-
-        }
-    );
-
-});
-
-
-/* =====================================================
-   OPEN PAGE FROM URL
-===================================================== */
-
-const initialPage =
-    window.location.hash.replace("#", "");
-
-
-if (
-    initialPage &&
-    document.getElementById(initialPage)
-) {
-
-    showPage(initialPage);
-
-} else {
-
-    showPage("home");
-
-}
-
-</script>
 
 </body>
 </html>
