@@ -162,7 +162,7 @@ body::after{
 
 
 /* =========================================================
-   BACKGROUND AURORA LAYERS
+   BACKGROUND AURORA
 ========================================================= */
 
 .background-shape{
@@ -618,7 +618,7 @@ body::after{
 
 
 /* =========================================================
-   MAIN GLASS CONTAINER
+   MAIN CONTAINER
 ========================================================= */
 
 .container{
@@ -1590,7 +1590,6 @@ body::after{
     }
 }
 
-
 @keyframes floatOne{
 
     0%{
@@ -1601,7 +1600,6 @@ body::after{
         transform:translate(55px,38px);
     }
 }
-
 
 @keyframes floatTwo{
 
@@ -1614,7 +1612,6 @@ body::after{
     }
 }
 
-
 @keyframes floatThree{
 
     0%{
@@ -1625,7 +1622,6 @@ body::after{
         transform:translateY(45px);
     }
 }
-
 
 @keyframes starTwinkle{
 
@@ -1641,7 +1637,6 @@ body::after{
     }
 }
 
-
 @keyframes featureTwinkle{
 
     0%,
@@ -1656,7 +1651,6 @@ body::after{
     }
 }
 
-
 @keyframes constellationFlow{
 
     from{
@@ -1667,7 +1661,6 @@ body::after{
         stroke-dashoffset:-120;
     }
 }
-
 
 @keyframes shootingStar{
 
@@ -1696,7 +1689,6 @@ body::after{
     }
 }
 
-
 @keyframes ringRotate{
 
     from{
@@ -1708,7 +1700,6 @@ body::after{
     }
 }
 
-
 @keyframes ringRotateReverse{
 
     from{
@@ -1719,7 +1710,6 @@ body::after{
         transform:rotate(-332deg);
     }
 }
-
 
 @keyframes shine{
 
@@ -1733,7 +1723,6 @@ body::after{
     }
 }
 
-
 @keyframes badgeFloat{
 
     0%,
@@ -1745,7 +1734,6 @@ body::after{
         transform:translateY(-9px);
     }
 }
-
 
 @keyframes pulse{
 
@@ -1761,7 +1749,6 @@ body::after{
     }
 }
 
-
 @keyframes contentReveal{
 
     from{
@@ -1775,7 +1762,6 @@ body::after{
     }
 }
 
-
 @keyframes fadeUp{
 
     from{
@@ -1788,7 +1774,6 @@ body::after{
         transform:translateY(0);
     }
 }
-
 
 @keyframes titleReveal{
 
@@ -1809,7 +1794,6 @@ body::after{
     }
 }
 
-
 @keyframes tagReveal{
 
     from{
@@ -1829,7 +1813,6 @@ body::after{
     }
 }
 
-
 @keyframes buttonReveal{
 
     from{
@@ -1848,7 +1831,6 @@ body::after{
             scale(1);
     }
 }
-
 
 @keyframes orbitFloat{
 
@@ -2087,7 +2069,6 @@ body::after{
 </style>
 </head>
 
-
 <body>
 
 
@@ -2231,7 +2212,7 @@ body::after{
         <div class="visual-area">
 
 
-            <!-- subtle anatomy decoration -->
+            <!-- Anatomy decoration -->
 
             <svg
                 class="anatomy-mini"
@@ -2276,12 +2257,15 @@ body::after{
             </svg>
 
 
+            <!-- =================================================
+                 PHOTO
+            ================================================== -->
+
             <div class="photo-frame">
 
-                <!-- รูปใหม่ที่คุณส่งมา -->
-
+                <!-- รูปใหม่ -->
                 <img
-                    src="https://i.postimg.cc/Wb6XFxvc/270455.jpg"
+                    src="https://i.postimg.cc/HL02qpGv/pooh2.png"
                     alt="Portfolio image ของนายพุฒิกันย์ ฤๅไกรศรี"
                 >
 
@@ -2289,6 +2273,10 @@ body::after{
 
             </div>
 
+
+            <!-- =================================================
+                 IMAGE BADGE
+            ================================================== -->
 
             <div class="image-badge">
 
@@ -2304,10 +2292,9 @@ body::after{
 
         <!-- =================================================
              CONTENT
-        ================================================== -->
+        ================================================= -->
 
         <div class="content">
-
 
             <div class="small-label">
                 PHYSICAL THERAPY
@@ -2370,7 +2357,6 @@ body::after{
 
         </div>
 
-
     </div>
 
 </div>
@@ -2389,6 +2375,10 @@ const frame =
 const visualArea =
     document.querySelector(".visual-area");
 
+
+/* =========================================================
+   3D PHOTO TILT
+========================================================= */
 
 if(window.innerWidth > 900){
 
@@ -2511,7 +2501,6 @@ document.addEventListener(
 );
 
 </script>
-
 
 </body>
 </html>
