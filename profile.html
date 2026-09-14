@@ -47,11 +47,13 @@ html{
 body{
     font-family:"Prompt","Kanit",sans-serif;
     color:var(--text);
+
     background:
         radial-gradient(circle at 15% 15%,rgba(95,72,220,.18),transparent 28%),
         radial-gradient(circle at 85% 25%,rgba(52,123,255,.13),transparent 28%),
         radial-gradient(circle at 50% 100%,rgba(130,70,220,.13),transparent 35%),
         linear-gradient(145deg,#030313,#080824 48%,#05051b);
+
     min-height:100vh;
     overflow-x:hidden;
 }
@@ -86,14 +88,20 @@ body::before{
 }
 
 @keyframes starMove{
-    from{transform:translateY(0);}
-    to{transform:translateY(-130px);}
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-130px);
+    }
 }
 
 /* ================= SHOOTING STARS ================= */
 
 .shooting-star{
     position:fixed;
+
     width:150px;
     height:2px;
 
@@ -111,8 +119,11 @@ body::before{
         drop-shadow(0 0 15px var(--blue));
 
     transform:rotate(-32deg);
+
     opacity:0;
+
     pointer-events:none;
+
     z-index:-2;
 }
 
@@ -166,8 +177,10 @@ body::before{
 
 nav{
     position:fixed;
+
     top:18px;
     left:50%;
+
     transform:translateX(-50%);
 
     width:min(1100px,calc(100% - 28px));
@@ -179,11 +192,13 @@ nav{
     align-items:center;
 
     gap:5px;
+
     padding:9px;
 
     background:rgba(6,6,29,.72);
 
     border:1px solid rgba(139,126,255,.25);
+
     border-radius:20px;
 
     backdrop-filter:blur(22px);
@@ -198,6 +213,7 @@ nav::before{
     content:"";
 
     position:absolute;
+
     top:0;
     left:12%;
     right:12%;
@@ -220,9 +236,11 @@ nav a{
     position:relative;
 
     color:#b9bbd8;
+
     text-decoration:none;
 
     font-size:13px;
+
     font-weight:500;
 
     padding:10px 15px;
@@ -239,6 +257,7 @@ nav a::after{
 
     left:20%;
     right:20%;
+
     bottom:4px;
 
     height:1px;
@@ -252,6 +271,7 @@ nav a::after{
         );
 
     transform:scaleX(0);
+
     transition:.35s ease;
 }
 
@@ -292,6 +312,7 @@ nav a.active::before{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     border-radius:13px;
@@ -310,15 +331,22 @@ nav a.active::before{
 }
 
 @keyframes navShine{
-    0%,60%{transform:translateX(-120%);}
-    78%,100%{transform:translateX(120%);}
+    0%,60%{
+        transform:translateX(-120%);
+    }
+
+    78%,100%{
+        transform:translateX(120%);
+    }
 }
 
 /* ================= MAIN ================= */
 
 main{
     width:min(1100px,calc(100% - 30px));
+
     margin:auto;
+
     padding-top:125px;
 }
 
@@ -326,6 +354,7 @@ main{
 
 .hero{
     display:grid;
+
     grid-template-columns:390px 1fr;
 
     gap:65px;
@@ -368,6 +397,7 @@ main{
     position:relative;
 
     width:345px;
+
     aspect-ratio:3/4;
 
     margin:auto;
@@ -442,8 +472,13 @@ main{
 }
 
 @keyframes photoShine{
-    0%,55%{left:-80%;}
-    75%,100%{left:150%;}
+    0%,55%{
+        left:-80%;
+    }
+
+    75%,100%{
+        left:150%;
+    }
 }
 
 .photo-frame:hover{
@@ -458,8 +493,6 @@ main{
         0 40px 90px rgba(0,0,0,.55);
 }
 
-/* รูปโปรไฟล์ที่เปลี่ยนให้แล้ว */
-
 .photo-frame img{
     width:100%;
     height:100%;
@@ -467,6 +500,7 @@ main{
     display:block;
 
     object-fit:cover;
+
     object-position:center;
 
     border-radius:27px;
@@ -513,12 +547,15 @@ main{
 
 .small-label{
     display:inline-flex;
+
     align-items:center;
+
     gap:9px;
 
     color:#8ee7ff;
 
     font-size:13px;
+
     font-weight:600;
 
     letter-spacing:4px;
@@ -583,6 +620,7 @@ main{
     background-size:300% auto;
 
     -webkit-background-clip:text;
+
     background-clip:text;
 
     color:transparent;
@@ -617,14 +655,20 @@ main{
         );
 
     -webkit-background-clip:text;
+
     background-clip:text;
 
     opacity:.3;
 }
 
 @keyframes titleShine{
-    0%{background-position:0% center;}
-    100%{background-position:300% center;}
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:300% center;
+    }
 }
 
 @keyframes titleGlow{
@@ -685,6 +729,7 @@ main{
     color:#dff8ff;
 
     font-size:14px;
+
     font-weight:500;
 
     background:
@@ -731,8 +776,13 @@ main{
 }
 
 @keyframes schoolShine{
-    0%,55%{left:-80%;}
-    75%,100%{left:150%;}
+    0%,55%{
+        left:-80%;
+    }
+
+    75%,100%{
+        left:150%;
+    }
 }
 
 .school:hover{
@@ -765,6 +815,7 @@ main{
     border-radius:var(--radius);
 
     backdrop-filter:blur(20px);
+
     -webkit-backdrop-filter:blur(20px);
 
     box-shadow:var(--shadow);
@@ -890,8 +941,7 @@ main{
 
     padding:20px;
 
-    border:
-        1px solid rgba(139,126,255,.16);
+    border:1px solid rgba(139,126,255,.16);
 
     border-radius:18px;
 
@@ -926,8 +976,13 @@ main{
 }
 
 @keyframes infoLight{
-    0%,65%{left:-100%;}
-    82%,100%{left:140%;}
+    0%,65%{
+        left:-100%;
+    }
+
+    82%,100%{
+        left:140%;
+    }
 }
 
 .info:hover{
@@ -977,6 +1032,10 @@ main{
     margin-bottom:23px;
 }
 
+.question:last-child{
+    margin-bottom:0;
+}
+
 .question label{
     display:block;
 
@@ -992,16 +1051,14 @@ main{
         0 0 9px rgba(167,139,250,.35);
 }
 
-.question input,
 .question textarea{
     width:100%;
 
-    padding:15px 17px;
+    padding:17px 18px;
 
     color:#e9eaff;
 
-    border:
-        1px solid rgba(139,126,255,.18);
+    border:1px solid rgba(139,126,255,.18);
 
     border-radius:15px;
 
@@ -1012,6 +1069,8 @@ main{
 
     font-size:15px;
 
+    line-height:1.8;
+
     outline:none;
 
     resize:vertical;
@@ -1020,18 +1079,10 @@ main{
 
     box-shadow:
         inset 0 1px rgba(255,255,255,.03);
+
+    min-height:120px;
 }
 
-.question textarea{
-    min-height:115px;
-}
-
-.question input::placeholder,
-.question textarea::placeholder{
-    color:#686c9b;
-}
-
-.question input:focus,
 .question textarea:focus{
     border-color:
         rgba(98,216,255,.55);
@@ -1123,6 +1174,7 @@ main{
     background-size:300% auto;
 
     -webkit-background-clip:text;
+
     background-clip:text;
 
     color:transparent;
@@ -1219,6 +1271,7 @@ footer span{
 
     .hero::before{
         left:50%;
+
         transform:translateX(-50%);
     }
 
@@ -1252,22 +1305,27 @@ footer span{
 
     nav{
         top:9px;
+
         padding:5px;
+
         border-radius:17px;
     }
 
     nav a{
         font-size:9px;
+
         padding:8px 6px;
     }
 
     main{
         width:calc(100% - 20px);
+
         padding-top:105px;
     }
 
     .hero{
         min-height:auto;
+
         padding:45px 0 70px;
     }
 
@@ -1285,6 +1343,7 @@ footer span{
 
     .box{
         padding:25px 18px;
+
         border-radius:23px;
     }
 
@@ -1296,17 +1355,28 @@ footer span{
         padding:17px;
     }
 
+    .info span{
+        font-size:15px;
+    }
+
+    .question textarea{
+        font-size:14px;
+        line-height:1.75;
+    }
+
     .sop-highlight{
         padding:30px 15px;
     }
 
     .sop-word{
         font-size:70px;
+
         letter-spacing:6px;
     }
 
     .sop-caption{
         font-size:10px;
+
         letter-spacing:2px;
     }
 }
@@ -1319,8 +1389,11 @@ footer span{
     *::before,
     *::after{
         animation-duration:.01ms !important;
+
         animation-iteration-count:1 !important;
+
         scroll-behavior:auto !important;
+
         transition-duration:.01ms !important;
     }
 }
@@ -1336,7 +1409,8 @@ footer span{
     <div class="shooting-star"></div>
     <div class="shooting-star"></div>
 
-    <!-- NAV -->
+
+    <!-- NAVIGATION -->
     <nav>
 
         <a href="portfolio.html" class="active">
@@ -1361,32 +1435,39 @@ footer span{
 
     </nav>
 
+
     <main>
 
-        <!-- HERO -->
+        <!-- ================= HERO ================= -->
+
         <section class="hero">
 
             <!-- PHOTO -->
+
             <div>
 
                 <div class="photo-frame">
 
-                    <!-- เปลี่ยนเป็นรูปที่ให้มาแล้ว -->
                     <img
                         src="https://i.postimg.cc/HL02qpGv/pooh2.png"
-                        alt="รูปโปรไฟล์ Puttikan Ruekraisri"
+                        alt="รูปโปรไฟล์ นายพุฒิกันย์ ฤๅไกรศรี"
                     >
 
                     <span style="top:7%;left:12%;"></span>
+
                     <span style="top:28%;right:-2%;animation-delay:.7s;"></span>
+
                     <span style="bottom:12%;left:-2%;animation-delay:1.3s;"></span>
+
                     <span style="bottom:3%;right:16%;animation-delay:1.8s;"></span>
 
                 </div>
 
             </div>
 
+
             <!-- HERO TEXT -->
+
             <div>
 
                 <div class="small-label">
@@ -1403,14 +1484,16 @@ footer span{
                 </div>
 
                 <div class="school">
-                    มัธยมศึกษาปีที่ 6/2
+                    มัธยมศึกษาปีที่ 6/2 · Gifted
                 </div>
 
             </div>
 
         </section>
 
-        <!-- PERSONAL INFO -->
+
+        <!-- ================= PERSONAL INFO ================= -->
+
         <section class="box">
 
             <h2>
@@ -1420,57 +1503,121 @@ footer span{
             <div class="info-grid">
 
                 <div class="info">
-                    <strong>ชื่อ-นามสกุล</strong>
-                    <span>พิมพ์ข้อมูลที่นี่</span>
+
+                    <strong>
+                        ชื่อ-นามสกุล
+                    </strong>
+
+                    <span>
+                        นายพุฒิกันย์ ฤๅไกรศรี
+                    </span>
+
                 </div>
 
-                <div class="info">
-                    <strong>ชื่อเล่น</strong>
-                    <span>พิมพ์ข้อมูลที่นี่</span>
-                </div>
 
                 <div class="info">
-                    <strong>อายุ</strong>
-                    <span>พิมพ์ข้อมูลที่นี่</span>
+
+                    <strong>
+                        ชื่อเล่น
+                    </strong>
+
+                    <span>
+                        ใบภู
+                    </span>
+
                 </div>
 
-                <div class="info">
-                    <strong>วันเกิด</strong>
-                    <span>พิมพ์ข้อมูลที่นี่</span>
-                </div>
 
                 <div class="info">
-                    <strong>โรงเรียน</strong>
+
+                    <strong>
+                        อายุ
+                    </strong>
+
+                    <span>
+                        18 ปี
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    <strong>
+                        วันเกิด
+                    </strong>
+
+                    <span>
+                        วันพุธที่ 3 กันยายน พ.ศ. 2551
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    <strong>
+                        โรงเรียน
+                    </strong>
+
                     <span>
                         โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
                     </span>
+
                 </div>
 
-                <div class="info">
-                    <strong>ระดับชั้น</strong>
-                    <span>มัธยมศึกษาปีที่ 6/2</span>
-                </div>
 
                 <div class="info">
-                    <strong>แผนการเรียน</strong>
-                    <span>Gifted</span>
+
+                    <strong>
+                        ระดับชั้น
+                    </strong>
+
+                    <span>
+                        มัธยมศึกษาปีที่ 6/2
+                    </span>
+
                 </div>
 
+
                 <div class="info">
-                    <strong>ความสนใจ</strong>
-                    <span>พิมพ์ข้อมูลที่นี่</span>
+
+                    <strong>
+                        แผนการเรียน
+                    </strong>
+
+                    <span>
+                        Gifted
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    <strong>
+                        ความสนใจ
+                    </strong>
+
+                    <span>
+                        การออกกำลังกาย ร่างกายมนุษย์ และการทำงานของระบบต่าง ๆ ในร่างกาย
+                    </span>
+
                 </div>
 
             </div>
 
         </section>
 
-        <!-- QUESTIONS -->
+
+        <!-- ================= QUESTIONS ================= -->
+
         <section class="box">
 
             <h2>
                 คำถามเกี่ยวกับตัวฉัน
             </h2>
+
 
             <div class="question">
 
@@ -1478,9 +1625,10 @@ footer span{
                     ฉันเป็นคนอย่างไร?
                 </label>
 
-                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+                <textarea readonly>ผมเป็นคนที่มีความคิดแน่วแน่และมีความรับผิดชอบต่อสิ่งที่ได้รับมอบหมาย เมื่อได้รับหน้าที่แล้วผมมักจะตั้งใจทำให้เสร็จอย่างเต็มที่และไม่ชอบปล่อยงานค้างไว้โดยไม่จำเป็น ผมเป็นคนที่ชอบเรียนรู้และลองทำสิ่งใหม่ ๆ ที่ตัวเองสนใจอยู่เสมอ เพราะผมเชื่อว่าประสบการณ์ใหม่ ๆ สามารถช่วยให้เราได้ค้นพบความสามารถและมุมมองที่หลากหลายมากขึ้น นอกจากนี้ผมยังชอบพบเจอผู้คนใหม่ ๆ และเรียนรู้จากสังคมใหม่ ๆ ที่ดี เพราะการได้พูดคุยและแลกเปลี่ยนความคิดเห็นกับผู้อื่นช่วยให้ผมเข้าใจคนรอบข้างมากขึ้นและสามารถนำประสบการณ์เหล่านั้นมาพัฒนาตัวเองได้</textarea>
 
             </div>
+
 
             <div class="question">
 
@@ -1488,9 +1636,10 @@ footer span{
                     จุดเด่นของฉันคืออะไร?
                 </label>
 
-                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+                <textarea readonly>จุดเด่นของผมคือการเป็นคนที่มีความยุติธรรมและซื่อตรงอย่างแน่วแน่ ผมเป็นคนตรงไปตรงมาและให้ความสำคัญกับความถูกต้องของสิ่งต่าง ๆ หากพบเห็นสิ่งที่ไม่ถูกต้อง ผมไม่สามารถนิ่งเฉยได้และจะพยายามแสดงความคิดเห็นหรือช่วยแก้ไขปัญหาอย่างเหมาะสม ผมเชื่อว่าความซื่อสัตย์และความรับผิดชอบเป็นพื้นฐานสำคัญในการอยู่ร่วมกับผู้อื่น และเป็นสิ่งที่ผมพยายามยึดถือในการเรียน การทำงาน และการใช้ชีวิตประจำวัน</textarea>
 
             </div>
+
 
             <div class="question">
 
@@ -1498,9 +1647,10 @@ footer span{
                     งานอดิเรกของฉันคืออะไร?
                 </label>
 
-                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+                <textarea readonly>งานอดิเรกของผมคือการออกกำลังกายประเภทคาร์ดิโอ เพราะเป็นกิจกรรมที่ช่วยให้ผมได้ดูแลสุขภาพและฝึกความสม่ำเสมอของตัวเอง นอกจากการออกกำลังกายแล้ว ผมยังชอบหาความรู้เพิ่มเติมเกี่ยวกับการทำงานของร่างกายและสิ่งต่าง ๆ รอบตัว โดยเฉพาะเรื่องที่เกี่ยวข้องกับการเคลื่อนไหวของมนุษย์ เช่น เมื่อเราขยับนิ้ว กล้ามเนื้อส่วนใดทำงานบ้าง กล้ามเนื้อแต่ละส่วนมีชื่อเรียกว่าอะไร และแต่ละส่วนมีหน้าที่อย่างไร ความสนใจเหล่านี้ทำให้ผมสนุกกับการเรียนรู้และอยากเข้าใจการทำงานของร่างกายให้มากขึ้น</textarea>
 
             </div>
+
 
             <div class="question">
 
@@ -1508,9 +1658,10 @@ footer span{
                     ความสามารถพิเศษ
                 </label>
 
-                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+                <textarea readonly>ความสามารถพิเศษของผมคือสามารถสื่อสารภาษาอังกฤษได้อย่างคล่องแคล่ว สามารถพูดและสื่อสารกับผู้อื่นด้วยภาษาอังกฤษได้อย่างมั่นใจ และสามารถเลือกใช้ภาษาให้เหมาะสมกับสถานการณ์ต่าง ๆ ได้ นอกจากนี้ผมยังสามารถปรับตัวเข้ากับสังคมและผู้คนใหม่ ๆ ได้ดี ไม่ว่าจะเป็นการทำงานร่วมกับผู้อื่นหรือการพบเจอสภาพแวดล้อมที่ไม่คุ้นเคย ผมพร้อมเรียนรู้สิ่งใหม่ ๆ อยู่เสมอและพยายามนำสิ่งที่ได้เรียนรู้มาปรับใช้กับตัวเองอย่างเหมาะสม เพื่อพัฒนาทั้งทักษะและประสบการณ์ของตัวเองให้ดีขึ้น</textarea>
 
             </div>
+
 
             <div class="question">
 
@@ -1518,9 +1669,10 @@ footer span{
                     ทำไมถึงสนใจกายภาพบำบัด?
                 </label>
 
-                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
+                <textarea readonly>ผมสนใจคณะกายภาพบำบัด เพราะผมมีความสนใจเกี่ยวกับร่างกายมนุษย์ โดยเฉพาะกล้ามเนื้อ กระดูก และการทำงานของระบบต่าง ๆ ในร่างกาย อีกทั้งผมเคยมีประสบการณ์จากการได้เห็นคนใกล้ตัวเข้ารับการกายภาพบำบัด ทำให้ผมเห็นว่าการกายภาพบำบัดมีส่วนสำคัญในการช่วยให้ผู้ป่วยกลับมาเคลื่อนไหวและใช้ชีวิตประจำวันได้ดีขึ้น ประสบการณ์ดังกล่าวทำให้ผมอยากทำความเข้าใจเกี่ยวกับการฟื้นฟูร่างกายอย่างจริงจัง และอยากนำความรู้ที่ได้ไปใช้ในการช่วยเหลือและดูแลผู้ป่วยในอนาคต</textarea>
 
             </div>
+
 
             <div class="question">
 
@@ -1528,13 +1680,15 @@ footer span{
                     คติประจำใจ
                 </label>
 
-                <textarea placeholder="ทำสิ่งที่จะไม่เสียใจภายหลัง"></textarea>
+                <textarea readonly>จงทำสิ่งที่จะไม่เสียใจในภายหลัง ผมเชื่อว่าทุกโอกาสที่เข้ามาในชีวิตมีคุณค่า และเราไม่สามารถย้อนกลับไปแก้ไขสิ่งที่เกิดขึ้นแล้วได้ ดังนั้นผมจึงพยายามตัดสินใจและลงมือทำในสิ่งที่ตั้งใจอย่างเต็มที่ แม้บางครั้งผลลัพธ์อาจไม่เป็นอย่างที่หวัง แต่ผมคิดว่าการได้ลงมือทำและเรียนรู้จากประสบการณ์ย่อมดีกว่าการปล่อยให้โอกาสผ่านไปเพราะความกลัวหรือความลังเล เพราะอย่างน้อยเมื่อมองย้อนกลับมา ผมจะสามารถบอกกับตัวเองได้ว่าผมได้พยายามอย่างเต็มที่แล้ว และจะไม่เสียใจกับสิ่งที่ไม่ได้ทำ คตินี้จึงเป็นสิ่งที่เตือนให้ผมกล้าที่จะก้าวออกจากพื้นที่เดิม ๆ เปิดรับโอกาสใหม่ ๆ และรับผิดชอบต่อการตัดสินใจของตัวเองอยู่เสมอ</textarea>
 
             </div>
 
         </section>
 
-        <!-- SOP -->
+
+        <!-- ================= SOP ================= -->
+
         <section class="sop-highlight">
 
             <div class="sop-word">
@@ -1547,7 +1701,9 @@ footer span{
 
         </section>
 
-        <!-- FOOTER -->
+
+        <!-- ================= FOOTER ================= -->
+
         <footer>
 
             <span>
