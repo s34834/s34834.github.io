@@ -56,9 +56,7 @@ body{
     overflow-x:hidden;
 }
 
-/* =====================================================
-   STAR FIELD
-===================================================== */
+/* ================= STAR FIELD ================= */
 
 body::before{
     content:"";
@@ -84,23 +82,15 @@ body::before{
 
     opacity:.38;
 
-    animation:
-        starMove 35s linear infinite;
+    animation:starMove 35s linear infinite;
 }
 
 @keyframes starMove{
-    from{
-        transform:translateY(0);
-    }
-
-    to{
-        transform:translateY(-130px);
-    }
+    from{transform:translateY(0);}
+    to{transform:translateY(-130px);}
 }
 
-/* =====================================================
-   SHOOTING STARS
-===================================================== */
+/* ================= SHOOTING STARS ================= */
 
 .shooting-star{
     position:fixed;
@@ -121,9 +111,7 @@ body::before{
         drop-shadow(0 0 15px var(--blue));
 
     transform:rotate(-32deg);
-
     opacity:0;
-
     pointer-events:none;
     z-index:-2;
 }
@@ -166,9 +154,7 @@ body::before{
     }
 }
 
-/* =====================================================
-   PAGE
-===================================================== */
+/* ================= PAGE ================= */
 
 .page{
     min-height:100vh;
@@ -176,9 +162,7 @@ body::before{
     position:relative;
 }
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* ================= NAVIGATION ================= */
 
 nav{
     position:fixed;
@@ -229,8 +213,7 @@ nav::before{
             transparent
         );
 
-    box-shadow:
-        0 0 12px rgba(98,216,255,.35);
+    box-shadow:0 0 12px rgba(98,216,255,.35);
 }
 
 nav a{
@@ -246,8 +229,7 @@ nav a{
 
     border-radius:13px;
 
-    transition:
-        .35s cubic-bezier(.2,.8,.2,1);
+    transition:.35s cubic-bezier(.2,.8,.2,1);
 }
 
 nav a::after{
@@ -270,7 +252,6 @@ nav a::after{
         );
 
     transform:scaleX(0);
-
     transition:.35s ease;
 }
 
@@ -329,18 +310,11 @@ nav a.active::before{
 }
 
 @keyframes navShine{
-    0%,60%{
-        transform:translateX(-120%);
-    }
-
-    78%,100%{
-        transform:translateX(120%);
-    }
+    0%,60%{transform:translateX(-120%);}
+    78%,100%{transform:translateX(120%);}
 }
 
-/* =====================================================
-   MAIN
-===================================================== */
+/* ================= MAIN ================= */
 
 main{
     width:min(1100px,calc(100% - 30px));
@@ -348,9 +322,7 @@ main{
     padding-top:125px;
 }
 
-/* =====================================================
-   HERO
-===================================================== */
+/* ================= HERO ================= */
 
 .hero{
     display:grid;
@@ -390,9 +362,7 @@ main{
     pointer-events:none;
 }
 
-/* =====================================================
-   PHOTO
-===================================================== */
+/* ================= PHOTO ================= */
 
 .photo-frame{
     position:relative;
@@ -421,8 +391,9 @@ main{
 
     transform:rotate(2deg);
 
-    transition:
-        .65s cubic-bezier(.2,.8,.2,1);
+    transition:.65s cubic-bezier(.2,.8,.2,1);
+
+    overflow:visible;
 }
 
 .photo-frame::before{
@@ -440,6 +411,8 @@ main{
 
     box-shadow:
         0 0 25px rgba(123,111,240,.10);
+
+    pointer-events:none;
 }
 
 .photo-frame::after{
@@ -469,13 +442,8 @@ main{
 }
 
 @keyframes photoShine{
-    0%,55%{
-        left:-80%;
-    }
-
-    75%,100%{
-        left:150%;
-    }
+    0%,55%{left:-80%;}
+    75%,100%{left:150%;}
 }
 
 .photo-frame:hover{
@@ -490,6 +458,8 @@ main{
         0 40px 90px rgba(0,0,0,.55);
 }
 
+/* รูปโปรไฟล์ที่เปลี่ยนให้แล้ว */
+
 .photo-frame img{
     width:100%;
     height:100%;
@@ -497,6 +467,7 @@ main{
     display:block;
 
     object-fit:cover;
+    object-position:center;
 
     border-radius:27px;
 
@@ -506,7 +477,7 @@ main{
         inset 0 0 35px rgba(0,0,0,.4);
 }
 
-/* floating stars around photo */
+/* ================= PHOTO STARS ================= */
 
 .photo-frame span{
     position:absolute;
@@ -538,9 +509,7 @@ main{
     }
 }
 
-/* =====================================================
-   HERO TEXT
-===================================================== */
+/* ================= HERO TEXT ================= */
 
 .small-label{
     display:inline-flex;
@@ -584,9 +553,7 @@ main{
     }
 }
 
-/* =====================================================
-   BIG PORTFOLIO TITLE
-===================================================== */
+/* ================= BIG TITLE ================= */
 
 .title{
     position:relative;
@@ -656,13 +623,8 @@ main{
 }
 
 @keyframes titleShine{
-    0%{
-        background-position:0% center;
-    }
-
-    100%{
-        background-position:300% center;
-    }
+    0%{background-position:0% center;}
+    100%{background-position:300% center;}
 }
 
 @keyframes titleGlow{
@@ -680,9 +642,7 @@ main{
     }
 }
 
-/* =====================================================
-   NAME
-===================================================== */
+/* ================= NAME ================= */
 
 .name{
     margin-top:22px;
@@ -709,9 +669,7 @@ main{
         0 0 40px rgba(79,172,254,.18);
 }
 
-/* =====================================================
-   SCHOOL BADGE
-===================================================== */
+/* ================= SCHOOL ================= */
 
 .school{
     position:relative;
@@ -773,13 +731,8 @@ main{
 }
 
 @keyframes schoolShine{
-    0%,55%{
-        left:-80%;
-    }
-
-    75%,100%{
-        left:150%;
-    }
+    0%,55%{left:-80%;}
+    75%,100%{left:150%;}
 }
 
 .school:hover{
@@ -791,9 +744,7 @@ main{
         0 0 25px rgba(98,216,255,.18);
 }
 
-/* =====================================================
-   BOX
-===================================================== */
+/* ================= BOX ================= */
 
 .box{
     position:relative;
@@ -809,8 +760,7 @@ main{
             rgba(9,9,38,.60)
         );
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
 
     border-radius:var(--radius);
 
@@ -821,8 +771,7 @@ main{
 
     overflow:hidden;
 
-    transition:
-        .5s cubic-bezier(.2,.8,.2,1);
+    transition:.5s cubic-bezier(.2,.8,.2,1);
 }
 
 .box::before{
@@ -882,9 +831,7 @@ main{
         0 0 40px rgba(123,111,240,.12);
 }
 
-/* =====================================================
-   BOX HEADING
-===================================================== */
+/* ================= BOX HEADING ================= */
 
 .box h2{
     position:relative;
@@ -928,9 +875,7 @@ main{
         0 0 9px rgba(98,216,255,.4);
 }
 
-/* =====================================================
-   INFO GRID
-===================================================== */
+/* ================= INFO GRID ================= */
 
 .info-grid{
     display:grid;
@@ -955,8 +900,7 @@ main{
 
     overflow:hidden;
 
-    transition:
-        .4s cubic-bezier(.2,.8,.2,1);
+    transition:.4s cubic-bezier(.2,.8,.2,1);
 }
 
 .info::before{
@@ -982,13 +926,8 @@ main{
 }
 
 @keyframes infoLight{
-    0%,65%{
-        left:-100%;
-    }
-
-    82%,100%{
-        left:140%;
-    }
+    0%,65%{left:-100%;}
+    82%,100%{left:140%;}
 }
 
 .info:hover{
@@ -1032,9 +971,7 @@ main{
         0 0 8px rgba(255,255,255,.08);
 }
 
-/* =====================================================
-   QUESTIONS
-===================================================== */
+/* ================= QUESTIONS ================= */
 
 .question{
     margin-bottom:23px;
@@ -1079,8 +1016,7 @@ main{
 
     resize:vertical;
 
-    transition:
-        .35s ease;
+    transition:.35s ease;
 
     box-shadow:
         inset 0 1px rgba(255,255,255,.03);
@@ -1107,13 +1043,10 @@ main{
         0 0 0 3px rgba(98,216,255,.06),
         0 0 25px rgba(98,216,255,.08);
 
-    transform:
-        translateY(-2px);
+    transform:translateY(-2px);
 }
 
-/* =====================================================
-   SOP MINI SECTION
-===================================================== */
+/* ================= SOP ================= */
 
 .sop-highlight{
     margin-top:35px;
@@ -1220,9 +1153,7 @@ main{
     letter-spacing:4px;
 }
 
-/* =====================================================
-   FOOTER
-===================================================== */
+/* ================= FOOTER ================= */
 
 footer{
     margin-top:55px;
@@ -1263,9 +1194,7 @@ footer span{
         0 0 9px rgba(167,139,250,.45);
 }
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:850px){
 
@@ -1323,9 +1252,7 @@ footer span{
 
     nav{
         top:9px;
-
         padding:5px;
-
         border-radius:17px;
     }
 
@@ -1349,8 +1276,7 @@ footer span{
     }
 
     .title{
-        font-size:
-            clamp(48px,16vw,78px);
+        font-size:clamp(48px,16vw,78px);
     }
 
     .name{
@@ -1385,9 +1311,7 @@ footer span{
     }
 }
 
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
+/* ================= REDUCED MOTION ================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1403,7 +1327,6 @@ footer span{
 </style>
 </head>
 
-
 <body>
 
 <div class="page">
@@ -1413,9 +1336,7 @@ footer span{
     <div class="shooting-star"></div>
     <div class="shooting-star"></div>
 
-
-    <!-- ================= NAV ================= -->
-
+    <!-- NAV -->
     <nav>
 
         <a href="portfolio.html" class="active">
@@ -1440,24 +1361,20 @@ footer span{
 
     </nav>
 
-
     <main>
 
-
-        <!-- ================= HERO ================= -->
-
+        <!-- HERO -->
         <section class="hero">
 
-
             <!-- PHOTO -->
-
             <div>
 
                 <div class="photo-frame">
 
+                    <!-- เปลี่ยนเป็นรูปที่ให้มาแล้ว -->
                     <img
-                        src="ใบภู.jpg"
-                        alt="รูปโปรไฟล์"
+                        src="https://i.postimg.cc/HL02qpGv/pooh2.png"
+                        alt="รูปโปรไฟล์ Puttikan Ruekraisri"
                     >
 
                     <span style="top:7%;left:12%;"></span>
@@ -1469,170 +1386,91 @@ footer span{
 
             </div>
 
-
             <!-- HERO TEXT -->
-
             <div>
 
                 <div class="small-label">
                     PORTFOLIO
                 </div>
 
-
                 <h1 class="title">
                     PORTFOLIO
                 </h1>
 
-
                 <div class="name">
-
                     นายพุฒิกันย์ ฤๅไกรศรี<br>
-
                     Puttikan Ruekraisri
-
                 </div>
 
-
                 <div class="school">
-
                     มัธยมศึกษาปีที่ 6/2
-
                 </div>
 
             </div>
 
         </section>
 
-
-        <!-- ================= PERSONAL INFO ================= -->
-
+        <!-- PERSONAL INFO -->
         <section class="box">
 
             <h2>
                 ข้อมูลส่วนตัว
             </h2>
 
-
             <div class="info-grid">
 
-
                 <div class="info">
-
-                    <strong>
-                        ชื่อ-นามสกุล
-                    </strong>
-
-                    <span>
-                        พิมพ์ข้อมูลที่นี่
-                    </span>
-
+                    <strong>ชื่อ-นามสกุล</strong>
+                    <span>พิมพ์ข้อมูลที่นี่</span>
                 </div>
 
-
                 <div class="info">
-
-                    <strong>
-                        ชื่อเล่น
-                    </strong>
-
-                    <span>
-                        พิมพ์ข้อมูลที่นี่
-                    </span>
-
+                    <strong>ชื่อเล่น</strong>
+                    <span>พิมพ์ข้อมูลที่นี่</span>
                 </div>
 
-
                 <div class="info">
-
-                    <strong>
-                        อายุ
-                    </strong>
-
-                    <span>
-                        พิมพ์ข้อมูลที่นี่
-                    </span>
-
+                    <strong>อายุ</strong>
+                    <span>พิมพ์ข้อมูลที่นี่</span>
                 </div>
 
-
                 <div class="info">
-
-                    <strong>
-                        วันเกิด
-                    </strong>
-
-                    <span>
-                        พิมพ์ข้อมูลที่นี่
-                    </span>
-
+                    <strong>วันเกิด</strong>
+                    <span>พิมพ์ข้อมูลที่นี่</span>
                 </div>
 
-
                 <div class="info">
-
-                    <strong>
-                        โรงเรียน
-                    </strong>
-
+                    <strong>โรงเรียน</strong>
                     <span>
                         โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
                     </span>
-
                 </div>
-
 
                 <div class="info">
-
-                    <strong>
-                        ระดับชั้น
-                    </strong>
-
-                    <span>
-                        มัธยมศึกษาปีที่ 6/2
-                    </span>
-
+                    <strong>ระดับชั้น</strong>
+                    <span>มัธยมศึกษาปีที่ 6/2</span>
                 </div>
-
 
                 <div class="info">
-
-                    <strong>
-                        แผนการเรียน
-                    </strong>
-
-                    <span>
-                        Gifted
-                    </span>
-
+                    <strong>แผนการเรียน</strong>
+                    <span>Gifted</span>
                 </div>
-
 
                 <div class="info">
-
-                    <strong>
-                        ความสนใจ
-                    </strong>
-
-                    <span>
-                        พิมพ์ข้อมูลที่นี่
-                    </span>
-
+                    <strong>ความสนใจ</strong>
+                    <span>พิมพ์ข้อมูลที่นี่</span>
                 </div>
-
 
             </div>
 
         </section>
 
-
-        <!-- ================= QUESTIONS ================= -->
-
+        <!-- QUESTIONS -->
         <section class="box">
 
             <h2>
                 คำถามเกี่ยวกับตัวฉัน
             </h2>
-
 
             <div class="question">
 
@@ -1640,12 +1478,9 @@ footer span{
                     ฉันเป็นคนอย่างไร?
                 </label>
 
-                <textarea
-                    placeholder="พิมพ์คำตอบของคุณที่นี่">
-                </textarea>
+                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
 
             </div>
-
 
             <div class="question">
 
@@ -1653,12 +1488,9 @@ footer span{
                     จุดเด่นของฉันคืออะไร?
                 </label>
 
-                <textarea
-                    placeholder="พิมพ์คำตอบของคุณที่นี่">
-                </textarea>
+                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
 
             </div>
-
 
             <div class="question">
 
@@ -1666,12 +1498,9 @@ footer span{
                     งานอดิเรกของฉันคืออะไร?
                 </label>
 
-                <textarea
-                    placeholder="พิมพ์คำตอบของคุณที่นี่">
-                </textarea>
+                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
 
             </div>
-
 
             <div class="question">
 
@@ -1679,12 +1508,9 @@ footer span{
                     ความสามารถพิเศษ
                 </label>
 
-                <textarea
-                    placeholder="พิมพ์คำตอบของคุณที่นี่">
-                </textarea>
+                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
 
             </div>
-
 
             <div class="question">
 
@@ -1692,12 +1518,9 @@ footer span{
                     ทำไมถึงสนใจกายภาพบำบัด?
                 </label>
 
-                <textarea
-                    placeholder="พิมพ์คำตอบของคุณที่นี่">
-                </textarea>
+                <textarea placeholder="พิมพ์คำตอบของคุณที่นี่"></textarea>
 
             </div>
-
 
             <div class="question">
 
@@ -1705,17 +1528,13 @@ footer span{
                     คติประจำใจ
                 </label>
 
-                <textarea
-                    placeholder="ทำสิ่งที่จะไม่เสียใจภายหลัง">
-                </textarea>
+                <textarea placeholder="ทำสิ่งที่จะไม่เสียใจภายหลัง"></textarea>
 
             </div>
 
         </section>
 
-
-        <!-- ================= SOP ================= -->
-
+        <!-- SOP -->
         <section class="sop-highlight">
 
             <div class="sop-word">
@@ -1728,9 +1547,7 @@ footer span{
 
         </section>
 
-
-        <!-- ================= FOOTER ================= -->
-
+        <!-- FOOTER -->
         <footer>
 
             <span>
@@ -1740,7 +1557,6 @@ footer span{
             · Portfolio
 
         </footer>
-
 
     </main>
 
