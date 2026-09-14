@@ -10,7 +10,6 @@
     /* =========================================================
        UNIVERSITY.HTML
        PREMIUM SPACE × GLASS × PHYSICAL THERAPY
-       Pure HTML + CSS + SVG
     ========================================================= */
 
     :root{
@@ -99,15 +98,10 @@
       isolation:isolate;
     }
 
-    /* =========================================================
-       FAR NEBULA
-    ========================================================= */
-
     body::before{
       content:"";
       position:fixed;
       inset:-20%;
-
       z-index:-8;
       pointer-events:none;
 
@@ -133,15 +127,12 @@
 
       animation:
         nebulaDrift 24s ease-in-out infinite alternate;
-
-      transform:translate3d(0,0,0);
     }
 
     body::after{
       content:"";
       position:fixed;
       inset:0;
-
       z-index:-7;
       pointer-events:none;
 
@@ -171,7 +162,6 @@
     .star-field{
       position:fixed;
       inset:0;
-
       z-index:-6;
       pointer-events:none;
       overflow:hidden;
@@ -182,7 +172,6 @@
       content:"";
       position:absolute;
       inset:0;
-
       background-repeat:repeat;
       pointer-events:none;
     }
@@ -202,8 +191,7 @@
         260px 260px,
         300px 300px;
 
-      animation:
-        twinkleA 7s ease-in-out infinite alternate;
+      animation:twinkleA 7s ease-in-out infinite alternate;
     }
 
     .star-field::after{
@@ -219,20 +207,17 @@
         280px 280px,
         250px 250px;
 
-      animation:
-        twinkleB 11s ease-in-out infinite alternate;
+      animation:twinkleB 11s ease-in-out infinite alternate;
     }
 
     /* =========================================================
-       NEW — CONSTELLATION BACKGROUND
+       CONSTELLATION
     ========================================================= */
 
     .constellation{
       position:absolute;
       pointer-events:none;
-
       z-index:1;
-
       opacity:.18;
 
       filter:
@@ -292,34 +277,28 @@
     .constellation-hero{
       width:430px;
       height:280px;
-
       right:-45px;
       top:30px;
-
       transform:rotate(-8deg);
     }
 
     .constellation-goal{
       width:390px;
       height:270px;
-
       left:-70px;
       bottom:-45px;
-
       transform:rotate(7deg);
       opacity:.14;
     }
 
     /* =========================================================
-       NEW — ANATOMY / MUSCLE LINE ART
+       ANATOMY LINE ART
     ========================================================= */
 
     .anatomy-art{
       position:absolute;
-
       pointer-events:none;
       z-index:1;
-
       opacity:.075;
 
       filter:
@@ -334,18 +313,14 @@
 
     .anatomy-art .anatomy-line{
       fill:none;
-
-      stroke:
-        rgba(167,139,250,.95);
-
+      stroke:rgba(167,139,250,.95);
       stroke-width:1.15;
       stroke-linecap:round;
       stroke-linejoin:round;
     }
 
     .anatomy-art .anatomy-blue{
-      stroke:
-        rgba(79,172,254,.95);
+      stroke:rgba(79,172,254,.95);
     }
 
     .anatomy-art .anatomy-node{
@@ -358,33 +333,27 @@
     .anatomy-hero{
       width:380px;
       height:440px;
-
       left:-95px;
       bottom:-150px;
-
       transform:rotate(-9deg);
     }
 
     .anatomy-card{
       width:300px;
       height:350px;
-
       right:-85px;
       bottom:-120px;
-
       transform:rotate(8deg);
-
       opacity:.055;
     }
 
     /* =========================================================
-       NEW — SHOOTING STARS
+       SHOOTING STARS
     ========================================================= */
 
     .shooting-stars{
       position:fixed;
       inset:0;
-
       z-index:-4;
       pointer-events:none;
       overflow:hidden;
@@ -421,8 +390,6 @@
 
       transform:translateY(-50%);
 
-      transform-origin:right center;
-
       background:
         linear-gradient(
           90deg,
@@ -430,8 +397,6 @@
           rgba(98,216,255,.35),
           rgba(255,255,255,.7)
         );
-
-      filter:blur(.3px);
     }
 
     .shooting-stars span:nth-child(1){
@@ -463,9 +428,7 @@
 
     .bg-ring{
       position:fixed;
-
       border-radius:50%;
-
       pointer-events:none;
       z-index:-3;
 
@@ -479,7 +442,6 @@
     .ring-1{
       width:420px;
       height:420px;
-
       top:8%;
       left:-180px;
 
@@ -490,7 +452,6 @@
     .ring-2{
       width:620px;
       height:620px;
-
       right:-300px;
       top:38%;
 
@@ -503,7 +464,6 @@
     .ring-3{
       width:280px;
       height:280px;
-
       left:48%;
       bottom:-160px;
 
@@ -514,36 +474,13 @@
     }
 
     /* =========================================================
-       SECRET DUCK
-    ========================================================= */
-
-    .secret-duck{
-      position:fixed;
-
-      right:18px;
-      bottom:18px;
-
-      width:54px;
-
-      opacity:.055;
-
-      pointer-events:none;
-      z-index:0;
-
-      filter:
-        drop-shadow(0 0 15px rgba(108,92,231,.5));
-    }
-
-    /* =========================================================
-       NAVIGATION
+       NAV
     ========================================================= */
 
     .nav{
       position:fixed;
-
       top:18px;
       left:50%;
-
       transform:translateX(-50%);
 
       width:min(1120px,calc(100% - 28px));
@@ -555,13 +492,11 @@
       justify-content:center;
 
       gap:8px;
-
       padding:10px;
 
       background:rgba(9,9,43,.70);
 
       border:1px solid rgba(167,139,250,.20);
-
       border-radius:22px;
 
       backdrop-filter:blur(22px);
@@ -576,10 +511,8 @@
 
     .nav::before{
       content:"";
-
       position:absolute;
       inset:0;
-
       pointer-events:none;
 
       background:
@@ -648,9 +581,7 @@
 
     main{
       width:min(1120px,calc(100% - 32px));
-
       margin:0 auto;
-
       padding:120px 0 70px;
     }
 
@@ -817,8 +748,6 @@
 
       opacity:.38;
 
-      filter:blur(.15px);
-
       animation:
         fallParticles 11s linear infinite;
     }
@@ -835,8 +764,6 @@
         radial-gradient(circle at 88% 38%, rgba(255,255,255,.18) 0 1.5px, transparent 3px);
 
       opacity:.30;
-
-      filter:blur(1px);
 
       animation:
         fallParticlesFar 16s linear infinite -5s;
@@ -881,9 +808,7 @@
 
     .hero-content{
       position:relative;
-
       z-index:4;
-
       max-width:850px;
     }
 
@@ -914,11 +839,6 @@
       font-weight:800;
 
       letter-spacing:.08em;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        inset 0 0 18px rgba(108,92,231,.10),
-        0 0 20px rgba(108,92,231,.07);
     }
 
     .hero-label::before{
@@ -1072,9 +992,6 @@
           rgba(79,172,254,.05),
           transparent
         );
-
-      box-shadow:
-        0 0 8px rgba(108,92,231,.16);
     }
 
     .section-title::before{
@@ -1115,15 +1032,12 @@
 
     .section-card p{
       color:var(--text-soft);
-
       line-height:1.9;
-
       font-size:1rem;
     }
 
-    .edit-text{
-      color:#bfc5e4 !important;
-      font-style:italic;
+    .section-card strong{
+      color:#ffffff;
     }
 
     /* =========================================================
@@ -1264,26 +1178,16 @@
           rgba(108,92,231,.18),
           rgba(79,172,254,.07)
         );
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        inset 0 0 12px rgba(108,92,231,.09);
     }
 
     .timeline-card h3{
       font-size:1.18rem;
-
       margin-bottom:8px;
-
       color:#fff;
-
-      text-shadow:
-        0 0 14px rgba(167,139,250,.12);
     }
 
     .timeline-card p{
       color:var(--text-soft);
-
       line-height:1.8;
     }
 
@@ -1293,15 +1197,12 @@
 
     .admission-grid{
       display:grid;
-
       grid-template-columns:repeat(2,1fr);
-
       gap:20px;
     }
 
     .admission-card{
       padding:30px;
-
       min-height:220px;
     }
 
@@ -1312,13 +1213,11 @@
 
     .admission-card h3{
       font-size:1.35rem;
-
       margin-bottom:12px;
     }
 
     .admission-card p{
       color:var(--text-soft);
-
       line-height:1.85;
     }
 
@@ -1353,7 +1252,6 @@
 
     .goal-content{
       position:relative;
-
       z-index:4;
     }
 
@@ -1390,7 +1288,7 @@
     }
 
     .goal p{
-      max-width:760px;
+      max-width:800px;
 
       margin:0 auto;
 
@@ -1492,10 +1390,6 @@
       }
     }
 
-    /* =========================================================
-       CONSTELLATION ANIMATION
-    ========================================================= */
-
     @keyframes constellationFlow{
       0%{
         stroke-dashoffset:0;
@@ -1528,10 +1422,6 @@
         transform:scale(.9);
       }
     }
-
-    /* =========================================================
-       SHOOTING STAR
-    ========================================================= */
 
     @keyframes shootingStar{
       0%{
@@ -1575,10 +1465,6 @@
       }
     }
 
-    /* =========================================================
-       RINGS
-    ========================================================= */
-
     @keyframes ringFloat{
       from{
         transform:translate3d(0,0,0) rotate(0deg);
@@ -1588,10 +1474,6 @@
         transform:translate3d(25px,-18px,0) rotate(8deg);
       }
     }
-
-    /* =========================================================
-       PARTICLES
-    ========================================================= */
 
     @keyframes fallParticles{
       0%{
@@ -1612,10 +1494,6 @@
         transform:translate3d(0,70%,0);
       }
     }
-
-    /* =========================================================
-       HERO / GOAL GLOW
-    ========================================================= */
 
     @keyframes heroPulse{
       0%,100%{
@@ -1770,21 +1648,17 @@
 
       .nav a{
         flex:0 0 auto;
-
         font-size:.78rem;
-
         padding:10px 12px;
       }
 
       main{
         width:min(100% - 22px,700px);
-
         padding-top:105px;
       }
 
       .hero{
         min-height:470px;
-
         padding:55px 24px;
       }
 
@@ -1808,44 +1682,35 @@
         padding:45px 24px;
       }
 
-      /* decorative elements slightly reduced */
       .constellation-hero{
         width:340px;
         height:230px;
-
         right:-100px;
         top:25px;
-
         opacity:.13;
       }
 
       .constellation-goal{
         width:310px;
         height:220px;
-
         left:-110px;
         bottom:-55px;
-
         opacity:.10;
       }
 
       .anatomy-hero{
         width:300px;
         height:350px;
-
         left:-115px;
         bottom:-120px;
-
         opacity:.055;
       }
 
       .anatomy-card{
         width:230px;
         height:280px;
-
         right:-100px;
         bottom:-100px;
-
         opacity:.04;
       }
     }
@@ -1854,25 +1719,19 @@
 
       .nav{
         top:10px;
-
         width:calc(100% - 16px);
-
         border-radius:18px;
-
         padding:7px;
       }
 
       main{
         width:calc(100% - 16px);
-
         padding-top:92px;
       }
 
       .hero{
         min-height:420px;
-
         padding:42px 18px;
-
         border-radius:23px;
       }
 
@@ -1899,20 +1758,17 @@
 
       .timeline-card{
         padding-left:60px;
-
         border-radius:22px;
       }
 
       .timeline-dot{
         left:20px;
-
         width:17px;
         height:17px;
       }
 
       .goal{
         border-radius:23px;
-
         padding:42px 20px;
       }
 
@@ -1920,34 +1776,27 @@
         font-size:.95rem;
       }
 
-      /* subtle decorative scale-down on phones */
       .constellation-hero{
         width:270px;
         height:185px;
-
         right:-105px;
         top:18px;
-
         opacity:.10;
       }
 
       .constellation-goal{
         width:260px;
         height:180px;
-
         left:-125px;
         bottom:-40px;
-
         opacity:.075;
       }
 
       .anatomy-hero{
         width:230px;
         height:280px;
-
         left:-105px;
         bottom:-90px;
-
         opacity:.04;
       }
 
@@ -1959,21 +1808,10 @@
         opacity:.5;
       }
 
-      .secret-duck{
-        width:42px;
-
-        right:10px;
-        bottom:10px;
-      }
-
       .shooting-stars span::after{
         width:75px;
       }
     }
-
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================= */
 
     @media(prefers-reduced-motion:reduce){
 
@@ -1995,28 +1833,22 @@
 
 <body>
 
-  <!-- =======================================================
-       BACKGROUND
-  ======================================================== -->
+  <!-- BACKGROUND -->
 
   <div class="star-field" aria-hidden="true"></div>
 
-  <!-- ดาวตก -->
   <div class="shooting-stars" aria-hidden="true">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- วงแหวนพื้นหลัง -->
   <div class="bg-ring ring-1" aria-hidden="true"></div>
   <div class="bg-ring ring-2" aria-hidden="true"></div>
   <div class="bg-ring ring-3" aria-hidden="true"></div>
 
 
-  <!-- =======================================================
-       NAV
-  ======================================================== -->
+  <!-- NAV -->
 
   <nav class="nav">
 
@@ -2047,24 +1879,18 @@
   </nav>
 
 
-  <!-- =======================================================
-       MAIN
-  ======================================================== -->
+  <!-- MAIN -->
 
   <main>
 
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+    <!-- HERO -->
 
     <section class="hero card">
 
-      <!-- อนุภาคเดิม -->
       <div class="particle-layer" aria-hidden="true"></div>
 
-
-      <!-- NEW : CONSTELLATION -->
+      <!-- CONSTELLATION -->
 
       <div class="constellation constellation-hero" aria-hidden="true">
 
@@ -2088,82 +1914,23 @@
             d="M155 145 L95 205 L225 172 L310 210"
           />
 
-          <circle
-            class="const-star"
-            cx="55"
-            cy="72"
-            r="2.2"
-          />
-
-          <circle
-            class="const-star"
-            cx="125"
-            cy="48"
-            r="3"
-          />
-
-          <circle
-            class="const-star"
-            cx="190"
-            cy="94"
-            r="2"
-          />
-
-          <circle
-            class="const-star"
-            cx="265"
-            cy="55"
-            r="3.4"
-          />
-
-          <circle
-            class="const-star"
-            cx="340"
-            cy="92"
-            r="2"
-          />
-
-          <circle
-            class="const-star"
-            cx="385"
-            cy="54"
-            r="2.5"
-          />
-
-          <circle
-            class="const-star"
-            cx="155"
-            cy="145"
-            r="2.4"
-          />
-
-          <circle
-            class="const-star"
-            cx="225"
-            cy="172"
-            r="3"
-          />
-
-          <circle
-            class="const-star"
-            cx="310"
-            cy="210"
-            r="2"
-          />
-
-          <circle
-            class="const-star"
-            cx="95"
-            cy="205"
-            r="2"
-          />
+          <circle class="const-star" cx="55" cy="72" r="2.2"/>
+          <circle class="const-star" cx="125" cy="48" r="3"/>
+          <circle class="const-star" cx="190" cy="94" r="2"/>
+          <circle class="const-star" cx="265" cy="55" r="3.4"/>
+          <circle class="const-star" cx="340" cy="92" r="2"/>
+          <circle class="const-star" cx="385" cy="54" r="2.5"/>
+          <circle class="const-star" cx="155" cy="145" r="2.4"/>
+          <circle class="const-star" cx="225" cy="172" r="3"/>
+          <circle class="const-star" cx="310" cy="210" r="2"/>
+          <circle class="const-star" cx="95" cy="205" r="2"/>
 
         </svg>
 
       </div>
 
 
-      <!-- NEW : ANATOMY LINE ART -->
+      <!-- ANATOMY -->
 
       <div class="anatomy-art anatomy-hero" aria-hidden="true">
 
@@ -2172,186 +1939,57 @@
           xmlns="http://www.w3.org/2000/svg"
         >
 
-          <!-- head -->
-          <circle
-            class="anatomy-line"
-            cx="190"
-            cy="62"
-            r="27"
-          />
+          <circle class="anatomy-line" cx="190" cy="62" r="27"/>
 
-          <!-- neck -->
-          <path
-            class="anatomy-line"
-            d="M177 88 C178 105 172 111 164 119"
-          />
+          <path class="anatomy-line" d="M177 88 C178 105 172 111 164 119"/>
+          <path class="anatomy-line" d="M203 88 C202 105 208 111 216 119"/>
 
-          <path
-            class="anatomy-line"
-            d="M203 88 C202 105 208 111 216 119"
-          />
+          <path class="anatomy-line anatomy-blue" d="M164 119 C143 116 121 124 101 143"/>
+          <path class="anatomy-line anatomy-blue" d="M216 119 C237 116 259 124 279 143"/>
 
-          <!-- shoulder -->
-          <path
-            class="anatomy-line anatomy-blue"
-            d="M164 119 C143 116 121 124 101 143"
-          />
+          <path class="anatomy-line"
+            d="M164 119 C158 145 154 172 158 205 C162 232 170 252 176 270"/>
 
-          <path
-            class="anatomy-line anatomy-blue"
-            d="M216 119 C237 116 259 124 279 143"
-          />
+          <path class="anatomy-line"
+            d="M216 119 C222 145 226 172 222 205 C218 232 210 252 204 270"/>
 
-          <!-- torso -->
-          <path
-            class="anatomy-line"
-            d="
-              M164 119
-              C158 145 154 172 158 205
-              C162 232 170 252 176 270
-            "
-          />
+          <path class="anatomy-line anatomy-blue"
+            d="M190 117 C188 145 191 170 189 197 C191 223 188 247 190 270"/>
 
-          <path
-            class="anatomy-line"
-            d="
-              M216 119
-              C222 145 226 172 222 205
-              C218 232 210 252 204 270
-            "
-          />
+          <path class="anatomy-line"
+            d="M160 135 C145 151 146 170 158 187"/>
 
-          <!-- spine -->
-          <path
-            class="anatomy-line anatomy-blue"
-            d="
-              M190 117
-              C188 145 191 170 189 197
-              C191 223 188 247 190 270
-            "
-          />
+          <path class="anatomy-line"
+            d="M158 142 C151 158 154 176 166 190"/>
 
-          <!-- muscle fiber left -->
-          <path
-            class="anatomy-line"
-            d="
-              M160 135
-              C145 151 146 170 158 187
-            "
-          />
+          <path class="anatomy-line"
+            d="M220 135 C235 151 234 170 222 187"/>
 
-          <path
-            class="anatomy-line"
-            d="
-              M158 142
-              C151 158 154 176 166 190
-            "
-          />
+          <path class="anatomy-line"
+            d="M222 142 C229 158 226 176 214 190"/>
 
-          <!-- muscle fiber right -->
-          <path
-            class="anatomy-line"
-            d="
-              M220 135
-              C235 151 234 170 222 187
-            "
-          />
+          <path class="anatomy-line"
+            d="M101 143 C83 166 70 192 60 220 C54 237 48 255 40 273"/>
 
-          <path
-            class="anatomy-line"
-            d="
-              M222 142
-              C229 158 226 176 214 190
-            "
-          />
+          <path class="anatomy-line"
+            d="M279 143 C297 166 310 192 320 220 C326 237 332 255 340 273"/>
 
-          <!-- arm left -->
-          <path
-            class="anatomy-line"
-            d="
-              M101 143
-              C83 166 70 192 60 220
-              C54 237 48 255 40 273
-            "
-          />
+          <path class="anatomy-line anatomy-blue"
+            d="M176 270 C162 282 153 296 155 313 C159 326 173 332 190 333"/>
 
-          <!-- arm right -->
-          <path
-            class="anatomy-line"
-            d="
-              M279 143
-              C297 166 310 192 320 220
-              C326 237 332 255 340 273
-            "
-          />
+          <path class="anatomy-line anatomy-blue"
+            d="M204 270 C218 282 227 296 225 313 C221 326 207 332 190 333"/>
 
-          <!-- hip -->
-          <path
-            class="anatomy-line anatomy-blue"
-            d="
-              M176 270
-              C162 282 153 296 155 313
-              C159 326 173 332 190 333
-            "
-          />
+          <path class="anatomy-line"
+            d="M170 326 C161 350 155 374 151 399 C149 414 146 425 141 436"/>
 
-          <path
-            class="anatomy-line anatomy-blue"
-            d="
-              M204 270
-              C218 282 227 296 225 313
-              C221 326 207 332 190 333
-            "
-          />
+          <path class="anatomy-line"
+            d="M210 326 C219 350 225 374 229 399 C231 414 234 425 239 436"/>
 
-          <!-- leg left -->
-          <path
-            class="anatomy-line"
-            d="
-              M170 326
-              C161 350 155 374 151 399
-              C149 414 146 425 141 436
-            "
-          />
-
-          <!-- leg right -->
-          <path
-            class="anatomy-line"
-            d="
-              M210 326
-              C219 350 225 374 229 399
-              C231 414 234 425 239 436
-            "
-          />
-
-          <!-- nodes -->
-          <circle
-            class="anatomy-node"
-            cx="190"
-            cy="118"
-            r="2"
-          />
-
-          <circle
-            class="anatomy-node"
-            cx="158"
-            cy="205"
-            r="2"
-          />
-
-          <circle
-            class="anatomy-node"
-            cx="222"
-            cy="205"
-            r="2"
-          />
-
-          <circle
-            class="anatomy-node"
-            cx="190"
-            cy="270"
-            r="2.5"
-          />
+          <circle class="anatomy-node" cx="190" cy="118" r="2"/>
+          <circle class="anatomy-node" cx="158" cy="205" r="2"/>
+          <circle class="anatomy-node" cx="222" cy="205" r="2"/>
+          <circle class="anatomy-node" cx="190" cy="270" r="2.5"/>
 
         </svg>
 
@@ -2388,20 +2026,9 @@
               y2="0%"
             >
 
-              <stop
-                offset="0%"
-                stop-color="#6c5ce7"
-              />
-
-              <stop
-                offset="50%"
-                stop-color="#a78bfa"
-              />
-
-              <stop
-                offset="100%"
-                stop-color="#4facfe"
-              />
+              <stop offset="0%" stop-color="#6c5ce7"/>
+              <stop offset="50%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#4facfe"/>
 
             </linearGradient>
 
@@ -2432,7 +2059,7 @@
 
 
     <!-- =====================================================
-         เหตุผลที่เลือกมหาวิทยาลัย
+         REASON
     ====================================================== -->
 
     <section>
@@ -2447,108 +2074,50 @@
 
       <div class="section-card">
 
-        <div
-          class="particle-layer"
-          aria-hidden="true"
-        ></div>
+        <div class="particle-layer" aria-hidden="true"></div>
 
-
-        <!-- NEW : SUBTLE ANATOMY PATTERN -->
-
-        <div
-          class="anatomy-art anatomy-card"
-          aria-hidden="true"
-        >
+        <div class="anatomy-art anatomy-card" aria-hidden="true">
 
           <svg
             viewBox="0 0 300 350"
             xmlns="http://www.w3.org/2000/svg"
           >
 
-            <path
-              class="anatomy-line anatomy-blue"
-              d="
-                M150 25
-                C125 45 118 72 126 98
-                C132 119 124 142 112 161
-                C96 185 91 211 104 235
-                C116 257 137 270 150 288
-              "
-            />
+            <path class="anatomy-line anatomy-blue"
+              d="M150 25 C125 45 118 72 126 98 C132 119 124 142 112 161 C96 185 91 211 104 235 C116 257 137 270 150 288"/>
 
-            <path
-              class="anatomy-line"
-              d="
-                M150 25
-                C175 45 182 72 174 98
-                C168 119 176 142 188 161
-                C204 185 209 211 196 235
-                C184 257 163 270 150 288
-              "
-            />
+            <path class="anatomy-line"
+              d="M150 25 C175 45 182 72 174 98 C168 119 176 142 188 161 C204 185 209 211 196 235 C184 257 163 270 150 288"/>
 
-            <path
-              class="anatomy-line"
-              d="
-                M126 98
-                C102 105 83 119 67 139
-              "
-            />
+            <path class="anatomy-line"
+              d="M126 98 C102 105 83 119 67 139"/>
 
-            <path
-              class="anatomy-line"
-              d="
-                M174 98
-                C198 105 217 119 233 139
-              "
-            />
+            <path class="anatomy-line"
+              d="M174 98 C198 105 217 119 233 139"/>
 
-            <path
-              class="anatomy-line anatomy-blue"
-              d="
-                M112 161
-                C137 174 163 174 188 161
-              "
-            />
+            <path class="anatomy-line anatomy-blue"
+              d="M112 161 C137 174 163 174 188 161"/>
 
-            <path
-              class="anatomy-line"
-              d="
-                M104 235
-                C132 222 168 222 196 235
-              "
-            />
+            <path class="anatomy-line"
+              d="M104 235 C132 222 168 222 196 235"/>
 
-            <circle
-              class="anatomy-node"
-              cx="150"
-              cy="25"
-              r="2"
-            />
-
-            <circle
-              class="anatomy-node"
-              cx="150"
-              cy="174"
-              r="2"
-            />
-
-            <circle
-              class="anatomy-node"
-              cx="150"
-              cy="288"
-              r="2"
-            />
+            <circle class="anatomy-node" cx="150" cy="25" r="2"/>
+            <circle class="anatomy-node" cx="150" cy="174" r="2"/>
+            <circle class="anatomy-node" cx="150" cy="288" r="2"/>
 
           </svg>
 
         </div>
 
 
-        <!-- ✏️ แก้ข้อความตรงนี้ -->
+        <!-- ข้อมูลที่เติมให้แล้ว -->
 
-        <p class="edit-text">
-          ใส่ข้อความอธิบายเหตุผลที่อยากเข้ามหาวิทยาลัยมหิดลที่นี่...
+        <p>
+          ผมเลือก <strong>มหาวิทยาลัยมหิดล</strong> เป็นหนึ่งในมหาวิทยาลัยที่มีความสนใจศึกษาต่อด้านกายภาพบำบัด เพราะผมต้องการเรียนรู้ทั้งพื้นฐานทางวิทยาศาสตร์สุขภาพและการนำความรู้ไปประยุกต์ใช้กับผู้ป่วยจริง ผมมองว่าการเรียนกายภาพบำบัดจำเป็นต้องอาศัยทั้งความรู้ ความรับผิดชอบ การสังเกต และทักษะการสื่อสาร ซึ่งเป็นสิ่งที่ผมอยากพัฒนาตนเองให้มากขึ้น
+          <br><br>
+          นอกจากนี้ ผมสนใจสภาพแวดล้อมทางการเรียนรู้ของมหาวิทยาลัยมหิดลที่เกี่ยวข้องกับวิทยาศาสตร์สุขภาพและการแพทย์ เพราะผมเชื่อว่าการได้เรียนรู้จากอาจารย์ ผู้เชี่ยวชาญ และประสบการณ์ที่หลากหลาย จะช่วยให้ผมเข้าใจบทบาทของนักกายภาพบำบัดได้ลึกซึ้งยิ่งขึ้น และสามารถนำความรู้ไปใช้ดูแลและช่วยเหลือผู้อื่นได้อย่างเหมาะสม
+          <br><br>
+          สำหรับผม มหาวิทยาลัยไม่ได้เป็นเพียงสถานที่สำหรับเรียนหนังสือ แต่เป็นพื้นที่ที่จะช่วยให้ผมเติบโตทั้งด้านความรู้ ทักษะการทำงานร่วมกับผู้อื่น และความรับผิดชอบต่อวิชาชีพ ผมจึงอยากใช้ช่วงเวลาของการศึกษาเพื่อพัฒนาตัวเองให้พร้อมสำหรับการก้าวเข้าสู่วิชาชีพกายภาพบำบัดในอนาคต
         </p>
 
       </div>
@@ -2574,12 +2143,11 @@
       <div class="timeline">
 
 
+        <!-- ระหว่างศึกษา -->
+
         <div class="timeline-card">
 
-          <div
-            class="particle-layer"
-            aria-hidden="true"
-          ></div>
+          <div class="particle-layer" aria-hidden="true"></div>
 
           <div class="timeline-dot"></div>
 
@@ -2587,25 +2155,22 @@
             ระหว่างศึกษา
           </div>
 
-          <!-- ✏️ แก้ข้อความตรงนี้ -->
-
           <h3>
             พัฒนาตัวเองให้พร้อมสำหรับวิชาชีพ
           </h3>
 
           <p>
-            ใส่เป้าหมายและสิ่งที่ต้องการพัฒนาระหว่างเรียนที่นี่...
+            ผมตั้งใจพัฒนาความรู้ด้านวิทยาศาสตร์สุขภาพ โดยเฉพาะกายวิภาคศาสตร์ การทำงานของร่างกาย และหลักการเคลื่อนไหว รวมถึงฝึกทักษะการสื่อสาร การทำงานเป็นทีม และความรับผิดชอบ นอกจากนี้ผมต้องการเรียนรู้จากกิจกรรมและประสบการณ์ต่าง ๆ ที่ช่วยให้เข้าใจการทำงานของบุคลากรทางสุขภาพมากขึ้น เพื่อเตรียมตัวให้พร้อมสำหรับการเรียนในระดับมหาวิทยาลัยและการทำงานจริงในอนาคต
           </p>
 
         </div>
 
 
+        <!-- หลังสำเร็จการศึกษา -->
+
         <div class="timeline-card">
 
-          <div
-            class="particle-layer"
-            aria-hidden="true"
-          ></div>
+          <div class="particle-layer" aria-hidden="true"></div>
 
           <div class="timeline-dot"></div>
 
@@ -2613,25 +2178,22 @@
             หลังสำเร็จการศึกษา
           </div>
 
-          <!-- ✏️ แก้ข้อความตรงนี้ -->
-
           <h3>
             ก้าวเข้าสู่เส้นทางวิชาชีพกายภาพบำบัด
           </h3>
 
           <p>
-            ใส่เส้นทางที่ต้องการเดินต่อหลังจากสำเร็จการศึกษาที่นี่...
+            หลังจากสำเร็จการศึกษา ผมตั้งใจนำความรู้และทักษะที่ได้รับไปต่อยอดในวิชาชีพกายภาพบำบัด โดยต้องการเรียนรู้จากประสบการณ์จริงและพัฒนาความสามารถของตนเองอย่างต่อเนื่อง ผมอยากเป็นนักกายภาพบำบัดที่สามารถประเมินปัญหา วางแนวทางการฟื้นฟู และให้คำแนะนำแก่ผู้รับบริการด้วยความรับผิดชอบและความเข้าใจ
           </p>
 
         </div>
 
 
+        <!-- เป้าหมายระยะยาว -->
+
         <div class="timeline-card">
 
-          <div
-            class="particle-layer"
-            aria-hidden="true"
-          ></div>
+          <div class="particle-layer" aria-hidden="true"></div>
 
           <div class="timeline-dot"></div>
 
@@ -2639,14 +2201,12 @@
             เป้าหมายระยะยาว
           </div>
 
-          <!-- ✏️ แก้ข้อความตรงนี้ -->
-
           <h3>
             เติบโตและสร้างคุณค่าให้กับผู้คน
           </h3>
 
           <p>
-            ใส่เป้าหมายในอนาคตระยะยาวที่นี่...
+            ในระยะยาว ผมอยากพัฒนาตนเองให้เป็นบุคลากรด้านกายภาพบำบัดที่มีทั้งความรู้ ความสามารถ และจรรยาบรรณในการทำงาน สามารถนำความรู้มาช่วยส่งเสริมการเคลื่อนไหวและคุณภาพชีวิตของผู้คน รวมถึงพร้อมเรียนรู้เทคโนโลยีและองค์ความรู้ใหม่ ๆ อยู่เสมอ เพื่อพัฒนาการดูแลผู้รับบริการให้มีประสิทธิภาพมากยิ่งขึ้น
           </p>
 
         </div>
@@ -2674,12 +2234,11 @@
       <div class="admission-grid">
 
 
+        <!-- PORTFOLIO -->
+
         <div class="admission-card">
 
-          <div
-            class="particle-layer"
-            aria-hidden="true"
-          ></div>
+          <div class="particle-layer" aria-hidden="true"></div>
 
           <div class="round-tag">
             รอบที่ 1
@@ -2689,21 +2248,18 @@
             Portfolio
           </h3>
 
-          <!-- ✏️ แก้ข้อความตรงนี้ -->
-
           <p>
-            ใส่คำอธิบายว่าทำไมจึงสนใจการสมัครรอบ Portfolio และสิ่งที่ต้องการนำเสนอที่นี่...
+            ผมสนใจการสมัครในรอบ Portfolio เพราะเป็นรอบที่เปิดโอกาสให้ผมได้นำเสนอความสนใจ ความตั้งใจ และประสบการณ์ที่เกี่ยวข้องกับสายวิทยาศาสตร์สุขภาพและกายภาพบำบัดผ่านผลงานของตนเอง ผมต้องการใช้ Portfolio เป็นพื้นที่แสดงให้เห็นถึงความพยายามในการเรียนรู้ การเข้าร่วมกิจกรรม การพัฒนาทักษะ และความตั้งใจที่จะศึกษาต่อในสายวิชาชีพสุขภาพ
           </p>
 
         </div>
 
 
+        <!-- ADMISSION -->
+
         <div class="admission-card">
 
-          <div
-            class="particle-layer"
-            aria-hidden="true"
-          ></div>
+          <div class="particle-layer" aria-hidden="true"></div>
 
           <div class="round-tag">
             รอบที่ 3
@@ -2713,10 +2269,8 @@
             Admission
           </h3>
 
-          <!-- ✏️ แก้ข้อความตรงนี้ -->
-
           <p>
-            ใส่คำอธิบายว่าทำไมจึงสนใจการสมัครรอบ Admission ที่นี่...
+            ผมให้ความสำคัญกับรอบ Admission เช่นกัน เพราะเป็นอีกเส้นทางหนึ่งที่สามารถใช้ความรู้และผลการเรียนที่สะสมมาตลอดช่วงมัธยมศึกษาในการสมัครเข้าศึกษาต่อ ผมจึงตั้งใจเตรียมตัวทั้งด้านวิชาการและการสอบที่เกี่ยวข้อง พร้อมวางแผนการเรียนอย่างสม่ำเสมอ เพื่อเพิ่มความพร้อมสำหรับการเข้าสู่ระดับมหาวิทยาลัย
           </p>
 
         </div>
@@ -2732,13 +2286,10 @@
 
     <section class="goal">
 
-      <div
-        class="particle-layer"
-        aria-hidden="true"
-      ></div>
+      <div class="particle-layer" aria-hidden="true"></div>
 
 
-      <!-- NEW : CONSTELLATION -->
+      <!-- CONSTELLATION -->
 
       <div
         class="constellation constellation-goal"
@@ -2765,68 +2316,21 @@
             d="M150 176 L198 224 L267 131"
           />
 
-          <circle
-            class="const-star"
-            cx="32"
-            cy="205"
-            r="2"
-          />
-
-          <circle
-            class="const-star"
-            cx="92"
-            cy="154"
-            r="3"
-          />
-
-          <circle
-            class="const-star"
-            cx="150"
-            cy="176"
-            r="2"
-          />
-
-          <circle
-            class="const-star"
-            cx="205"
-            cy="102"
-            r="3.3"
-          />
-
-          <circle
-            class="const-star"
-            cx="267"
-            cy="131"
-            r="2.2"
-          />
-
-          <circle
-            class="const-star"
-            cx="345"
-            cy="64"
-            r="3"
-          />
-
-          <circle
-            class="const-star"
-            cx="125"
-            cy="77"
-            r="2"
-          />
-
-          <circle
-            class="const-star"
-            cx="198"
-            cy="224"
-            r="2"
-          />
+          <circle class="const-star" cx="32" cy="205" r="2"/>
+          <circle class="const-star" cx="92" cy="154" r="3"/>
+          <circle class="const-star" cx="150" cy="176" r="2"/>
+          <circle class="const-star" cx="205" cy="102" r="3.3"/>
+          <circle class="const-star" cx="267" cy="131" r="2.2"/>
+          <circle class="const-star" cx="345" cy="64" r="3"/>
+          <circle class="const-star" cx="125" cy="77" r="2"/>
+          <circle class="const-star" cx="198" cy="224" r="2"/>
 
         </svg>
 
       </div>
 
 
-      <!-- NEW : ABSTRACT MUSCLE LINE ART -->
+      <!-- ANATOMY -->
 
       <div
         class="anatomy-art anatomy-card"
@@ -2895,19 +2399,8 @@
             "
           />
 
-          <circle
-            class="anatomy-node"
-            cx="150"
-            cy="154"
-            r="2.5"
-          />
-
-          <circle
-            class="anatomy-node"
-            cx="150"
-            cy="270"
-            r="2"
-          />
+          <circle class="anatomy-node" cx="150" cy="154" r="2.5"/>
+          <circle class="anatomy-node" cx="150" cy="270" r="2"/>
 
         </svg>
 
@@ -2924,10 +2417,10 @@
           เป้าหมายของผม
         </h2>
 
-        <!-- ✏️ แก้ข้อความตรงนี้ -->
-
         <p>
-          ใส่ข้อความเป้าหมายของผมที่นี่...
+          เป้าหมายของผมคือการได้ศึกษาต่อในสาขากายภาพบำบัด และพัฒนาตนเองให้มีความรู้และทักษะที่จำเป็นต่อการประกอบวิชาชีพ ผมอยากเรียนรู้ตั้งแต่พื้นฐานของร่างกายมนุษย์ การเคลื่อนไหว การประเมินปัญหา ไปจนถึงแนวทางการฟื้นฟูที่เหมาะสมกับแต่ละบุคคล
+          <br><br>
+          ในอนาคต ผมอยากเป็นนักกายภาพบำบัดที่สามารถนำความรู้ที่เรียนมาใช้ช่วยให้ผู้คนกลับมาเคลื่อนไหวและใช้ชีวิตประจำวันได้ดีขึ้น ผมพร้อมที่จะเรียนรู้สิ่งใหม่ ๆ พัฒนาตนเอง และรับผิดชอบต่อหน้าที่ เพราะผมเชื่อว่าการดูแลผู้คนที่ดีต้องเริ่มจากทั้งความรู้ ความตั้งใจ และความเข้าใจ
         </p>
 
       </div>
@@ -2937,71 +2430,7 @@
   </main>
 
 
-  <!-- =======================================================
-       SECRET DUCK EASTER EGG
-  ======================================================== -->
-
-  <div
-    class="secret-duck"
-    aria-hidden="true"
-  >
-
-    <svg
-      viewBox="0 0 120 120"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-
-      <ellipse
-        cx="60"
-        cy="70"
-        rx="34"
-        ry="25"
-        fill="#ffd95a"
-      />
-
-      <circle
-        cx="74"
-        cy="45"
-        r="22"
-        fill="#ffe477"
-      />
-
-      <circle
-        cx="82"
-        cy="41"
-        r="3"
-        fill="#111"
-      />
-
-      <path
-        d="M92 48 Q108 51 94 57 Q87 56 92 48"
-        fill="#ff9f43"
-      />
-
-      <ellipse
-        cx="48"
-        cy="70"
-        rx="13"
-        ry="8"
-        fill="#f5c945"
-      />
-
-      <path
-        d="M42 91 Q60 101 78 91"
-        fill="none"
-        stroke="#dcae2f"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-
-    </svg>
-
-  </div>
-
-
-  <!-- =======================================================
-       FOOTER
-  ======================================================== -->
+  <!-- FOOTER -->
 
   <footer>
     Puttikan Ruekraisri · Physical Therapy Portfolio
