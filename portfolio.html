@@ -18,19 +18,8 @@
     --cyan:#62d8ff;
     --white:#f8fbff;
     --muted:#b9bbd8;
-
     --glass:rgba(16,16,55,.58);
     --border:rgba(137,126,255,.30);
-
-    --glow-purple:
-        0 0 8px rgba(123,111,240,.75),
-        0 0 20px rgba(123,111,240,.48),
-        0 0 45px rgba(123,111,240,.22);
-
-    --glow-blue:
-        0 0 8px rgba(79,172,254,.8),
-        0 0 22px rgba(79,172,254,.45),
-        0 0 45px rgba(79,172,254,.2);
 }
 
 *{
@@ -45,18 +34,17 @@ html{
 
 body{
     font-family:"Prompt","Kanit",sans-serif;
+    color:var(--white);
+    overflow-x:hidden;
+
     background:
         radial-gradient(circle at 15% 15%,rgba(91,72,210,.18),transparent 28%),
         radial-gradient(circle at 85% 20%,rgba(46,116,255,.14),transparent 28%),
         radial-gradient(circle at 50% 100%,rgba(115,65,210,.16),transparent 35%),
         linear-gradient(145deg,var(--bg),var(--bg2) 50%,#070720);
-    color:var(--white);
-    overflow-x:hidden;
 }
 
-/* =========================
-   STAR FIELD
-========================= */
+/* ================= STAR FIELD ================= */
 
 body::before{
     content:"";
@@ -93,17 +81,24 @@ body::before{
     }
 }
 
-/* =========================
-   SHOOTING STARS
-========================= */
+/* ================= SHOOTING STARS ================= */
 
 .shooting-star{
     position:fixed;
     width:130px;
     height:2px;
-    background:linear-gradient(90deg,transparent,#fff,#62d8ff,transparent);
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #fff,
+        #62d8ff,
+        transparent
+    );
+
     filter:drop-shadow(0 0 8px #62d8ff);
     transform:rotate(-32deg);
+
     opacity:0;
     pointer-events:none;
     z-index:-1;
@@ -132,27 +127,29 @@ body::before{
         transform:translate(-100px,-20px) rotate(-32deg);
         opacity:0;
     }
+
     8%{
         opacity:.9;
     }
+
     20%{
         transform:translate(120vw,420px) rotate(-32deg);
         opacity:0;
     }
+
     100%{
         opacity:0;
     }
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* ================= NAVBAR ================= */
 
 nav{
     position:fixed;
     top:18px;
     left:50%;
     transform:translateX(-50%);
+
     width:min(1100px,calc(100% - 28px));
     padding:12px 16px;
 
@@ -188,8 +185,10 @@ nav{
     );
 
     background-size:250% auto;
+
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
     animation:textShine 5s linear infinite;
@@ -213,19 +212,23 @@ nav{
 
     color:#c9c9e5;
     text-decoration:none;
+
     padding:9px 13px;
     border-radius:13px;
 
     font-size:.9rem;
+
     transition:.35s ease;
 }
 
 .nav-links a::after{
     content:"";
+
     position:absolute;
     left:18%;
     right:18%;
     bottom:5px;
+
     height:1px;
 
     background:linear-gradient(
@@ -242,8 +245,11 @@ nav{
 .nav-links a:hover,
 .nav-links a.active{
     color:#fff;
+
     background:rgba(123,111,240,.13);
-    text-shadow:0 0 12px rgba(170,150,255,.8);
+
+    text-shadow:
+        0 0 12px rgba(170,150,255,.8);
 }
 
 .nav-links a:hover::after,
@@ -251,9 +257,7 @@ nav{
     transform:scaleX(1);
 }
 
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero{
     min-height:100vh;
@@ -262,20 +266,24 @@ nav{
 
     display:grid;
     grid-template-columns:1.1fr .9fr;
+
     align-items:center;
+
     gap:60px;
 
     padding:150px 30px 90px;
+
     position:relative;
 }
 
-/* glow behind hero */
-
 .hero::before{
     content:"";
+
     position:absolute;
+
     width:520px;
     height:520px;
+
     left:-120px;
     top:180px;
 
@@ -286,12 +294,11 @@ nav{
     );
 
     filter:blur(30px);
+
     pointer-events:none;
 }
 
-/* =========================
-   HERO TEXT
-========================= */
+/* ================= HERO TEXT ================= */
 
 .hero-content{
     position:relative;
@@ -300,6 +307,7 @@ nav{
 
 .eyebrow{
     display:inline-flex;
+
     align-items:center;
     gap:9px;
 
@@ -312,6 +320,7 @@ nav{
     background:rgba(98,216,255,.06);
 
     color:#9be7ff;
+
     font-size:.82rem;
     letter-spacing:2px;
 
@@ -324,9 +333,12 @@ nav{
 
 .eyebrow::before{
     content:"";
+
     width:7px;
     height:7px;
+
     border-radius:50%;
+
     background:#62d8ff;
 
     box-shadow:
@@ -349,36 +361,36 @@ nav{
     }
 }
 
-/* =========================
-   MAIN NAME
-========================= */
+/* ================= NAME ================= */
 
 .name{
     position:relative;
     display:inline-block;
 
     font-size:clamp(3rem,7vw,6.2rem);
+
     line-height:1.08;
+
     font-weight:700;
 
     letter-spacing:-2px;
 
-    background:
-        linear-gradient(
-            105deg,
-            #ffffff 0%,
-            #d8d5ff 18%,
-            #a78bfa 38%,
-            #62d8ff 55%,
-            #ffffff 72%,
-            #a78bfa 90%,
-            #ffffff 100%
-        );
+    background:linear-gradient(
+        105deg,
+        #ffffff 0%,
+        #d8d5ff 18%,
+        #a78bfa 38%,
+        #62d8ff 55%,
+        #ffffff 72%,
+        #a78bfa 90%,
+        #ffffff 100%
+    );
 
     background-size:300% auto;
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
     animation:
@@ -388,15 +400,13 @@ nav{
     filter:
         drop-shadow(0 0 5px rgba(255,255,255,.25))
         drop-shadow(0 0 15px rgba(123,111,240,.35));
-
-    text-shadow:
-        0 0 12px rgba(167,139,250,.25),
-        0 0 30px rgba(98,216,255,.15);
 }
 
 .name::before{
     content:"";
+
     position:absolute;
+
     inset:-15px -30px;
 
     background:radial-gradient(
@@ -406,7 +416,9 @@ nav{
     );
 
     filter:blur(22px);
+
     z-index:-1;
+
     pointer-events:none;
 }
 
@@ -414,6 +426,7 @@ nav{
     0%{
         background-position:0% center;
     }
+
     100%{
         background-position:300% center;
     }
@@ -438,14 +451,13 @@ nav{
     transform:translateY(-3px) scale(1.01);
 }
 
-/* =========================
-   ENGLISH NAME
-========================= */
+/* ================= ENGLISH NAME ================= */
 
 .english-name{
     margin-top:10px;
 
     font-size:clamp(1rem,2vw,1.45rem);
+
     letter-spacing:7px;
 
     background:linear-gradient(
@@ -461,24 +473,23 @@ nav{
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
     animation:textShine 5s linear infinite;
-
-    text-shadow:
-        0 0 10px rgba(98,216,255,.18);
 }
 
-/* =========================
-   DESCRIPTION
-========================= */
+/* ================= DESCRIPTION ================= */
 
 .hero-description{
     max-width:650px;
+
     margin-top:25px;
 
     color:#bfc2df;
+
     font-size:1.05rem;
+
     line-height:1.9;
 }
 
@@ -490,14 +501,15 @@ nav{
         0 0 18px rgba(123,111,240,.4);
 }
 
-/* =========================
-   TAGS
-========================= */
+/* ================= TAGS ================= */
 
 .tags{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:10px;
+
     margin-top:28px;
 }
 
@@ -505,12 +517,15 @@ nav{
     position:relative;
 
     padding:8px 14px;
+
     border-radius:50px;
 
     background:rgba(255,255,255,.035);
+
     border:1px solid rgba(130,120,255,.22);
 
     color:#d6d7ef;
+
     font-size:.8rem;
 
     overflow:hidden;
@@ -518,24 +533,9 @@ nav{
     transition:.35s cubic-bezier(.2,.8,.2,1);
 }
 
-.tag::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:linear-gradient(
-        110deg,
-        transparent,
-        rgba(255,255,255,.20),
-        transparent
-    );
-
-    transform:translateX(-120%);
-    transition:.6s;
-}
-
 .tag:hover{
     transform:translateY(-4px);
+
     border-color:rgba(98,216,255,.55);
 
     color:#fff;
@@ -544,36 +544,38 @@ nav{
         0 0 16px rgba(98,216,255,.15);
 }
 
-.tag:hover::before{
-    transform:translateX(120%);
-}
-
-/* =========================
-   CTA
-========================= */
+/* ================= BUTTON ================= */
 
 .hero-buttons{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:13px;
+
     margin-top:32px;
 }
 
 .btn{
     position:relative;
+
     overflow:hidden;
 
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
     min-width:150px;
+
     padding:13px 20px;
 
     border-radius:15px;
 
     text-decoration:none;
+
     font-size:.9rem;
+
     font-weight:500;
 
     transition:.35s cubic-bezier(.2,.8,.2,1);
@@ -582,50 +584,23 @@ nav{
 .btn-primary{
     color:white;
 
-    background:
-        linear-gradient(
-            110deg,
-            #584bd1,
-            #7b6ff0,
-            #4facfe
-        );
+    background:linear-gradient(
+        110deg,
+        #584bd1,
+        #7b6ff0,
+        #4facfe
+    );
 
     box-shadow:
         0 0 15px rgba(123,111,240,.35),
         0 10px 35px rgba(0,0,0,.25);
 }
 
-.btn-primary::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:70%;
-    height:100%;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.4),
-        transparent
-    );
-
-    transform:skewX(-20deg);
-    animation:buttonShine 4s ease-in-out infinite;
-}
-
-@keyframes buttonShine{
-    0%,55%{
-        left:-100%;
-    }
-    75%,100%{
-        left:140%;
-    }
-}
-
 .btn-secondary{
     color:#d8d9f5;
+
     border:1px solid rgba(130,120,255,.3);
+
     background:rgba(255,255,255,.035);
 }
 
@@ -639,44 +614,51 @@ nav{
 
 .btn-secondary:hover{
     border-color:rgba(98,216,255,.6);
+
     color:white;
 }
 
-/* =========================
-   PHOTO
-========================= */
+/* ================= PHOTO ================= */
 
 .hero-visual{
     display:flex;
+
     justify-content:center;
+
     position:relative;
 }
 
 .photo-orbit{
     position:relative;
+
     width:min(390px,80vw);
+
     aspect-ratio:1;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 }
 
-/* orbital rings */
+/* วงแหวนรอบรูป */
 
 .photo-orbit::before,
 .photo-orbit::after{
     content:"";
-    position:absolute;
-    border-radius:50%;
 
-    border:1px solid rgba(123,111,240,.23);
+    position:absolute;
+
+    border-radius:50%;
 
     pointer-events:none;
 }
 
 .photo-orbit::before{
     inset:-25px;
+
+    border:1px solid rgba(123,111,240,.23);
+
     transform:rotate(25deg) scaleX(.78);
 
     box-shadow:
@@ -685,10 +667,13 @@ nav{
 
 .photo-orbit::after{
     inset:-50px;
-    transform:rotate(-35deg) scaleX(.72);
 
-    border-color:rgba(98,216,255,.14);
+    border:1px solid rgba(98,216,255,.14);
+
+    transform:rotate(-35deg) scaleX(.72);
 }
+
+/* ================= PHOTO CARD ================= */
 
 .photo-card{
     position:relative;
@@ -700,13 +685,12 @@ nav{
 
     border-radius:35px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(167,139,250,.55),
-            rgba(79,172,254,.25),
-            rgba(255,255,255,.06)
-        );
+    background:linear-gradient(
+        145deg,
+        rgba(167,139,250,.55),
+        rgba(79,172,254,.25),
+        rgba(255,255,255,.06)
+    );
 
     box-shadow:
         0 0 25px rgba(123,111,240,.30),
@@ -716,11 +700,15 @@ nav{
     transform:rotate(2deg);
 
     transition:.6s cubic-bezier(.2,.8,.2,1);
+
+    overflow:hidden;
 }
 
 .photo-card::before{
     content:"";
+
     position:absolute;
+
     inset:-2px;
 
     border-radius:37px;
@@ -733,7 +721,10 @@ nav{
     );
 
     opacity:.4;
+
     pointer-events:none;
+
+    z-index:2;
 }
 
 .photo-card:hover{
@@ -748,9 +739,12 @@ nav{
         0 35px 80px rgba(0,0,0,.5);
 }
 
+/* ================= รูปใหม่ ================= */
+
 .profile-photo{
     width:100%;
     height:100%;
+
     display:block;
 
     object-fit:cover;
@@ -761,14 +755,20 @@ nav{
 
     box-shadow:
         inset 0 0 30px rgba(0,0,0,.35);
+
+    position:relative;
+
+    z-index:1;
 }
 
-/* floating stars around photo */
+/* ================= ORBIT STARS ================= */
 
 .orbit-star{
     position:absolute;
+
     width:8px;
     height:8px;
+
     border-radius:50%;
 
     background:white;
@@ -789,24 +789,30 @@ nav{
 .orbit-star:nth-child(2){
     right:5%;
     top:28%;
+
     width:5px;
     height:5px;
+
     animation-delay:.7s;
 }
 
 .orbit-star:nth-child(3){
     bottom:8%;
     left:13%;
+
     width:6px;
     height:6px;
+
     animation-delay:1.3s;
 }
 
 .orbit-star:nth-child(4){
     right:18%;
     bottom:2%;
+
     width:4px;
     height:4px;
+
     animation-delay:1.8s;
 }
 
@@ -815,25 +821,28 @@ nav{
         opacity:.35;
         transform:scale(.7);
     }
+
     50%{
         opacity:1;
         transform:scale(1.25);
     }
 }
 
-/* =========================
-   SECTION
-========================= */
+/* ================= SECTION ================= */
 
 .section{
     width:min(1100px,calc(100% - 30px));
+
     margin:0 auto;
+
     padding:90px 0;
+
     position:relative;
 }
 
 .section-title{
     text-align:center;
+
     margin-bottom:45px;
 }
 
@@ -841,7 +850,9 @@ nav{
     display:block;
 
     color:#62d8ff;
+
     font-size:.72rem;
+
     letter-spacing:4px;
 
     text-shadow:
@@ -865,17 +876,17 @@ nav{
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
     animation:textShine 6s linear infinite;
-
-    text-shadow:
-        0 0 20px rgba(123,111,240,.18);
 }
 
 .section-divider{
     width:170px;
+
     height:2px;
+
     margin:15px auto 0;
 
     background:linear-gradient(
@@ -886,52 +897,31 @@ nav{
         transparent
     );
 
-    position:relative;
-
     box-shadow:
         0 0 10px rgba(98,216,255,.45);
 }
 
-.section-divider::after{
-    content:"";
-    position:absolute;
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-    background:#fff;
-
-    right:17%;
-    top:-2px;
-
-    box-shadow:
-        0 0 8px #fff,
-        0 0 15px #62d8ff;
-}
-
-/* =========================
-   GLASS CARD
-========================= */
+/* ================= GLASS CARD ================= */
 
 .glass-card{
     position:relative;
+
     overflow:hidden;
 
     padding:42px;
 
     border-radius:30px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(27,27,78,.67),
-            rgba(10,10,40,.58)
-        );
+    background:linear-gradient(
+        145deg,
+        rgba(27,27,78,.67),
+        rgba(10,10,40,.58)
+    );
 
     border:1px solid var(--border);
 
     backdrop-filter:blur(20px);
+
     -webkit-backdrop-filter:blur(20px);
 
     box-shadow:
@@ -945,9 +935,11 @@ nav{
     content:"";
 
     position:absolute;
+
     top:0;
     left:8%;
     right:8%;
+
     height:1px;
 
     background:linear-gradient(
@@ -957,9 +949,6 @@ nav{
         rgba(98,216,255,.5),
         transparent
     );
-
-    box-shadow:
-        0 0 12px rgba(98,216,255,.3);
 }
 
 .glass-card:hover{
@@ -972,9 +961,7 @@ nav{
         0 0 35px rgba(123,111,240,.12);
 }
 
-/* =========================
-   FALLING PARTICLES IN CARD
-========================= */
+/* ================= PARTICLES ================= */
 
 .glass-card .particle{
     position:absolute;
@@ -983,6 +970,7 @@ nav{
     height:3px;
 
     border-radius:50%;
+
     background:#fff;
 
     box-shadow:
@@ -1031,18 +1019,19 @@ nav{
     from{
         transform:translateY(0);
     }
+
     to{
         transform:translateY(650px);
     }
 }
 
-/* =========================
-   PROFILE GRID
-========================= */
+/* ================= PROFILE ================= */
 
 .profile-grid{
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:15px;
 }
 
@@ -1052,6 +1041,7 @@ nav{
     border-radius:20px;
 
     background:rgba(255,255,255,.025);
+
     border:1px solid rgba(130,120,255,.16);
 
     transition:.35s ease;
@@ -1063,13 +1053,11 @@ nav{
     background:rgba(123,111,240,.07);
 
     border-color:rgba(98,216,255,.35);
-
-    box-shadow:
-        0 0 25px rgba(98,216,255,.08);
 }
 
 .info-label{
     font-size:.72rem;
+
     letter-spacing:2px;
 
     color:#7fdfff;
@@ -1082,18 +1070,15 @@ nav{
     margin-top:6px;
 
     color:#fff;
-    font-size:1rem;
 
-    text-shadow:
-        0 0 8px rgba(255,255,255,.15);
+    font-size:1rem;
 }
 
-/* =========================
-   SOP
-========================= */
+/* ================= SOP ================= */
 
 .sop-card{
     position:relative;
+
     overflow:hidden;
 
     text-align:center;
@@ -1111,44 +1096,19 @@ nav{
     border:1px solid rgba(123,111,240,.35);
 }
 
-.sop-card::before{
-    content:"";
-
-    position:absolute;
-    width:280px;
-    height:280px;
-
-    top:50%;
-    left:50%;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    border:1px solid rgba(98,216,255,.08);
-
-    box-shadow:
-        0 0 80px rgba(123,111,240,.10);
-
-    animation:sopPulse 5s ease-in-out infinite;
-}
-
-@keyframes sopPulse{
-    50%{
-        transform:translate(-50%,-50%) scale(1.15);
-        opacity:.45;
-    }
-}
-
 .sop{
     position:relative;
+
     z-index:2;
 
     font-family:"Kanit",sans-serif;
 
     font-size:clamp(5rem,15vw,11rem);
+
     line-height:.9;
+
     font-weight:700;
+
     letter-spacing:10px;
 
     background:linear-gradient(
@@ -1164,50 +1124,39 @@ nav{
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
-    animation:
-        textShine 5s linear infinite,
-        sopGlow 3s ease-in-out infinite;
-
-    filter:
-        drop-shadow(0 0 10px rgba(255,255,255,.25))
-        drop-shadow(0 0 30px rgba(123,111,240,.45));
-}
-
-@keyframes sopGlow{
-    50%{
-        filter:
-            drop-shadow(0 0 15px rgba(255,255,255,.5))
-            drop-shadow(0 0 45px rgba(123,111,240,.65))
-            drop-shadow(0 0 70px rgba(98,216,255,.20));
-    }
+    animation:textShine 5s linear infinite;
 }
 
 .sop-subtitle{
     position:relative;
+
     z-index:2;
 
     margin-top:20px;
 
     color:#c9c9e5;
+
     font-size:1rem;
 }
 
 .sop-description{
     position:relative;
+
     z-index:2;
 
     max-width:700px;
+
     margin:20px auto 0;
 
     color:#aeb1d0;
+
     line-height:1.9;
 }
 
-/* =========================
-   GOAL
-========================= */
+/* ================= GOAL ================= */
 
 .goal-card{
     text-align:center;
@@ -1221,23 +1170,6 @@ nav{
             transparent 60%
         ),
         rgba(12,12,45,.66);
-
-    animation:goalGlow 6s ease-in-out infinite;
-}
-
-@keyframes goalGlow{
-    0%,100%{
-        box-shadow:
-            0 25px 70px rgba(0,0,0,.3),
-            0 0 25px rgba(123,111,240,.08);
-    }
-
-    50%{
-        box-shadow:
-            0 25px 70px rgba(0,0,0,.3),
-            0 0 45px rgba(123,111,240,.18),
-            0 0 80px rgba(79,172,254,.08);
-    }
 }
 
 .goal-card h3{
@@ -1255,25 +1187,23 @@ nav{
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
     animation:textShine 5s linear infinite;
-
-    text-shadow:
-        0 0 20px rgba(123,111,240,.25);
 }
 
 .goal-card p{
     max-width:750px;
+
     margin:20px auto 0;
 
     color:#b9bbd8;
+
     line-height:1.9;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer{
     padding:35px 20px 45px;
@@ -1281,7 +1211,9 @@ footer{
     text-align:center;
 
     color:#777ba9;
+
     font-size:.78rem;
+
     letter-spacing:1px;
 
     border-top:1px solid rgba(130,120,255,.10);
@@ -1294,13 +1226,13 @@ footer span{
         0 0 8px rgba(167,139,250,.45);
 }
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+/* ================= REVEAL ================= */
 
 .reveal{
     opacity:0;
+
     transform:translateY(25px);
+
     animation:reveal .9s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
@@ -1311,9 +1243,7 @@ footer span{
     }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:850px){
 
@@ -1327,20 +1257,25 @@ footer span{
 
     .nav-links{
         width:100%;
+
         justify-content:center;
+
         flex-wrap:wrap;
     }
 
     .nav-links a{
         font-size:.78rem;
+
         padding:8px 9px;
     }
 
     .hero{
         grid-template-columns:1fr;
+
         text-align:center;
 
         padding-top:150px;
+
         gap:60px;
     }
 
@@ -1362,14 +1297,6 @@ footer span{
         width:min(320px,78vw);
     }
 
-    .name{
-        letter-spacing:-1px;
-    }
-
-    .english-name{
-        letter-spacing:4px;
-    }
-
     .profile-grid{
         grid-template-columns:1fr;
     }
@@ -1383,6 +1310,7 @@ footer span{
 
     nav{
         top:10px;
+
         border-radius:17px;
     }
 
@@ -1392,6 +1320,7 @@ footer span{
 
     .nav-links a{
         padding:7px 6px;
+
         font-size:.69rem;
     }
 
@@ -1404,12 +1333,17 @@ footer span{
         font-size:clamp(2.6rem,12vw,4.2rem);
     }
 
+    .english-name{
+        letter-spacing:4px;
+    }
+
     .hero-description{
         font-size:.92rem;
     }
 
     .section{
         width:min(100% - 22px,1100px);
+
         padding:65px 0;
     }
 
@@ -1419,13 +1353,12 @@ footer span{
 
     .sop{
         font-size:clamp(4.5rem,23vw,7rem);
+
         letter-spacing:4px;
     }
 }
 
-/* =========================
-   REDUCED MOTION
-========================= */
+/* ================= REDUCED MOTION ================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1433,8 +1366,11 @@ footer span{
     *::before,
     *::after{
         animation-duration:.01ms !important;
+
         animation-iteration-count:1 !important;
+
         scroll-behavior:auto !important;
+
         transition-duration:.01ms !important;
     }
 }
@@ -1448,18 +1384,49 @@ footer span{
 <div class="shooting-star"></div>
 <div class="shooting-star"></div>
 
+
 <!-- ================= NAV ================= -->
 
 <nav>
-    <div class="logo">PT · PORTFOLIO</div>
+
+    <div class="logo">
+        PT · PORTFOLIO
+    </div>
 
     <ul class="nav-links">
-        <li><a href="portfolio.html" class="active">หน้าหลัก</a></li>
-        <li><a href="cumnum.html">คำนำ</a></li>
-        <li><a href="work.html">ผลงาน</a></li>
-        <li><a href="university.html">มหาวิทยาลัย</a></li>
-        <li><a href="contract.html">ติดต่อ</a></li>
+
+        <li>
+            <a href="portfolio.html" class="active">
+                หน้าหลัก
+            </a>
+        </li>
+
+        <li>
+            <a href="cumnum.html">
+                คำนำ
+            </a>
+        </li>
+
+        <li>
+            <a href="work.html">
+                ผลงาน
+            </a>
+        </li>
+
+        <li>
+            <a href="university.html">
+                มหาวิทยาลัย
+            </a>
+        </li>
+
+        <li>
+            <a href="contract.html">
+                ติดต่อ
+            </a>
+        </li>
+
     </ul>
+
 </nav>
 
 
@@ -1483,21 +1450,41 @@ footer span{
         </div>
 
         <p class="hero-description">
-            นักเรียนชั้น <strong>มัธยมศึกษาปีที่ 6/2</strong>
+
+            นักเรียนชั้น
+            <strong>มัธยมศึกษาปีที่ 6/2</strong>
             แผนการเรียน Gifted จาก
-            <strong>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</strong>
+            <strong>
+                โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
+            </strong>
+
             ผู้มีความสนใจด้านกายวิภาค การเคลื่อนไหว
             และการฟื้นฟูสมรรถภาพของร่างกาย
+
         </p>
 
         <div class="tags">
-            <span class="tag">ANATOMY</span>
-            <span class="tag">MOVEMENT</span>
-            <span class="tag">REHABILITATION</span>
-            <span class="tag">HEALTH SCIENCE</span>
+
+            <span class="tag">
+                ANATOMY
+            </span>
+
+            <span class="tag">
+                MOVEMENT
+            </span>
+
+            <span class="tag">
+                REHABILITATION
+            </span>
+
+            <span class="tag">
+                HEALTH SCIENCE
+            </span>
+
         </div>
 
         <div class="hero-buttons">
+
             <a href="#profile" class="btn btn-primary">
                 ดู Portfolio
             </a>
@@ -1505,12 +1492,13 @@ footer span{
             <a href="#sop" class="btn btn-secondary">
                 อ่าน SOP
             </a>
+
         </div>
 
     </div>
 
 
-    <!-- PHOTO -->
+    <!-- ================= PHOTO ================= -->
 
     <div class="hero-visual reveal">
 
@@ -1523,9 +1511,10 @@ footer span{
 
             <div class="photo-card">
 
+                <!-- รูปใหม่ที่ใส่แทนรูปเดิม -->
                 <img
                     class="profile-photo"
-                    src="https://i.postimg.cc/Wb6XFxvc/270455.jpg"
+                    src="https://i.postimg.cc/HL02qpGv/pooh2.png"
                     alt="Puttikan Ruekraisri"
                 >
 
@@ -1548,7 +1537,9 @@ footer span{
             01 / PROFILE
         </span>
 
-        <h2>ABOUT ME</h2>
+        <h2>
+            ABOUT ME
+        </h2>
 
         <div class="section-divider"></div>
 
@@ -1557,7 +1548,6 @@ footer span{
 
     <div class="glass-card reveal">
 
-        <!-- particles -->
         <span class="particle"></span>
         <span class="particle"></span>
         <span class="particle"></span>
@@ -1568,45 +1558,80 @@ footer span{
         <div class="profile-grid">
 
             <div class="info-box">
-                <div class="info-label">NAME</div>
+
+                <div class="info-label">
+                    NAME
+                </div>
+
                 <div class="info-value">
                     นายพุฒิกันย์ ฤๅไกรศรี
                 </div>
+
             </div>
 
+
             <div class="info-box">
-                <div class="info-label">ENGLISH NAME</div>
+
+                <div class="info-label">
+                    ENGLISH NAME
+                </div>
+
                 <div class="info-value">
                     Puttikan Ruekraisri
                 </div>
+
             </div>
 
+
             <div class="info-box">
-                <div class="info-label">SCHOOL</div>
+
+                <div class="info-label">
+                    SCHOOL
+                </div>
+
                 <div class="info-value">
                     โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
                 </div>
+
             </div>
 
+
             <div class="info-box">
-                <div class="info-label">LEVEL</div>
+
+                <div class="info-label">
+                    LEVEL
+                </div>
+
                 <div class="info-value">
                     มัธยมศึกษาปีที่ 6/2
                 </div>
+
             </div>
 
+
             <div class="info-box">
-                <div class="info-label">PROGRAM</div>
+
+                <div class="info-label">
+                    PROGRAM
+                </div>
+
                 <div class="info-value">
                     Gifted
                 </div>
+
             </div>
 
+
             <div class="info-box">
-                <div class="info-label">MOTTO</div>
+
+                <div class="info-label">
+                    MOTTO
+                </div>
+
                 <div class="info-value">
                     ทำสิ่งที่จะไม่เสียใจภายหลัง
                 </div>
+
             </div>
 
         </div>
@@ -1626,7 +1651,9 @@ footer span{
             02 / STATEMENT OF PURPOSE
         </span>
 
-        <h2>MY JOURNEY</h2>
+        <h2>
+            MY JOURNEY
+        </h2>
 
         <div class="section-divider"></div>
 
@@ -1641,6 +1668,7 @@ footer span{
         <span class="particle"></span>
         <span class="particle"></span>
 
+
         <div class="sop">
             SOP
         </div>
@@ -1650,17 +1678,28 @@ footer span{
         </div>
 
         <p class="sop-description">
+
             จุดเริ่มต้นของความสนใจในวิชาชีพกายภาพบำบัด
             จากความสนใจในกายวิภาคศาสตร์ การเคลื่อนไหวของร่างกาย
             และประสบการณ์ที่ได้เรียนรู้จากการฝึกประสบการณ์
             รวมถึงการได้เห็นบทบาทของนักกายภาพบำบัด
             ในการช่วยฟื้นฟูและพัฒนาคุณภาพชีวิตของผู้ป่วย
+
         </p>
 
-        <div class="hero-buttons" style="justify-content:center;">
-            <a href="cumnum.html" class="btn btn-primary">
+
+        <div
+            class="hero-buttons"
+            style="justify-content:center;"
+        >
+
+            <a
+                href="cumnum.html"
+                class="btn btn-primary"
+            >
                 อ่านคำนำ
             </a>
+
         </div>
 
     </div>
@@ -1678,7 +1717,9 @@ footer span{
             03 / MY GOAL
         </span>
 
-        <h2>PHYSICAL THERAPY</h2>
+        <h2>
+            PHYSICAL THERAPY
+        </h2>
 
         <div class="section-divider"></div>
 
@@ -1693,15 +1734,18 @@ footer span{
         <span class="particle"></span>
         <span class="particle"></span>
 
+
         <h3>
             DREAM · LEARN · HEAL
         </h3>
 
         <p>
+
             เป้าหมายของผมคือการศึกษาต่อในสาขากายภาพบำบัด
             พัฒนาความรู้และทักษะอย่างต่อเนื่อง
             และนำความรู้ไปใช้เพื่อช่วยให้ผู้คนกลับมาใช้ชีวิต
             และเคลื่อนไหวได้อย่างมีคุณภาพ
+
         </p>
 
     </div>
@@ -1712,8 +1756,13 @@ footer span{
 <!-- ================= FOOTER ================= -->
 
 <footer>
-    <span>Puttikan Ruekraisri</span>
+
+    <span>
+        Puttikan Ruekraisri
+    </span>
+
     · Physical Therapy Portfolio
+
 </footer>
 
 </body>
