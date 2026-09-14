@@ -3,16 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ผลงาน | Portfolio</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
+
 :root{
-    --navy:#071a35;
-    --blue:#1565a9;
-    --bg:#f4f7fa;
-    --text:#172b40;
-    --light:#607286;
-    --shadow:0 20px 55px rgba(7,26,53,.10);
+    --bg:#05051b;
+    --bg2:#09092b;
+    --deep:#070722;
+
+    --purple:#7b6ff0;
+    --violet:#a78bfa;
+    --blue:#4facfe;
+    --cyan:#62d8ff;
+
+    --white:#f8fbff;
+    --text:#e9eaff;
+    --muted:#aeb1d0;
+
+    --glass:rgba(15,15,52,.62);
+
+    --border:rgba(139,126,255,.28);
+
+    --shadow:
+        0 25px 75px rgba(0,0,0,.38),
+        0 0 35px rgba(123,111,240,.08);
 }
 
 *{
@@ -21,279 +39,1416 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:"Segoe UI",Tahoma,Arial,sans-serif;
-    background:var(--bg);
+    font-family:"Prompt","Kanit",sans-serif;
+
     color:var(--text);
-}
 
-.page{
-    min-height:100vh;
-    padding:125px 15px 50px;
     background:
-        radial-gradient(circle at 10% 10%,rgba(21,101,169,.08),transparent 28%),
-        radial-gradient(circle at 90% 85%,rgba(7,26,53,.07),transparent 30%),
-        linear-gradient(135deg,#f8fafc,#edf2f6);
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(95,72,220,.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 88% 25%,
+            rgba(52,123,255,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(130,70,220,.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #030313,
+            #080824 48%,
+            #05051b
+        );
+
+    min-height:100vh;
+
+    overflow-x:hidden;
 }
 
-/* NAV */
-nav{
+
+/* =====================================================
+   STAR FIELD
+===================================================== */
+
+body::before{
+    content:"";
+
     position:fixed;
+    inset:0;
+
+    z-index:-10;
+
+    pointer-events:none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.75) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(98,216,255,.45) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(167,139,250,.38) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        85px 85px,
+        145px 145px,
+        210px 210px;
+
+    background-position:
+        10px 20px,
+        40px 70px,
+        100px 30px;
+
+    opacity:.36;
+
+    animation:
+        starMove 38s linear infinite;
+}
+
+@keyframes starMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-130px);
+    }
+
+}
+
+
+/* =====================================================
+   SHOOTING STARS
+===================================================== */
+
+.shooting-star{
+    position:fixed;
+
+    width:150px;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #fff,
+            var(--cyan),
+            transparent
+        );
+
+    filter:
+        drop-shadow(0 0 7px var(--cyan))
+        drop-shadow(0 0 16px var(--blue));
+
+    transform:rotate(-32deg);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:-2;
+}
+
+.shooting-star:nth-of-type(1){
+    top:15%;
+    left:-180px;
+
+    animation:
+        shooting 9s linear infinite;
+}
+
+.shooting-star:nth-of-type(2){
+    top:42%;
+    left:-220px;
+
+    animation:
+        shooting 12s linear infinite 4s;
+}
+
+.shooting-star:nth-of-type(3){
+    top:72%;
+    left:-200px;
+
+    animation:
+        shooting 14s linear infinite 8s;
+}
+
+@keyframes shooting{
+
+    0%{
+        transform:
+            translate(-100px,-20px)
+            rotate(-32deg);
+
+        opacity:0;
+    }
+
+    8%{
+        opacity:.9;
+    }
+
+    22%{
+        transform:
+            translate(120vw,420px)
+            rotate(-32deg);
+
+        opacity:0;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav{
+
+    position:fixed;
+
     top:18px;
     left:50%;
+
     transform:translateX(-50%);
-    width:min(1050px,calc(100% - 30px));
-    z-index:100;
+
+    width:min(
+        1100px,
+        calc(100% - 28px)
+    );
+
+    z-index:1000;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     gap:5px;
-    padding:8px;
-    background:rgba(255,255,255,.88);
-    border:1px solid rgba(7,26,53,.10);
-    border-radius:16px;
-    backdrop-filter:blur(18px);
-    box-shadow:0 12px 35px rgba(7,26,53,.12);
+
+    padding:9px;
+
+    background:
+        rgba(6,6,29,.72);
+
+    border:
+        1px solid rgba(139,126,255,.25);
+
+    border-radius:20px;
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.08);
+}
+
+nav::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:12%;
+    right:12%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(98,216,255,.35);
 }
 
 nav a{
-    color:#536579;
+
+    position:relative;
+
+    color:#b9bbd8;
+
     text-decoration:none;
-    font-size:14px;
-    font-weight:600;
+
+    font-size:13px;
+
+    font-weight:500;
+
     padding:10px 15px;
-    border-radius:10px;
-    transition:.25s ease;
+
+    border-radius:13px;
+
+    transition:
+        .35s cubic-bezier(.2,.8,.2,1);
 }
 
-nav a:hover{
-    color:var(--blue);
-    background:#edf4fa;
-    transform:translateY(-2px);
-}
+nav a::after{
 
-nav a.active{
-    color:white;
-    background:linear-gradient(135deg,var(--navy),var(--blue));
-}
-
-/* HEADER */
-.container{
-    width:min(1050px,100%);
-    margin:auto;
-}
-
-.header{
-    margin-bottom:25px;
-}
-
-.number{
-    color:var(--blue);
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:3px;
-    margin-bottom:8px;
-}
-
-.title{
-    color:var(--navy);
-    font-size:clamp(34px,5vw,52px);
-    font-weight:800;
-}
-
-.title::after{
     content:"";
-    display:block;
-    width:55px;
-    height:3px;
-    margin-top:12px;
-    background:linear-gradient(90deg,var(--blue),transparent);
-}
 
-/* GALLERY */
-.content{
-    padding:35px;
-    background:rgba(255,255,255,.92);
-    border:1px solid rgba(7,26,53,.09);
-    border-radius:22px;
-    box-shadow:var(--shadow);
-}
+    position:absolute;
 
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:24px;
-}
+    left:20%;
+    right:20%;
+    bottom:4px;
 
-.item{
-    padding:12px;
-    overflow:hidden;
-    border:1px solid #dce5ec;
-    border-radius:17px;
-    background:#f8fafc;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    transform:scaleX(0);
+
     transition:.35s ease;
 }
 
-.item:hover{
-    transform:translateY(-5px);
-    box-shadow:0 12px 30px rgba(7,26,53,.10);
-    background:white;
+nav a:hover{
+
+    color:#fff;
+
+    background:
+        rgba(123,111,240,.11);
+
+    transform:
+        translateY(-2px);
+
+    text-shadow:
+        0 0 10px rgba(167,139,250,.75);
 }
 
-.image{
-    aspect-ratio:4/3;
+nav a:hover::after{
+    transform:scaleX(1);
+}
+
+nav a.active{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(91,73,205,.9),
+            rgba(54,137,235,.72)
+        );
+
+    box-shadow:
+        0 0 18px rgba(123,111,240,.32),
+        inset 0 1px rgba(255,255,255,.18);
+
+    text-shadow:
+        0 0 9px rgba(255,255,255,.55);
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page{
+
+    min-height:100vh;
+
+    padding:
+        145px 15px 55px;
+
+    position:relative;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+
+    width:
+        min(
+            1100px,
+            100%
+        );
+
+    margin:auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    position:relative;
+
+    margin-bottom:42px;
+
+    padding-left:5px;
+}
+
+.number{
+
+    color:#76ddff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    margin-bottom:10px;
+
+    text-shadow:
+        0 0 10px rgba(98,216,255,.65);
+
+    animation:
+        labelGlow 3s ease-in-out infinite;
+}
+
+@keyframes labelGlow{
+
+    0%,100%{
+        opacity:.75;
+    }
+
+    50%{
+        opacity:1;
+        text-shadow:
+            0 0 15px rgba(98,216,255,.9);
+    }
+
+}
+
+.title{
+
+    position:relative;
+
+    display:inline-block;
+
+    font-family:
+        "Kanit",
+        "Prompt",
+        sans-serif;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            68px
+        );
+
+    line-height:1.05;
+
+    font-weight:700;
+
+    letter-spacing:-1px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff 0%,
+            #d8d5ff 18%,
+            #a78bfa 37%,
+            #62d8ff 54%,
+            #ffffff 70%,
+            #a78bfa 90%,
+            #ffffff 100%
+        );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        titleShine 6s linear infinite,
+        titlePulse 4s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(255,255,255,.25)
+        )
+        drop-shadow(
+            0 0 25px
+            rgba(123,111,240,.35)
+        );
+}
+
+@keyframes titleShine{
+
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:300% center;
+    }
+
+}
+
+@keyframes titlePulse{
+
+    0%,100%{
+
+        filter:
+            drop-shadow(
+                0 0 7px
+                rgba(255,255,255,.25)
+            )
+            drop-shadow(
+                0 0 20px
+                rgba(123,111,240,.3)
+            );
+    }
+
+    50%{
+
+        filter:
+            drop-shadow(
+                0 0 11px
+                rgba(255,255,255,.45)
+            )
+            drop-shadow(
+                0 0 34px
+                rgba(123,111,240,.55)
+            )
+            drop-shadow(
+                0 0 55px
+                rgba(79,172,254,.18)
+            );
+    }
+
+}
+
+.title::after{
+
+    content:"";
+
+    display:block;
+
+    width:150px;
+
+    height:2px;
+
+    margin-top:18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(98,216,255,.45);
+}
+
+.title::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:-13px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.4),
+            transparent
+        );
+
+    opacity:.4;
+}
+
+
+/* =====================================================
+   MAIN CONTENT GLASS
+===================================================== */
+
+.content{
+
+    position:relative;
+
+    padding:35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(27,27,78,.66),
+            rgba(9,9,38,.60)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:30px;
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    box-shadow:var(--shadow);
+
     overflow:hidden;
+}
+
+.content::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:8%;
+    right:8%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.55),
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 14px rgba(98,216,255,.4);
+}
+
+.content::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    right:-180px;
+    top:-180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(123,111,240,.13),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:25px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* =====================================================
+   ITEM
+===================================================== */
+
+.item{
+
+    position:relative;
+
+    padding:12px;
+
+    overflow:hidden;
+
+    border:
+        1px solid rgba(139,126,255,.18);
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .5s cubic-bezier(.2,.8,.2,1);
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.035);
+}
+
+.item::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:65%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    animation:
+        cardLight 7s ease-in-out infinite;
+}
+
+@keyframes cardLight{
+
+    0%,65%{
+        left:-120%;
+    }
+
+    82%,100%{
+        left:150%;
+    }
+
+}
+
+.item::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(255,255,255,.035),
+            transparent 60%
+        );
+
+    pointer-events:none;
+}
+
+.item:hover{
+
+    transform:
+        translateY(-9px)
+        scale(1.012);
+
+    background:
+        rgba(123,111,240,.07);
+
+    border-color:
+        rgba(98,216,255,.38);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35),
+        0 0 30px rgba(123,111,240,.12);
+}
+
+
+/* =====================================================
+   NUMBER BADGE
+===================================================== */
+
+.item-number{
+
+    position:absolute;
+
+    top:20px;
+    left:20px;
+
+    z-index:5;
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
     border-radius:12px;
-    background:#e4ebf1;
+
+    color:white;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    background:
+        rgba(5,5,25,.72);
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 0 15px rgba(123,111,240,.22);
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.5);
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.image{
+
+    position:relative;
+
+    aspect-ratio:4/3;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+    background:
+        #08082b;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.image::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-90%;
+
+    width:55%;
+    height:170%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.20),
+            transparent
+        );
+
+    transform:rotate(16deg);
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    opacity:.7;
+}
+
+.item:hover .image::after{
+
+    animation:
+        imageShine 1.3s ease;
+}
+
+@keyframes imageShine{
+
+    from{
+        left:-90%;
+    }
+
+    to{
+        left:150%;
+    }
+
 }
 
 .image img{
+
     width:100%;
     height:100%;
+
+    display:block;
+
     object-fit:cover;
+
+    transition:
+        .65s cubic-bezier(.2,.8,.2,1);
+
+    filter:
+        saturate(.94)
+        brightness(.92);
+}
+
+.item:hover .image img{
+
+    transform:
+        scale(1.055);
+
+    filter:
+        saturate(1.08)
+        brightness(1.03);
+}
+
+
+/* =====================================================
+   ITEM TEXT
+===================================================== */
+
+.item p{
+
+    position:relative;
+
+    padding:
+        18px 9px 10px;
+
+    color:#e4e5f5;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    line-height:1.75;
+
+    text-align:center;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.06);
+}
+
+.item p::after{
+
+    content:"";
+
+    display:block;
+
+    width:40px;
+
+    height:1px;
+
+    margin:12px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--purple),
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px rgba(123,111,240,.45);
+
     transition:.4s ease;
 }
 
-.item:hover img{
-    transform:scale(1.04);
+.item:hover p::after{
+
+    width:80px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(98,216,255,.5);
 }
 
-.item p{
-    padding:14px 5px 5px;
-    color:#263e55;
-    font-size:15px;
-    font-weight:600;
-    line-height:1.6;
-    text-align:center;
+
+/* =====================================================
+   LAST CARD
+===================================================== */
+
+.item:last-child{
+
+    grid-column:
+        1 / -1;
+
+    width:
+        min(
+            50%,
+            100%
+        );
+
+    margin:
+        0 auto;
 }
+
+.item:last-child .image{
+
+    aspect-ratio:16/9;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
-    padding:30px;
+
+    padding:
+        40px 20px 20px;
+
     text-align:center;
-    color:#8191a0;
+
+    color:#7277a7;
+
     font-size:12px;
+
+    letter-spacing:1px;
 }
 
-@media(max-width:700px){
+footer::before{
+
+    content:"✦";
+
+    display:block;
+
+    margin-bottom:9px;
+
+    color:var(--cyan);
+
+    font-size:14px;
+
+    text-shadow:
+        0 0 10px var(--cyan);
+}
+
+footer span{
+
+    color:var(--violet);
+
+    text-shadow:
+        0 0 9px rgba(167,139,250,.45);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:800px){
+
     nav{
-        top:9px;
-        width:calc(100% - 14px);
-        padding:5px;
-        gap:2px;
+        width:
+            calc(100% - 18px);
     }
 
     nav a{
-        font-size:10px;
-        padding:8px 7px;
+        font-size:11px;
+        padding:9px 9px;
     }
 
     .page{
-        padding-top:105px;
+        padding-top:120px;
     }
 
     .content{
-        padding:20px;
+        padding:25px;
     }
 
     .gallery{
         grid-template-columns:1fr;
     }
+
+    .item:last-child{
+        grid-column:auto;
+        width:100%;
+    }
+
 }
+
+
+@media(max-width:600px){
+
+    nav{
+        top:9px;
+
+        padding:5px;
+
+        border-radius:17px;
+    }
+
+    nav a{
+        font-size:9px;
+        padding:8px 6px;
+    }
+
+    .page{
+        padding:
+            105px 10px 40px;
+    }
+
+    .header{
+        margin-bottom:30px;
+    }
+
+    .number{
+        font-size:10px;
+        letter-spacing:3px;
+    }
+
+    .title{
+        font-size:
+            clamp(
+                37px,
+                11vw,
+                52px
+            );
+    }
+
+    .content{
+        padding:15px;
+
+        border-radius:23px;
+    }
+
+    .gallery{
+        gap:17px;
+    }
+
+    .item{
+        padding:9px;
+
+        border-radius:18px;
+    }
+
+    .image{
+        border-radius:13px;
+    }
+
+    .item p{
+        font-size:13px;
+        line-height:1.65;
+        padding:
+            15px 5px 8px;
+    }
+
+    .item-number{
+        top:15px;
+        left:15px;
+
+        width:33px;
+        height:33px;
+
+        border-radius:10px;
+
+        font-size:10px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+
+        transition-duration:.01ms !important;
+    }
+
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="page">
 
-<nav>
-    <a href="portfolio.html">หน้าหลัก</a>
-    <a href="cumnum.html">คำนำ</a>
-    <a href="profile.html">ประวัติ</a>
-    <a href="work.html" class="active">ผลงาน</a>
-    <a href="university.html">มหาวิทยาลัย</a>
-    <a href="contract.html">ติดต่อ</a>
-</nav>
 
-<main class="container">
+    <!-- =========================
+         SHOOTING STARS
+    ========================== -->
 
-    <div class="header">
-        <div class="number">03 / ACTIVITIES</div>
-        <h1 class="title">ผลงานและกิจกรรม</h1>
-    </div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
 
-    <section class="content">
 
-        <div class="gallery">
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-            <div class="item">
-                <div class="image">
-                    <img src="เกียรติบัตรอบรมปฐมพยาบาล.jpg"
-                         alt="กิจกรรมโรงพยาบาลบ้านบึง">
-                </div>
-                <p>
-                    กิจกรรมศึกษาและฝึกประสบการณ์
-                    ณ โรงพยาบาลบ้านบึง
-                </p>
+    <nav>
+
+        <a href="portfolio.html">
+            หน้าหลัก
+        </a>
+
+        <a href="cumnum.html">
+            คำนำ
+        </a>
+
+        <a href="work.html" class="active">
+            ผลงาน
+        </a>
+
+        <a href="university.html">
+            มหาวิทยาลัย
+        </a>
+
+        <a href="contract.html">
+            ติดต่อ
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <div class="number">
+                03 / ACTIVITIES
             </div>
 
-            <div class="item">
-                <div class="image">
-                    <img src="1000050313.jpg"
-                         alt="อบรม CPR และ First Aid">
-                </div>
-                <p>
-                    อบรมเชิงปฏิบัติการ
-                    การปฐมพยาบาลฉุกเฉิน
-                    และการกู้ชีพขั้นพื้นฐาน
-                    (CPR & First Aid)
-                </p>
-            </div>
-
-            <div class="item">
-                <div class="image">
-                    <img src="เกียรติบัตรอบรมแพทย์.jpg"
-                         alt="อบรมสายวิทยาศาสตร์สุขภาพ">
-                </div>
-                <p>
-                    อบรมเชิงปฏิบัติการ
-                    ความถนัดทางสายวิทยาศาสตร์สุขภาพ
-                    (เป็นหมอ ACADEMY)
-                </p>
-            </div>
-
-            <div class="item">
-                <div class="image">
-                    <img src="เกียรติบัตรคลินิกฟัน.jpg"
-                         alt="ศึกษาดูงานคลินิกทันตกรรม">
-                </div>
-                <p>
-                    ศึกษาดูงาน
-                    ณ คลินิกทันตกรรมเอสซี
-                </p>
-            </div>
-
-            <div class="item">
-                <div class="image">
-                    <img src="เกียรติบัตรแข่งสภา.jpg"
-                         alt="กิจกรรมสภานักเรียน">
-                </div>
-                <p>
-                    รางวัลเหรียญทอง
-                    กิจกรรมสภานักเรียน
-                    งานศิลปหัตถกรรมนักเรียน ครั้งที่ 71
-                </p>
-            </div>
+            <h1 class="title">
+                ผลงานและกิจกรรม
+            </h1>
 
         </div>
 
-    </section>
 
-</main>
+        <!-- =========================
+             GALLERY
+        ========================== -->
 
-<footer>
-    Puttikan Ruekraisri · Physical Therapy Portfolio
-</footer>
+        <section class="content">
+
+            <div class="gallery">
+
+
+                <!-- 01 -->
+
+                <div class="item">
+
+                    <div class="item-number">
+                        01
+                    </div>
+
+                    <div class="image">
+
+                        <img
+                            src="เกียรติบัตรอบรมปฐมพยาบาล.jpg"
+                            alt="กิจกรรมโรงพยาบาลบ้านบึง"
+                        >
+
+                    </div>
+
+                    <p>
+                        กิจกรรมศึกษาและฝึกประสบการณ์
+                        ณ โรงพยาบาลบ้านบึง
+                    </p>
+
+                </div>
+
+
+                <!-- 02 -->
+
+                <div class="item">
+
+                    <div class="item-number">
+                        02
+                    </div>
+
+                    <div class="image">
+
+                        <img
+                            src="1000050313.jpg"
+                            alt="อบรม CPR และ First Aid"
+                        >
+
+                    </div>
+
+                    <p>
+                        อบรมเชิงปฏิบัติการ
+                        การปฐมพยาบาลฉุกเฉิน
+                        และการกู้ชีพขั้นพื้นฐาน
+                        (CPR & First Aid)
+                    </p>
+
+                </div>
+
+
+                <!-- 03 -->
+
+                <div class="item">
+
+                    <div class="item-number">
+                        03
+                    </div>
+
+                    <div class="image">
+
+                        <img
+                            src="เกียรติบัตรอบรมแพทย์.jpg"
+                            alt="อบรมสายวิทยาศาสตร์สุขภาพ"
+                        >
+
+                    </div>
+
+                    <p>
+                        อบรมเชิงปฏิบัติการ
+                        ความถนัดทางสายวิทยาศาสตร์สุขภาพ
+                        (เป็นหมอ ACADEMY)
+                    </p>
+
+                </div>
+
+
+                <!-- 04 -->
+
+                <div class="item">
+
+                    <div class="item-number">
+                        04
+                    </div>
+
+                    <div class="image">
+
+                        <img
+                            src="เกียรติบัตรคลินิกฟัน.jpg"
+                            alt="ศึกษาดูงานคลินิกทันตกรรม"
+                        >
+
+                    </div>
+
+                    <p>
+                        ศึกษาดูงาน
+                        ณ คลินิกทันตกรรมเอสซี
+                    </p>
+
+                </div>
+
+
+                <!-- 05 -->
+
+                <div class="item">
+
+                    <div class="item-number">
+                        05
+                    </div>
+
+                    <div class="image">
+
+                        <img
+                            src="เกียรติบัตรแข่งสภา.jpg"
+                            alt="กิจกรรมสภานักเรียน"
+                        >
+
+                    </div>
+
+                    <p>
+                        รางวัลเหรียญทอง
+                        กิจกรรมสภานักเรียน
+                        งานศิลปหัตถกรรมนักเรียน ครั้งที่ 71
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>
+            Puttikan Ruekraisri
+        </span>
+
+        · Physical Therapy Portfolio
+
+    </footer>
+
 
 </div>
 
