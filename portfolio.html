@@ -13,14 +13,25 @@
 :root{
     --bg:#05051b;
     --bg2:#09092b;
+    --deep:#070722;
+
     --purple:#7b6ff0;
     --violet:#a78bfa;
     --blue:#4facfe;
     --cyan:#62d8ff;
+
     --white:#f8fbff;
-    --muted:#b9bbd8;
-    --glass:rgba(16,16,55,.58);
-    --border:rgba(137,126,255,.30);
+    --text:#e9eaff;
+    --muted:#aeb1d0;
+
+    --glass:rgba(15,15,52,.62);
+    --border:rgba(139,126,255,.28);
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.38),
+        0 0 35px rgba(123,111,240,.08);
+
+    --radius:28px;
 }
 
 *{
@@ -35,14 +46,15 @@ html{
 
 body{
     font-family:"Prompt","Kanit",sans-serif;
-    color:var(--white);
+    color:var(--text);
+    min-height:100vh;
     overflow-x:hidden;
 
     background:
-        radial-gradient(circle at 15% 15%,rgba(91,72,210,.18),transparent 28%),
-        radial-gradient(circle at 85% 20%,rgba(46,116,255,.14),transparent 28%),
-        radial-gradient(circle at 50% 100%,rgba(115,65,210,.16),transparent 35%),
-        linear-gradient(145deg,var(--bg),var(--bg2) 50%,#070720);
+        radial-gradient(circle at 15% 15%,rgba(95,72,220,.18),transparent 28%),
+        radial-gradient(circle at 85% 25%,rgba(52,123,255,.13),transparent 28%),
+        radial-gradient(circle at 50% 100%,rgba(130,70,220,.13),transparent 35%),
+        linear-gradient(145deg,#030313,#080824 48%,#05051b);
 }
 
 /* =========================================================
@@ -53,36 +65,36 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
+    z-index:-10;
     pointer-events:none;
-    z-index:-5;
 
     background-image:
-        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(120,180,255,.45) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(170,130,255,.4) 1px,transparent 1.5px);
+        radial-gradient(circle,rgba(255,255,255,.75) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(98,216,255,.45) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(167,139,250,.38) 1px,transparent 1.5px);
 
     background-size:
-        90px 90px,
-        150px 150px,
+        85px 85px,
+        145px 145px,
         210px 210px;
 
     background-position:
         10px 20px,
-        40px 80px,
-        90px 30px;
+        40px 70px,
+        100px 30px;
 
     opacity:.38;
 
-    animation:starDrift 35s linear infinite;
+    animation:starMove 35s linear infinite;
 }
 
-@keyframes starDrift{
+@keyframes starMove{
     from{
         transform:translateY(0);
     }
 
     to{
-        transform:translateY(-120px);
+        transform:translateY(-130px);
     }
 }
 
@@ -93,18 +105,21 @@ body::before{
 .shooting-star{
     position:fixed;
 
-    width:130px;
+    width:150px;
     height:2px;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #fff,
-        #62d8ff,
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #fff,
+            var(--cyan),
+            transparent
+        );
 
-    filter:drop-shadow(0 0 8px #62d8ff);
+    filter:
+        drop-shadow(0 0 7px var(--cyan))
+        drop-shadow(0 0 15px var(--blue));
 
     transform:rotate(-32deg);
 
@@ -112,25 +127,25 @@ body::before{
 
     pointer-events:none;
 
-    z-index:-1;
+    z-index:-2;
 }
 
-.shooting-star:nth-child(1){
-    top:18%;
-    left:-150px;
-    animation:shoot 8s linear infinite;
-}
-
-.shooting-star:nth-child(2){
-    top:42%;
-    left:-200px;
-    animation:shoot 11s linear infinite 4s;
-}
-
-.shooting-star:nth-child(3){
-    top:70%;
+.shooting-star:nth-of-type(1){
+    top:15%;
     left:-180px;
-    animation:shoot 13s linear infinite 7s;
+    animation:shoot 9s linear infinite;
+}
+
+.shooting-star:nth-of-type(2){
+    top:38%;
+    left:-200px;
+    animation:shoot 12s linear infinite 4s;
+}
+
+.shooting-star:nth-of-type(3){
+    top:67%;
+    left:-220px;
+    animation:shoot 14s linear infinite 8s;
 }
 
 @keyframes shoot{
@@ -144,7 +159,7 @@ body::before{
         opacity:.9;
     }
 
-    20%{
+    22%{
         transform:translate(120vw,420px) rotate(-32deg);
         opacity:0;
     }
@@ -155,7 +170,7 @@ body::before{
 }
 
 /* =========================================================
-   NAVBAR
+   NAVIGATION
 ========================================================= */
 
 nav{
@@ -168,42 +183,64 @@ nav{
 
     width:min(1100px,calc(100% - 28px));
 
-    padding:12px 16px;
+    z-index:1000;
 
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 
-    background:rgba(7,7,31,.70);
+    padding:10px 14px;
 
-    border:1px solid rgba(130,120,255,.28);
+    background:rgba(6,6,29,.72);
 
-    border-radius:22px;
+    border:1px solid rgba(139,126,255,.25);
+
+    border-radius:20px;
 
     backdrop-filter:blur(22px);
     -webkit-backdrop-filter:blur(22px);
 
     box-shadow:
-        0 15px 45px rgba(0,0,0,.35),
-        inset 0 1px rgba(255,255,255,.07);
+        0 15px 50px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.08);
+}
 
-    z-index:1000;
+nav::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:12%;
+    right:12%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:0 0 12px rgba(98,216,255,.35);
 }
 
 .logo{
     font-weight:700;
-
-    font-size:1.15rem;
-
+    font-size:1.05rem;
     letter-spacing:2px;
 
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #a78bfa,
-        #62d8ff,
-        #fff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            var(--violet),
+            var(--cyan),
+            #fff
+        );
 
     background-size:250% auto;
 
@@ -217,28 +254,25 @@ nav{
 
 .nav-links{
     display:flex;
-
     gap:5px;
-
     list-style:none;
 }
 
 .nav-links a{
     position:relative;
 
-    display:block;
-
-    color:#c9c9e5;
+    color:#b9bbd8;
 
     text-decoration:none;
 
-    padding:9px 13px;
+    font-size:13px;
+    font-weight:500;
+
+    padding:10px 14px;
 
     border-radius:13px;
 
-    font-size:.9rem;
-
-    transition:.35s ease;
+    transition:.35s cubic-bezier(.2,.8,.2,1);
 }
 
 .nav-links a::after{
@@ -246,37 +280,65 @@ nav{
 
     position:absolute;
 
-    left:18%;
-    right:18%;
-    bottom:5px;
+    left:20%;
+    right:20%;
+    bottom:4px;
 
     height:1px;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #62d8ff,
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
 
     transform:scaleX(0);
 
     transition:.35s ease;
 }
 
-.nav-links a:hover,
+.nav-links a:hover{
+    color:#fff;
+
+    background:rgba(123,111,240,.11);
+
+    text-shadow:
+        0 0 10px rgba(167,139,250,.75);
+
+    transform:translateY(-2px);
+}
+
+.nav-links a:hover::after{
+    transform:scaleX(1);
+}
+
 .nav-links a.active{
     color:#fff;
 
-    background:rgba(123,111,240,.13);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(91,73,205,.9),
+            rgba(54,137,235,.72)
+        );
+
+    box-shadow:
+        0 0 18px rgba(123,111,240,.32),
+        inset 0 1px rgba(255,255,255,.18);
 
     text-shadow:
-        0 0 12px rgba(170,150,255,.8);
+        0 0 9px rgba(255,255,255,.55);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after{
-    transform:scaleX(1);
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+    width:min(1100px,calc(100% - 30px));
+    margin:auto;
 }
 
 /* =========================================================
@@ -286,19 +348,15 @@ nav{
 .hero{
     min-height:100vh;
 
-    width:min(1180px,100%);
-
-    margin:auto;
-
     display:grid;
 
-    grid-template-columns:1.1fr .9fr;
+    grid-template-columns:1.05fr .95fr;
 
     align-items:center;
 
     gap:60px;
 
-    padding:150px 30px 90px;
+    padding:150px 0 90px;
 
     position:relative;
 }
@@ -308,25 +366,26 @@ nav{
 
     position:absolute;
 
-    width:520px;
-    height:520px;
+    width:650px;
+    height:650px;
 
-    left:-120px;
-    top:180px;
+    left:-280px;
+    top:150px;
 
-    background:radial-gradient(
-        circle,
-        rgba(111,83,255,.18),
-        transparent 68%
-    );
+    background:
+        radial-gradient(
+            circle,
+            rgba(104,75,235,.16),
+            transparent 68%
+        );
 
-    filter:blur(30px);
+    filter:blur(35px);
 
     pointer-events:none;
 }
 
 /* =========================================================
-   HERO TEXT
+   HERO CONTENT
 ========================================================= */
 
 .hero-content{
@@ -338,7 +397,6 @@ nav{
     display:inline-flex;
 
     align-items:center;
-
     gap:9px;
 
     padding:8px 15px;
@@ -372,11 +430,11 @@ nav{
 
     border-radius:50%;
 
-    background:#62d8ff;
+    background:var(--cyan);
 
     box-shadow:
-        0 0 8px #62d8ff,
-        0 0 18px #62d8ff;
+        0 0 8px var(--cyan),
+        0 0 18px var(--cyan);
 
     animation:dotPulse 1.8s ease-in-out infinite;
 }
@@ -395,32 +453,33 @@ nav{
 }
 
 /* =========================================================
-   NAME
+   HERO NAME
 ========================================================= */
 
-.name{
+.hero-name{
     position:relative;
 
-    display:inline-block;
+    font-family:"Kanit","Prompt",sans-serif;
 
-    font-size:clamp(3rem,7vw,6.2rem);
+    font-size:clamp(3.5rem,7vw,6.5rem);
 
-    line-height:1.08;
+    line-height:1.02;
 
     font-weight:700;
 
     letter-spacing:-2px;
 
-    background:linear-gradient(
-        105deg,
-        #ffffff 0%,
-        #d8d5ff 18%,
-        #a78bfa 38%,
-        #62d8ff 55%,
-        #ffffff 72%,
-        #a78bfa 90%,
-        #ffffff 100%
-    );
+    background:
+        linear-gradient(
+            105deg,
+            #ffffff 0%,
+            #d8d5ff 18%,
+            #a78bfa 38%,
+            #62d8ff 55%,
+            #ffffff 72%,
+            #a78bfa 90%,
+            #ffffff 100%
+        );
 
     background-size:300% auto;
 
@@ -436,26 +495,6 @@ nav{
     filter:
         drop-shadow(0 0 5px rgba(255,255,255,.25))
         drop-shadow(0 0 15px rgba(123,111,240,.35));
-}
-
-.name::before{
-    content:"";
-
-    position:absolute;
-
-    inset:-15px -30px;
-
-    background:radial-gradient(
-        ellipse,
-        rgba(123,111,240,.18),
-        transparent 65%
-    );
-
-    filter:blur(22px);
-
-    z-index:-1;
-
-    pointer-events:none;
 }
 
 @keyframes nameShine{
@@ -485,29 +524,22 @@ nav{
     }
 }
 
-.name:hover{
-    transform:translateY(-3px) scale(1.01);
-}
-
-/* =========================================================
-   ENGLISH NAME
-========================================================= */
-
 .english-name{
-    margin-top:10px;
+    margin-top:12px;
 
-    font-size:clamp(1rem,2vw,1.45rem);
+    font-size:clamp(1rem,2vw,1.4rem);
 
-    letter-spacing:7px;
+    letter-spacing:6px;
 
-    background:linear-gradient(
-        90deg,
-        #7779b7,
-        #ffffff,
-        #62d8ff,
-        #a78bfa,
-        #7779b7
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #7779b7,
+            #ffffff,
+            var(--cyan),
+            var(--violet),
+            #7779b7
+        );
 
     background-size:250% auto;
 
@@ -519,9 +551,16 @@ nav{
     animation:textShine 5s linear infinite;
 }
 
-/* =========================================================
-   DESCRIPTION
-========================================================= */
+@keyframes textShine{
+
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:250% center;
+    }
+}
 
 .hero-description{
     max-width:650px;
@@ -530,7 +569,7 @@ nav{
 
     color:#bfc2df;
 
-    font-size:1.05rem;
+    font-size:1.02rem;
 
     line-height:1.9;
 }
@@ -549,9 +588,7 @@ nav{
 
 .tags{
     display:flex;
-
     flex-wrap:wrap;
-
     gap:10px;
 
     margin-top:28px;
@@ -585,12 +622,11 @@ nav{
 }
 
 /* =========================================================
-   BUTTON
+   BUTTONS
 ========================================================= */
 
 .hero-buttons{
     display:flex;
-
     flex-wrap:wrap;
 
     gap:13px;
@@ -602,7 +638,6 @@ nav{
     display:inline-flex;
 
     align-items:center;
-
     justify-content:center;
 
     min-width:150px;
@@ -614,7 +649,6 @@ nav{
     text-decoration:none;
 
     font-size:.9rem;
-
     font-weight:500;
 
     transition:.35s ease;
@@ -623,12 +657,13 @@ nav{
 .btn-primary{
     color:white;
 
-    background:linear-gradient(
-        110deg,
-        #584bd1,
-        #7b6ff0,
-        #4facfe
-    );
+    background:
+        linear-gradient(
+            110deg,
+            #584bd1,
+            #7b6ff0,
+            #4facfe
+        );
 
     box-shadow:
         0 0 15px rgba(123,111,240,.35),
@@ -651,14 +686,8 @@ nav{
         0 15px 35px rgba(0,0,0,.25);
 }
 
-.btn-secondary:hover{
-    border-color:rgba(98,216,255,.6);
-
-    color:white;
-}
-
 /* =========================================================
-   PHOTO
+   PHOTO ORBIT
 ========================================================= */
 
 .hero-visual{
@@ -679,7 +708,6 @@ nav{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 }
 
@@ -724,12 +752,13 @@ nav{
 
     border-radius:35px;
 
-    background:linear-gradient(
-        145deg,
-        rgba(167,139,250,.55),
-        rgba(79,172,254,.25),
-        rgba(255,255,255,.06)
-    );
+    background:
+        linear-gradient(
+            145deg,
+            rgba(167,139,250,.55),
+            rgba(79,172,254,.25),
+            rgba(255,255,255,.06)
+        );
 
     box-shadow:
         0 0 25px rgba(123,111,240,.30),
@@ -741,6 +770,43 @@ nav{
     transition:.6s ease;
 
     overflow:hidden;
+}
+
+.photo-card::after{
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-100%;
+
+    width:55%;
+    height:160%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.3),
+            transparent
+        );
+
+    transform:rotate(15deg);
+
+    animation:photoShine 6s ease-in-out infinite;
+
+    z-index:3;
+}
+
+@keyframes photoShine{
+
+    0%,55%{
+        left:-100%;
+    }
+
+    75%,100%{
+        left:150%;
+    }
 }
 
 .photo-card:hover{
@@ -783,7 +849,7 @@ nav{
 
     box-shadow:
         0 0 7px white,
-        0 0 18px #62d8ff,
+        0 0 18px var(--cyan),
         0 0 35px rgba(98,216,255,.7);
 
     animation:starPulse 2.5s ease-in-out infinite;
@@ -842,7 +908,7 @@ nav{
 ========================================================= */
 
 .section{
-    width:min(1100px,calc(100% - 30px));
+    width:min(1100px,100%);
 
     margin:0 auto;
 
@@ -860,7 +926,7 @@ nav{
 .section-number{
     display:block;
 
-    color:#62d8ff;
+    color:var(--cyan);
 
     font-size:.72rem;
 
@@ -873,15 +939,18 @@ nav{
 .section-title h2{
     margin-top:7px;
 
+    font-family:"Kanit","Prompt",sans-serif;
+
     font-size:clamp(2rem,5vw,3.5rem);
 
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #a78bfa,
-        #62d8ff,
-        #fff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            var(--violet),
+            var(--cyan),
+            #fff
+        );
 
     background-size:220% auto;
 
@@ -900,13 +969,14 @@ nav{
 
     margin:15px auto 0;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #7b6ff0,
-        #62d8ff,
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--purple),
+            var(--cyan),
+            transparent
+        );
 
     box-shadow:
         0 0 10px rgba(98,216,255,.45);
@@ -925,11 +995,12 @@ nav{
 
     border-radius:30px;
 
-    background:linear-gradient(
-        145deg,
-        rgba(27,27,78,.67),
-        rgba(10,10,40,.58)
-    );
+    background:
+        linear-gradient(
+            145deg,
+            rgba(27,27,78,.67),
+            rgba(10,10,40,.58)
+        );
 
     border:1px solid var(--border);
 
@@ -954,13 +1025,14 @@ nav{
 
     height:1px;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.5),
-        rgba(98,216,255,.5),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            rgba(98,216,255,.5),
+            transparent
+        );
 }
 
 .glass-card:hover{
@@ -975,7 +1047,7 @@ nav{
    PARTICLES
 ========================================================= */
 
-.glass-card .particle{
+.particle{
     position:absolute;
 
     width:3px;
@@ -986,7 +1058,7 @@ nav{
     background:#fff;
 
     box-shadow:
-        0 0 6px #62d8ff;
+        0 0 6px var(--cyan);
 
     opacity:.35;
 
@@ -1068,6 +1140,9 @@ nav{
     background:rgba(123,111,240,.07);
 
     border-color:rgba(98,216,255,.35);
+
+    box-shadow:
+        0 0 25px rgba(98,216,255,.08);
 }
 
 .info-label{
@@ -1087,6 +1162,80 @@ nav{
     color:#fff;
 
     font-size:1rem;
+
+    line-height:1.6;
+}
+
+/* =========================================================
+   QUESTIONS
+========================================================= */
+
+.question-card{
+    margin-top:25px;
+}
+
+.question{
+    margin-bottom:24px;
+}
+
+.question:last-child{
+    margin-bottom:0;
+}
+
+.question label{
+    display:block;
+
+    color:var(--violet);
+
+    font-weight:600;
+
+    margin-bottom:9px;
+
+    font-size:15px;
+
+    text-shadow:
+        0 0 9px rgba(167,139,250,.35);
+}
+
+.question textarea{
+    width:100%;
+
+    padding:17px 18px;
+
+    color:#e9eaff;
+
+    border:1px solid rgba(139,126,255,.18);
+
+    border-radius:15px;
+
+    background:rgba(5,5,25,.45);
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    outline:none;
+
+    resize:vertical;
+
+    transition:.35s ease;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.03);
+
+    min-height:120px;
+}
+
+.question textarea:focus{
+    border-color:rgba(98,216,255,.55);
+
+    background:rgba(11,11,43,.72);
+
+    box-shadow:
+        0 0 0 3px rgba(98,216,255,.06),
+        0 0 25px rgba(98,216,255,.08);
 }
 
 /* =========================================================
@@ -1094,10 +1243,6 @@ nav{
 ========================================================= */
 
 .sop-card{
-    position:relative;
-
-    overflow:hidden;
-
     padding:65px 45px;
 
     background:
@@ -1107,8 +1252,6 @@ nav{
             transparent 58%
         ),
         rgba(12,12,46,.68);
-
-    border:1px solid rgba(123,111,240,.35);
 }
 
 .sop{
@@ -1128,14 +1271,15 @@ nav{
 
     letter-spacing:10px;
 
-    background:linear-gradient(
-        100deg,
-        #ffffff,
-        #a78bfa,
-        #62d8ff,
-        #ffffff,
-        #a78bfa
-    );
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff,
+            var(--violet),
+            var(--cyan),
+            #ffffff,
+            var(--violet)
+        );
 
     background-size:300% auto;
 
@@ -1144,7 +1288,18 @@ nav{
 
     color:transparent;
 
-    animation:textShine 5s linear infinite;
+    animation:
+        textShine 5s linear infinite,
+        sopPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes sopPulse{
+
+    50%{
+        filter:
+            drop-shadow(0 0 18px rgba(123,111,240,.65))
+            drop-shadow(0 0 45px rgba(98,216,255,.2));
+    }
 }
 
 .sop-subtitle{
@@ -1162,10 +1317,6 @@ nav{
 
     letter-spacing:2px;
 }
-
-/* =========================================================
-   SOP - กล่องข้อความเดียว
-========================================================= */
 
 .sop-content{
     position:relative;
@@ -1200,13 +1351,14 @@ nav{
 
     font-weight:600;
 
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #a78bfa,
-        #62d8ff,
-        #fff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            var(--violet),
+            var(--cyan),
+            #fff
+        );
 
     background-size:220% auto;
 
@@ -1221,8 +1373,6 @@ nav{
 .sop-content p{
     margin:0 0 20px;
 
-    padding:0;
-
     color:#c7c9df;
 
     font-family:"Prompt","Kanit",sans-serif;
@@ -1234,10 +1384,6 @@ nav{
     text-align:justify;
 
     text-indent:2em;
-
-    background:none;
-
-    border:none;
 
     transition:.3s ease;
 }
@@ -1271,13 +1417,14 @@ nav{
 .goal-card h3{
     font-size:clamp(1.8rem,4vw,3rem);
 
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #a78bfa,
-        #62d8ff,
-        #fff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            var(--violet),
+            var(--cyan),
+            #fff
+        );
 
     background-size:220% auto;
 
@@ -1318,7 +1465,7 @@ footer{
 }
 
 footer span{
-    color:#a78bfa;
+    color:var(--violet);
 
     text-shadow:
         0 0 8px rgba(167,139,250,.45);
@@ -1333,7 +1480,9 @@ footer span{
 
     transform:translateY(25px);
 
-    animation:reveal .9s cubic-bezier(.2,.8,.2,1) forwards;
+    animation:
+        reveal .9s cubic-bezier(.2,.8,.2,1)
+        forwards;
 }
 
 @keyframes reveal{
@@ -1351,7 +1500,7 @@ footer span{
 @media(max-width:850px){
 
     nav{
-        padding:10px;
+        padding:9px;
     }
 
     .logo{
@@ -1367,7 +1516,7 @@ footer span{
     }
 
     .nav-links a{
-        font-size:.78rem;
+        font-size:11px;
 
         padding:8px 9px;
     }
@@ -1411,17 +1560,12 @@ footer span{
     .sop-card{
         padding:55px 25px;
     }
-
 }
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:520px){
 
     nav{
-        top:10px;
+        top:9px;
 
         border-radius:17px;
     }
@@ -1433,15 +1577,19 @@ footer span{
     .nav-links a{
         padding:7px 6px;
 
-        font-size:.69rem;
+        font-size:9px;
+    }
+
+    main{
+        width:calc(100% - 20px);
     }
 
     .hero{
-        padding-left:18px;
-        padding-right:18px;
+        padding-left:8px;
+        padding-right:8px;
     }
 
-    .name{
+    .hero-name{
         font-size:clamp(2.6rem,12vw,4.2rem);
     }
 
@@ -1454,9 +1602,19 @@ footer span{
     }
 
     .section{
-        width:min(100% - 22px,1100px);
+        width:100%;
 
         padding:65px 0;
+    }
+
+    .glass-card{
+        border-radius:23px;
+    }
+
+    .question textarea{
+        font-size:14px;
+
+        line-height:1.75;
     }
 
     .sop-card{
@@ -1516,14 +1674,12 @@ footer span{
 
         transition-duration:.01ms !important;
     }
-
 }
 
 </style>
 </head>
 
 <body>
-
 
 <!-- =======================================================
      SHOOTING STARS
@@ -1581,6 +1737,8 @@ footer span{
 </nav>
 
 
+<main>
+
 <!-- =======================================================
      HERO
 ======================================================= -->
@@ -1593,7 +1751,7 @@ footer span{
             PHYSICAL THERAPY PORTFOLIO
         </div>
 
-        <h1 class="name">
+        <h1 class="hero-name">
             นายพุฒิกันย์<br>
             ฤๅไกรศรี
         </h1>
@@ -1616,7 +1774,6 @@ footer span{
 
         </p>
 
-
         <div class="tags">
 
             <span class="tag">
@@ -1637,7 +1794,6 @@ footer span{
 
         </div>
 
-
         <div class="hero-buttons">
 
             <a href="#profile" class="btn btn-primary">
@@ -1653,10 +1809,6 @@ footer span{
     </div>
 
 
-    <!-- ===================================================
-         PHOTO
-    =================================================== -->
-
     <div class="hero-visual reveal">
 
         <div class="photo-orbit">
@@ -1665,7 +1817,6 @@ footer span{
             <span class="orbit-star"></span>
             <span class="orbit-star"></span>
             <span class="orbit-star"></span>
-
 
             <div class="photo-card">
 
@@ -1716,9 +1867,7 @@ footer span{
 
         <div class="profile-grid">
 
-
             <div class="info-box">
-
                 <div class="info-label">
                     NAME
                 </div>
@@ -1726,25 +1875,32 @@ footer span{
                 <div class="info-value">
                     นายพุฒิกันย์ ฤๅไกรศรี
                 </div>
-
             </div>
 
 
             <div class="info-box">
-
                 <div class="info-label">
-                    ENGLISH NAME
+                    NICKNAME
                 </div>
 
                 <div class="info-value">
-                    Puttikan Ruekraisri
+                    ใบภู
                 </div>
-
             </div>
 
 
             <div class="info-box">
+                <div class="info-label">
+                    BIRTHDAY
+                </div>
 
+                <div class="info-value">
+                    วันพุธที่ 3 กันยายน พ.ศ. 2551
+                </div>
+            </div>
+
+
+            <div class="info-box">
                 <div class="info-label">
                     SCHOOL
                 </div>
@@ -1752,12 +1908,10 @@ footer span{
                 <div class="info-value">
                     โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
                 </div>
-
             </div>
 
 
             <div class="info-box">
-
                 <div class="info-label">
                     LEVEL
                 </div>
@@ -1765,12 +1919,10 @@ footer span{
                 <div class="info-value">
                     มัธยมศึกษาปีที่ 6/2
                 </div>
-
             </div>
 
 
             <div class="info-box">
-
                 <div class="info-label">
                     PROGRAM
                 </div>
@@ -1778,22 +1930,130 @@ footer span{
                 <div class="info-value">
                     Gifted
                 </div>
-
             </div>
 
 
             <div class="info-box">
-
                 <div class="info-label">
-                    MOTTO
+                    INTEREST
                 </div>
 
                 <div class="info-value">
-                    ทำสิ่งที่จะไม่เสียใจภายหลัง
+                    การออกกำลังกาย ร่างกายมนุษย์
+                    และการทำงานของระบบต่าง ๆ ในร่างกาย
                 </div>
-
             </div>
 
+
+            <div class="info-box">
+                <div class="info-label">
+                    GOAL
+                </div>
+
+                <div class="info-value">
+                    ศึกษาต่อด้านกายภาพบำบัด
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     QUESTIONS
+======================================================= -->
+
+<section class="section">
+
+    <div class="section-title reveal">
+
+        <span class="section-number">
+            02 / ABOUT ME
+        </span>
+
+        <h2>
+            คำถามเกี่ยวกับตัวฉัน
+        </h2>
+
+        <div class="section-divider"></div>
+
+    </div>
+
+
+    <div class="glass-card question-card reveal">
+
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+
+
+        <div class="question">
+
+            <label>
+                ฉันเป็นคนอย่างไร?
+            </label>
+
+            <textarea readonly>ผมเป็นคนที่มีความคิดแน่วแน่และมีความรับผิดชอบต่อสิ่งที่ได้รับมอบหมาย เมื่อได้รับหน้าที่แล้วผมมักจะตั้งใจทำให้เสร็จอย่างเต็มที่และไม่ชอบปล่อยงานค้างไว้โดยไม่จำเป็น ผมเป็นคนที่ชอบเรียนรู้และลองทำสิ่งใหม่ ๆ ที่ตัวเองสนใจอยู่เสมอ เพราะผมเชื่อว่าประสบการณ์ใหม่ ๆ สามารถช่วยให้เราได้ค้นพบความสามารถและมุมมองที่หลากหลายมากขึ้น นอกจากนี้ผมยังชอบพบเจอผู้คนใหม่ ๆ และเรียนรู้จากสังคมใหม่ ๆ ที่ดี เพราะการได้พูดคุยและแลกเปลี่ยนความคิดเห็นกับผู้อื่นช่วยให้ผมเข้าใจคนรอบข้างมากขึ้นและสามารถนำประสบการณ์เหล่านั้นมาพัฒนาตัวเองได้</textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                จุดเด่นของฉันคืออะไร?
+            </label>
+
+            <textarea readonly>จุดเด่นของผมคือการเป็นคนที่มีความยุติธรรมและซื่อตรงอย่างแน่วแน่ ผมเป็นคนตรงไปตรงมาและให้ความสำคัญกับความถูกต้องของสิ่งต่าง ๆ หากพบเห็นสิ่งที่ไม่ถูกต้อง ผมไม่สามารถนิ่งเฉยได้และจะพยายามแสดงความคิดเห็นหรือช่วยแก้ไขปัญหาอย่างเหมาะสม ผมเชื่อว่าความซื่อสัตย์และความรับผิดชอบเป็นพื้นฐานสำคัญในการอยู่ร่วมกับผู้อื่น และเป็นสิ่งที่ผมพยายามยึดถือในการเรียน การทำงาน และการใช้ชีวิตประจำวัน</textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                งานอดิเรกของฉันคืออะไร?
+            </label>
+
+            <textarea readonly>งานอดิเรกของผมคือการออกกำลังกายประเภทคาร์ดิโอ เพราะเป็นกิจกรรมที่ช่วยให้ผมได้ดูแลสุขภาพและฝึกความสม่ำเสมอของตัวเอง นอกจากการออกกำลังกายแล้ว ผมยังชอบหาความรู้เพิ่มเติมเกี่ยวกับการทำงานของร่างกายและสิ่งต่าง ๆ รอบตัว โดยเฉพาะเรื่องที่เกี่ยวข้องกับการเคลื่อนไหวของมนุษย์ เช่น เมื่อเราขยับนิ้ว กล้ามเนื้อส่วนใดทำงานบ้าง กล้ามเนื้อแต่ละส่วนมีชื่อเรียกว่าอะไร และแต่ละส่วนมีหน้าที่อย่างไร ความสนใจเหล่านี้ทำให้ผมสนุกกับการเรียนรู้และอยากเข้าใจการทำงานของร่างกายให้มากขึ้น</textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                ความสามารถพิเศษ
+            </label>
+
+            <textarea readonly>ความสามารถพิเศษของผมคือสามารถสื่อสารภาษาอังกฤษได้อย่างคล่องแคล่ว สามารถพูดและสื่อสารกับผู้อื่นด้วยภาษาอังกฤษได้อย่างมั่นใจ และสามารถเลือกใช้ภาษาให้เหมาะสมกับสถานการณ์ต่าง ๆ ได้ นอกจากนี้ผมยังสามารถปรับตัวเข้ากับสังคมและผู้คนใหม่ ๆ ได้ดี ไม่ว่าจะเป็นการทำงานร่วมกับผู้อื่นหรือการพบเจอสภาพแวดล้อมที่ไม่คุ้นเคย ผมพร้อมเรียนรู้สิ่งใหม่ ๆ อยู่เสมอและพยายามนำสิ่งที่ได้เรียนรู้มาปรับใช้กับตัวเองอย่างเหมาะสม เพื่อพัฒนาทั้งทักษะและประสบการณ์ของตัวเองให้ดีขึ้น</textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                ทำไมถึงสนใจกายภาพบำบัด?
+            </label>
+
+            <textarea readonly>ผมสนใจคณะกายภาพบำบัด เพราะผมมีความสนใจเกี่ยวกับร่างกายมนุษย์ โดยเฉพาะกล้ามเนื้อ กระดูก และการทำงานของระบบต่าง ๆ ในร่างกาย อีกทั้งผมเคยมีประสบการณ์จากการได้เห็นคนใกล้ตัวเข้ารับการกายภาพบำบัด ทำให้ผมเห็นว่าการกายภาพบำบัดมีส่วนสำคัญในการช่วยให้ผู้ป่วยกลับมาเคลื่อนไหวและใช้ชีวิตประจำวันได้ดีขึ้น ประสบการณ์ดังกล่าวทำให้ผมอยากทำความเข้าใจเกี่ยวกับการฟื้นฟูร่างกายอย่างจริงจัง และอยากนำความรู้ที่ได้ไปใช้ในการช่วยเหลือและดูแลผู้ป่วยในอนาคต</textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                คติประจำใจ
+            </label>
+
+            <textarea readonly>จงทำสิ่งที่จะไม่เสียใจในภายหลัง ผมเชื่อว่าทุกโอกาสที่เข้ามาในชีวิตมีคุณค่า และเราไม่สามารถย้อนกลับไปแก้ไขสิ่งที่เกิดขึ้นแล้วได้ ดังนั้นผมจึงพยายามตัดสินใจและลงมือทำในสิ่งที่ตั้งใจอย่างเต็มที่ แม้บางครั้งผลลัพธ์อาจไม่เป็นอย่างที่หวัง แต่ผมคิดว่าการได้ลงมือทำและเรียนรู้จากประสบการณ์ย่อมดีกว่าการปล่อยให้โอกาสผ่านไปเพราะความกลัวหรือความลังเล เพราะอย่างน้อยเมื่อมองย้อนกลับมา ผมจะสามารถบอกกับตัวเองได้ว่าผมได้พยายามอย่างเต็มที่แล้ว และจะไม่เสียใจกับสิ่งที่ไม่ได้ทำ คตินี้จึงเป็นสิ่งที่เตือนให้ผมกล้าที่จะก้าวออกจากพื้นที่เดิม ๆ เปิดรับโอกาสใหม่ ๆ และรับผิดชอบต่อการตัดสินใจของตัวเองอยู่เสมอ</textarea>
 
         </div>
 
@@ -1811,7 +2071,7 @@ footer span{
     <div class="section-title reveal">
 
         <span class="section-number">
-            02 / STATEMENT OF PURPOSE
+            03 / STATEMENT OF PURPOSE
         </span>
 
         <h2>
@@ -1836,15 +2096,10 @@ footer span{
             SOP
         </div>
 
-
         <div class="sop-subtitle">
             STATEMENT OF PURPOSE
         </div>
 
-
-        <!-- =================================================
-             SOP TEXT : กล่องเดียวทั้งหมด
-        ================================================= -->
 
         <div class="sop-content">
 
@@ -1882,7 +2137,6 @@ footer span{
                 สำหรับผม กายภาพบำบัดจึงไม่ใช่เพียงคณะที่อยากเข้า แต่เป็นเส้นทางที่ผมอยากใช้เพื่อพัฒนาตัวเองและนำความสามารถของตัวเองไปสร้างประโยชน์ให้กับผู้อื่นในอนาคต
             </p>
 
-
         </div>
 
     </div>
@@ -1899,7 +2153,7 @@ footer span{
     <div class="section-title reveal">
 
         <span class="section-number">
-            03 / MY GOAL
+            04 / MY GOAL
         </span>
 
         <h2>
@@ -1935,6 +2189,9 @@ footer span{
     </div>
 
 </section>
+
+
+</main>
 
 
 <!-- =======================================================
