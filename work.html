@@ -6,26 +6,17 @@
 
 <title>ผลงานและกิจกรรม | Puttikan Ruekraisri</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
 
 :root{
-
     --bg:#030414;
     --bg2:#080a25;
     --bg3:#0b0d35;
 
     --purple:#8b7cff;
     --violet:#b69cff;
-
     --blue:#4facfe;
     --cyan:#63e6ff;
 
@@ -34,19 +25,8 @@
     --muted:#aeb5d6;
 
     --glass:rgba(12,15,48,.64);
-
     --border:rgba(139,126,255,.25);
-
-    --glow:
-        0 0 20px rgba(123,111,240,.22),
-        0 0 60px rgba(79,172,254,.08);
-
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     margin:0;
@@ -59,1787 +39,760 @@ html{
 }
 
 body{
-
-    min-height:100vh;
-
-    font-family:
-        "Prompt",
-        "Kanit",
-        sans-serif;
-
-    color:var(--text);
-
-    overflow-x:hidden;
-
+    font-family:'Prompt',sans-serif;
     background:
-
-        radial-gradient(
-            circle at 10% 15%,
-            rgba(92,73,255,.18),
-            transparent 27%
-        ),
-
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(0,174,255,.13),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 50% 90%,
-            rgba(126,58,255,.16),
-            transparent 32%
-        ),
-
-        linear-gradient(
-            145deg,
-            #02030e,
-            #070922 45%,
-            #030416
-        );
-
+        radial-gradient(circle at 20% 20%,rgba(79,172,254,.08),transparent 35%),
+        radial-gradient(circle at 80% 80%,rgba(139,124,255,.10),transparent 35%),
+        linear-gradient(135deg,var(--bg),var(--bg2),var(--bg3));
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
-
-/* =========================================================
-   ANIMATED BACKGROUND
-========================================================= */
-
-.background{
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:-20;
-}
-
-
-/* large moving glow */
-
-.orb{
-
-    position:absolute;
-
-    border-radius:50%;
-
-    filter:blur(70px);
-
-    opacity:.35;
-
-}
-
-.orb.one{
-
-    width:420px;
-    height:420px;
-
-    left:-150px;
-    top:15%;
-
-    background:#563cff;
-
-    animation:
-        orbMove1 14s ease-in-out infinite alternate;
-
-}
-
-.orb.two{
-
-    width:360px;
-    height:360px;
-
-    right:-120px;
-    top:42%;
-
-    background:#008cff;
-
-    animation:
-        orbMove2 17s ease-in-out infinite alternate;
-
-}
-
-.orb.three{
-
-    width:300px;
-    height:300px;
-
-    left:35%;
-    bottom:-160px;
-
-    background:#9c43ff;
-
-    animation:
-        orbMove3 12s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes orbMove1{
-
-    from{
-        transform:translate(0,0) scale(1);
-    }
-
-    to{
-        transform:translate(180px,100px) scale(1.25);
-    }
-
-}
-
-@keyframes orbMove2{
-
-    from{
-        transform:translate(0,0) scale(1);
-    }
-
-    to{
-        transform:translate(-150px,-100px) scale(1.2);
-    }
-
-}
-
-@keyframes orbMove3{
-
-    from{
-        transform:translate(0,0);
-    }
-
-    to{
-        transform:translate(120px,-80px) scale(1.2);
-    }
-
-}
-
-
-/* =========================================================
-   STAR FIELD
-========================================================= */
+/* =========================
+   BACKGROUND
+========================= */
 
 .stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    overflow:hidden;
+}
 
+.star{
     position:absolute;
-
-    inset:-100px;
-
-    background-image:
-
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.85) 1px,
-            transparent 1.5px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(99,230,255,.65) 1px,
-            transparent 1.5px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(182,156,255,.55) 1px,
-            transparent 1.5px
-        );
-
-    background-size:
-        80px 80px,
-        145px 145px,
-        220px 220px;
-
-    background-position:
-        20px 30px,
-        80px 60px,
-        10px 100px;
-
-    opacity:.3;
-
-    animation:
-        starsMove 35s linear infinite;
-
-}
-
-
-@keyframes starsMove{
-
-    from{
-        transform:translateY(0);
-    }
-
-    to{
-        transform:translateY(-180px);
-    }
-
-}
-
-
-/* =========================================================
-   PARTICLES
-========================================================= */
-
-.particle{
-
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    box-shadow:
-        0 0 8px #fff,
-        0 0 16px var(--cyan);
-
-    opacity:.5;
-
-    animation:
-        floatParticle linear infinite;
-
-}
-
-
-@keyframes floatParticle{
-
-    0%{
-        transform:
-            translateY(110vh)
-            translateX(0)
-            scale(.5);
-
-        opacity:0;
-    }
-
-    15%{
-        opacity:.8;
-    }
-
-    85%{
-        opacity:.6;
-    }
-
-    100%{
-        transform:
-            translateY(-15vh)
-            translateX(80px)
-            scale(1.2);
-
-        opacity:0;
-    }
-
-}
-
-
-/* =========================================================
-   SHOOTING STARS
-========================================================= */
-
-.shooting{
-
-    position:absolute;
-
-    width:180px;
+    width:2px;
     height:2px;
+    background:#fff;
+    border-radius:50%;
+    opacity:.5;
+    animation:twinkle 3s infinite ease-in-out;
+}
 
-    border-radius:100px;
+@keyframes twinkle{
+    0%,100%{opacity:.15;transform:scale(.8)}
+    50%{opacity:1;transform:scale(1.5)}
+}
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #fff,
-            var(--cyan),
-            transparent
-        );
+.orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    pointer-events:none;
+    z-index:0;
+    opacity:.25;
+}
 
-    box-shadow:
-        0 0 8px var(--cyan),
-        0 0 20px var(--blue);
+.orb1{
+    width:350px;
+    height:350px;
+    background:#604cff;
+    top:5%;
+    left:-120px;
+    animation:float1 12s ease-in-out infinite;
+}
 
-    transform:rotate(-30deg);
+.orb2{
+    width:300px;
+    height:300px;
+    background:#009dff;
+    bottom:5%;
+    right:-100px;
+    animation:float2 14s ease-in-out infinite;
+}
 
+.orb3{
+    width:250px;
+    height:250px;
+    background:#b56cff;
+    top:45%;
+    left:45%;
+    animation:float3 10s ease-in-out infinite;
+}
+
+@keyframes float1{
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(80px,50px)}
+}
+
+@keyframes float2{
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(-80px,-60px)}
+}
+
+@keyframes float3{
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(60px,-70px)}
+}
+
+/* Shooting Stars */
+
+.shooting-star{
+    position:fixed;
+    width:140px;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#fff,transparent);
+    transform:rotate(-35deg);
     opacity:0;
-
+    z-index:0;
+    animation:shoot 7s linear infinite;
 }
 
-
-.shooting.s1{
-
-    top:18%;
-    left:-200px;
-
-    animation:
-        shoot 8s linear infinite;
-
+.shooting-star:nth-child(1){
+    top:15%;
+    left:10%;
+    animation-delay:1s;
 }
 
-.shooting.s2{
-
-    top:48%;
-    left:-250px;
-
-    animation:
-        shoot 11s linear infinite 4s;
-
+.shooting-star:nth-child(2){
+    top:40%;
+    left:70%;
+    animation-delay:4s;
 }
 
-.shooting.s3{
-
-    top:76%;
-    left:-200px;
-
-    animation:
-        shoot 13s linear infinite 8s;
-
+.shooting-star:nth-child(3){
+    top:70%;
+    left:25%;
+    animation-delay:6s;
 }
-
 
 @keyframes shoot{
-
     0%{
-        transform:
-            translate(-100px,-20px)
-            rotate(-30deg);
-
+        transform:translate(0,0) rotate(-35deg);
         opacity:0;
     }
-
-    8%{
+    5%{
         opacity:1;
     }
-
-    23%{
-        transform:
-            translate(130vw,450px)
-            rotate(-30deg);
-
+    15%{
+        transform:translate(350px,220px) rotate(-35deg);
         opacity:0;
     }
-
     100%{
         opacity:0;
     }
-
 }
 
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* =========================
+   NAVBAR
+========================= */
 
 nav{
-
     position:fixed;
-
-    top:18px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:min(
-        1120px,
-        calc(100% - 28px)
-    );
-
-    z-index:9999;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:5px;
-
-    padding:9px;
-
-    border:
-
-        1px solid
-        rgba(151,139,255,.25);
-
-    border-radius:22px;
-
-    background:
-        rgba(4,6,25,.72);
-
-    backdrop-filter:
-        blur(24px)
-        saturate(150%);
-
-    -webkit-backdrop-filter:
-        blur(24px)
-        saturate(150%);
-
-    box-shadow:
-
-        0 20px 60px rgba(0,0,0,.4),
-
-        inset 0 1px
-        rgba(255,255,255,.1);
-
-}
-
-
-nav::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:-1px;
-
-    left:10%;
-    right:10%;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--purple),
-            var(--cyan),
-            var(--purple),
-            transparent
-        );
-
-    box-shadow:
-        0 0 15px var(--cyan);
-
-}
-
-
-nav a{
-
-    position:relative;
-
-    color:#aeb4d4;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:500;
-
-    padding:11px 17px;
-
-    border-radius:14px;
-
-    transition:
-        .35s cubic-bezier(.2,.8,.2,1);
-
-}
-
-
-nav a:hover{
-
-    color:white;
-
-    transform:translateY(-2px);
-
-    background:
-        rgba(120,105,255,.12);
-
-    text-shadow:
-        0 0 12px rgba(182,156,255,.9);
-
-}
-
-
-nav a.active{
-
-    color:white;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(104,82,235,.9),
-            rgba(42,142,240,.72)
-        );
-
-    box-shadow:
-
-        0 0 20px
-        rgba(107,92,255,.32),
-
-        inset 0 1px
-        rgba(255,255,255,.2);
-
-}
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-.page{
-
+    top:0;
+    left:0;
     width:100%;
-
-    min-height:100vh;
-
-    padding:
-        145px 16px 50px;
-
-}
-
-
-.container{
-
-    width:
-        min(
-            1120px,
-            100%
-        );
-
-    margin:auto;
-
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.header{
-
-    margin-bottom:45px;
-
-}
-
-
-.label{
-
+    height:78px;
     display:flex;
-
     align-items:center;
+    justify-content:center;
+    padding:0 30px;
+    background:rgba(3,4,20,.72);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(139,124,255,.16);
+    z-index:100;
+}
 
-    gap:12px;
+.nav-inner{
+    width:100%;
+    max-width:1250px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
+.logo{
+    font-family:'Kanit',sans-serif;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:#fff;
+}
+
+.logo span{
     color:var(--cyan);
-
-    font-size:12px;
-
-    font-weight:700;
-
-    letter-spacing:4px;
-
-    margin-bottom:12px;
-
-    text-shadow:
-        0 0 12px
-        rgba(99,230,255,.7);
-
 }
 
+.nav-links{
+    display:flex;
+    gap:8px;
+}
 
-.label::before{
+.nav-links a{
+    position:relative;
+    text-decoration:none;
+    color:#bfc5e6;
+    font-size:14px;
+    padding:10px 17px;
+    border-radius:12px;
+    transition:.3s;
+}
 
+.nav-links a:hover,
+.nav-links a.active{
+    color:#fff;
+    background:rgba(139,124,255,.12);
+}
+
+.nav-links a.active::after{
     content:"";
-
-    width:35px;
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan)
-        );
-
-    box-shadow:
-        0 0 10px var(--cyan);
-
+    position:absolute;
+    left:20%;
+    right:20%;
+    bottom:4px;
+    height:2px;
+    border-radius:20px;
+    background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));
+    box-shadow:0 0 12px var(--purple);
 }
 
+/* =========================
+   MAIN
+========================= */
 
-.title{
+main{
+    position:relative;
+    z-index:2;
+    max-width:1250px;
+    margin:auto;
+    padding:145px 25px 80px;
+}
 
-    font-family:
-        "Kanit",
-        sans-serif;
+.hero{
+    text-align:center;
+    margin-bottom:55px;
+}
 
-    font-size:
-        clamp(
-            42px,
-            7vw,
-            76px
-        );
+.hero-label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 16px;
+    border:1px solid rgba(99,230,255,.25);
+    background:rgba(99,230,255,.06);
+    border-radius:50px;
+    color:var(--cyan);
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
 
-    line-height:1;
+.hero-label::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 12px var(--cyan);
+    animation:pulse 2s infinite;
+}
 
+@keyframes pulse{
+    0%,100%{transform:scale(1);opacity:.7}
+    50%{transform:scale(1.5);opacity:1}
+}
+
+.hero h1{
+    font-family:'Kanit',sans-serif;
+    font-size:clamp(42px,6vw,76px);
+    line-height:1.05;
     font-weight:700;
-
-    letter-spacing:-2px;
-
-    background:
-
-        linear-gradient(
-            100deg,
-            #fff,
-            #d9d3ff,
-            #a88cff,
-            #62e6ff,
-            #fff,
-            #b49aff
-        );
-
-    background-size:300% auto;
-
+    background:linear-gradient(90deg,#fff,#b8c2ff,#63e6ff,#fff);
+    background-size:300%;
     -webkit-background-clip:text;
-
-    background-clip:text;
-
-    color:transparent;
-
-    animation:
-        titleShine 6s linear infinite;
-
-    filter:
-        drop-shadow(
-            0 0 22px
-            rgba(117,99,255,.35)
-        );
-
+    -webkit-text-fill-color:transparent;
+    animation:titleGlow 7s ease infinite;
 }
 
-
-@keyframes titleShine{
-
-    0%{
-        background-position:0% center;
-    }
-
-    100%{
-        background-position:300% center;
-    }
-
+@keyframes titleGlow{
+    0%{background-position:0%}
+    50%{background-position:100%}
+    100%{background-position:0%}
 }
 
-
-.subtitle{
-
-    margin-top:18px;
-
-    color:#9ea7cb;
-
-    font-size:15px;
-
-    max-width:700px;
-
-    line-height:1.8;
-
+.hero p{
+    max-width:720px;
+    margin:20px auto 0;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.9;
 }
 
-
-/* =========================================================
-   MAIN GLASS
-========================================================= */
+/* =========================
+   CONTENT
+========================= */
 
 .content{
-
     position:relative;
-
     padding:28px;
-
-    border-radius:32px;
-
-    border:
-        1px solid
-        rgba(145,130,255,.24);
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(20,22,65,.68),
-            rgba(5,7,30,.62)
-        );
-
-    backdrop-filter:
-        blur(24px)
-        saturate(130%);
-
-    -webkit-backdrop-filter:
-        blur(24px)
-        saturate(130%);
-
+    border:1px solid var(--border);
+    border-radius:30px;
+    background:var(--glass);
+    backdrop-filter:blur(20px);
     box-shadow:
-
-        0 30px 90px
-        rgba(0,0,0,.4),
-
-        0 0 60px
-        rgba(111,90,255,.07),
-
-        inset 0 1px
-        rgba(255,255,255,.08);
-
-    overflow:hidden;
-
+        0 30px 80px rgba(0,0,0,.35),
+        inset 0 0 50px rgba(139,124,255,.025);
 }
-
 
 .content::before{
-
     content:"";
-
     position:absolute;
-
-    top:0;
-    left:5%;
-    right:5%;
-
-    height:1px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            #fff,
-            var(--cyan),
-            var(--purple),
-            #fff,
-            transparent
-        );
-
-    box-shadow:
-        0 0 18px var(--cyan);
-
-}
-
-
-.content::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:450px;
-    height:450px;
-
-    right:-260px;
-    top:-260px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(122,103,255,.15),
-            transparent 70%
-        );
-
+    inset:0;
+    border-radius:30px;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(99,230,255,.04),
+        transparent,
+        rgba(139,124,255,.05),
+        transparent
+    );
     pointer-events:none;
-
 }
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
 
 .gallery{
-
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:25px;
-
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
 }
 
-
-/* =========================================================
+/* =========================
    CARD
-========================================================= */
+========================= */
 
 .item{
-
     position:relative;
-
+    border-radius:25px;
     padding:2px;
-
-    border-radius:27px;
-
     overflow:hidden;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(139,126,255,.25),
-            rgba(99,230,255,.05),
-            rgba(139,126,255,.25)
-        );
-
-    transition:
-        transform .5s cubic-bezier(.2,.8,.2,1),
-        box-shadow .5s ease;
-
+    background:rgba(255,255,255,.03);
+    transform-style:preserve-3d;
+    transition:.4s ease;
 }
-
-
-/* moving border */
 
 .item::before{
-
     content:"";
-
     position:absolute;
-
-    width:160%;
-    height:160%;
-
-    left:-30%;
-    top:-30%;
-
-    background:
-
-        conic-gradient(
-            from 0deg,
-            transparent 0deg,
-            transparent 55deg,
-            rgba(99,230,255,.95) 80deg,
-            rgba(182,156,255,.9) 100deg,
-            transparent 125deg,
-            transparent 220deg,
-            rgba(99,230,255,.8) 260deg,
-            transparent 290deg
-        );
-
-    animation:
-        borderRotate 5s linear infinite;
-
-    z-index:0;
-
+    inset:-50%;
+    background:conic-gradient(
+        from 0deg,
+        transparent,
+        var(--purple),
+        var(--cyan),
+        transparent,
+        var(--blue),
+        transparent
+    );
+    animation:rotateBorder 7s linear infinite;
 }
-
-
-/* dark inner layer */
 
 .item::after{
-
     content:"";
-
     position:absolute;
-
     inset:2px;
-
-    border-radius:25px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(17,20,62,.97),
-            rgba(6,8,32,.97)
-        );
-
-    z-index:1;
-
+    border-radius:23px;
+    background:linear-gradient(
+        145deg,
+        rgba(9,12,40,.97),
+        rgba(8,10,30,.96)
+    );
+    z-index:0;
 }
 
-
-@keyframes borderRotate{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-
+@keyframes rotateBorder{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
 }
-
 
 .item:hover{
-
-    transform:
-        translateY(-10px)
-        scale(1.012);
-
+    transform:translateY(-8px);
     box-shadow:
-
-        0 25px 65px
-        rgba(0,0,0,.45),
-
-        0 0 35px
-        rgba(102,91,255,.16);
-
+        0 20px 50px rgba(79,172,254,.12),
+        0 0 30px rgba(139,124,255,.08);
 }
 
-
-.item:hover::before{
-
-    animation-duration:
-        2.2s;
-
-}
-
-
-/* =========================================================
-   CARD CONTENT
-========================================================= */
-
-.card-inner{
-
+.item-inner{
     position:relative;
-
     z-index:2;
-
-    padding:13px;
-
+    padding:22px;
 }
 
+/* =========================
+   IMAGE AREA
+========================= */
 
-/* =========================================================
-   NUMBER
-========================================================= */
+.image-pair{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:22px;
+}
+
+.media-box{
+    position:relative;
+    overflow:hidden;
+    border-radius:17px;
+    border:1px solid rgba(139,124,255,.3);
+    background:#050719;
+    box-shadow:
+        0 0 0 1px rgba(99,230,255,.04),
+        0 0 25px rgba(99,230,255,.05);
+    aspect-ratio:4 / 3;
+}
+
+.media-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,255,255,.12) 50%,
+        transparent 70%
+    );
+    transform:translateX(-120%);
+    animation:sweep 5s ease-in-out infinite;
+    z-index:2;
+    pointer-events:none;
+}
+
+@keyframes sweep{
+    0%,35%{
+        transform:translateX(-120%);
+    }
+    65%,100%{
+        transform:translateX(120%);
+    }
+}
+
+.media-box img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:.5s ease;
+}
+
+.media-box:hover img{
+    transform:scale(1.06);
+}
+
+.media-label{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    z-index:5;
+    padding:5px 10px;
+    border-radius:8px;
+    background:rgba(3,4,20,.82);
+    border:1px solid rgba(99,230,255,.25);
+    backdrop-filter:blur(10px);
+    color:#fff;
+    font-size:11px;
+    font-weight:500;
+}
+
+/* กรณีมีรูปเดียว */
+
+.single-image{
+    grid-template-columns:1fr;
+}
+
+/* =========================
+   TEXT
+========================= */
 
 .item-number{
-
-    position:absolute;
-
-    top:25px;
-    left:25px;
-
-    z-index:10;
-
-    width:42px;
-    height:42px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    color:#fff;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    letter-spacing:1px;
-
-    background:
-        rgba(5,7,29,.72);
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-
-        0 0 18px
-        rgba(100,88,255,.25),
-
-        inset 0 1px
-        rgba(255,255,255,.12);
-
-}
-
-
-/* =========================================================
-   IMAGE FRAME
-========================================================= */
-
-.image-frame{
-
-    position:relative;
-
-    aspect-ratio:4 / 3;
-
-    padding:5px;
-
-    border-radius:21px;
-
-    overflow:hidden;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.12),
-            rgba(98,216,255,.05),
-            rgba(139,126,255,.14)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    box-shadow:
-
-        inset 0 0 25px
-        rgba(91,79,255,.12),
-
-        0 12px 30px
-        rgba(0,0,0,.25);
-
-}
-
-
-/* animated light sweep */
-
-.image-frame::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:-100%;
-    left:-45%;
-
-    width:35%;
-    height:300%;
-
-    transform:
-        rotate(22deg);
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.35),
-            rgba(99,230,255,.25),
-            transparent
-        );
-
-    z-index:5;
-
-    opacity:.7;
-
-    pointer-events:none;
-
-    animation:
-        imageSweep 5.5s ease-in-out infinite;
-
-}
-
-
-@keyframes imageSweep{
-
-    0%,55%{
-        left:-55%;
-    }
-
-    75%,100%{
-        left:135%;
-    }
-
-}
-
-
-/* corner glow */
-
-.image-frame::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:18px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    box-shadow:
-        inset 0 0 25px
-        rgba(83,128,255,.1);
-
-    pointer-events:none;
-
-    z-index:4;
-
-}
-
-
-.image{
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    border-radius:16px;
-
-    background:#05061d;
-
-}
-
-
-.image img{
-
-    width:100%;
-    height:100%;
-
-    display:block;
-
-    object-fit:cover;
-
-    object-position:center;
-
-    filter:
-        brightness(.91)
-        saturate(.9)
-        contrast(1.03);
-
-    transition:
-        transform .7s cubic-bezier(.2,.8,.2,1),
-        filter .7s ease;
-
-}
-
-
-.item:hover .image img{
-
-    transform:
-        scale(1.06);
-
-    filter:
-        brightness(1.04)
-        saturate(1.08)
-        contrast(1.03);
-
-}
-
-
-/* =========================================================
-   TEXT
-========================================================= */
-
-.item-content{
-
-    padding:
-        20px 8px 13px;
-
-}
-
-
-.item-title{
-
-    color:white;
-
-    font-family:
-        "Kanit",
-        sans-serif;
-
-    font-size:21px;
-
+    color:var(--cyan);
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:7px;
     font-weight:600;
-
-    line-height:1.4;
-
-    text-align:center;
-
-    text-shadow:
-        0 0 15px
-        rgba(164,148,255,.18);
-
 }
 
-
-.item-title::after{
-
-    content:"";
-
-    display:block;
-
-    width:45px;
-    height:2px;
-
-    margin:
-        12px auto 15px;
-
-    border-radius:100px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            var(--purple),
-            var(--cyan)
-        );
-
-    box-shadow:
-        0 0 12px
-        rgba(99,230,255,.5);
-
-    transition:.4s ease;
-
+.item h2{
+    font-family:'Kanit',sans-serif;
+    font-size:24px;
+    line-height:1.35;
+    margin-bottom:11px;
+    color:#fff;
 }
 
-
-.item:hover .item-title::after{
-
-    width:90px;
-
-}
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-.description{
-
-    color:#aeb7d9;
-
+.item p{
+    color:var(--muted);
     font-size:14px;
-
     line-height:1.85;
-
-    text-align:center;
-
-    padding:
-        0 8px;
-
 }
 
-
-.description strong{
-
-    color:#dce1ff;
-
-    font-weight:500;
-
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:17px;
 }
-
-
-/* =========================================================
-   SKILL TAG
-========================================================= */
 
 .tag{
-
-    display:flex;
-
-    justify-content:center;
-
-    margin-top:17px;
-
+    padding:6px 11px;
+    border-radius:8px;
+    font-size:10px;
+    letter-spacing:.7px;
+    color:#cbd1ff;
+    border:1px solid rgba(139,124,255,.22);
+    background:rgba(139,124,255,.07);
 }
 
-
-.tag span{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    padding:
-        6px 13px;
-
-    border-radius:100px;
-
-    font-size:11px;
-
-    color:#bfefff;
-
-    background:
-        rgba(76,190,255,.07);
-
-    border:
-        1px solid
-        rgba(99,230,255,.18);
-
-    box-shadow:
-        0 0 14px
-        rgba(99,230,255,.05);
-
-}
-
-
-.tag span::before{
-
-    content:"";
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:var(--cyan);
-
-    box-shadow:
-        0 0 8px var(--cyan);
-
-}
-
-
-/* =========================================================
-   LAST CARD
-========================================================= */
-
-.item:last-child{
-
-    grid-column:1 / -1;
-
-    width:58%;
-
-    margin:auto;
-
-}
-
-
-.item:last-child .image-frame{
-
-    aspect-ratio:16 / 9;
-
-}
-
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
-footer{
-
+.footer{
     text-align:center;
-
-    padding:
-        42px 15px 20px;
-
-    color:#747da8;
-
+    margin-top:45px;
+    color:#6f769b;
     font-size:12px;
-
-    letter-spacing:1px;
-
+    letter-spacing:.5px;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-.footer-line{
+@media(max-width:900px){
 
-    width:100px;
-    height:1px;
-
-    margin:
-        0 auto 16px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            var(--purple),
-            transparent
-        );
-
-    box-shadow:
-        0 0 12px var(--cyan);
-
-}
-
-
-footer span{
-
-    color:#b8a5ff;
-
-    text-shadow:
-        0 0 10px
-        rgba(182,156,255,.35);
-
-}
-
-
-/* =========================================================
-   RESPONSIVE TABLET
-========================================================= */
-
-@media(max-width:850px){
-
-    nav a{
-
-        font-size:11px;
-
-        padding:
-            10px 10px;
-
+    nav{
+        padding:0 15px;
     }
 
-    .content{
+    .logo{
+        display:none;
+    }
 
-        padding:20px;
+    .nav-inner{
+        justify-content:center;
+    }
 
+    .nav-links{
+        gap:2px;
+    }
+
+    .nav-links a{
+        padding:9px 10px;
+        font-size:12px;
+    }
+
+    main{
+        padding-top:125px;
     }
 
     .gallery{
-
         grid-template-columns:1fr;
-
     }
-
-    .item:last-child{
-
-        grid-column:auto;
-
-        width:100%;
-
-    }
-
 }
-
-
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
 
 @media(max-width:600px){
 
-    nav{
-
-        top:9px;
-
-        width:
-            calc(100% - 14px);
-
-        padding:5px;
-
-        border-radius:17px;
-
+    main{
+        padding:115px 13px 50px;
     }
 
-
-    nav a{
-
-        font-size:9px;
-
-        padding:
-            8px 6px;
-
-        border-radius:10px;
-
+    .hero{
+        margin-bottom:35px;
     }
 
-
-    .page{
-
-        padding:
-            110px 9px 35px;
-
+    .hero h1{
+        font-size:43px;
     }
 
-
-    .header{
-
-        margin-bottom:30px;
-
+    .hero p{
+        font-size:14px;
+        line-height:1.75;
     }
-
-
-    .label{
-
-        font-size:9px;
-
-        letter-spacing:3px;
-
-    }
-
-
-    .title{
-
-        font-size:
-            clamp(
-                38px,
-                11vw,
-                55px
-            );
-
-        letter-spacing:-1px;
-
-    }
-
-
-    .subtitle{
-
-        font-size:12px;
-
-        line-height:1.7;
-
-        margin-top:14px;
-
-    }
-
 
     .content{
-
-        padding:11px;
-
-        border-radius:24px;
-
-    }
-
-
-    .gallery{
-
-        gap:18px;
-
-    }
-
-
-    .item{
-
+        padding:14px;
         border-radius:22px;
-
     }
 
-
-    .card-inner{
-
-        padding:9px;
-
+    .item-inner{
+        padding:16px;
     }
 
-
-    .image-frame{
-
-        aspect-ratio:4 / 3;
-
-        padding:4px;
-
-        border-radius:17px;
-
+    .image-pair{
+        grid-template-columns:1fr;
+        gap:12px;
     }
 
-
-    .image{
-
-        border-radius:13px;
-
+    .media-box{
+        aspect-ratio:16 / 10;
     }
 
+    .item h2{
+        font-size:21px;
+    }
 
-    .item-number{
+    .item p{
+        font-size:13px;
+    }
 
-        top:18px;
-        left:18px;
-
-        width:35px;
-        height:35px;
-
-        border-radius:11px;
-
+    .nav-links a{
+        padding:8px 7px;
         font-size:10px;
-
     }
-
-
-    .item-title{
-
-        font-size:18px;
-
-    }
-
-
-    .description{
-
-        font-size:12px;
-
-        line-height:1.8;
-
-    }
-
-
-    .tag span{
-
-        font-size:9px;
-
-    }
-
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-
-        animation-duration:.01ms !important;
-
-        animation-iteration-count:1 !important;
-
-        scroll-behavior:auto !important;
-
-        transition-duration:.01ms !important;
-
-    }
-
 }
 
 </style>
 </head>
 
-
 <body>
 
+<!-- =========================
+     BACKGROUND
+========================= -->
 
-<!-- =======================================================
-     ANIMATED BACKGROUND
-======================================================== -->
+<div class="stars" id="stars"></div>
 
-<div class="background">
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
 
-    <div class="stars"></div>
-
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <div class="orb three"></div>
-
-    <div class="shooting s1"></div>
-    <div class="shooting s2"></div>
-    <div class="shooting s3"></div>
-
-</div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
 
 
-<!-- =======================================================
-     NAVIGATION
-======================================================== -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav>
+    <div class="nav-inner">
 
-    <a href="portfolio.html">
-        หน้าหลัก
-    </a>
+        <div class="logo">
+            Puttikan <span>Portfolio</span>
+        </div>
 
-    <a href="cumnum.html">
-        คำนำ
-    </a>
+        <div class="nav-links">
 
-    <a href="work.html" class="active">
-        ผลงาน
-    </a>
+            <a href="portfolio.html">
+                หน้าหลัก
+            </a>
 
-    <a href="university.html">
-        มหาวิทยาลัย
-    </a>
+            <a href="cumnum.html">
+                คำนำ
+            </a>
 
-    <a href="contract.html">
-        ติดต่อ
-    </a>
+            <a href="work.html" class="active">
+                ผลงาน
+            </a>
 
+            <a href="university.html">
+                มหาวิทยาลัย
+            </a>
+
+            <a href="contract.html">
+                ติดต่อ
+            </a>
+
+        </div>
+
+    </div>
 </nav>
 
 
-<!-- =======================================================
-     MAIN PAGE
-======================================================== -->
+<!-- =========================
+     MAIN
+========================= -->
 
-<div class="page">
+<main>
 
-<main class="container">
+    <section class="hero">
 
-
-    <!-- HEADER -->
-
-    <header class="header">
-
-        <div class="label">
+        <div class="hero-label">
             03 / ACTIVITIES & CERTIFICATES
         </div>
 
-        <h1 class="title">
+        <h1>
             ผลงานและกิจกรรม
         </h1>
 
-        <p class="subtitle">
-            รวมประสบการณ์การเรียนรู้ กิจกรรม และการอบรมต่าง ๆ
-            ที่ช่วยพัฒนาความรู้ ทักษะ และประสบการณ์ของผม
+        <p>
+            ประสบการณ์ กิจกรรม และการเรียนรู้ที่ผมได้รับ
+            ซึ่งช่วยพัฒนาทั้งความรู้ ทักษะ และประสบการณ์
             เพื่อเตรียมความพร้อมสำหรับการศึกษาต่อในอนาคตครับ
         </p>
 
-    </header>
+    </section>
 
-
-    <!-- ===================================================
-         CONTENT
-    ==================================================== -->
 
     <section class="content">
 
         <div class="gallery">
 
 
-            <!-- =================================================
+            <!-- =========================
                  01 FIRST AID
-            ================================================== -->
+            ========================= -->
 
             <article class="item">
 
-                <div class="card-inner">
+                <div class="item-inner">
 
-                    <div class="item-number">
-                        01
-                    </div>
+                    <div class="image-pair">
 
-                    <div class="image-frame">
-
-                        <div class="image">
+                        <div class="media-box">
 
                             <img
                                 src="https://i.postimg.cc/vZmR3SpG/pthm-phyabal-ph-nthan.jpg"
-                                alt="เกียรติบัตรอบรมการปฐมพยาบาลพื้นฐาน"
+                                alt="เกียรติบัตรการปฐมพยาบาลฉุกเฉินและการกู้ชีพขั้นพื้นฐาน"
+                                loading="lazy"
                             >
+
+                            <div class="media-label">
+                                เกียรติบัตร
+                            </div>
+
+                        </div>
+
+
+                        <div class="media-box">
+
+                            <img
+                                src="https://i.postimg.cc/fRVkPVfC/1778236239357.jpg"
+                                alt="ภาพกิจกรรมการปฐมพยาบาลฉุกเฉินและการกู้ชีพขั้นพื้นฐาน"
+                                loading="lazy"
+                            >
+
+                            <div class="media-label">
+                                ภาพกิจกรรม
+                            </div>
 
                         </div>
 
                     </div>
 
 
-                    <div class="item-content">
+                    <div class="item-number">
+                        01 / FIRST AID
+                    </div>
 
-                        <h2 class="item-title">
-                            การปฐมพยาบาลฉุกเฉินและการกู้ชีพขั้นพื้นฐาน
-                        </h2>
+                    <h2>
+                        การปฐมพยาบาลฉุกเฉินและการกู้ชีพขั้นพื้นฐาน
+                    </h2>
 
-                        <p class="description">
+                    <p>
+                        ผมได้เข้าร่วมการเรียนรู้และฝึกปฏิบัติเกี่ยวกับ
+                        การปฐมพยาบาลฉุกเฉิน การกู้ชีพขั้นพื้นฐาน
+                        (CPR) และการใช้เครื่อง AED
+                        ทำให้ผมได้ฝึกการช่วยเหลือผู้ที่อยู่ในภาวะฉุกเฉิน
+                        รวมถึงการตัดสินใจและการทำงานอย่างมีสติในสถานการณ์ต่าง ๆ ครับ
+                    </p>
 
-                            ผมได้เข้าร่วมการอบรมเชิงปฏิบัติการ
-                            <strong>CPR และ First Aid</strong>
-                            โดยได้เรียนรู้วิธีการประเมินผู้ป่วย
-                            การช่วยเหลือผู้ที่หมดสติ
-                            การทำ CPR และการใช้เครื่อง AED
-                            รวมถึงการปฐมพยาบาลเบื้องต้น
-                            ซึ่งเป็นความรู้ที่สามารถนำไปใช้ช่วยเหลือผู้อื่น
-                            ในสถานการณ์ฉุกเฉินได้จริงครับ
-
-                        </p>
-
-                        <div class="tag">
-                            <span>
-                                CPR • FIRST AID • AED
-                            </span>
-                        </div>
-
+                    <div class="tags">
+                        <span class="tag">CPR</span>
+                        <span class="tag">FIRST AID</span>
+                        <span class="tag">AED</span>
                     </div>
 
                 </div>
@@ -1847,56 +800,69 @@ footer span{
             </article>
 
 
-            <!-- =================================================
-                 02 MEDICAL
-            ================================================== -->
+            <!-- =========================
+                 02 MEDICAL ACADEMY
+            ========================= -->
 
             <article class="item">
 
-                <div class="card-inner">
+                <div class="item-inner">
 
-                    <div class="item-number">
-                        02
-                    </div>
+                    <div class="image-pair">
 
-                    <div class="image-frame">
-
-                        <div class="image">
+                        <div class="media-box">
 
                             <img
                                 src="https://i.postimg.cc/MpGkdrhq/pe-nhmx.jpg"
                                 alt="เกียรติบัตรเป็นหมอ Academy"
+                                loading="lazy"
                             >
+
+                            <div class="media-label">
+                                เกียรติบัตร
+                            </div>
+
+                        </div>
+
+
+                        <div class="media-box">
+
+                            <img
+                                src="https://i.postimg.cc/1tnH5RSn/DSC-3827.jpg"
+                                alt="ภาพกิจกรรมเป็นหมอ Academy"
+                                loading="lazy"
+                            >
+
+                            <div class="media-label">
+                                ภาพกิจกรรม
+                            </div>
 
                         </div>
 
                     </div>
 
 
-                    <div class="item-content">
+                    <div class="item-number">
+                        02 / MEDICAL
+                    </div>
 
-                        <h2 class="item-title">
-                            เป็นหมอ ACADEMY
-                        </h2>
+                    <h2>
+                        เป็นหมอ ACADEMY
+                    </h2>
 
-                        <p class="description">
+                    <p>
+                        ผมได้เข้าร่วมกิจกรรม “เป็นหมอ Academy”
+                        ซึ่งเป็นกิจกรรมที่เปิดโอกาสให้ได้เรียนรู้เกี่ยวกับ
+                        การทำงานและการเรียนในสายวิทยาศาสตร์สุขภาพ
+                        รวมถึงได้ทดลองทำกิจกรรมที่เกี่ยวข้องกับการแพทย์
+                        ทำให้ผมได้เรียนรู้จากประสบการณ์จริง
+                        และเข้าใจการทำงานด้านสุขภาพมากยิ่งขึ้นครับ
+                    </p>
 
-                            ผมได้เข้าร่วมกิจกรรมอบรมเชิงปฏิบัติการ
-                            <strong>ความถนัดทางสายวิทยาศาสตร์สุขภาพ</strong>
-                            เพื่อเรียนรู้เกี่ยวกับการทำงาน
-                            และทักษะที่เกี่ยวข้องกับวิชาชีพด้านสุขภาพ
-                            ทำให้ผมได้เห็นภาพการเรียนและการทำงานจริงมากขึ้น
-                            รวมถึงได้ค้นหาความสนใจของตัวเอง
-                            ในสายวิทยาศาสตร์สุขภาพครับ
-
-                        </p>
-
-                        <div class="tag">
-                            <span>
-                                HEALTH SCIENCE
-                            </span>
-                        </div>
-
+                    <div class="tags">
+                        <span class="tag">HEALTH SCIENCE</span>
+                        <span class="tag">MEDICAL</span>
+                        <span class="tag">EXPERIENCE</span>
                     </div>
 
                 </div>
@@ -1904,56 +870,69 @@ footer span{
             </article>
 
 
-            <!-- =================================================
-                 03 DENTAL
-            ================================================== -->
+            <!-- =========================
+                 03 DENTISTRY
+            ========================= -->
 
             <article class="item">
 
-                <div class="card-inner">
+                <div class="item-inner">
 
-                    <div class="item-number">
-                        03
-                    </div>
+                    <div class="image-pair">
 
-                    <div class="image-frame">
-
-                        <div class="image">
+                        <div class="media-box">
 
                             <img
                                 src="https://i.postimg.cc/zGfm0P9v/th-n-tkr-rm.jpg"
                                 alt="เกียรติบัตรศึกษาดูงานคลินิกทันตกรรม"
+                                loading="lazy"
                             >
+
+                            <div class="media-label">
+                                เกียรติบัตร
+                            </div>
+
+                        </div>
+
+
+                        <div class="media-box">
+
+                            <img
+                                src="https://i.postimg.cc/25TdxbkD/Screenshot-20260915-103114-Facebook.jpg"
+                                alt="ภาพกิจกรรมศึกษาดูงานทันตกรรม SC"
+                                loading="lazy"
+                            >
+
+                            <div class="media-label">
+                                ภาพกิจกรรม
+                            </div>
 
                         </div>
 
                     </div>
 
 
-                    <div class="item-content">
+                    <div class="item-number">
+                        03 / DENTISTRY
+                    </div>
 
-                        <h2 class="item-title">
-                            ศึกษาดูงานคลินิกทันตกรรม
-                        </h2>
+                    <h2>
+                        ศึกษาดูงานคลินิกทันตกรรม
+                    </h2>
 
-                        <p class="description">
+                    <p>
+                        ผมได้มีโอกาสเข้าร่วมกิจกรรมศึกษาดูงาน
+                        ที่คลินิกทันตกรรม SC
+                        ทำให้ได้เรียนรู้เกี่ยวกับบรรยากาศการทำงานจริง
+                        และกระบวนการดูแลผู้รับบริการด้านทันตกรรม
+                        รวมถึงได้เห็นการทำงานของบุคลากรในสายสุขภาพ
+                        ซึ่งช่วยเปิดมุมมองและประสบการณ์ใหม่ให้กับผมครับ
+                    </p>
 
-                            ผมได้มีโอกาสเข้าร่วมกิจกรรม
-                            <strong>ศึกษาดูงาน ณ คลินิกทันตกรรมเอสซี</strong>
-                            ทำให้ได้เรียนรู้บรรยากาศการทำงาน
-                            และการให้บริการผู้ป่วยภายในคลินิก
-                            รวมถึงได้เห็นการทำงานของบุคลากรทางการแพทย์
-                            ซึ่งช่วยให้ผมเข้าใจการทำงานในสายสุขภาพ
-                            มากขึ้นกว่าการเรียนจากในห้องเรียนเพียงอย่างเดียวครับ
-
-                        </p>
-
-                        <div class="tag">
-                            <span>
-                                DENTISTRY • OBSERVATION
-                            </span>
-                        </div>
-
+                    <div class="tags">
+                        <span class="tag">DENTISTRY</span>
+                        <span class="tag">OBSERVATION</span>
+                        <span class="tag">HEALTHCARE</span>
                     </div>
 
                 </div>
@@ -1961,57 +940,68 @@ footer span{
             </article>
 
 
-            <!-- =================================================
+            <!-- =========================
                  04 STUDENT COUNCIL
-            ================================================== -->
+            ========================= -->
 
             <article class="item">
 
-                <div class="card-inner">
+                <div class="item-inner">
 
-                    <div class="item-number">
-                        04
-                    </div>
+                    <div class="image-pair">
 
-                    <div class="image-frame">
-
-                        <div class="image">
+                        <div class="media-box">
 
                             <img
                                 src="https://i.postimg.cc/8zC8tnqp/spha-nr.jpg"
-                                alt="รางวัลเหรียญทองกิจกรรมสภานักเรียน"
+                                alt="เกียรติบัตรกิจกรรมสภานักเรียน"
+                                loading="lazy"
                             >
+
+                            <div class="media-label">
+                                เกียรติบัตร
+                            </div>
+
+                        </div>
+
+
+                        <div class="media-box">
+
+                            <img
+                                src="https://i.postimg.cc/qqGCpWNJ/1687075368082.jpg"
+                                alt="ภาพกิจกรรมสภานักเรียน"
+                                loading="lazy"
+                            >
+
+                            <div class="media-label">
+                                ภาพกิจกรรม
+                            </div>
 
                         </div>
 
                     </div>
 
 
-                    <div class="item-content">
+                    <div class="item-number">
+                        04 / STUDENT ACTIVITY
+                    </div>
 
-                        <h2 class="item-title">
-                            กิจกรรมสภานักเรียน
-                        </h2>
+                    <h2>
+                        กิจกรรมสภานักเรียน
+                    </h2>
 
-                        <p class="description">
+                    <p>
+                        ผมได้เข้าร่วมกิจกรรมสภานักเรียน
+                        และมีส่วนร่วมในงานศิลปหัตถกรรมนักเรียน ครั้งที่ 71
+                        ซึ่งเป็นประสบการณ์ที่ช่วยฝึกการทำงานร่วมกับผู้อื่น
+                        ความรับผิดชอบ การวางแผน และการทำงานเป็นทีม
+                        รวมถึงได้รับรางวัลระดับเหรียญทองจากการเข้าร่วมกิจกรรมครับ
+                    </p>
 
-                            ผมได้เข้าร่วมกิจกรรม
-                            <strong>สภานักเรียนในงานศิลปหัตถกรรมนักเรียน ครั้งที่ 71</strong>
-                            ซึ่งได้รับรางวัลเหรียญทอง
-                            จากกิจกรรมนี้ผมได้ฝึกการทำงานร่วมกับผู้อื่น
-                            การแบ่งหน้าที่ ความรับผิดชอบ
-                            การสื่อสาร และการแก้ไขปัญหาเฉพาะหน้า
-                            ทำให้ผมได้เรียนรู้ว่าการทำงานเป็นทีม
-                            ต้องอาศัยความร่วมมือจากทุกคนครับ
-
-                        </p>
-
-                        <div class="tag">
-                            <span>
-                                TEAMWORK • LEADERSHIP
-                            </span>
-                        </div>
-
+                    <div class="tags">
+                        <span class="tag">TEAMWORK</span>
+                        <span class="tag">LEADERSHIP</span>
+                        <span class="tag">RESPONSIBILITY</span>
                     </div>
 
                 </div>
@@ -2019,58 +1009,69 @@ footer span{
             </article>
 
 
-            <!-- =================================================
-                 05 RAPPELLING / TOWER
-            ================================================== -->
+            <!-- =========================
+                 05 TOWER / รด.
+            ========================= -->
 
             <article class="item">
 
-                <div class="card-inner">
+                <div class="item-inner">
 
-                    <div class="item-number">
-                        05
-                    </div>
+                    <div class="image-pair">
 
-                    <div class="image-frame">
-
-                        <div class="image">
+                        <div class="media-box">
 
                             <img
-                                src="https://i.postimg.cc/MpGkdrhx/dod-hx.jpg"
-                                alt="กิจกรรมโดดหอ"
+                                src="https://i.postimg.cc/MpGkdrhq/dod-hx.jpg"
+                                alt="เกียรติบัตรกิจกรรมโดดหอ"
+                                loading="lazy"
                             >
+
+                            <div class="media-label">
+                                เกียรติบัตร
+                            </div>
+
+                        </div>
+
+
+                        <div class="media-box">
+
+                            <img
+                                src="https://i.postimg.cc/25TdxbkD/Screenshot-20260915-103114-Facebook.jpg"
+                                alt="ภาพกิจกรรมโดดหอ นศท. ชั้นปีที่ 2"
+                                loading="lazy"
+                            >
+
+                            <div class="media-label">
+                                ภาพกิจกรรม
+                            </div>
 
                         </div>
 
                     </div>
 
 
-                    <div class="item-content">
+                    <div class="item-number">
+                        05 / R.O.T.C.
+                    </div>
 
-                        <h2 class="item-title">
-                            กิจกรรมโดดหอ
-                        </h2>
+                    <h2>
+                        กิจกรรมโดดหอ นศท. ชั้นปีที่ 2
+                    </h2>
 
-                        <p class="description">
+                    <p>
+                        ผมได้เข้าร่วมกิจกรรมโดดหอของนักศึกษาวิชาทหาร (นศท.)
+                        ชั้นปีที่ 2 ซึ่งเป็นกิจกรรมที่ท้าทายทั้งร่างกายและจิตใจ
+                        ทำให้ผมได้ฝึกความกล้าในการเผชิญหน้ากับความกลัว
+                        ควบคุมสติ และปฏิบัติตามคำสั่งอย่างมีระเบียบวินัย
+                        ประสบการณ์นี้ทำให้ผมรู้ว่าการก้าวผ่านความกลัว
+                        ต้องเริ่มจากการกล้าที่จะลงมือทำครับ
+                    </p>
 
-                            ผมได้เข้าร่วมกิจกรรม
-                            <strong>โดดหอ</strong>
-                            ซึ่งเป็นกิจกรรมที่ท้าทายความกล้า
-                            และทำให้ผมต้องควบคุมความกลัวของตัวเอง
-                            ระหว่างทำกิจกรรมยังได้ฝึกความมีระเบียบวินัย
-                            การปฏิบัติตามคำแนะนำ
-                            และการทำงานร่วมกับผู้อื่น
-                            ประสบการณ์นี้ทำให้ผมกล้าที่จะลองทำสิ่งใหม่ ๆ
-                            มากขึ้นครับ
-
-                        </p>
-
-                        <div class="tag">
-                            <span>
-                                COURAGE • DISCIPLINE
-                            </span>
-                        </div>
-
+                    <div class="tags">
+                        <span class="tag">COURAGE</span>
+                        <span class="tag">DISCIPLINE</span>
+                        <span class="tag">R.O.T.C.</span>
                     </div>
 
                 </div>
@@ -2083,196 +1084,120 @@ footer span{
     </section>
 
 
+    <div class="footer">
+        © 2026 Puttikan Ruekraisri • Portfolio
+    </div>
+
 </main>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================== -->
-
-<footer>
-
-    <div class="footer-line"></div>
-
-    <span>
-        Puttikan Ruekraisri
-    </span>
-
-    &nbsp;·&nbsp;
-
-    Physical Therapy Portfolio
-
-</footer>
-
-
-</div>
-
-
-<!-- =======================================================
-     PARTICLES JAVASCRIPT
-======================================================== -->
-
 <script>
 
-const background =
-    document.querySelector(".background");
+/* =========================
+   STAR PARTICLES
+========================= */
 
+const stars = document.getElementById("stars");
 
-/* create floating particles */
+for(let i = 0; i < 45; i++){
 
-for(let i = 0; i < 38; i++){
+    const star = document.createElement("div");
 
-    const particle =
-        document.createElement("div");
+    star.className = "star";
 
-    particle.className =
-        "particle";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
 
-    particle.style.left =
-        Math.random() * 100 + "%";
+    star.style.animationDelay =
+        Math.random() * 4 + "s";
 
-    particle.style.animationDuration =
-        (10 + Math.random() * 18) + "s";
+    star.style.animationDuration =
+        2 + Math.random() * 4 + "s";
 
-    particle.style.animationDelay =
-        (-Math.random() * 20) + "s";
-
-    particle.style.opacity =
-        (0.2 + Math.random() * 0.7);
-
-    const size =
-        1 + Math.random() * 3;
-
-    particle.style.width =
-        size + "px";
-
-    particle.style.height =
-        size + "px";
-
-    background.appendChild(particle);
-
+    stars.appendChild(star);
 }
 
 
-/* =====================================================
-   CARD 3D TILT
-===================================================== */
+/* =========================
+   3D CARD EFFECT
+========================= */
 
-const cards =
-    document.querySelectorAll(".item");
-
+const cards = document.querySelectorAll(".item");
 
 cards.forEach(card => {
 
-    card.addEventListener(
-        "mousemove",
-        e => {
+    card.addEventListener("mousemove", e => {
 
-            if(window.innerWidth < 800)
-                return;
+        const rect = card.getBoundingClientRect();
 
-            const rect =
-                card.getBoundingClientRect();
+        const x =
+            e.clientX - rect.left;
 
-            const x =
-                e.clientX - rect.left;
+        const y =
+            e.clientY - rect.top;
 
-            const y =
-                e.clientY - rect.top;
+        const centerX =
+            rect.width / 2;
 
-            const centerX =
-                rect.width / 2;
+        const centerY =
+            rect.height / 2;
 
-            const centerY =
-                rect.height / 2;
+        const rotateX =
+            ((y - centerY) / centerY) * -2.5;
 
-            const rotateX =
-                ((y - centerY) / centerY) * -2.2;
+        const rotateY =
+            ((x - centerX) / centerX) * 2.5;
 
-            const rotateY =
-                ((x - centerX) / centerX) * 2.2;
+        card.style.transform =
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-5px)`;
 
-            card.style.transform =
-                `
-                translateY(-10px)
-                perspective(900px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                scale(1.012)
-                `;
+    });
 
-        }
-    );
+    card.addEventListener("mouseleave", () => {
 
+        card.style.transform =
+            "perspective(900px) rotateX(0) rotateY(0) translateY(0)";
 
-    card.addEventListener(
-        "mouseleave",
-        () => {
-
-            card.style.transform =
-                "";
-
-        }
-    );
+    });
 
 });
 
 
-/* =====================================================
-   CURSOR LIGHT EFFECT
-===================================================== */
+/* =========================
+   CURSOR LIGHT
+========================= */
 
-const cursorLight =
-    document.createElement("div");
+const cursorLight = document.createElement("div");
 
-
-cursorLight.style.position =
-    "fixed";
-
-cursorLight.style.width =
-    "260px";
-
-cursorLight.style.height =
-    "260px";
-
-cursorLight.style.borderRadius =
-    "50%";
-
-cursorLight.style.pointerEvents =
-    "none";
-
-cursorLight.style.zIndex =
-    "-5";
-
+cursorLight.style.position = "fixed";
+cursorLight.style.width = "280px";
+cursorLight.style.height = "280px";
+cursorLight.style.borderRadius = "50%";
+cursorLight.style.pointerEvents = "none";
+cursorLight.style.zIndex = "1";
 cursorLight.style.background =
-    "radial-gradient(circle, rgba(99,230,255,.08), transparent 68%)";
-
+    "radial-gradient(circle, rgba(99,230,255,.07), transparent 70%)";
 cursorLight.style.transform =
     "translate(-50%,-50%)";
-
 cursorLight.style.transition =
-    "left .15s ease, top .15s ease";
+    "left .08s linear, top .08s linear";
 
-document.body.appendChild(
-    cursorLight
-);
+document.body.appendChild(cursorLight);
 
+document.addEventListener("mousemove", e => {
 
-document.addEventListener(
-    "mousemove",
-    e => {
+    cursorLight.style.left =
+        e.clientX + "px";
 
-        cursorLight.style.left =
-            e.clientX + "px";
+    cursorLight.style.top =
+        e.clientY + "px";
 
-        cursorLight.style.top =
-            e.clientY + "px";
-
-    }
-);
+});
 
 </script>
-
 
 </body>
 </html>
