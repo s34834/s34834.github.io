@@ -4,34 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ผลงาน | Portfolio</title>
+<title>ผลงานและกิจกรรม | Puttikan Ruekraisri</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
+/* =========================================================
+   ROOT
+========================================================= */
 
 :root{
-    --bg:#05051b;
-    --bg2:#09092b;
-    --deep:#070722;
 
-    --purple:#7b6ff0;
-    --violet:#a78bfa;
+    --bg:#030414;
+    --bg2:#080a25;
+    --bg3:#0b0d35;
+
+    --purple:#8b7cff;
+    --violet:#b69cff;
+
     --blue:#4facfe;
-    --cyan:#62d8ff;
+    --cyan:#63e6ff;
 
-    --white:#f8fbff;
-    --text:#e9eaff;
-    --muted:#aeb1d0;
+    --white:#ffffff;
+    --text:#eef1ff;
+    --muted:#aeb5d6;
 
-    --glass:rgba(15,15,52,.62);
+    --glass:rgba(12,15,48,.64);
 
-    --border:rgba(139,126,255,.28);
+    --border:rgba(139,126,255,.25);
 
-    --shadow:
-        0 25px 75px rgba(0,0,0,.38),
-        0 0 35px rgba(123,111,240,.08);
+    --glow:
+        0 0 20px rgba(123,111,240,.22),
+        0 0 60px rgba(79,172,254,.08);
+
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -44,105 +59,294 @@ html{
 }
 
 body{
-    font-family:"Prompt","Kanit",sans-serif;
-    color:var(--text);
-
-    background:
-        radial-gradient(
-            circle at 12% 12%,
-            rgba(95,72,220,.18),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 88% 25%,
-            rgba(52,123,255,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(130,70,220,.13),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #030313,
-            #080824 48%,
-            #05051b
-        );
 
     min-height:100vh;
+
+    font-family:
+        "Prompt",
+        "Kanit",
+        sans-serif;
+
+    color:var(--text);
+
     overflow-x:hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(92,73,255,.18),
+            transparent 27%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(0,174,255,.13),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(126,58,255,.16),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            145deg,
+            #02030e,
+            #070922 45%,
+            #030416
+        );
+
 }
 
 
-/* =====================================================
-   STAR FIELD
-===================================================== */
+/* =========================================================
+   ANIMATED BACKGROUND
+========================================================= */
 
-body::before{
-    content:"";
+.background{
 
     position:fixed;
+
     inset:0;
 
-    z-index:-10;
+    overflow:hidden;
+
     pointer-events:none;
 
+    z-index:-20;
+}
+
+
+/* large moving glow */
+
+.orb{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(70px);
+
+    opacity:.35;
+
+}
+
+.orb.one{
+
+    width:420px;
+    height:420px;
+
+    left:-150px;
+    top:15%;
+
+    background:#563cff;
+
+    animation:
+        orbMove1 14s ease-in-out infinite alternate;
+
+}
+
+.orb.two{
+
+    width:360px;
+    height:360px;
+
+    right:-120px;
+    top:42%;
+
+    background:#008cff;
+
+    animation:
+        orbMove2 17s ease-in-out infinite alternate;
+
+}
+
+.orb.three{
+
+    width:300px;
+    height:300px;
+
+    left:35%;
+    bottom:-160px;
+
+    background:#9c43ff;
+
+    animation:
+        orbMove3 12s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes orbMove1{
+
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(180px,100px) scale(1.25);
+    }
+
+}
+
+@keyframes orbMove2{
+
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(-150px,-100px) scale(1.2);
+    }
+
+}
+
+@keyframes orbMove3{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(120px,-80px) scale(1.2);
+    }
+
+}
+
+
+/* =========================================================
+   STAR FIELD
+========================================================= */
+
+.stars{
+
+    position:absolute;
+
+    inset:-100px;
+
     background-image:
+
         radial-gradient(
             circle,
-            rgba(255,255,255,.75) 1px,
+            rgba(255,255,255,.85) 1px,
             transparent 1.5px
         ),
+
         radial-gradient(
             circle,
-            rgba(98,216,255,.45) 1px,
+            rgba(99,230,255,.65) 1px,
             transparent 1.5px
         ),
+
         radial-gradient(
             circle,
-            rgba(167,139,250,.38) 1px,
+            rgba(182,156,255,.55) 1px,
             transparent 1.5px
         );
 
     background-size:
-        85px 85px,
+        80px 80px,
         145px 145px,
-        210px 210px;
+        220px 220px;
 
     background-position:
-        10px 20px,
-        40px 70px,
-        100px 30px;
+        20px 30px,
+        80px 60px,
+        10px 100px;
 
-    opacity:.36;
+    opacity:.3;
 
     animation:
-        starMove 38s linear infinite;
+        starsMove 35s linear infinite;
+
 }
 
-@keyframes starMove{
+
+@keyframes starsMove{
 
     from{
         transform:translateY(0);
     }
 
     to{
-        transform:translateY(-130px);
+        transform:translateY(-180px);
     }
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 16px var(--cyan);
+
+    opacity:.5;
+
+    animation:
+        floatParticle linear infinite;
+
+}
+
+
+@keyframes floatParticle{
+
+    0%{
+        transform:
+            translateY(110vh)
+            translateX(0)
+            scale(.5);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    85%{
+        opacity:.6;
+    }
+
+    100%{
+        transform:
+            translateY(-15vh)
+            translateX(80px)
+            scale(1.2);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================================================
    SHOOTING STARS
-===================================================== */
+========================================================= */
 
-.shooting-star{
-    position:fixed;
+.shooting{
 
-    width:150px;
+    position:absolute;
+
+    width:180px;
     height:2px;
+
+    border-radius:100px;
 
     background:
         linear-gradient(
@@ -153,61 +357,66 @@ body::before{
             transparent
         );
 
-    filter:
-        drop-shadow(0 0 7px var(--cyan))
-        drop-shadow(0 0 16px var(--blue));
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 20px var(--blue);
 
-    transform:rotate(-32deg);
+    transform:rotate(-30deg);
 
     opacity:0;
 
-    pointer-events:none;
-
-    z-index:-2;
 }
 
-.shooting-star:nth-of-type(1){
-    top:15%;
-    left:-180px;
 
-    animation:
-        shooting 9s linear infinite;
-}
+.shooting.s1{
 
-.shooting-star:nth-of-type(2){
-    top:42%;
-    left:-220px;
-
-    animation:
-        shooting 12s linear infinite 4s;
-}
-
-.shooting-star:nth-of-type(3){
-    top:72%;
+    top:18%;
     left:-200px;
 
     animation:
-        shooting 14s linear infinite 8s;
+        shoot 8s linear infinite;
+
 }
 
-@keyframes shooting{
+.shooting.s2{
+
+    top:48%;
+    left:-250px;
+
+    animation:
+        shoot 11s linear infinite 4s;
+
+}
+
+.shooting.s3{
+
+    top:76%;
+    left:-200px;
+
+    animation:
+        shoot 13s linear infinite 8s;
+
+}
+
+
+@keyframes shoot{
 
     0%{
         transform:
             translate(-100px,-20px)
-            rotate(-32deg);
+            rotate(-30deg);
 
         opacity:0;
     }
 
     8%{
-        opacity:.9;
+        opacity:1;
     }
 
-    22%{
+    23%{
         transform:
-            translate(120vw,420px)
-            rotate(-32deg);
+            translate(130vw,450px)
+            rotate(-30deg);
 
         opacity:0;
     }
@@ -219,9 +428,9 @@ body::before{
 }
 
 
-/* =====================================================
+/* =========================================================
    NAVIGATION
-===================================================== */
+========================================================= */
 
 nav{
 
@@ -233,11 +442,11 @@ nav{
     transform:translateX(-50%);
 
     width:min(
-        1100px,
+        1120px,
         calc(100% - 28px)
     );
 
-    z-index:1000;
+    z-index:9999;
 
     display:flex;
 
@@ -248,21 +457,33 @@ nav{
 
     padding:9px;
 
-    background:
-        rgba(6,6,29,.72);
-
     border:
-        1px solid rgba(139,126,255,.25);
 
-    border-radius:20px;
+        1px solid
+        rgba(151,139,255,.25);
 
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
+    border-radius:22px;
+
+    background:
+        rgba(4,6,25,.72);
+
+    backdrop-filter:
+        blur(24px)
+        saturate(150%);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(150%);
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,.35),
-        inset 0 1px rgba(255,255,255,.08);
+
+        0 20px 60px rgba(0,0,0,.4),
+
+        inset 0 1px
+        rgba(255,255,255,.1);
+
 }
+
 
 nav::before{
 
@@ -270,9 +491,10 @@ nav::before{
 
     position:absolute;
 
-    top:0;
-    left:12%;
-    right:12%;
+    top:-1px;
+
+    left:10%;
+    right:10%;
 
     height:1px;
 
@@ -280,20 +502,23 @@ nav::before{
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.5),
+            var(--purple),
             var(--cyan),
+            var(--purple),
             transparent
         );
 
     box-shadow:
-        0 0 12px rgba(98,216,255,.35);
+        0 0 15px var(--cyan);
+
 }
+
 
 nav a{
 
     position:relative;
 
-    color:#b9bbd8;
+    color:#aeb4d4;
 
     text-decoration:none;
 
@@ -301,124 +526,103 @@ nav a{
 
     font-weight:500;
 
-    padding:10px 15px;
+    padding:11px 17px;
 
-    border-radius:13px;
+    border-radius:14px;
 
     transition:
         .35s cubic-bezier(.2,.8,.2,1);
+
 }
 
-nav a::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:20%;
-    right:20%;
-    bottom:4px;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            transparent
-        );
-
-    transform:scaleX(0);
-
-    transition:.35s ease;
-}
 
 nav a:hover{
 
-    color:#fff;
+    color:white;
+
+    transform:translateY(-2px);
 
     background:
-        rgba(123,111,240,.11);
-
-    transform:
-        translateY(-2px);
+        rgba(120,105,255,.12);
 
     text-shadow:
-        0 0 10px rgba(167,139,250,.75);
+        0 0 12px rgba(182,156,255,.9);
+
 }
 
-nav a:hover::after{
-    transform:scaleX(1);
-}
 
 nav a.active{
 
     color:white;
 
     background:
+
         linear-gradient(
             135deg,
-            rgba(91,73,205,.9),
-            rgba(54,137,235,.72)
+            rgba(104,82,235,.9),
+            rgba(42,142,240,.72)
         );
 
     box-shadow:
-        0 0 18px rgba(123,111,240,.32),
-        inset 0 1px rgba(255,255,255,.18);
 
-    text-shadow:
-        0 0 9px rgba(255,255,255,.55);
+        0 0 20px
+        rgba(107,92,255,.32),
+
+        inset 0 1px
+        rgba(255,255,255,.2);
+
 }
 
 
-/* =====================================================
+/* =========================================================
    PAGE
-===================================================== */
+========================================================= */
 
 .page{
+
+    width:100%;
 
     min-height:100vh;
 
     padding:
-        145px 15px 55px;
+        145px 16px 50px;
 
-    position:relative;
 }
 
-
-/* =====================================================
-   CONTAINER
-===================================================== */
 
 .container{
 
     width:
         min(
-            1100px,
+            1120px,
             100%
         );
 
     margin:auto;
+
 }
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .header{
 
-    position:relative;
+    margin-bottom:45px;
 
-    margin-bottom:42px;
-
-    padding-left:5px;
 }
 
-.number{
 
-    color:#76ddff;
+.label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:var(--cyan);
 
     font-size:12px;
 
@@ -426,87 +630,85 @@ nav a.active{
 
     letter-spacing:4px;
 
-    margin-bottom:10px;
+    margin-bottom:12px;
 
     text-shadow:
-        0 0 10px rgba(98,216,255,.65);
-
-    animation:
-        labelGlow 3s ease-in-out infinite;
-}
-
-@keyframes labelGlow{
-
-    0%,100%{
-        opacity:.75;
-    }
-
-    50%{
-        opacity:1;
-
-        text-shadow:
-            0 0 15px rgba(98,216,255,.9);
-    }
+        0 0 12px
+        rgba(99,230,255,.7);
 
 }
+
+
+.label::before{
+
+    content:"";
+
+    width:35px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 10px var(--cyan);
+
+}
+
 
 .title{
 
-    position:relative;
-
-    display:inline-block;
-
     font-family:
         "Kanit",
-        "Prompt",
         sans-serif;
 
     font-size:
         clamp(
             42px,
-            6vw,
-            68px
+            7vw,
+            76px
         );
 
-    line-height:1.05;
+    line-height:1;
 
     font-weight:700;
 
-    letter-spacing:-1px;
+    letter-spacing:-2px;
 
     background:
+
         linear-gradient(
             100deg,
-            #ffffff 0%,
-            #d8d5ff 18%,
-            #a78bfa 37%,
-            #62d8ff 54%,
-            #ffffff 70%,
-            #a78bfa 90%,
-            #ffffff 100%
+            #fff,
+            #d9d3ff,
+            #a88cff,
+            #62e6ff,
+            #fff,
+            #b49aff
         );
 
     background-size:300% auto;
 
     -webkit-background-clip:text;
+
     background-clip:text;
 
     color:transparent;
 
     animation:
-        titleShine 6s linear infinite,
-        titlePulse 4s ease-in-out infinite;
+        titleShine 6s linear infinite;
 
     filter:
         drop-shadow(
-            0 0 7px
-            rgba(255,255,255,.25)
-        )
-        drop-shadow(
-            0 0 25px
-            rgba(123,111,240,.35)
+            0 0 22px
+            rgba(117,99,255,.35)
         );
+
 }
+
 
 @keyframes titleShine{
 
@@ -520,117 +722,69 @@ nav a.active{
 
 }
 
-@keyframes titlePulse{
 
-    0%,100%{
-
-        filter:
-            drop-shadow(
-                0 0 7px
-                rgba(255,255,255,.25)
-            )
-            drop-shadow(
-                0 0 20px
-                rgba(123,111,240,.3)
-            );
-    }
-
-    50%{
-
-        filter:
-            drop-shadow(
-                0 0 11px
-                rgba(255,255,255,.45)
-            )
-            drop-shadow(
-                0 0 34px
-                rgba(123,111,240,.55)
-            )
-            drop-shadow(
-                0 0 55px
-                rgba(79,172,254,.18)
-            );
-    }
-
-}
-
-.title::after{
-
-    content:"";
-
-    display:block;
-
-    width:150px;
-
-    height:2px;
+.subtitle{
 
     margin-top:18px;
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--purple),
-            var(--cyan),
-            transparent
-        );
+    color:#9ea7cb;
 
-    box-shadow:
-        0 0 12px rgba(98,216,255,.45);
-}
+    font-size:15px;
 
-.title::before{
+    max-width:700px;
 
-    content:"";
+    line-height:1.8;
 
-    position:absolute;
-
-    left:0;
-    right:0;
-    bottom:-13px;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.4),
-            transparent
-        );
-
-    opacity:.4;
 }
 
 
-/* =====================================================
-   MAIN CONTENT GLASS
-===================================================== */
+/* =========================================================
+   MAIN GLASS
+========================================================= */
 
 .content{
 
     position:relative;
 
-    padding:35px;
+    padding:28px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(27,27,78,.66),
-            rgba(9,9,38,.60)
-        );
+    border-radius:32px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        rgba(145,130,255,.24);
 
-    border-radius:30px;
+    background:
 
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
+        linear-gradient(
+            145deg,
+            rgba(20,22,65,.68),
+            rgba(5,7,30,.62)
+        );
 
-    box-shadow:var(--shadow);
+    backdrop-filter:
+        blur(24px)
+        saturate(130%);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(130%);
+
+    box-shadow:
+
+        0 30px 90px
+        rgba(0,0,0,.4),
+
+        0 0 60px
+        rgba(111,90,255,.07),
+
+        inset 0 1px
+        rgba(255,255,255,.08);
 
     overflow:hidden;
+
 }
+
 
 .content::before{
 
@@ -639,23 +793,28 @@ nav a.active{
     position:absolute;
 
     top:0;
-    left:8%;
-    right:8%;
+    left:5%;
+    right:5%;
 
     height:1px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.55),
+            #fff,
             var(--cyan),
+            var(--purple),
+            #fff,
             transparent
         );
 
     box-shadow:
-        0 0 14px rgba(98,216,255,.4);
+        0 0 18px var(--cyan);
+
 }
+
 
 .content::after{
 
@@ -663,28 +822,29 @@ nav a.active{
 
     position:absolute;
 
-    width:300px;
-    height:300px;
+    width:450px;
+    height:450px;
 
-    right:-180px;
-    top:-180px;
+    right:-260px;
+    top:-260px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(123,111,240,.13),
+            rgba(122,103,255,.15),
             transparent 70%
         );
 
     pointer-events:none;
+
 }
 
 
-/* =====================================================
+/* =========================================================
    GALLERY
-===================================================== */
+========================================================= */
 
 .gallery{
 
@@ -695,38 +855,40 @@ nav a.active{
 
     gap:25px;
 
-    position:relative;
-
-    z-index:2;
 }
 
 
-/* =====================================================
-   ITEM
-===================================================== */
+/* =========================================================
+   CARD
+========================================================= */
 
 .item{
 
     position:relative;
 
-    padding:12px;
+    padding:2px;
+
+    border-radius:27px;
 
     overflow:hidden;
 
-    border:
-        1px solid rgba(139,126,255,.18);
-
-    border-radius:22px;
-
     background:
-        rgba(255,255,255,.025);
+
+        linear-gradient(
+            135deg,
+            rgba(139,126,255,.25),
+            rgba(99,230,255,.05),
+            rgba(139,126,255,.25)
+        );
 
     transition:
-        .5s cubic-bezier(.2,.8,.2,1);
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
 
-    box-shadow:
-        inset 0 1px rgba(255,255,255,.035);
 }
+
+
+/* moving border */
 
 .item::before{
 
@@ -734,35 +896,35 @@ nav a.active{
 
     position:absolute;
 
-    top:0;
-    left:-120%;
+    width:160%;
+    height:160%;
 
-    width:65%;
-    height:1px;
+    left:-30%;
+    top:-30%;
 
     background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            transparent
+
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            transparent 55deg,
+            rgba(99,230,255,.95) 80deg,
+            rgba(182,156,255,.9) 100deg,
+            transparent 125deg,
+            transparent 220deg,
+            rgba(99,230,255,.8) 260deg,
+            transparent 290deg
         );
 
     animation:
-        cardLight 7s ease-in-out infinite;
-}
+        borderRotate 5s linear infinite;
 
-@keyframes cardLight{
-
-    0%,65%{
-        left:-120%;
-    }
-
-    82%,100%{
-        left:150%;
-    }
+    z-index:0;
 
 }
+
+
+/* dark inner layer */
 
 .item::after{
 
@@ -770,63 +932,100 @@ nav a.active{
 
     position:absolute;
 
-    inset:0;
+    inset:2px;
 
-    border-radius:22px;
+    border-radius:25px;
 
     background:
+
         linear-gradient(
-            120deg,
-            transparent 35%,
-            rgba(255,255,255,.035),
-            transparent 60%
+            145deg,
+            rgba(17,20,62,.97),
+            rgba(6,8,32,.97)
         );
 
-    pointer-events:none;
+    z-index:1;
+
 }
+
+
+@keyframes borderRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
 
 .item:hover{
 
     transform:
-        translateY(-9px)
+        translateY(-10px)
         scale(1.012);
 
-    background:
-        rgba(123,111,240,.07);
-
-    border-color:
-        rgba(98,216,255,.38);
-
     box-shadow:
-        0 25px 60px rgba(0,0,0,.35),
-        0 0 30px rgba(123,111,240,.12);
+
+        0 25px 65px
+        rgba(0,0,0,.45),
+
+        0 0 35px
+        rgba(102,91,255,.16);
+
 }
 
 
-/* =====================================================
-   NUMBER BADGE
-===================================================== */
+.item:hover::before{
+
+    animation-duration:
+        2.2s;
+
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.card-inner{
+
+    position:relative;
+
+    z-index:2;
+
+    padding:13px;
+
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
 
 .item-number{
 
     position:absolute;
 
-    top:20px;
-    left:20px;
+    top:25px;
+    left:25px;
 
-    z-index:5;
+    z-index:10;
 
-    width:38px;
-    height:38px;
+    width:42px;
+    height:42px;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    border-radius:12px;
+    border-radius:14px;
 
-    color:white;
+    color:#fff;
 
     font-size:12px;
 
@@ -835,87 +1034,158 @@ nav a.active{
     letter-spacing:1px;
 
     background:
-        rgba(5,5,25,.72);
+        rgba(5,7,29,.72);
 
     border:
-        1px solid rgba(255,255,255,.16);
+        1px solid
+        rgba(255,255,255,.2);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:
+        blur(15px);
 
     box-shadow:
-        0 0 15px rgba(123,111,240,.22);
 
-    text-shadow:
-        0 0 8px rgba(255,255,255,.5);
+        0 0 18px
+        rgba(100,88,255,.25),
+
+        inset 0 1px
+        rgba(255,255,255,.12);
+
 }
 
 
-/* =====================================================
-   IMAGE
-===================================================== */
+/* =========================================================
+   IMAGE FRAME
+========================================================= */
 
-.image{
+.image-frame{
 
     position:relative;
 
-    aspect-ratio:4/3;
+    aspect-ratio:4 / 3;
+
+    padding:5px;
+
+    border-radius:21px;
 
     overflow:hidden;
 
-    border-radius:16px;
+    background:
 
-    background:#08082b;
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.12),
+            rgba(98,216,255,.05),
+            rgba(139,126,255,.14)
+        );
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+
+        inset 0 0 25px
+        rgba(91,79,255,.12),
+
+        0 12px 30px
+        rgba(0,0,0,.25);
+
 }
 
-.image::after{
+
+/* animated light sweep */
+
+.image-frame::before{
 
     content:"";
 
     position:absolute;
 
-    top:-30%;
-    left:-90%;
+    top:-100%;
+    left:-45%;
 
-    width:55%;
-    height:170%;
+    width:35%;
+    height:300%;
+
+    transform:
+        rotate(22deg);
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.20),
+            rgba(255,255,255,.35),
+            rgba(99,230,255,.25),
             transparent
         );
 
-    transform:rotate(16deg);
+    z-index:5;
+
+    opacity:.7;
 
     pointer-events:none;
 
-    transition:.3s;
-
-    opacity:.7;
-}
-
-.item:hover .image::after{
-
     animation:
-        imageShine 1.3s ease;
-}
-
-@keyframes imageShine{
-
-    from{
-        left:-90%;
-    }
-
-    to{
-        left:150%;
-    }
+        imageSweep 5.5s ease-in-out infinite;
 
 }
+
+
+@keyframes imageSweep{
+
+    0%,55%{
+        left:-55%;
+    }
+
+    75%,100%{
+        left:135%;
+    }
+
+}
+
+
+/* corner glow */
+
+.image-frame::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    box-shadow:
+        inset 0 0 25px
+        rgba(83,128,255,.1);
+
+    pointer-events:none;
+
+    z-index:4;
+
+}
+
+
+.image{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+    background:#05061d;
+
+}
+
 
 .image img{
 
@@ -925,282 +1195,487 @@ nav a.active{
     display:block;
 
     object-fit:cover;
+
     object-position:center;
 
-    transition:
-        .65s cubic-bezier(.2,.8,.2,1);
-
     filter:
-        saturate(.94)
-        brightness(.92);
+        brightness(.91)
+        saturate(.9)
+        contrast(1.03);
+
+    transition:
+        transform .7s cubic-bezier(.2,.8,.2,1),
+        filter .7s ease;
+
 }
+
 
 .item:hover .image img{
 
     transform:
-        scale(1.055);
+        scale(1.06);
 
     filter:
+        brightness(1.04)
         saturate(1.08)
-        brightness(1.03);
+        contrast(1.03);
+
 }
 
 
-/* =====================================================
-   ITEM TEXT
-===================================================== */
+/* =========================================================
+   TEXT
+========================================================= */
 
-.item p{
-
-    position:relative;
+.item-content{
 
     padding:
-        18px 9px 10px;
+        20px 8px 13px;
 
-    color:#e4e5f5;
+}
 
-    font-size:15px;
 
-    font-weight:500;
+.item-title{
 
-    line-height:1.75;
+    color:white;
+
+    font-family:
+        "Kanit",
+        sans-serif;
+
+    font-size:21px;
+
+    font-weight:600;
+
+    line-height:1.4;
 
     text-align:center;
 
     text-shadow:
-        0 0 8px rgba(255,255,255,.06);
+        0 0 15px
+        rgba(164,148,255,.18);
+
 }
 
-.item p::after{
+
+.item-title::after{
 
     content:"";
 
     display:block;
 
-    width:40px;
+    width:45px;
+    height:2px;
 
-    height:1px;
+    margin:
+        12px auto 15px;
 
-    margin:12px auto 0;
+    border-radius:100px;
 
     background:
+
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(99,230,255,.5);
+
+    transition:.4s ease;
+
+}
+
+
+.item:hover .item-title::after{
+
+    width:90px;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description{
+
+    color:#aeb7d9;
+
+    font-size:14px;
+
+    line-height:1.85;
+
+    text-align:center;
+
+    padding:
+        0 8px;
+
+}
+
+
+.description strong{
+
+    color:#dce1ff;
+
+    font-weight:500;
+
+}
+
+
+/* =========================================================
+   SKILL TAG
+========================================================= */
+
+.tag{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:17px;
+
+}
+
+
+.tag span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:
+        6px 13px;
+
+    border-radius:100px;
+
+    font-size:11px;
+
+    color:#bfefff;
+
+    background:
+        rgba(76,190,255,.07);
+
+    border:
+        1px solid
+        rgba(99,230,255,.18);
+
+    box-shadow:
+        0 0 14px
+        rgba(99,230,255,.05);
+
+}
+
+
+.tag span::before{
+
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 8px var(--cyan);
+
+}
+
+
+/* =========================================================
+   LAST CARD
+========================================================= */
+
+.item:last-child{
+
+    grid-column:1 / -1;
+
+    width:58%;
+
+    margin:auto;
+
+}
+
+
+.item:last-child .image-frame{
+
+    aspect-ratio:16 / 9;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    text-align:center;
+
+    padding:
+        42px 15px 20px;
+
+    color:#747da8;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+}
+
+
+.footer-line{
+
+    width:100px;
+    height:1px;
+
+    margin:
+        0 auto 16px;
+
+    background:
+
         linear-gradient(
             90deg,
             transparent,
+            var(--cyan),
             var(--purple),
             transparent
         );
 
     box-shadow:
-        0 0 8px rgba(123,111,240,.45);
+        0 0 12px var(--cyan);
 
-    transition:.4s ease;
 }
 
-.item:hover p::after{
-
-    width:80px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            transparent
-        );
-
-    box-shadow:
-        0 0 10px rgba(98,216,255,.5);
-}
-
-
-/* =====================================================
-   LAST CARD
-===================================================== */
-
-.item:last-child{
-
-    grid-column:
-        1 / -1;
-
-    width:
-        min(
-            50%,
-            100%
-        );
-
-    margin:
-        0 auto;
-}
-
-.item:last-child .image{
-
-    aspect-ratio:16/9;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-
-    padding:
-        40px 20px 20px;
-
-    text-align:center;
-
-    color:#7277a7;
-
-    font-size:12px;
-
-    letter-spacing:1px;
-}
-
-footer::before{
-
-    content:"✦";
-
-    display:block;
-
-    margin-bottom:9px;
-
-    color:var(--cyan);
-
-    font-size:14px;
-
-    text-shadow:
-        0 0 10px var(--cyan);
-}
 
 footer span{
 
-    color:var(--violet);
+    color:#b8a5ff;
 
     text-shadow:
-        0 0 9px rgba(167,139,250,.45);
+        0 0 10px
+        rgba(182,156,255,.35);
+
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
 
-@media(max-width:800px){
-
-    nav{
-        width:
-            calc(100% - 18px);
-    }
+@media(max-width:850px){
 
     nav a{
-        font-size:11px;
-        padding:9px 9px;
-    }
 
-    .page{
-        padding-top:120px;
+        font-size:11px;
+
+        padding:
+            10px 10px;
+
     }
 
     .content{
-        padding:25px;
+
+        padding:20px;
+
     }
 
     .gallery{
+
         grid-template-columns:1fr;
+
     }
 
     .item:last-child{
+
         grid-column:auto;
+
         width:100%;
+
     }
 
 }
 
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
 
 @media(max-width:600px){
 
     nav{
+
         top:9px;
+
+        width:
+            calc(100% - 14px);
 
         padding:5px;
 
         border-radius:17px;
+
     }
+
 
     nav a{
+
         font-size:9px;
-        padding:8px 6px;
-    }
 
-    .page{
         padding:
-            105px 10px 40px;
-    }
-
-    .header{
-        margin-bottom:30px;
-    }
-
-    .number{
-        font-size:10px;
-        letter-spacing:3px;
-    }
-
-    .title{
-        font-size:
-            clamp(
-                37px,
-                11vw,
-                52px
-            );
-    }
-
-    .content{
-        padding:15px;
-
-        border-radius:23px;
-    }
-
-    .gallery{
-        gap:17px;
-    }
-
-    .item{
-        padding:9px;
-
-        border-radius:18px;
-    }
-
-    .image{
-        border-radius:13px;
-    }
-
-    .item p{
-        font-size:13px;
-        line-height:1.65;
-        padding:
-            15px 5px 8px;
-    }
-
-    .item-number{
-        top:15px;
-        left:15px;
-
-        width:33px;
-        height:33px;
+            8px 6px;
 
         border-radius:10px;
 
-        font-size:10px;
     }
+
+
+    .page{
+
+        padding:
+            110px 9px 35px;
+
+    }
+
+
+    .header{
+
+        margin-bottom:30px;
+
+    }
+
+
+    .label{
+
+        font-size:9px;
+
+        letter-spacing:3px;
+
+    }
+
+
+    .title{
+
+        font-size:
+            clamp(
+                38px,
+                11vw,
+                55px
+            );
+
+        letter-spacing:-1px;
+
+    }
+
+
+    .subtitle{
+
+        font-size:12px;
+
+        line-height:1.7;
+
+        margin-top:14px;
+
+    }
+
+
+    .content{
+
+        padding:11px;
+
+        border-radius:24px;
+
+    }
+
+
+    .gallery{
+
+        gap:18px;
+
+    }
+
+
+    .item{
+
+        border-radius:22px;
+
+    }
+
+
+    .card-inner{
+
+        padding:9px;
+
+    }
+
+
+    .image-frame{
+
+        aspect-ratio:4 / 3;
+
+        padding:4px;
+
+        border-radius:17px;
+
+    }
+
+
+    .image{
+
+        border-radius:13px;
+
+    }
+
+
+    .item-number{
+
+        top:18px;
+        left:18px;
+
+        width:35px;
+        height:35px;
+
+        border-radius:11px;
+
+        font-size:10px;
+
+    }
+
+
+    .item-title{
+
+        font-size:18px;
+
+    }
+
+
+    .description{
+
+        font-size:12px;
+
+        line-height:1.8;
+
+    }
+
+
+    .tag span{
+
+        font-size:9px;
+
+    }
+
 
 }
 
 
-/* =====================================================
+/* =========================================================
    REDUCED MOTION
-===================================================== */
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1215,6 +1690,7 @@ footer span{
         scroll-behavior:auto !important;
 
         transition-duration:.01ms !important;
+
     }
 
 }
@@ -1225,231 +1701,578 @@ footer span{
 
 <body>
 
+
+<!-- =======================================================
+     ANIMATED BACKGROUND
+======================================================== -->
+
+<div class="background">
+
+    <div class="stars"></div>
+
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <div class="shooting s1"></div>
+    <div class="shooting s2"></div>
+    <div class="shooting s3"></div>
+
+</div>
+
+
+<!-- =======================================================
+     NAVIGATION
+======================================================== -->
+
+<nav>
+
+    <a href="portfolio.html">
+        หน้าหลัก
+    </a>
+
+    <a href="cumnum.html">
+        คำนำ
+    </a>
+
+    <a href="work.html" class="active">
+        ผลงาน
+    </a>
+
+    <a href="university.html">
+        มหาวิทยาลัย
+    </a>
+
+    <a href="contract.html">
+        ติดต่อ
+    </a>
+
+</nav>
+
+
+<!-- =======================================================
+     MAIN PAGE
+======================================================== -->
+
 <div class="page">
 
-
-    <!-- =========================
-         SHOOTING STARS
-    ========================== -->
-
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
+<main class="container">
 
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+    <!-- HEADER -->
 
-    <nav>
+    <header class="header">
 
-        <a href="portfolio.html">
-            หน้าหลัก
-        </a>
-
-        <a href="cumnum.html">
-            คำนำ
-        </a>
-
-        <a href="work.html" class="active">
-            ผลงาน
-        </a>
-
-        <a href="university.html">
-            มหาวิทยาลัย
-        </a>
-
-        <a href="contract.html">
-            ติดต่อ
-        </a>
-
-    </nav>
-
-
-    <!-- =========================
-         MAIN
-    ========================= -->
-
-    <main class="container">
-
-
-        <!-- HEADER -->
-
-        <div class="header">
-
-            <div class="number">
-                03 / ACTIVITIES
-            </div>
-
-            <h1 class="title">
-                ผลงานและกิจกรรม
-            </h1>
-
+        <div class="label">
+            03 / ACTIVITIES & CERTIFICATES
         </div>
 
+        <h1 class="title">
+            ผลงานและกิจกรรม
+        </h1>
 
-        <!-- =========================
-             GALLERY
-        ========================== -->
+        <p class="subtitle">
+            รวมประสบการณ์การเรียนรู้ กิจกรรม และการอบรมต่าง ๆ
+            ที่ช่วยพัฒนาความรู้ ทักษะ และประสบการณ์ของผม
+            เพื่อเตรียมความพร้อมสำหรับการศึกษาต่อในอนาคตครับ
+        </p>
 
-        <section class="content">
-
-            <div class="gallery">
+    </header>
 
 
-                <!-- 01 ปฐมพยาบาลพื้นฐาน -->
+    <!-- ===================================================
+         CONTENT
+    ==================================================== -->
 
-                <div class="item">
+    <section class="content">
+
+        <div class="gallery">
+
+
+            <!-- =================================================
+                 01 FIRST AID
+            ================================================== -->
+
+            <article class="item">
+
+                <div class="card-inner">
 
                     <div class="item-number">
                         01
                     </div>
 
-                    <div class="image">
+                    <div class="image-frame">
 
-                        <img
-                            src="https://i.postimg.cc/vZmR3SpG/pthm-phyabal-ph-nthan.jpg"
-                            alt="เกียรติบัตรอบรมการปฐมพยาบาลพื้นฐาน"
-                        >
+                        <div class="image">
+
+                            <img
+                                src="https://i.postimg.cc/vZmR3SpG/pthm-phyabal-ph-nthan.jpg"
+                                alt="เกียรติบัตรอบรมการปฐมพยาบาลพื้นฐาน"
+                            >
+
+                        </div>
 
                     </div>
 
-                    <p>
-                        อบรมเชิงปฏิบัติการ
-                        การปฐมพยาบาลฉุกเฉิน
-                        และการกู้ชีพขั้นพื้นฐาน
-                        (CPR & First Aid)
-                    </p>
+
+                    <div class="item-content">
+
+                        <h2 class="item-title">
+                            การปฐมพยาบาลฉุกเฉินและการกู้ชีพขั้นพื้นฐาน
+                        </h2>
+
+                        <p class="description">
+
+                            ผมได้เข้าร่วมการอบรมเชิงปฏิบัติการ
+                            <strong>CPR และ First Aid</strong>
+                            โดยได้เรียนรู้วิธีการประเมินผู้ป่วย
+                            การช่วยเหลือผู้ที่หมดสติ
+                            การทำ CPR และการใช้เครื่อง AED
+                            รวมถึงการปฐมพยาบาลเบื้องต้น
+                            ซึ่งเป็นความรู้ที่สามารถนำไปใช้ช่วยเหลือผู้อื่น
+                            ในสถานการณ์ฉุกเฉินได้จริงครับ
+
+                        </p>
+
+                        <div class="tag">
+                            <span>
+                                CPR • FIRST AID • AED
+                            </span>
+                        </div>
+
+                    </div>
 
                 </div>
 
+            </article>
 
-                <!-- 02 เป็นหมอ -->
 
-                <div class="item">
+            <!-- =================================================
+                 02 MEDICAL
+            ================================================== -->
+
+            <article class="item">
+
+                <div class="card-inner">
 
                     <div class="item-number">
                         02
                     </div>
 
-                    <div class="image">
+                    <div class="image-frame">
 
-                        <img
-                            src="https://i.postimg.cc/MpGkdrhq/pe-nhmx.jpg"
-                            alt="เกียรติบัตรอบรมเป็นหมอ"
-                        >
+                        <div class="image">
+
+                            <img
+                                src="https://i.postimg.cc/MpGkdrhq/pe-nhmx.jpg"
+                                alt="เกียรติบัตรเป็นหมอ Academy"
+                            >
+
+                        </div>
 
                     </div>
 
-                    <p>
-                        อบรมเชิงปฏิบัติการ
-                        ความถนัดทางสายวิทยาศาสตร์สุขภาพ
-                        (เป็นหมอ ACADEMY)
-                    </p>
+
+                    <div class="item-content">
+
+                        <h2 class="item-title">
+                            เป็นหมอ ACADEMY
+                        </h2>
+
+                        <p class="description">
+
+                            ผมได้เข้าร่วมกิจกรรมอบรมเชิงปฏิบัติการ
+                            <strong>ความถนัดทางสายวิทยาศาสตร์สุขภาพ</strong>
+                            เพื่อเรียนรู้เกี่ยวกับการทำงาน
+                            และทักษะที่เกี่ยวข้องกับวิชาชีพด้านสุขภาพ
+                            ทำให้ผมได้เห็นภาพการเรียนและการทำงานจริงมากขึ้น
+                            รวมถึงได้ค้นหาความสนใจของตัวเอง
+                            ในสายวิทยาศาสตร์สุขภาพครับ
+
+                        </p>
+
+                        <div class="tag">
+                            <span>
+                                HEALTH SCIENCE
+                            </span>
+                        </div>
+
+                    </div>
 
                 </div>
 
+            </article>
 
-                <!-- 03 ทันตกรรม -->
 
-                <div class="item">
+            <!-- =================================================
+                 03 DENTAL
+            ================================================== -->
+
+            <article class="item">
+
+                <div class="card-inner">
 
                     <div class="item-number">
                         03
                     </div>
 
-                    <div class="image">
+                    <div class="image-frame">
 
-                        <img
-                            src="https://i.postimg.cc/zGfm0P9v/th-n-tkr-rm.jpg"
-                            alt="เกียรติบัตรศึกษาดูงานคลินิกทันตกรรม"
-                        >
+                        <div class="image">
+
+                            <img
+                                src="https://i.postimg.cc/zGfm0P9v/th-n-tkr-rm.jpg"
+                                alt="เกียรติบัตรศึกษาดูงานคลินิกทันตกรรม"
+                            >
+
+                        </div>
 
                     </div>
 
-                    <p>
-                        ศึกษาดูงาน
-                        ณ คลินิกทันตกรรมเอสซี
-                    </p>
+
+                    <div class="item-content">
+
+                        <h2 class="item-title">
+                            ศึกษาดูงานคลินิกทันตกรรม
+                        </h2>
+
+                        <p class="description">
+
+                            ผมได้มีโอกาสเข้าร่วมกิจกรรม
+                            <strong>ศึกษาดูงาน ณ คลินิกทันตกรรมเอสซี</strong>
+                            ทำให้ได้เรียนรู้บรรยากาศการทำงาน
+                            และการให้บริการผู้ป่วยภายในคลินิก
+                            รวมถึงได้เห็นการทำงานของบุคลากรทางการแพทย์
+                            ซึ่งช่วยให้ผมเข้าใจการทำงานในสายสุขภาพ
+                            มากขึ้นกว่าการเรียนจากในห้องเรียนเพียงอย่างเดียวครับ
+
+                        </p>
+
+                        <div class="tag">
+                            <span>
+                                DENTISTRY • OBSERVATION
+                            </span>
+                        </div>
+
+                    </div>
 
                 </div>
 
+            </article>
 
-                <!-- 04 สภานักเรียน -->
 
-                <div class="item">
+            <!-- =================================================
+                 04 STUDENT COUNCIL
+            ================================================== -->
+
+            <article class="item">
+
+                <div class="card-inner">
 
                     <div class="item-number">
                         04
                     </div>
 
-                    <div class="image">
+                    <div class="image-frame">
 
-                        <img
-                            src="https://i.postimg.cc/8zC8tnqp/spha-nr.jpg"
-                            alt="เกียรติบัตรกิจกรรมสภานักเรียน"
-                        >
+                        <div class="image">
+
+                            <img
+                                src="https://i.postimg.cc/8zC8tnqp/spha-nr.jpg"
+                                alt="รางวัลเหรียญทองกิจกรรมสภานักเรียน"
+                            >
+
+                        </div>
 
                     </div>
 
-                    <p>
-                        รางวัลเหรียญทอง
-                        กิจกรรมสภานักเรียน
-                        งานศิลปหัตถกรรมนักเรียน ครั้งที่ 71
-                    </p>
+
+                    <div class="item-content">
+
+                        <h2 class="item-title">
+                            กิจกรรมสภานักเรียน
+                        </h2>
+
+                        <p class="description">
+
+                            ผมได้เข้าร่วมกิจกรรม
+                            <strong>สภานักเรียนในงานศิลปหัตถกรรมนักเรียน ครั้งที่ 71</strong>
+                            ซึ่งได้รับรางวัลเหรียญทอง
+                            จากกิจกรรมนี้ผมได้ฝึกการทำงานร่วมกับผู้อื่น
+                            การแบ่งหน้าที่ ความรับผิดชอบ
+                            การสื่อสาร และการแก้ไขปัญหาเฉพาะหน้า
+                            ทำให้ผมได้เรียนรู้ว่าการทำงานเป็นทีม
+                            ต้องอาศัยความร่วมมือจากทุกคนครับ
+
+                        </p>
+
+                        <div class="tag">
+                            <span>
+                                TEAMWORK • LEADERSHIP
+                            </span>
+                        </div>
+
+                    </div>
 
                 </div>
 
+            </article>
 
-                <!-- 05 โดดหอ -->
 
-                <div class="item">
+            <!-- =================================================
+                 05 RAPPELLING / TOWER
+            ================================================== -->
+
+            <article class="item">
+
+                <div class="card-inner">
 
                     <div class="item-number">
                         05
                     </div>
 
-                    <div class="image">
+                    <div class="image-frame">
 
-                        <img
-                            src="https://i.postimg.cc/MpGkdrhx/dod-hx.jpg"
-                            alt="กิจกรรมโดดหอ"
-                        >
+                        <div class="image">
+
+                            <img
+                                src="https://i.postimg.cc/MpGkdrhx/dod-hx.jpg"
+                                alt="กิจกรรมโดดหอ"
+                            >
+
+                        </div>
 
                     </div>
 
-                    <p>
-                        กิจกรรมโดดหอ
-                        ฝึกความกล้าหาญ
-                        ความมีระเบียบวินัย
-                        และการทำงานร่วมกับผู้อื่น
-                    </p>
+
+                    <div class="item-content">
+
+                        <h2 class="item-title">
+                            กิจกรรมโดดหอ
+                        </h2>
+
+                        <p class="description">
+
+                            ผมได้เข้าร่วมกิจกรรม
+                            <strong>โดดหอ</strong>
+                            ซึ่งเป็นกิจกรรมที่ท้าทายความกล้า
+                            และทำให้ผมต้องควบคุมความกลัวของตัวเอง
+                            ระหว่างทำกิจกรรมยังได้ฝึกความมีระเบียบวินัย
+                            การปฏิบัติตามคำแนะนำ
+                            และการทำงานร่วมกับผู้อื่น
+                            ประสบการณ์นี้ทำให้ผมกล้าที่จะลองทำสิ่งใหม่ ๆ
+                            มากขึ้นครับ
+
+                        </p>
+
+                        <div class="tag">
+                            <span>
+                                COURAGE • DISCIPLINE
+                            </span>
+                        </div>
+
+                    </div>
 
                 </div>
 
-
-            </div>
-
-        </section>
+            </article>
 
 
-    </main>
+        </div>
+
+    </section>
 
 
-    <!-- FOOTER -->
+</main>
 
-    <footer>
 
-        <span>
-            Puttikan Ruekraisri
-        </span>
+<!-- =======================================================
+     FOOTER
+======================================================== -->
 
-        · Physical Therapy Portfolio
+<footer>
 
-    </footer>
+    <div class="footer-line"></div>
+
+    <span>
+        Puttikan Ruekraisri
+    </span>
+
+    &nbsp;·&nbsp;
+
+    Physical Therapy Portfolio
+
+</footer>
 
 
 </div>
+
+
+<!-- =======================================================
+     PARTICLES JAVASCRIPT
+======================================================== -->
+
+<script>
+
+const background =
+    document.querySelector(".background");
+
+
+/* create floating particles */
+
+for(let i = 0; i < 38; i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className =
+        "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (10 + Math.random() * 18) + "s";
+
+    particle.style.animationDelay =
+        (-Math.random() * 20) + "s";
+
+    particle.style.opacity =
+        (0.2 + Math.random() * 0.7);
+
+    const size =
+        1 + Math.random() * 3;
+
+    particle.style.width =
+        size + "px";
+
+    particle.style.height =
+        size + "px";
+
+    background.appendChild(particle);
+
+}
+
+
+/* =====================================================
+   CARD 3D TILT
+===================================================== */
+
+const cards =
+    document.querySelectorAll(".item");
+
+
+cards.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        e => {
+
+            if(window.innerWidth < 800)
+                return;
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                e.clientX - rect.left;
+
+            const y =
+                e.clientY - rect.top;
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+            const rotateX =
+                ((y - centerY) / centerY) * -2.2;
+
+            const rotateY =
+                ((x - centerX) / centerX) * 2.2;
+
+            card.style.transform =
+                `
+                translateY(-10px)
+                perspective(900px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                scale(1.012)
+                `;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform =
+                "";
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   CURSOR LIGHT EFFECT
+===================================================== */
+
+const cursorLight =
+    document.createElement("div");
+
+
+cursorLight.style.position =
+    "fixed";
+
+cursorLight.style.width =
+    "260px";
+
+cursorLight.style.height =
+    "260px";
+
+cursorLight.style.borderRadius =
+    "50%";
+
+cursorLight.style.pointerEvents =
+    "none";
+
+cursorLight.style.zIndex =
+    "-5";
+
+cursorLight.style.background =
+    "radial-gradient(circle, rgba(99,230,255,.08), transparent 68%)";
+
+cursorLight.style.transform =
+    "translate(-50%,-50%)";
+
+cursorLight.style.transition =
+    "left .15s ease, top .15s ease";
+
+document.body.appendChild(
+    cursorLight
+);
+
+
+document.addEventListener(
+    "mousemove",
+    e => {
+
+        cursorLight.style.left =
+            e.clientX + "px";
+
+        cursorLight.style.top =
+            e.clientY + "px";
+
+    }
+);
+
+</script>
+
 
 </body>
 </html>
