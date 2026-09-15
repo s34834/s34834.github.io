@@ -1,2440 +1,2496 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>มหาวิทยาลัย | Puttikan Ruekraisri</title>
-
-  <style>
-    /* =========================================================
-       UNIVERSITY.HTML
-       PREMIUM SPACE × GLASS × PHYSICAL THERAPY
-    ========================================================= */
-
-    :root{
-      --deep:#0a0a2e;
-      --deep-2:#11113b;
-      --indigo:#1a1a4e;
-      --violet-dark:#2d1b6e;
-      --violet:#3d2b8c;
-      --purple:#6c5ce7;
-      --purple-light:#7b6ff0;
-      --blue:#4facfe;
-      --lavender:#a78bfa;
-      --cyan:#62d8ff;
-
-      --text:#f7f7ff;
-      --text-soft:#d7d9ef;
-      --muted:#a7acce;
-
-      --glass:rgba(20,18,70,.58);
-      --glass-strong:rgba(24,21,82,.72);
-
-      --ease:cubic-bezier(.22,1,.36,1);
-
-      --shadow-dark:
-        0 30px 80px rgba(0,0,0,.48),
-        0 12px 30px rgba(3,3,25,.35);
-
-      --shadow-glow:
-        0 0 0 1px rgba(108,92,231,.12),
-        0 0 35px rgba(108,92,231,.16),
-        0 0 80px rgba(79,172,254,.08);
-
-      --shadow-hover:
-        0 38px 100px rgba(0,0,0,.55),
-        0 0 40px rgba(108,92,231,.24),
-        0 0 90px rgba(79,172,254,.14);
-    }
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      min-height:100vh;
-      overflow-x:hidden;
-
-      color:var(--text);
-
-      font-family:
-        "Noto Sans Thai",
-        "Segoe UI",
-        Tahoma,
-        sans-serif;
-
-      background:
-        radial-gradient(
-          circle at 15% 15%,
-          rgba(108,92,231,.14),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(79,172,254,.10),
-          transparent 25%
-        ),
-        radial-gradient(
-          circle at 50% 90%,
-          rgba(167,139,250,.09),
-          transparent 30%
-        ),
-        linear-gradient(
-          145deg,
-          #070722 0%,
-          #0a0a2e 28%,
-          #11113b 58%,
-          #0a0a2e 100%
-        );
-
-      position:relative;
-      isolation:isolate;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-20%;
-      z-index:-8;
-      pointer-events:none;
-
-      background:
-        radial-gradient(
-          ellipse at 25% 35%,
-          rgba(108,92,231,.24),
-          transparent 34%
-        ),
-        radial-gradient(
-          ellipse at 78% 18%,
-          rgba(79,172,254,.18),
-          transparent 30%
-        ),
-        radial-gradient(
-          ellipse at 55% 78%,
-          rgba(167,139,250,.13),
-          transparent 34%
-        );
-
-      filter:blur(70px);
-      opacity:.85;
-
-      animation:
-        nebulaDrift 24s ease-in-out infinite alternate;
-    }
-
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-7;
-      pointer-events:none;
-
-      background:
-        radial-gradient(
-          circle at 20% 25%,
-          rgba(255,255,255,.035) 0 1px,
-          transparent 2px
-        ),
-        radial-gradient(
-          circle at 70% 65%,
-          rgba(255,255,255,.025) 0 1px,
-          transparent 2px
-        );
-
-      background-size:
-        95px 95px,
-        140px 140px;
-
-      opacity:.7;
-    }
-
-    /* =========================================================
-       STAR FIELD
-    ========================================================= */
-
-    .star-field{
-      position:fixed;
-      inset:0;
-      z-index:-6;
-      pointer-events:none;
-      overflow:hidden;
-    }
-
-    .star-field::before,
-    .star-field::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-repeat:repeat;
-      pointer-events:none;
-    }
-
-    .star-field::before{
-      background-image:
-        radial-gradient(circle at 12% 18%, rgba(255,255,255,.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 31% 72%, rgba(167,139,250,.40) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 53% 28%, rgba(98,216,255,.35) 0 1px, transparent 2px),
-        radial-gradient(circle at 76% 48%, rgba(255,255,255,.42) 0 1px, transparent 2px),
-        radial-gradient(circle at 91% 82%, rgba(167,139,250,.35) 0 1.5px, transparent 3px);
-
-      background-size:
-        180px 180px,
-        240px 240px,
-        210px 210px,
-        260px 260px,
-        300px 300px;
-
-      animation:twinkleA 7s ease-in-out infinite alternate;
-    }
-
-    .star-field::after{
-      background-image:
-        radial-gradient(circle at 20% 55%, rgba(79,172,254,.34) 0 1px, transparent 3px),
-        radial-gradient(circle at 44% 12%, rgba(255,255,255,.28) 0 1px, transparent 2px),
-        radial-gradient(circle at 67% 80%, rgba(108,92,231,.35) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 83% 30%, rgba(167,139,250,.30) 0 1px, transparent 2px);
-
-      background-size:
-        230px 230px,
-        190px 190px,
-        280px 280px,
-        250px 250px;
-
-      animation:twinkleB 11s ease-in-out infinite alternate;
-    }
-
-    /* =========================================================
-       CONSTELLATION
-    ========================================================= */
-
-    .constellation{
-      position:absolute;
-      pointer-events:none;
-      z-index:1;
-      opacity:.18;
-
-      filter:
-        drop-shadow(0 0 6px rgba(98,216,255,.18));
-
-      transform-origin:center;
-    }
-
-    .constellation svg{
-      display:block;
-      width:100%;
-      height:100%;
-    }
-
-    .constellation .const-line{
-      fill:none;
-      stroke:rgba(155,222,255,.72);
-      stroke-width:1;
-      stroke-linecap:round;
-      stroke-dasharray:4 8;
-
-      animation:
-        constellationFlow 14s linear infinite;
-    }
-
-    .constellation .const-line.purple{
-      stroke:rgba(167,139,250,.62);
-    }
-
-    .constellation .const-star{
-      fill:#dff9ff;
-
-      filter:
-        drop-shadow(0 0 4px rgba(98,216,255,.9))
-        drop-shadow(0 0 10px rgba(79,172,254,.45));
-
-      animation:
-        constellationTwinkle 4s ease-in-out infinite alternate;
-    }
-
-    .constellation .const-star:nth-of-type(2){
-      animation-delay:-1.3s;
-    }
-
-    .constellation .const-star:nth-of-type(3){
-      animation-delay:-2.7s;
-    }
-
-    .constellation .const-star:nth-of-type(4){
-      animation-delay:-.8s;
-    }
-
-    .constellation .const-star:nth-of-type(5){
-      animation-delay:-3.2s;
-    }
-
-    .constellation-hero{
-      width:430px;
-      height:280px;
-      right:-45px;
-      top:30px;
-      transform:rotate(-8deg);
-    }
-
-    .constellation-goal{
-      width:390px;
-      height:270px;
-      left:-70px;
-      bottom:-45px;
-      transform:rotate(7deg);
-      opacity:.14;
-    }
-
-    /* =========================================================
-       ANATOMY LINE ART
-    ========================================================= */
-
-    .anatomy-art{
-      position:absolute;
-      pointer-events:none;
-      z-index:1;
-      opacity:.075;
-
-      filter:
-        drop-shadow(0 0 8px rgba(79,172,254,.18));
-    }
-
-    .anatomy-art svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-
-    .anatomy-art .anatomy-line{
-      fill:none;
-      stroke:rgba(167,139,250,.95);
-      stroke-width:1.15;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-    }
-
-    .anatomy-art .anatomy-blue{
-      stroke:rgba(79,172,254,.95);
-    }
-
-    .anatomy-art .anatomy-node{
-      fill:rgba(98,216,255,.8);
-
-      filter:
-        drop-shadow(0 0 5px rgba(98,216,255,.8));
-    }
-
-    .anatomy-hero{
-      width:380px;
-      height:440px;
-      left:-95px;
-      bottom:-150px;
-      transform:rotate(-9deg);
-    }
-
-    .anatomy-card{
-      width:300px;
-      height:350px;
-      right:-85px;
-      bottom:-120px;
-      transform:rotate(8deg);
-      opacity:.055;
-    }
-
-    /* =========================================================
-       SHOOTING STARS
-    ========================================================= */
-
-    .shooting-stars{
-      position:fixed;
-      inset:0;
-      z-index:-4;
-      pointer-events:none;
-      overflow:hidden;
-    }
-
-    .shooting-stars span{
-      position:absolute;
-
-      width:2px;
-      height:2px;
-
-      border-radius:50%;
-
-      background:#fff;
-
-      box-shadow:
-        0 0 5px #fff,
-        0 0 13px rgba(98,216,255,.9);
-
-      opacity:0;
-
-      transform:rotate(-35deg);
-    }
-
-    .shooting-stars span::after{
-      content:"";
-
-      position:absolute;
-      right:0;
-      top:50%;
-
-      width:110px;
-      height:1px;
-
-      transform:translateY(-50%);
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(98,216,255,0),
-          rgba(98,216,255,.35),
-          rgba(255,255,255,.7)
-        );
-    }
-
-    .shooting-stars span:nth-child(1){
-      top:18%;
-      left:74%;
-      animation:shootingStar 13s linear infinite;
-      animation-delay:3s;
-    }
-
-    .shooting-stars span:nth-child(2){
-      top:42%;
-      left:18%;
-      animation:shootingStar 17s linear infinite;
-      animation-delay:9s;
-      transform:rotate(-35deg) scale(.7);
-    }
-
-    .shooting-stars span:nth-child(3){
-      top:71%;
-      left:83%;
-      animation:shootingStar 19s linear infinite;
-      animation-delay:14s;
-      transform:rotate(-35deg) scale(.8);
-    }
-
-    /* =========================================================
-       FLOATING RINGS
-    ========================================================= */
-
-    .bg-ring{
-      position:fixed;
-      border-radius:50%;
-      pointer-events:none;
-      z-index:-3;
-
-      border:1px solid rgba(123,111,240,.10);
-
-      box-shadow:
-        0 0 45px rgba(108,92,231,.05),
-        inset 0 0 35px rgba(79,172,254,.03);
-    }
-
-    .ring-1{
-      width:420px;
-      height:420px;
-      top:8%;
-      left:-180px;
-
-      animation:
-        ringFloat 18s ease-in-out infinite alternate;
-    }
-
-    .ring-2{
-      width:620px;
-      height:620px;
-      right:-300px;
-      top:38%;
-
-      border-color:rgba(79,172,254,.08);
-
-      animation:
-        ringFloat 25s ease-in-out infinite alternate-reverse;
-    }
-
-    .ring-3{
-      width:280px;
-      height:280px;
-      left:48%;
-      bottom:-160px;
-
-      border-color:rgba(167,139,250,.08);
-
-      animation:
-        ringFloat 20s ease-in-out infinite alternate;
-    }
-
-    /* =========================================================
-       NAV
-    ========================================================= */
-
-    .nav{
-      position:fixed;
-      top:18px;
-      left:50%;
-      transform:translateX(-50%);
-
-      width:min(1120px,calc(100% - 28px));
-
-      z-index:50;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      gap:8px;
-      padding:10px;
-
-      background:rgba(9,9,43,.70);
-
-      border:1px solid rgba(167,139,250,.20);
-      border-radius:22px;
-
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
-
-      box-shadow:
-        0 20px 60px rgba(0,0,0,.35),
-        0 0 35px rgba(108,92,231,.08);
-
-      overflow:hidden;
-    }
-
-    .nav::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-
-      background:
-        linear-gradient(
-          115deg,
-          rgba(255,255,255,.07),
-          transparent 25%,
-          transparent 70%,
-          rgba(79,172,254,.05)
-        );
-    }
-
-    .nav a{
-      position:relative;
-      z-index:1;
-
-      color:#cfd2ec;
-
-      text-decoration:none;
-
-      font-size:.88rem;
-      font-weight:700;
-
-      padding:11px 16px;
-
-      border-radius:14px;
-
-      transition:
-        color .35s var(--ease),
-        background .35s var(--ease),
-        box-shadow .35s var(--ease),
-        transform .35s var(--ease);
-    }
-
-    .nav a:hover{
-      color:#fff;
-
-      background:rgba(108,92,231,.12);
-
-      box-shadow:
-        inset 0 0 18px rgba(108,92,231,.10),
-        0 0 18px rgba(108,92,231,.08);
-
-      transform:translateY(-1px);
-    }
-
-    .nav a.active{
-      color:#fff;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(108,92,231,.30),
-          rgba(79,172,254,.14)
-        );
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        inset 0 0 20px rgba(108,92,231,.14),
-        0 0 20px rgba(108,92,231,.12);
-    }
-
-    /* =========================================================
-       PAGE
-    ========================================================= */
-
-    main{
-      width:min(1120px,calc(100% - 32px));
-      margin:0 auto;
-      padding:120px 0 70px;
-    }
-
-    /* =========================================================
-       UNIVERSAL GLASS
-    ========================================================= */
-
-    .card,
-    .section-card,
-    .timeline-card,
-    .admission-card,
-    .goal{
-
-      position:relative;
-      overflow:hidden;
-
-      color:var(--text);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(35,31,102,.72),
-          rgba(13,14,57,.66)
-        ) padding-box,
-
-        linear-gradient(
-          135deg,
-          rgba(167,139,250,.58),
-          rgba(108,92,231,.38) 42%,
-          rgba(79,172,254,.46)
-        ) border-box;
-
-      border:1px solid transparent;
-
-      border-radius:28px;
-
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
-
-      box-shadow:
-        var(--shadow-dark),
-        var(--shadow-glow);
-
-      transition:
-        transform .55s var(--ease),
-        box-shadow .55s var(--ease),
-        border-color .55s var(--ease),
-        background .55s var(--ease);
-
-      transform:translate3d(0,0,0);
-
-      will-change:transform;
-    }
-
-    .card::before,
-    .section-card::before,
-    .timeline-card::before,
-    .admission-card::before,
-    .goal::before{
-
-      content:"";
-
-      position:absolute;
-      inset:1px;
-
-      z-index:1;
-
-      border-radius:27px;
-
-      pointer-events:none;
-
-      border:1px solid rgba(255,255,255,.055);
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.075),
-        inset 0 0 22px rgba(255,255,255,.018);
-    }
-
-    .card::after,
-    .section-card::after,
-    .timeline-card::after,
-    .admission-card::after,
-    .goal::after{
-
-      content:"";
-
-      position:absolute;
-      inset:0;
-
-      z-index:0;
-
-      pointer-events:none;
-
-      background:
-        radial-gradient(
-          circle at 8% 5%,
-          rgba(255,255,255,.13),
-          transparent 18%
-        ),
-        radial-gradient(
-          circle at 34% 0%,
-          rgba(167,139,250,.09),
-          transparent 22%
-        ),
-        radial-gradient(
-          circle at 95% 7%,
-          rgba(79,172,254,.08),
-          transparent 20%
-        ),
-        linear-gradient(
-          115deg,
-          rgba(255,255,255,.045),
-          transparent 24%,
-          transparent 72%,
-          rgba(79,172,254,.025)
-        );
-    }
-
-    .card:hover,
-    .section-card:hover,
-    .timeline-card:hover,
-    .admission-card:hover{
-
-      transform:translateY(-7px);
-
-      box-shadow:
-        var(--shadow-hover),
-        inset 0 0 30px rgba(108,92,231,.04);
-    }
-
-    /* =========================================================
-       PARTICLES
-    ========================================================= */
-
-    .particle-layer{
-      position:absolute;
-      inset:0;
-
-      z-index:2;
-
-      pointer-events:none;
-
-      overflow:hidden;
-
-      border-radius:inherit;
-    }
-
-    .particle-layer::before,
-    .particle-layer::after{
-
-      content:"";
-
-      position:absolute;
-
-      inset:-30% 0;
-
-      background:
-        radial-gradient(circle at 12% 5%, rgba(255,255,255,.28) 0 1px, transparent 2px),
-        radial-gradient(circle at 26% 32%, rgba(98,216,255,.24) 0 2px, transparent 4px),
-        radial-gradient(circle at 44% 12%, rgba(167,139,250,.25) 0 1px, transparent 3px),
-        radial-gradient(circle at 63% 42%, rgba(255,255,255,.20) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 81% 18%, rgba(79,172,254,.25) 0 2px, transparent 4px),
-        radial-gradient(circle at 92% 58%, rgba(167,139,250,.18) 0 1px, transparent 3px);
-
-      opacity:.38;
-
-      animation:
-        fallParticles 11s linear infinite;
-    }
-
-    .particle-layer::after{
-
-      inset:-50% 0;
-
-      background:
-        radial-gradient(circle at 18% 22%, rgba(255,255,255,.20) 0 2px, transparent 4px),
-        radial-gradient(circle at 39% 65%, rgba(108,92,231,.22) 0 1px, transparent 3px),
-        radial-gradient(circle at 58% 26%, rgba(79,172,254,.20) 0 2px, transparent 4px),
-        radial-gradient(circle at 74% 72%, rgba(167,139,250,.18) 0 1px, transparent 3px),
-        radial-gradient(circle at 88% 38%, rgba(255,255,255,.18) 0 1.5px, transparent 3px);
-
-      opacity:.30;
-
-      animation:
-        fallParticlesFar 16s linear infinite -5s;
-    }
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-
-    .hero{
-      min-height:530px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      text-align:center;
-
-      padding:70px 40px;
-
-      margin-bottom:32px;
-
-      isolation:isolate;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(47,35,121,.76),
-          rgba(10,10,46,.74)
-        ) padding-box,
-
-        linear-gradient(
-          135deg,
-          rgba(167,139,250,.75),
-          rgba(108,92,231,.50),
-          rgba(79,172,254,.72)
-        ) border-box;
-
-      animation:
-        heroPulse 8s ease-in-out infinite;
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:4;
-      max-width:850px;
-    }
-
-    .hero-label{
-      display:inline-flex;
-
-      align-items:center;
-      gap:8px;
-
-      padding:9px 15px;
-
-      margin-bottom:22px;
-
-      border:1px solid rgba(167,139,250,.25);
-
-      border-radius:999px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(108,92,231,.18),
-          rgba(79,172,254,.08)
-        );
-
-      color:#dcd9ff;
-
-      font-size:.85rem;
-      font-weight:800;
-
-      letter-spacing:.08em;
-    }
-
-    .hero-label::before{
-      content:"";
-
-      width:7px;
-      height:7px;
-
-      border-radius:50%;
-
-      background:var(--cyan);
-
-      box-shadow:
-        0 0 8px var(--cyan),
-        0 0 16px rgba(98,216,255,.65);
-
-      animation:
-        dotPulse 3s ease-in-out infinite;
-    }
-
-    .hero h1{
-      font-size:clamp(2.8rem,7vw,6rem);
-
-      line-height:1.03;
-
-      letter-spacing:-.045em;
-
-      margin-bottom:18px;
-
-      color:#fff;
-
-      text-shadow:
-        0 2px 2px rgba(0,0,0,.22),
-        0 0 14px rgba(167,139,250,.42),
-        0 0 34px rgba(108,92,231,.34),
-        0 0 70px rgba(79,172,254,.18);
-
-      animation:
-        titleGlow 6s ease-in-out infinite alternate;
-    }
-
-    .hero h1 span{
-      display:block;
-
-      background:
-        linear-gradient(
-          100deg,
-          #fff,
-          #c7c1ff 35%,
-          #8fdcff 75%,
-          #fff
-        );
-
-      -webkit-background-clip:text;
-      background-clip:text;
-
-      color:transparent;
-
-      background-size:200% auto;
-
-      animation:
-        gradientText 8s linear infinite;
-    }
-
-    .hero-subtitle{
-      color:var(--text-soft);
-
-      font-size:clamp(1.05rem,2vw,1.35rem);
-
-      font-weight:700;
-
-      margin-bottom:30px;
-    }
-
-    .pulse-line{
-      width:min(600px,90%);
-      height:60px;
-
-      margin:0 auto;
-
-      opacity:.78;
-
-      filter:
-        drop-shadow(0 0 7px rgba(79,172,254,.35))
-        drop-shadow(0 0 18px rgba(108,92,231,.22));
-    }
-
-    .pulse-line path{
-      fill:none;
-
-      stroke:url(#pulseGradient);
-
-      stroke-width:3;
-
-      stroke-linecap:round;
-      stroke-linejoin:round;
-
-      stroke-dasharray:600;
-      stroke-dashoffset:600;
-
-      animation:
-        pulseDraw 4.5s ease-in-out infinite;
-    }
-
-    /* =========================================================
-       SECTIONS
-    ========================================================= */
-
-    section{
-      margin-top:32px;
-    }
-
-    .section-title{
-      position:relative;
-
-      display:flex;
-      align-items:center;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>มหาวิทยาลัย | Puttikan Ruekraisri</title>
+
+<style>
+
+/* =========================================================
+   UNIVERSITY.HTML
+   PREMIUM SPACE × GLASS × MAHIDOL × PHYSICAL THERAPY
+========================================================= */
+
+:root{
+  --deep:#070722;
+  --deep-2:#0a0a2e;
+  --indigo:#11113b;
+  --violet:#6c5ce7;
+  --purple:#7b6ff0;
+  --blue:#4facfe;
+  --lavender:#a78bfa;
+  --cyan:#62d8ff;
+
+  --text:#f7f7ff;
+  --text-soft:#d7d9ef;
+  --muted:#a7acce;
+
+  --ease:cubic-bezier(.22,1,.36,1);
+
+  --shadow-dark:
+    0 30px 80px rgba(0,0,0,.48),
+    0 12px 30px rgba(3,3,25,.35);
+
+  --shadow-glow:
+    0 0 0 1px rgba(108,92,231,.12),
+    0 0 35px rgba(108,92,231,.16),
+    0 0 80px rgba(79,172,254,.08);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+
+  color:var(--text);
+
+  font-family:
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(108,92,231,.14),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(79,172,254,.10),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(167,139,250,.09),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #070722 0%,
+      #0a0a2e 28%,
+      #11113b 58%,
+      #0a0a2e 100%
+    );
+
+  position:relative;
+  isolation:isolate;
+}
+
+
+/* =========================================================
+   BACKGROUND NEBULA
+========================================================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:-8;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse at 25% 35%,
+      rgba(108,92,231,.24),
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 78% 18%,
+      rgba(79,172,254,.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 55% 78%,
+      rgba(167,139,250,.13),
+      transparent 34%
+    );
+
+  filter:blur(70px);
+  opacity:.85;
+
+  animation:
+    nebulaDrift 24s ease-in-out infinite alternate;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-7;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 20% 25%,
+      rgba(255,255,255,.035) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 70% 65%,
+      rgba(255,255,255,.025) 0 1px,
+      transparent 2px
+    );
+
+  background-size:
+    95px 95px,
+    140px 140px;
+
+  opacity:.7;
+}
+
+
+/* =========================================================
+   STAR FIELD
+========================================================= */
+
+.star-field{
+  position:fixed;
+  inset:0;
+  z-index:-6;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.star-field::before,
+.star-field::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-repeat:repeat;
+  pointer-events:none;
+}
+
+.star-field::before{
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.55) 0 1px, transparent 2px),
+    radial-gradient(circle at 31% 72%, rgba(167,139,250,.40) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 53% 28%, rgba(98,216,255,.35) 0 1px, transparent 2px),
+    radial-gradient(circle at 76% 48%, rgba(255,255,255,.42) 0 1px, transparent 2px),
+    radial-gradient(circle at 91% 82%, rgba(167,139,250,.35) 0 1.5px, transparent 3px);
+
+  background-size:
+    180px 180px,
+    240px 240px,
+    210px 210px,
+    260px 260px,
+    300px 300px;
+
+  animation:twinkleA 7s ease-in-out infinite alternate;
+}
+
+.star-field::after{
+  background-image:
+    radial-gradient(circle at 20% 55%, rgba(79,172,254,.34) 0 1px, transparent 3px),
+    radial-gradient(circle at 44% 12%, rgba(255,255,255,.28) 0 1px, transparent 2px),
+    radial-gradient(circle at 67% 80%, rgba(108,92,231,.35) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 83% 30%, rgba(167,139,250,.30) 0 1px, transparent 2px);
+
+  background-size:
+    230px 230px,
+    190px 190px,
+    280px 280px,
+    250px 250px;
+
+  animation:twinkleB 11s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   SHOOTING STARS
+========================================================= */
+
+.shooting-stars{
+  position:fixed;
+  inset:0;
+  z-index:-4;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.shooting-stars span{
+  position:absolute;
+
+  width:2px;
+  height:2px;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  box-shadow:
+    0 0 5px #fff,
+    0 0 13px rgba(98,216,255,.9);
+
+  opacity:0;
+
+  transform:rotate(-35deg);
+}
+
+.shooting-stars span::after{
+  content:"";
+
+  position:absolute;
+  right:0;
+  top:50%;
+
+  width:110px;
+  height:1px;
+
+  transform:translateY(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(98,216,255,0),
+      rgba(98,216,255,.35),
+      rgba(255,255,255,.7)
+    );
+}
+
+.shooting-stars span:nth-child(1){
+  top:18%;
+  left:74%;
+  animation:shootingStar 13s linear infinite;
+  animation-delay:3s;
+}
+
+.shooting-stars span:nth-child(2){
+  top:42%;
+  left:18%;
+  animation:shootingStar 17s linear infinite;
+  animation-delay:9s;
+  transform:rotate(-35deg) scale(.7);
+}
+
+.shooting-stars span:nth-child(3){
+  top:71%;
+  left:83%;
+  animation:shootingStar 19s linear infinite;
+  animation-delay:14s;
+  transform:rotate(-35deg) scale(.8);
+}
+
+
+/* =========================================================
+   FLOATING RINGS
+========================================================= */
+
+.bg-ring{
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-3;
+
+  border:1px solid rgba(123,111,240,.10);
+
+  box-shadow:
+    0 0 45px rgba(108,92,231,.05),
+    inset 0 0 35px rgba(79,172,254,.03);
+}
+
+.ring-1{
+  width:420px;
+  height:420px;
+  top:8%;
+  left:-180px;
+
+  animation:ringFloat 18s ease-in-out infinite alternate;
+}
+
+.ring-2{
+  width:620px;
+  height:620px;
+  right:-300px;
+  top:38%;
+
+  border-color:rgba(79,172,254,.08);
+
+  animation:ringFloat 25s ease-in-out infinite alternate-reverse;
+}
+
+.ring-3{
+  width:280px;
+  height:280px;
+  left:48%;
+  bottom:-160px;
+
+  border-color:rgba(167,139,250,.08);
+
+  animation:ringFloat 20s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:min(1120px,calc(100% - 28px));
+
+  z-index:50;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+  padding:10px;
+
+  background:rgba(9,9,43,.70);
+
+  border:1px solid rgba(167,139,250,.20);
+  border-radius:22px;
+
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.35),
+    0 0 35px rgba(108,92,231,.08);
+
+  overflow:hidden;
+}
+
+.nav::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255,255,255,.07),
+      transparent 25%,
+      transparent 70%,
+      rgba(79,172,254,.05)
+    );
+}
+
+.nav a{
+  position:relative;
+  z-index:1;
+
+  color:#cfd2ec;
+
+  text-decoration:none;
+
+  font-size:.88rem;
+  font-weight:700;
+
+  padding:11px 16px;
+
+  border-radius:14px;
+
+  transition:
+    color .35s var(--ease),
+    background .35s var(--ease),
+    box-shadow .35s var(--ease),
+    transform .35s var(--ease);
+}
+
+.nav a:hover{
+  color:#fff;
+
+  background:rgba(108,92,231,.12);
+
+  box-shadow:
+    inset 0 0 18px rgba(108,92,231,.10),
+    0 0 18px rgba(108,92,231,.08);
+
+  transform:translateY(-1px);
+}
+
+.nav a.active{
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(108,92,231,.30),
+      rgba(79,172,254,.14)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 0 20px rgba(108,92,231,.14),
+    0 0 20px rgba(108,92,231,.12);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+  width:min(1120px,calc(100% - 32px));
+  margin:0 auto;
+  padding:120px 0 70px;
+}
+
+
+/* =========================================================
+   UNIVERSAL GLASS
+========================================================= */
+
+.card,
+.section-card,
+.timeline-card,
+.admission-card,
+.goal{
+
+  position:relative;
+  overflow:hidden;
+
+  color:var(--text);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35,31,102,.72),
+      rgba(13,14,57,.66)
+    ) padding-box,
+
+    linear-gradient(
+      135deg,
+      rgba(167,139,250,.58),
+      rgba(108,92,231,.38) 42%,
+      rgba(79,172,254,.46)
+    ) border-box;
+
+  border:1px solid transparent;
+
+  border-radius:28px;
+
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+
+  box-shadow:
+    var(--shadow-dark),
+    var(--shadow-glow);
+
+  transition:
+    transform .55s var(--ease),
+    box-shadow .55s var(--ease),
+    border-color .55s var(--ease),
+    background .55s var(--ease);
+
+  transform:translate3d(0,0,0);
+
+  will-change:transform;
+}
+
+.card::before,
+.section-card::before,
+.timeline-card::before,
+.admission-card::before,
+.goal::before{
+
+  content:"";
+
+  position:absolute;
+  inset:1px;
+
+  z-index:1;
+
+  border-radius:27px;
+
+  pointer-events:none;
+
+  border:1px solid rgba(255,255,255,.055);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.075),
+    inset 0 0 22px rgba(255,255,255,.018);
+}
+
+.card::after,
+.section-card::after,
+.timeline-card::after,
+.admission-card::after,
+.goal::after{
+
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  z-index:0;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(255,255,255,.13),
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 34% 0%,
+      rgba(167,139,250,.09),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 95% 7%,
+      rgba(79,172,254,.08),
+      transparent 20%
+    ),
+    linear-gradient(
+      115deg,
+      rgba(255,255,255,.045),
+      transparent 24%,
+      transparent 72%,
+      rgba(79,172,254,.025)
+    );
+}
+
+.card:hover,
+.section-card:hover,
+.timeline-card:hover,
+.admission-card:hover{
+  transform:translateY(-7px);
+
+  box-shadow:
+    0 38px 100px rgba(0,0,0,.55),
+    0 0 40px rgba(108,92,231,.24),
+    0 0 90px rgba(79,172,254,.14),
+    inset 0 0 30px rgba(108,92,231,.04);
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle-layer{
+  position:absolute;
+  inset:0;
+
+  z-index:2;
+
+  pointer-events:none;
+
+  overflow:hidden;
+
+  border-radius:inherit;
+}
+
+.particle-layer::before,
+.particle-layer::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:-30% 0;
+
+  background:
+    radial-gradient(circle at 12% 5%, rgba(255,255,255,.28) 0 1px, transparent 2px),
+    radial-gradient(circle at 26% 32%, rgba(98,216,255,.24) 0 2px, transparent 4px),
+    radial-gradient(circle at 44% 12%, rgba(167,139,250,.25) 0 1px, transparent 3px),
+    radial-gradient(circle at 63% 42%, rgba(255,255,255,.20) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 81% 18%, rgba(79,172,254,.25) 0 2px, transparent 4px),
+    radial-gradient(circle at 92% 58%, rgba(167,139,250,.18) 0 1px, transparent 3px);
+
+  opacity:.38;
 
-      gap:18px;
-
-      margin:0 5px 18px;
-    }
+  animation:fallParticles 11s linear infinite;
+}
 
-    .section-title h2{
-      flex:0 0 auto;
+.particle-layer::after{
 
-      font-size:clamp(1.35rem,3vw,2rem);
+  inset:-50% 0;
 
-      line-height:1.2;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,.20) 0 2px, transparent 4px),
+    radial-gradient(circle at 39% 65%, rgba(108,92,231,.22) 0 1px, transparent 3px),
+    radial-gradient(circle at 58% 26%, rgba(79,172,254,.20) 0 2px, transparent 4px),
+    radial-gradient(circle at 74% 72%, rgba(167,139,250,.18) 0 1px, transparent 3px),
+    radial-gradient(circle at 88% 38%, rgba(255,255,255,.18) 0 1.5px, transparent 3px);
 
-      color:#fff;
+  opacity:.30;
 
-      text-shadow:
-        0 0 16px rgba(108,92,231,.18);
-    }
-
-    .section-title::after{
-      content:"";
+  animation:fallParticlesFar 16s linear infinite -5s;
+}
 
-      position:relative;
 
-      flex:1;
+/* =========================================================
+   HERO
+========================================================= */
 
-      height:1px;
+.hero{
+  min-height:760px;
 
-      background:
-        linear-gradient(
-          90deg,
-          rgba(167,139,250,.60),
-          rgba(108,92,231,.38),
-          rgba(79,172,254,.05),
-          transparent
-        );
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    .section-title::before{
-      content:"";
+  text-align:center;
 
-      position:absolute;
+  padding:55px 35px 70px;
 
-      right:0;
+  margin-bottom:32px;
 
-      width:5px;
-      height:5px;
+  isolation:isolate;
 
-      border-radius:50%;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(47,35,121,.78),
+      rgba(10,10,46,.78)
+    ) padding-box,
 
-      background:#b9efff;
+    linear-gradient(
+      135deg,
+      rgba(167,139,250,.75),
+      rgba(108,92,231,.50),
+      rgba(79,172,254,.72)
+    ) border-box;
 
-      box-shadow:
-        0 0 5px #b9efff,
-        0 0 12px rgba(79,172,254,.85),
-        0 0 22px rgba(108,92,231,.55);
+  animation:heroPulse 8s ease-in-out infinite;
+}
 
-      animation:
-        shootingSectionStar 4.8s ease-in-out infinite;
-    }
+.hero-content{
+  position:relative;
+  z-index:4;
 
-    /* =========================================================
-       SECTION CARD
-    ========================================================= */
+  width:100%;
+  max-width:900px;
+}
 
-    .section-card{
-      padding:34px;
-    }
+.hero-label{
+  display:inline-flex;
 
-    .section-card > *:not(.particle-layer):not(.anatomy-art):not(.constellation){
-      position:relative;
-      z-index:4;
-    }
+  align-items:center;
+  gap:8px;
 
-    .section-card p{
-      color:var(--text-soft);
-      line-height:1.9;
-      font-size:1rem;
-    }
+  padding:9px 15px;
 
-    .section-card strong{
-      color:#ffffff;
-    }
+  margin-bottom:20px;
 
-    /* =========================================================
-       ROUND TAG
-    ========================================================= */
+  border:1px solid rgba(167,139,250,.25);
 
-    .round-tag{
-      display:inline-flex;
+  border-radius:999px;
 
-      align-items:center;
-      gap:8px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(108,92,231,.18),
+      rgba(79,172,254,.08)
+    );
 
-      padding:8px 13px;
+  color:#dcd9ff;
 
-      margin-bottom:14px;
+  font-size:.85rem;
+  font-weight:800;
 
-      color:#eeeaff;
+  letter-spacing:.08em;
+}
 
-      font-size:.78rem;
-      font-weight:800;
+.hero-label::before{
+  content:"";
 
-      border-radius:999px;
+  width:7px;
+  height:7px;
 
-      border:1px solid rgba(167,139,250,.30);
+  border-radius:50%;
 
-      background:
-        linear-gradient(
-          135deg,
-          rgba(108,92,231,.20),
-          rgba(79,172,254,.08)
-        );
+  background:var(--cyan);
 
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.09),
-        inset 0 0 14px rgba(108,92,231,.10),
-        0 0 18px rgba(108,92,231,.07);
-    }
+  box-shadow:
+    0 0 8px var(--cyan),
+    0 0 16px rgba(98,216,255,.65);
 
-    .round-tag::before{
-      content:"";
+  animation:dotPulse 3s ease-in-out infinite;
+}
 
-      width:6px;
-      height:6px;
+.hero h1{
+  font-size:clamp(2.5rem,6vw,5rem);
 
-      border-radius:50%;
+  line-height:1.05;
 
-      background:var(--lavender);
+  letter-spacing:-.045em;
 
-      box-shadow:
-        0 0 8px rgba(167,139,250,.75);
-    }
+  margin-bottom:10px;
 
-    /* =========================================================
-       TIMELINE
-    ========================================================= */
+  color:#fff;
 
-    .timeline{
-      display:grid;
-      gap:18px;
-    }
+  text-shadow:
+    0 2px 2px rgba(0,0,0,.22),
+    0 0 14px rgba(167,139,250,.42),
+    0 0 34px rgba(108,92,231,.34),
+    0 0 70px rgba(79,172,254,.18);
 
-    .timeline-card{
-      padding:28px 30px 28px 88px;
-    }
+  animation:titleGlow 6s ease-in-out infinite alternate;
+}
 
-    .timeline-card > *:not(.particle-layer){
-      position:relative;
-      z-index:4;
-    }
+.hero h1 span{
+  display:block;
 
-    .timeline-dot{
-      position:absolute;
+  background:
+    linear-gradient(
+      100deg,
+      #fff,
+      #c7c1ff 35%,
+      #8fdcff 75%,
+      #fff
+    );
 
-      left:28px;
-      top:50%;
+  -webkit-background-clip:text;
+  background-clip:text;
 
-      transform:translateY(-50%);
+  color:transparent;
 
-      width:20px;
-      height:20px;
+  background-size:200% auto;
 
-      border-radius:50%;
+  animation:gradientText 8s linear infinite;
+}
 
-      background:
-        radial-gradient(
-          circle,
-          #fff 0 16%,
-          #a78bfa 17% 42%,
-          #6c5ce7 43% 65%,
-          rgba(108,92,231,.20) 66% 100%
-        );
+.hero-subtitle{
+  color:var(--text-soft);
 
-      box-shadow:
-        0 0 8px rgba(167,139,250,.95),
-        0 0 20px rgba(108,92,231,.72),
-        0 0 38px rgba(79,172,254,.28);
+  font-size:clamp(1.05rem,2vw,1.35rem);
 
-      animation:
-        timelinePulse 4s ease-in-out infinite;
-    }
+  font-weight:700;
 
-    .timeline-dot::after{
-      content:"";
+  margin-bottom:26px;
+}
 
-      position:absolute;
 
-      inset:-7px;
+/* =========================================================
+   NEW UNIVERSITY IMAGE
+========================================================= */
 
-      border-radius:50%;
+.university-image-wrap{
 
-      border:1px solid rgba(167,139,250,.20);
+  position:relative;
 
-      animation:
-        dotRing 4s ease-in-out infinite;
-    }
+  width:min(100%,650px);
 
-    .timeline-year{
-      display:inline-flex;
+  margin:0 auto 28px;
 
-      align-items:center;
+  padding:10px;
 
-      padding:6px 11px;
+  border-radius:32px;
 
-      margin-bottom:9px;
+  isolation:isolate;
 
-      color:#dcd9ff;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.20),
+      rgba(167,139,250,.30),
+      rgba(79,172,254,.26),
+      rgba(255,255,255,.16)
+    );
 
-      font-size:.76rem;
-      font-weight:800;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.45),
+    0 0 30px rgba(108,92,231,.25),
+    0 0 75px rgba(79,172,254,.14);
 
-      border-radius:999px;
+  animation:
+    imageFloat 6s ease-in-out infinite;
+}
 
-      border:1px solid rgba(108,92,231,.30);
 
-      background:
-        linear-gradient(
-          135deg,
-          rgba(108,92,231,.18),
-          rgba(79,172,254,.07)
-        );
-    }
+/* animated glowing border */
 
-    .timeline-card h3{
-      font-size:1.18rem;
-      margin-bottom:8px;
-      color:#fff;
-    }
+.university-image-wrap::before{
 
-    .timeline-card p{
-      color:var(--text-soft);
-      line-height:1.8;
-    }
+  content:"";
 
-    /* =========================================================
-       ADMISSION
-    ========================================================= */
+  position:absolute;
 
-    .admission-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
-    }
+  inset:-2px;
 
-    .admission-card{
-      padding:30px;
-      min-height:220px;
-    }
+  z-index:-1;
 
-    .admission-card > *{
-      position:relative;
-      z-index:4;
-    }
+  border-radius:34px;
 
-    .admission-card h3{
-      font-size:1.35rem;
-      margin-bottom:12px;
-    }
+  padding:2px;
 
-    .admission-card p{
-      color:var(--text-soft);
-      line-height:1.85;
-    }
+  background:
+    linear-gradient(
+      90deg,
+      #6c5ce7,
+      #a78bfa,
+      #62d8ff,
+      #ffffff,
+      #6c5ce7
+    );
 
-    /* =========================================================
-       GOAL
-    ========================================================= */
+  background-size:300% 100%;
 
-    .goal{
-      margin-top:32px;
+  animation:
+    borderShine 5s linear infinite;
 
-      padding:58px 40px;
+  filter:
+    drop-shadow(0 0 8px rgba(167,139,250,.7))
+    drop-shadow(0 0 20px rgba(79,172,254,.4));
 
-      text-align:center;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
 
-      background:
-        linear-gradient(
-          145deg,
-          rgba(49,37,132,.78),
-          rgba(12,11,52,.76)
-        ) padding-box,
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+}
 
-        linear-gradient(
-          135deg,
-          rgba(167,139,250,.85),
-          rgba(108,92,231,.62),
-          rgba(79,172,254,.85)
-        ) border-box;
 
-      animation:
-        goalPulse 8.5s ease-in-out infinite;
-    }
+/* moving light reflection */
 
-    .goal-content{
-      position:relative;
-      z-index:4;
-    }
+.university-image-wrap::after{
 
-    .goal small{
-      display:block;
+  content:"";
 
-      margin-bottom:12px;
+  position:absolute;
 
-      color:#b9b2ff;
+  top:-30%;
 
-      font-weight:900;
+  left:-70%;
 
-      letter-spacing:.25em;
+  width:45%;
 
-      font-size:.72rem;
-    }
+  height:170%;
 
-    .goal h2{
-      font-size:clamp(2rem,5vw,4rem);
+  z-index:3;
 
-      margin-bottom:18px;
+  pointer-events:none;
 
-      color:#fff;
+  transform:rotate(25deg);
 
-      text-shadow:
-        0 2px 3px rgba(0,0,0,.25),
-        0 0 12px rgba(255,255,255,.15),
-        0 0 28px rgba(167,139,250,.40),
-        0 0 55px rgba(108,92,231,.34),
-        0 0 90px rgba(79,172,254,.16);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.42),
+      rgba(255,255,255,.12),
+      transparent
+    );
 
-      animation:
-        goalTitleGlow 6s ease-in-out infinite alternate;
-    }
+  filter:blur(4px);
 
-    .goal p{
-      max-width:800px;
+  animation:
+    imageReflection 5.5s ease-in-out infinite;
+}
 
-      margin:0 auto;
 
-      color:var(--text-soft);
+/* image itself */
 
-      line-height:1.9;
+.university-image{
 
-      font-size:1.05rem;
-    }
+  display:block;
 
-    /* =========================================================
-       FOOTER
-    ========================================================= */
+  position:relative;
 
-    footer{
-      text-align:center;
+  z-index:2;
 
-      padding:45px 20px 28px;
+  width:100%;
 
-      color:#777da8;
+  height:auto;
 
-      font-size:.82rem;
-    }
+  max-height:510px;
 
-    footer::before{
-      content:"";
+  object-fit:contain;
 
-      display:block;
+  object-position:center;
 
-      width:90px;
-      height:1px;
+  border-radius:24px;
 
-      margin:0 auto 20px;
+  image-rendering:auto;
 
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(108,92,231,.65),
-          rgba(79,172,254,.65),
-          transparent
-        );
+  background:#eef4ff;
 
-      box-shadow:
-        0 0 12px rgba(108,92,231,.25);
-    }
+  box-shadow:
+    inset 0 0 30px rgba(255,255,255,.22),
+    0 0 0 1px rgba(255,255,255,.12);
 
-    /* =========================================================
-       ANIMATIONS
-    ========================================================= */
+  transition:
+    transform .7s var(--ease),
+    filter .7s var(--ease);
+}
 
-    @keyframes nebulaDrift{
-      0%{
-        transform:translate3d(-2%,-1%,0) scale(1);
-      }
 
-      50%{
-        transform:translate3d(2%,2%,0) scale(1.035);
-      }
+/* slight zoom when hovering */
 
-      100%{
-        transform:translate3d(-1%,3%,0) scale(1.06);
-      }
-    }
+.university-image-wrap:hover .university-image{
 
-    @keyframes twinkleA{
-      0%{
-        opacity:.28;
-        transform:scale(1);
-      }
+  transform:scale(1.025);
 
-      35%{
-        opacity:.55;
-      }
+  filter:
+    brightness(1.04)
+    saturate(1.05);
+}
 
-      65%{
-        opacity:.30;
-      }
 
-      100%{
-        opacity:.62;
-        transform:scale(1.015);
-      }
-    }
+/* little glowing corners */
 
-    @keyframes twinkleB{
-      0%{
-        opacity:.18;
-        transform:translate3d(0,0,0);
-      }
+.image-corner{
 
-      45%{
-        opacity:.42;
-      }
+  position:absolute;
 
-      100%{
-        opacity:.20;
-        transform:translate3d(0,3px,0);
-      }
-    }
+  width:34px;
+  height:34px;
 
-    @keyframes constellationFlow{
-      0%{
-        stroke-dashoffset:0;
-        opacity:.35;
-      }
+  z-index:5;
 
-      50%{
-        opacity:.75;
-      }
+  pointer-events:none;
 
-      100%{
-        stroke-dashoffset:-120;
-        opacity:.35;
-      }
-    }
+  border-color:rgba(255,255,255,.75);
 
-    @keyframes constellationTwinkle{
-      0%{
-        opacity:.25;
-        transform:scale(.82);
-      }
-
-      50%{
-        opacity:.9;
-        transform:scale(1.15);
-      }
-
-      100%{
-        opacity:.35;
-        transform:scale(.9);
-      }
-    }
-
-    @keyframes shootingStar{
-      0%{
-        opacity:0;
-        transform:translate3d(0,0,0) rotate(-35deg) scale(.8);
-      }
-
-      5%{
-        opacity:.85;
-      }
-
-      16%{
-        opacity:.8;
-      }
-
-      25%{
-        opacity:0;
-        transform:translate3d(-260px,190px,0) rotate(-35deg) scale(1);
-      }
-
-      100%{
-        opacity:0;
-        transform:translate3d(-260px,190px,0) rotate(-35deg) scale(1);
-      }
-    }
-
-    @keyframes shootingSectionStar{
-      0%,65%,100%{
-        opacity:.25;
-        transform:translateX(0);
-      }
-
-      75%{
-        opacity:1;
-        transform:translateX(-12px);
-      }
-
-      82%{
-        opacity:.35;
-        transform:translateX(-25px);
-      }
-    }
-
-    @keyframes ringFloat{
-      from{
-        transform:translate3d(0,0,0) rotate(0deg);
-      }
-
-      to{
-        transform:translate3d(25px,-18px,0) rotate(8deg);
-      }
-    }
-
-    @keyframes fallParticles{
-      0%{
-        transform:translate3d(0,-20%,0);
-      }
-
-      100%{
-        transform:translate3d(0,80%,0);
-      }
-    }
-
-    @keyframes fallParticlesFar{
-      0%{
-        transform:translate3d(0,-15%,0);
-      }
-
-      100%{
-        transform:translate3d(0,70%,0);
-      }
-    }
-
-    @keyframes heroPulse{
-      0%,100%{
-        box-shadow:
-          var(--shadow-dark),
-          0 0 35px rgba(108,92,231,.16),
-          0 0 85px rgba(79,172,254,.06);
-      }
-
-      50%{
-        box-shadow:
-          var(--shadow-dark),
-          0 0 50px rgba(108,92,231,.27),
-          0 0 115px rgba(79,172,254,.12);
-      }
-    }
-
-    @keyframes goalPulse{
-      0%,100%{
-        box-shadow:
-          var(--shadow-dark),
-          0 0 35px rgba(108,92,231,.17),
-          0 0 80px rgba(79,172,254,.07);
-      }
-
-      50%{
-        box-shadow:
-          var(--shadow-dark),
-          0 0 58px rgba(108,92,231,.30),
-          0 0 125px rgba(79,172,254,.13);
-      }
-    }
-
-    @keyframes titleGlow{
-      from{
-        text-shadow:
-          0 2px 2px rgba(0,0,0,.22),
-          0 0 12px rgba(167,139,250,.32),
-          0 0 30px rgba(108,92,231,.25),
-          0 0 65px rgba(79,172,254,.12);
-      }
-
-      to{
-        text-shadow:
-          0 2px 2px rgba(0,0,0,.22),
-          0 0 18px rgba(167,139,250,.50),
-          0 0 42px rgba(108,92,231,.40),
-          0 0 80px rgba(79,172,254,.20);
-      }
-    }
-
-    @keyframes goalTitleGlow{
-      from{
-        text-shadow:
-          0 2px 3px rgba(0,0,0,.25),
-          0 0 12px rgba(255,255,255,.12),
-          0 0 25px rgba(167,139,250,.32),
-          0 0 50px rgba(108,92,231,.25);
-      }
-
-      to{
-        text-shadow:
-          0 2px 3px rgba(0,0,0,.25),
-          0 0 18px rgba(255,255,255,.18),
-          0 0 34px rgba(167,139,250,.50),
-          0 0 70px rgba(108,92,231,.38);
-      }
-    }
-
-    @keyframes gradientText{
-      0%{
-        background-position:0% 50%;
-      }
-
-      100%{
-        background-position:200% 50%;
-      }
-    }
-
-    @keyframes pulseDraw{
-      0%{
-        stroke-dashoffset:600;
-        opacity:.25;
-      }
-
-      25%{
-        opacity:1;
-      }
-
-      60%{
-        stroke-dashoffset:0;
-        opacity:.95;
-      }
-
-      100%{
-        stroke-dashoffset:-600;
-        opacity:.15;
-      }
-    }
-
-    @keyframes dotPulse{
-      0%,100%{
-        transform:scale(1);
-        opacity:.7;
-      }
-
-      50%{
-        transform:scale(1.35);
-        opacity:1;
-      }
-    }
-
-    @keyframes timelinePulse{
-      0%,100%{
-        transform:translateY(-50%) scale(1);
-        filter:brightness(.95);
-      }
-
-      50%{
-        transform:translateY(-50%) scale(1.12);
-        filter:brightness(1.15);
-      }
-    }
-
-    @keyframes dotRing{
-      0%,100%{
-        transform:scale(.85);
-        opacity:.2;
-      }
-
-      50%{
-        transform:scale(1.25);
-        opacity:.5;
-      }
-    }
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
-    @media(max-width:800px){
-
-      .nav{
-        overflow-x:auto;
-        justify-content:flex-start;
-        scrollbar-width:none;
-      }
-
-      .nav::-webkit-scrollbar{
-        display:none;
-      }
-
-      .nav a{
-        flex:0 0 auto;
-        font-size:.78rem;
-        padding:10px 12px;
-      }
-
-      main{
-        width:min(100% - 22px,700px);
-        padding-top:105px;
-      }
-
-      .hero{
-        min-height:470px;
-        padding:55px 24px;
-      }
-
-      .section-card{
-        padding:27px 23px;
-      }
-
-      .timeline-card{
-        padding:25px 22px 25px 70px;
-      }
-
-      .timeline-dot{
-        left:23px;
-      }
-
-      .admission-grid{
-        grid-template-columns:1fr;
-      }
-
-      .goal{
-        padding:45px 24px;
-      }
-
-      .constellation-hero{
-        width:340px;
-        height:230px;
-        right:-100px;
-        top:25px;
-        opacity:.13;
-      }
-
-      .constellation-goal{
-        width:310px;
-        height:220px;
-        left:-110px;
-        bottom:-55px;
-        opacity:.10;
-      }
-
-      .anatomy-hero{
-        width:300px;
-        height:350px;
-        left:-115px;
-        bottom:-120px;
-        opacity:.055;
-      }
-
-      .anatomy-card{
-        width:230px;
-        height:280px;
-        right:-100px;
-        bottom:-100px;
-        opacity:.04;
-      }
-    }
-
-    @media(max-width:600px){
-
-      .nav{
-        top:10px;
-        width:calc(100% - 16px);
-        border-radius:18px;
-        padding:7px;
-      }
-
-      main{
-        width:calc(100% - 16px);
-        padding-top:92px;
-      }
-
-      .hero{
-        min-height:420px;
-        padding:42px 18px;
-        border-radius:23px;
-      }
-
-      .hero h1{
-        font-size:clamp(2.25rem,12vw,3.6rem);
-      }
-
-      .hero-subtitle{
-        font-size:.95rem;
-      }
-
-      .section-title{
-        gap:11px;
-      }
-
-      .section-title h2{
-        font-size:1.25rem;
-      }
-
-      .section-card,
-      .admission-card{
-        border-radius:22px;
-      }
-
-      .timeline-card{
-        padding-left:60px;
-        border-radius:22px;
-      }
-
-      .timeline-dot{
-        left:20px;
-        width:17px;
-        height:17px;
-      }
-
-      .goal{
-        border-radius:23px;
-        padding:42px 20px;
-      }
-
-      .goal p{
-        font-size:.95rem;
-      }
-
-      .constellation-hero{
-        width:270px;
-        height:185px;
-        right:-105px;
-        top:18px;
-        opacity:.10;
-      }
-
-      .constellation-goal{
-        width:260px;
-        height:180px;
-        left:-125px;
-        bottom:-40px;
-        opacity:.075;
-      }
-
-      .anatomy-hero{
-        width:230px;
-        height:280px;
-        left:-105px;
-        bottom:-90px;
-        opacity:.04;
-      }
-
-      .anatomy-card{
-        display:none;
-      }
-
-      .bg-ring{
-        opacity:.5;
-      }
-
-      .shooting-stars span::after{
-        width:75px;
-      }
-    }
-
-    @media(prefers-reduced-motion:reduce){
-
-      html{
-        scroll-behavior:auto;
-      }
-
-      *,
-      *::before,
-      *::after{
-        animation-duration:.001ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.001ms !important;
-      }
-    }
-
-  </style>
+  filter:
+    drop-shadow(0 0 7px rgba(98,216,255,.75));
+}
+
+.image-corner.tl{
+  top:18px;
+  left:18px;
+
+  border-top:2px solid;
+  border-left:2px solid;
+
+  border-radius:12px 0 0 0;
+}
+
+.image-corner.tr{
+  top:18px;
+  right:18px;
+
+  border-top:2px solid;
+  border-right:2px solid;
+
+  border-radius:0 12px 0 0;
+}
+
+.image-corner.bl{
+  bottom:18px;
+  left:18px;
+
+  border-bottom:2px solid;
+  border-left:2px solid;
+
+  border-radius:0 0 0 12px;
+}
+
+.image-corner.br{
+  bottom:18px;
+  right:18px;
+
+  border-bottom:2px solid;
+  border-right:2px solid;
+
+  border-radius:0 0 12px 0;
+}
+
+
+/* =========================================================
+   PULSE LINE
+========================================================= */
+
+.pulse-line{
+  width:min(600px,90%);
+  height:55px;
+
+  margin:0 auto;
+
+  opacity:.78;
+
+  filter:
+    drop-shadow(0 0 7px rgba(79,172,254,.35))
+    drop-shadow(0 0 18px rgba(108,92,231,.22));
+}
+
+.pulse-line path{
+  fill:none;
+
+  stroke:url(#pulseGradient);
+
+  stroke-width:3;
+
+  stroke-linecap:round;
+  stroke-linejoin:round;
+
+  stroke-dasharray:600;
+  stroke-dashoffset:600;
+
+  animation:pulseDraw 4.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section{
+  margin-top:32px;
+}
+
+.section-title{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+
+  margin:0 5px 18px;
+}
+
+.section-title h2{
+  flex:0 0 auto;
+
+  font-size:clamp(1.35rem,3vw,2rem);
+
+  line-height:1.2;
+
+  color:#fff;
+
+  text-shadow:
+    0 0 16px rgba(108,92,231,.18);
+}
+
+.section-title::after{
+  content:"";
+
+  position:relative;
+
+  flex:1;
+
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(167,139,250,.60),
+      rgba(108,92,231,.38),
+      rgba(79,172,254,.05),
+      transparent
+    );
+}
+
+.section-title::before{
+  content:"";
+
+  position:absolute;
+
+  right:0;
+
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  background:#b9efff;
+
+  box-shadow:
+    0 0 5px #b9efff,
+    0 0 12px rgba(79,172,254,.85),
+    0 0 22px rgba(108,92,231,.55);
+
+  animation:shootingSectionStar 4.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SECTION CARD
+========================================================= */
+
+.section-card{
+  padding:34px;
+}
+
+.section-card > *:not(.particle-layer){
+  position:relative;
+  z-index:4;
+}
+
+.section-card p{
+  color:var(--text-soft);
+
+  line-height:1.9;
+
+  font-size:1rem;
+}
+
+.section-card strong{
+  color:#ffffff;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline{
+  display:grid;
+  gap:18px;
+}
+
+.timeline-card{
+  padding:28px 30px 28px 88px;
+}
+
+.timeline-card > *:not(.particle-layer){
+  position:relative;
+  z-index:4;
+}
+
+.timeline-dot{
+  position:absolute;
+
+  left:28px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:20px;
+  height:20px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff 0 16%,
+      #a78bfa 17% 42%,
+      #6c5ce7 43% 65%,
+      rgba(108,92,231,.20) 66% 100%
+    );
+
+  box-shadow:
+    0 0 8px rgba(167,139,250,.95),
+    0 0 20px rgba(108,92,231,.72),
+    0 0 38px rgba(79,172,254,.28);
+
+  animation:timelinePulse 4s ease-in-out infinite;
+}
+
+.timeline-dot::after{
+  content:"";
+
+  position:absolute;
+
+  inset:-7px;
+
+  border-radius:50%;
+
+  border:1px solid rgba(167,139,250,.20);
+
+  animation:dotRing 4s ease-in-out infinite;
+}
+
+.timeline-year{
+  display:inline-flex;
+
+  align-items:center;
+
+  padding:6px 11px;
+
+  margin-bottom:9px;
+
+  color:#dcd9ff;
+
+  font-size:.76rem;
+  font-weight:800;
+
+  border-radius:999px;
+
+  border:1px solid rgba(108,92,231,.30);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(108,92,231,.18),
+      rgba(79,172,254,.07)
+    );
+}
+
+.timeline-card h3{
+  font-size:1.18rem;
+
+  margin-bottom:8px;
+
+  color:#fff;
+}
+
+.timeline-card p{
+  color:var(--text-soft);
+
+  line-height:1.8;
+}
+
+
+/* =========================================================
+   ADMISSION
+========================================================= */
+
+.admission-grid{
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:20px;
+}
+
+.admission-card{
+  padding:30px;
+
+  min-height:220px;
+}
+
+.admission-card > *{
+  position:relative;
+  z-index:4;
+}
+
+.admission-card h3{
+  font-size:1.35rem;
+
+  margin-bottom:12px;
+}
+
+.admission-card p{
+  color:var(--text-soft);
+
+  line-height:1.85;
+}
+
+.round-tag{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:8px 13px;
+
+  margin-bottom:14px;
+
+  color:#eeeaff;
+
+  font-size:.78rem;
+  font-weight:800;
+
+  border-radius:999px;
+
+  border:1px solid rgba(167,139,250,.30);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(108,92,231,.20),
+      rgba(79,172,254,.08)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 0 14px rgba(108,92,231,.10),
+    0 0 18px rgba(108,92,231,.07);
+}
+
+.round-tag::before{
+  content:"";
+
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:var(--lavender);
+
+  box-shadow:
+    0 0 8px rgba(167,139,250,.75);
+}
+
+
+/* =========================================================
+   GOAL
+========================================================= */
+
+.goal{
+  margin-top:32px;
+
+  padding:58px 40px;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(49,37,132,.78),
+      rgba(12,11,52,.76)
+    ) padding-box,
+
+    linear-gradient(
+      135deg,
+      rgba(167,139,250,.85),
+      rgba(108,92,231,.62),
+      rgba(79,172,254,.85)
+    ) border-box;
+
+  animation:goalPulse 8.5s ease-in-out infinite;
+}
+
+.goal-content{
+  position:relative;
+
+  z-index:4;
+}
+
+.goal small{
+  display:block;
+
+  margin-bottom:12px;
+
+  color:#b9b2ff;
+
+  font-weight:900;
+
+  letter-spacing:.25em;
+
+  font-size:.72rem;
+}
+
+.goal h2{
+  font-size:clamp(2rem,5vw,4rem);
+
+  margin-bottom:18px;
+
+  color:#fff;
+
+  text-shadow:
+    0 2px 3px rgba(0,0,0,.25),
+    0 0 12px rgba(255,255,255,.15),
+    0 0 28px rgba(167,139,250,.40),
+    0 0 55px rgba(108,92,231,.34),
+    0 0 90px rgba(79,172,254,.16);
+
+  animation:goalTitleGlow 6s ease-in-out infinite alternate;
+}
+
+.goal p{
+  max-width:800px;
+
+  margin:0 auto;
+
+  color:var(--text-soft);
+
+  line-height:1.9;
+
+  font-size:1.05rem;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  text-align:center;
+
+  padding:45px 20px 28px;
+
+  color:#777da8;
+
+  font-size:.82rem;
+}
+
+footer::before{
+  content:"";
+
+  display:block;
+
+  width:90px;
+  height:1px;
+
+  margin:0 auto 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(108,92,231,.65),
+      rgba(79,172,254,.65),
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px rgba(108,92,231,.25);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes nebulaDrift{
+  0%{
+    transform:translate3d(-2%,-1%,0) scale(1);
+  }
+
+  50%{
+    transform:translate3d(2%,2%,0) scale(1.035);
+  }
+
+  100%{
+    transform:translate3d(-1%,3%,0) scale(1.06);
+  }
+}
+
+@keyframes twinkleA{
+  0%{
+    opacity:.28;
+    transform:scale(1);
+  }
+
+  35%{
+    opacity:.55;
+  }
+
+  65%{
+    opacity:.30;
+  }
+
+  100%{
+    opacity:.62;
+    transform:scale(1.015);
+  }
+}
+
+@keyframes twinkleB{
+  0%{
+    opacity:.18;
+    transform:translate3d(0,0,0);
+  }
+
+  45%{
+    opacity:.42;
+  }
+
+  100%{
+    opacity:.20;
+    transform:translate3d(0,3px,0);
+  }
+}
+
+@keyframes shootingStar{
+  0%{
+    opacity:0;
+
+    transform:
+      translate3d(0,0,0)
+      rotate(-35deg)
+      scale(.8);
+  }
+
+  5%{
+    opacity:.85;
+  }
+
+  16%{
+    opacity:.8;
+  }
+
+  25%{
+    opacity:0;
+
+    transform:
+      translate3d(-260px,190px,0)
+      rotate(-35deg)
+      scale(1);
+  }
+
+  100%{
+    opacity:0;
+
+    transform:
+      translate3d(-260px,190px,0)
+      rotate(-35deg)
+      scale(1);
+  }
+}
+
+@keyframes shootingSectionStar{
+  0%,65%,100%{
+    opacity:.25;
+    transform:translateX(0);
+  }
+
+  75%{
+    opacity:1;
+    transform:translateX(-12px);
+  }
+
+  82%{
+    opacity:.35;
+    transform:translateX(-25px);
+  }
+}
+
+@keyframes ringFloat{
+  from{
+    transform:
+      translate3d(0,0,0)
+      rotate(0deg);
+  }
+
+  to{
+    transform:
+      translate3d(25px,-18px,0)
+      rotate(8deg);
+  }
+}
+
+@keyframes fallParticles{
+  0%{
+    transform:translate3d(0,-20%,0);
+  }
+
+  100%{
+    transform:translate3d(0,80%,0);
+  }
+}
+
+@keyframes fallParticlesFar{
+  0%{
+    transform:translate3d(0,-15%,0);
+  }
+
+  100%{
+    transform:translate3d(0,70%,0);
+  }
+}
+
+@keyframes heroPulse{
+  0%,100%{
+    box-shadow:
+      var(--shadow-dark),
+      0 0 35px rgba(108,92,231,.16),
+      0 0 85px rgba(79,172,254,.06);
+  }
+
+  50%{
+    box-shadow:
+      var(--shadow-dark),
+      0 0 50px rgba(108,92,231,.27),
+      0 0 115px rgba(79,172,254,.12);
+  }
+}
+
+@keyframes goalPulse{
+  0%,100%{
+    box-shadow:
+      var(--shadow-dark),
+      0 0 35px rgba(108,92,231,.17),
+      0 0 80px rgba(79,172,254,.07);
+  }
+
+  50%{
+    box-shadow:
+      var(--shadow-dark),
+      0 0 58px rgba(108,92,231,.30),
+      0 0 125px rgba(79,172,254,.13);
+  }
+}
+
+@keyframes titleGlow{
+  from{
+    text-shadow:
+      0 2px 2px rgba(0,0,0,.22),
+      0 0 12px rgba(167,139,250,.32),
+      0 0 30px rgba(108,92,231,.25),
+      0 0 65px rgba(79,172,254,.12);
+  }
+
+  to{
+    text-shadow:
+      0 2px 2px rgba(0,0,0,.22),
+      0 0 18px rgba(167,139,250,.50),
+      0 0 42px rgba(108,92,231,.40),
+      0 0 80px rgba(79,172,254,.20);
+  }
+}
+
+@keyframes goalTitleGlow{
+  from{
+    text-shadow:
+      0 2px 3px rgba(0,0,0,.25),
+      0 0 12px rgba(255,255,255,.12),
+      0 0 25px rgba(167,139,250,.32),
+      0 0 50px rgba(108,92,231,.25);
+  }
+
+  to{
+    text-shadow:
+      0 2px 3px rgba(0,0,0,.25),
+      0 0 18px rgba(255,255,255,.18),
+      0 0 34px rgba(167,139,250,.50),
+      0 0 70px rgba(108,92,231,.38);
+  }
+}
+
+@keyframes gradientText{
+  0%{
+    background-position:0% 50%;
+  }
+
+  100%{
+    background-position:200% 50%;
+  }
+}
+
+@keyframes pulseDraw{
+  0%{
+    stroke-dashoffset:600;
+    opacity:.25;
+  }
+
+  25%{
+    opacity:1;
+  }
+
+  60%{
+    stroke-dashoffset:0;
+    opacity:.95;
+  }
+
+  100%{
+    stroke-dashoffset:-600;
+    opacity:.15;
+  }
+}
+
+@keyframes dotPulse{
+  0%,100%{
+    transform:scale(1);
+    opacity:.7;
+  }
+
+  50%{
+    transform:scale(1.35);
+    opacity:1;
+  }
+}
+
+@keyframes timelinePulse{
+  0%,100%{
+    transform:translateY(-50%) scale(1);
+    filter:brightness(.95);
+  }
+
+  50%{
+    transform:translateY(-50%) scale(1.12);
+    filter:brightness(1.15);
+  }
+}
+
+@keyframes dotRing{
+  0%,100%{
+    transform:scale(.85);
+    opacity:.2;
+  }
+
+  50%{
+    transform:scale(1.25);
+    opacity:.5;
+  }
+}
+
+
+/* =========================================================
+   IMAGE ANIMATIONS
+========================================================= */
+
+@keyframes imageFloat{
+
+  0%,100%{
+    transform:translateY(0) scale(1);
+  }
+
+  50%{
+    transform:translateY(-7px) scale(1.008);
+  }
+}
+
+@keyframes borderShine{
+
+  0%{
+    background-position:0% 50%;
+  }
+
+  100%{
+    background-position:300% 50%;
+  }
+}
+
+@keyframes imageReflection{
+
+  0%{
+    left:-70%;
+    opacity:0;
+  }
+
+  15%{
+    opacity:.25;
+  }
+
+  45%{
+    opacity:.8;
+  }
+
+  65%{
+    opacity:.15;
+  }
+
+  100%{
+    left:130%;
+    opacity:0;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px){
+
+  .nav{
+    overflow-x:auto;
+    justify-content:flex-start;
+    scrollbar-width:none;
+  }
+
+  .nav::-webkit-scrollbar{
+    display:none;
+  }
+
+  .nav a{
+    flex:0 0 auto;
+
+    font-size:.78rem;
+
+    padding:10px 12px;
+  }
+
+  main{
+    width:min(100% - 22px,700px);
+
+    padding-top:105px;
+  }
+
+  .hero{
+    min-height:650px;
+
+    padding:
+      45px 20px
+      55px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.3rem,8vw,4.5rem);
+  }
+
+  .university-image-wrap{
+    width:min(100%,570px);
+
+    padding:8px;
+
+    border-radius:27px;
+  }
+
+  .university-image{
+    border-radius:20px;
+  }
+
+  .section-card{
+    padding:27px 23px;
+  }
+
+  .timeline-card{
+    padding:25px 22px 25px 70px;
+  }
+
+  .timeline-dot{
+    left:23px;
+  }
+
+  .admission-grid{
+    grid-template-columns:1fr;
+  }
+
+  .goal{
+    padding:45px 24px;
+  }
+}
+
+
+@media(max-width:600px){
+
+  .nav{
+    top:10px;
+
+    width:calc(100% - 16px);
+
+    border-radius:18px;
+
+    padding:7px;
+  }
+
+  main{
+    width:calc(100% - 16px);
+
+    padding-top:92px;
+  }
+
+  .hero{
+    min-height:570px;
+
+    padding:
+      35px 12px
+      45px;
+
+    border-radius:23px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.05rem,11vw,3.4rem);
+  }
+
+  .hero-subtitle{
+    font-size:.95rem;
+  }
+
+  .hero-label{
+    font-size:.72rem;
+
+    padding:
+      8px 12px;
+  }
+
+  .university-image-wrap{
+    width:100%;
+
+    padding:7px;
+
+    border-radius:24px;
+
+    margin-bottom:22px;
+  }
+
+  .university-image{
+    border-radius:18px;
+
+    max-height:none;
+  }
+
+  .image-corner{
+    width:25px;
+    height:25px;
+  }
+
+  .image-corner.tl{
+    top:13px;
+    left:13px;
+  }
+
+  .image-corner.tr{
+    top:13px;
+    right:13px;
+  }
+
+  .image-corner.bl{
+    bottom:13px;
+    left:13px;
+  }
+
+  .image-corner.br{
+    bottom:13px;
+    right:13px;
+  }
+
+  .pulse-line{
+    height:45px;
+  }
+
+  .section-title{
+    gap:11px;
+  }
+
+  .section-title h2{
+    font-size:1.25rem;
+  }
+
+  .section-card,
+  .admission-card{
+    border-radius:22px;
+  }
+
+  .timeline-card{
+    padding-left:60px;
+
+    border-radius:22px;
+  }
+
+  .timeline-dot{
+    left:20px;
+
+    width:17px;
+    height:17px;
+  }
+
+  .goal{
+    border-radius:23px;
+
+    padding:42px 20px;
+  }
+
+  .goal p{
+    font-size:.95rem;
+  }
+
+  .bg-ring{
+    opacity:.5;
+  }
+
+  .shooting-stars span::after{
+    width:75px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <!-- BACKGROUND -->
 
-  <div class="star-field" aria-hidden="true"></div>
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
 
-  <div class="shooting-stars" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
+<div class="star-field" aria-hidden="true"></div>
+
+<div class="shooting-stars" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="bg-ring ring-1" aria-hidden="true"></div>
+<div class="bg-ring ring-2" aria-hidden="true"></div>
+<div class="bg-ring ring-3" aria-hidden="true"></div>
+
+
+<!-- =========================================================
+     NAV
+========================================================= -->
+
+<nav class="nav">
+
+  <a href="portfolio.html">
+    หน้าหลัก
+  </a>
+
+  <a href="cumnum.html">
+    คำนำ
+  </a>
+
+  <a href="profile.html">
+    ประวัติ
+  </a>
+
+  <a href="work.html">
+    ผลงาน
+  </a>
+
+  <a href="university.html" class="active">
+    มหาวิทยาลัย
+  </a>
+
+  <a href="contract.html">
+    ติดต่อ
+  </a>
+
+</nav>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero card">
+
+  <div class="particle-layer" aria-hidden="true"></div>
+
+
+  <div class="hero-content">
+
+
+    <div class="hero-label">
+      UNIVERSITY DESTINATION
+    </div>
+
+
+    <h1>
+      <span>มหาวิทยาลัยมหิดล</span>
+    </h1>
+
+
+    <div class="hero-subtitle">
+      คณะกายภาพบำบัด
+    </div>
+
+
+    <!-- =====================================================
+         MAHIDOL IMAGE
+    ====================================================== -->
+
+    <div class="university-image-wrap">
+
+      <span class="image-corner tl"></span>
+      <span class="image-corner tr"></span>
+      <span class="image-corner bl"></span>
+      <span class="image-corner br"></span>
+
+      <img
+        class="university-image"
+        src="https://i.postimg.cc/XJvR2W4w/36c260844d3b53b17cdc2529f73a5210.jpg"
+        alt="ตรามหาวิทยาลัยมหิดล"
+        loading="eager"
+      >
+
+    </div>
+
+
+    <!-- =====================================================
+         PULSE
+    ====================================================== -->
+
+    <svg
+      class="pulse-line"
+      viewBox="0 0 600 60"
+      aria-hidden="true"
+    >
+
+      <defs>
+
+        <linearGradient
+          id="pulseGradient"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+        >
+
+          <stop
+            offset="0%"
+            stop-color="#6c5ce7"
+          />
+
+          <stop
+            offset="50%"
+            stop-color="#a78bfa"
+          />
+
+          <stop
+            offset="100%"
+            stop-color="#4facfe"
+          />
+
+        </linearGradient>
+
+      </defs>
+
+
+      <path
+        d="
+          M0 30
+          H120
+          L145 30
+          L160 10
+          L178 50
+          L195 30
+          H255
+          L275 30
+          L292 20
+          L307 40
+          L322 30
+          H600
+        "
+      />
+
+    </svg>
+
+
   </div>
 
-  <div class="bg-ring ring-1" aria-hidden="true"></div>
-  <div class="bg-ring ring-2" aria-hidden="true"></div>
-  <div class="bg-ring ring-3" aria-hidden="true"></div>
+</section>
 
 
-  <!-- NAV -->
 
-  <nav class="nav">
+<!-- =========================================================
+     REASON
+========================================================= -->
 
-    <a href="portfolio.html">
-      หน้าหลัก
-    </a>
+<section>
 
-    <a href="cumnum.html">
-      คำนำ
-    </a>
+  <div class="section-title">
 
-    <a href="profile.html">
-      ประวัติ
-    </a>
+    <h2>
+      เหตุผลที่เลือกมหาวิทยาลัย
+    </h2>
 
-    <a href="work.html">
-      ผลงาน
-    </a>
-
-    <a href="university.html" class="active">
-      มหาวิทยาลัย
-    </a>
-
-    <a href="contract.html">
-      ติดต่อ
-    </a>
-
-  </nav>
+  </div>
 
 
-  <!-- MAIN -->
+  <div class="section-card">
 
-  <main>
+    <div class="particle-layer" aria-hidden="true"></div>
 
 
-    <!-- HERO -->
+    <p>
 
-    <section class="hero card">
+      ผมเลือก
+      <strong>มหาวิทยาลัยมหิดล</strong>
+      เป็นหนึ่งในมหาวิทยาลัยที่มีความสนใจศึกษาต่อด้านกายภาพบำบัด
+      เพราะผมต้องการเรียนรู้ทั้งพื้นฐานทางวิทยาศาสตร์สุขภาพ
+      และการนำความรู้ไปประยุกต์ใช้กับผู้ป่วยจริง
+      ผมมองว่าการเรียนกายภาพบำบัดจำเป็นต้องอาศัยทั้งความรู้
+      ความรับผิดชอบ การสังเกต และทักษะการสื่อสาร
+      ซึ่งเป็นสิ่งที่ผมอยากพัฒนาตนเองให้มากขึ้น
+
+      <br><br>
+
+      นอกจากนี้ ผมสนใจสภาพแวดล้อมทางการเรียนรู้ของมหาวิทยาลัยมหิดล
+      ที่เกี่ยวข้องกับวิทยาศาสตร์สุขภาพและการแพทย์
+      เพราะผมเชื่อว่าการได้เรียนรู้จากอาจารย์ ผู้เชี่ยวชาญ
+      และประสบการณ์ที่หลากหลาย
+      จะช่วยให้ผมเข้าใจบทบาทของนักกายภาพบำบัดได้ลึกซึ้งยิ่งขึ้น
+      และสามารถนำความรู้ไปใช้ดูแลและช่วยเหลือผู้อื่นได้อย่างเหมาะสม
+
+      <br><br>
+
+      สำหรับผม มหาวิทยาลัยไม่ได้เป็นเพียงสถานที่สำหรับเรียนหนังสือ
+      แต่เป็นพื้นที่ที่จะช่วยให้ผมเติบโตทั้งด้านความรู้
+      ทักษะการทำงานร่วมกับผู้อื่น
+      และความรับผิดชอบต่อวิชาชีพ
+      ผมจึงอยากใช้ช่วงเวลาของการศึกษาเพื่อพัฒนาตัวเอง
+      ให้พร้อมสำหรับการก้าวเข้าสู่วิชาชีพกายภาพบำบัดในอนาคต
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TIMELINE
+========================================================= -->
+
+<section>
+
+  <div class="section-title">
+
+    <h2>
+      เส้นทางและเป้าหมาย
+    </h2>
+
+  </div>
+
+
+  <div class="timeline">
+
+
+    <!-- ระหว่างศึกษา -->
+
+    <div class="timeline-card">
 
       <div class="particle-layer" aria-hidden="true"></div>
 
-      <!-- CONSTELLATION -->
+      <div class="timeline-dot"></div>
 
-      <div class="constellation constellation-hero" aria-hidden="true">
-
-        <svg
-          viewBox="0 0 430 280"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-
-          <path
-            class="const-line"
-            d="M55 72 L125 48 L190 94 L265 55 L340 92 L385 54"
-          />
-
-          <path
-            class="const-line purple"
-            d="M125 48 L155 145 L190 94 L225 172 L265 55"
-          />
-
-          <path
-            class="const-line"
-            d="M155 145 L95 205 L225 172 L310 210"
-          />
-
-          <circle class="const-star" cx="55" cy="72" r="2.2"/>
-          <circle class="const-star" cx="125" cy="48" r="3"/>
-          <circle class="const-star" cx="190" cy="94" r="2"/>
-          <circle class="const-star" cx="265" cy="55" r="3.4"/>
-          <circle class="const-star" cx="340" cy="92" r="2"/>
-          <circle class="const-star" cx="385" cy="54" r="2.5"/>
-          <circle class="const-star" cx="155" cy="145" r="2.4"/>
-          <circle class="const-star" cx="225" cy="172" r="3"/>
-          <circle class="const-star" cx="310" cy="210" r="2"/>
-          <circle class="const-star" cx="95" cy="205" r="2"/>
-
-        </svg>
-
+      <div class="timeline-year">
+        ระหว่างศึกษา
       </div>
 
-
-      <!-- ANATOMY -->
-
-      <div class="anatomy-art anatomy-hero" aria-hidden="true">
-
-        <svg
-          viewBox="0 0 380 440"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-
-          <circle class="anatomy-line" cx="190" cy="62" r="27"/>
-
-          <path class="anatomy-line" d="M177 88 C178 105 172 111 164 119"/>
-          <path class="anatomy-line" d="M203 88 C202 105 208 111 216 119"/>
-
-          <path class="anatomy-line anatomy-blue" d="M164 119 C143 116 121 124 101 143"/>
-          <path class="anatomy-line anatomy-blue" d="M216 119 C237 116 259 124 279 143"/>
-
-          <path class="anatomy-line"
-            d="M164 119 C158 145 154 172 158 205 C162 232 170 252 176 270"/>
-
-          <path class="anatomy-line"
-            d="M216 119 C222 145 226 172 222 205 C218 232 210 252 204 270"/>
-
-          <path class="anatomy-line anatomy-blue"
-            d="M190 117 C188 145 191 170 189 197 C191 223 188 247 190 270"/>
-
-          <path class="anatomy-line"
-            d="M160 135 C145 151 146 170 158 187"/>
-
-          <path class="anatomy-line"
-            d="M158 142 C151 158 154 176 166 190"/>
-
-          <path class="anatomy-line"
-            d="M220 135 C235 151 234 170 222 187"/>
-
-          <path class="anatomy-line"
-            d="M222 142 C229 158 226 176 214 190"/>
-
-          <path class="anatomy-line"
-            d="M101 143 C83 166 70 192 60 220 C54 237 48 255 40 273"/>
-
-          <path class="anatomy-line"
-            d="M279 143 C297 166 310 192 320 220 C326 237 332 255 340 273"/>
-
-          <path class="anatomy-line anatomy-blue"
-            d="M176 270 C162 282 153 296 155 313 C159 326 173 332 190 333"/>
-
-          <path class="anatomy-line anatomy-blue"
-            d="M204 270 C218 282 227 296 225 313 C221 326 207 332 190 333"/>
-
-          <path class="anatomy-line"
-            d="M170 326 C161 350 155 374 151 399 C149 414 146 425 141 436"/>
-
-          <path class="anatomy-line"
-            d="M210 326 C219 350 225 374 229 399 C231 414 234 425 239 436"/>
-
-          <circle class="anatomy-node" cx="190" cy="118" r="2"/>
-          <circle class="anatomy-node" cx="158" cy="205" r="2"/>
-          <circle class="anatomy-node" cx="222" cy="205" r="2"/>
-          <circle class="anatomy-node" cx="190" cy="270" r="2.5"/>
-
-        </svg>
-
-      </div>
-
-
-      <div class="hero-content">
-
-        <div class="hero-label">
-          UNIVERSITY DESTINATION
-        </div>
-
-        <h1>
-          <span>มหาวิทยาลัยมหิดล</span>
-        </h1>
-
-        <div class="hero-subtitle">
-          คณะกายภาพบำบัด
-        </div>
-
-        <svg
-          class="pulse-line"
-          viewBox="0 0 600 60"
-          aria-hidden="true"
-        >
-
-          <defs>
-
-            <linearGradient
-              id="pulseGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-
-              <stop offset="0%" stop-color="#6c5ce7"/>
-              <stop offset="50%" stop-color="#a78bfa"/>
-              <stop offset="100%" stop-color="#4facfe"/>
-
-            </linearGradient>
-
-          </defs>
-
-          <path
-            d="
-              M0 30
-              H120
-              L145 30
-              L160 10
-              L178 50
-              L195 30
-              H255
-              L275 30
-              L292 20
-              L307 40
-              L322 30
-              H600
-            "
-          />
-
-        </svg>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         REASON
-    ====================================================== -->
-
-    <section>
-
-      <div class="section-title">
-
-        <h2>
-          เหตุผลที่เลือกมหาวิทยาลัย
-        </h2>
-
-      </div>
-
-      <div class="section-card">
-
-        <div class="particle-layer" aria-hidden="true"></div>
-
-        <div class="anatomy-art anatomy-card" aria-hidden="true">
-
-          <svg
-            viewBox="0 0 300 350"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-
-            <path class="anatomy-line anatomy-blue"
-              d="M150 25 C125 45 118 72 126 98 C132 119 124 142 112 161 C96 185 91 211 104 235 C116 257 137 270 150 288"/>
-
-            <path class="anatomy-line"
-              d="M150 25 C175 45 182 72 174 98 C168 119 176 142 188 161 C204 185 209 211 196 235 C184 257 163 270 150 288"/>
-
-            <path class="anatomy-line"
-              d="M126 98 C102 105 83 119 67 139"/>
-
-            <path class="anatomy-line"
-              d="M174 98 C198 105 217 119 233 139"/>
-
-            <path class="anatomy-line anatomy-blue"
-              d="M112 161 C137 174 163 174 188 161"/>
-
-            <path class="anatomy-line"
-              d="M104 235 C132 222 168 222 196 235"/>
-
-            <circle class="anatomy-node" cx="150" cy="25" r="2"/>
-            <circle class="anatomy-node" cx="150" cy="174" r="2"/>
-            <circle class="anatomy-node" cx="150" cy="288" r="2"/>
-
-          </svg>
-
-        </div>
-
-
-        <!-- ข้อมูลที่เติมให้แล้ว -->
-
-        <p>
-          ผมเลือก <strong>มหาวิทยาลัยมหิดล</strong> เป็นหนึ่งในมหาวิทยาลัยที่มีความสนใจศึกษาต่อด้านกายภาพบำบัด เพราะผมต้องการเรียนรู้ทั้งพื้นฐานทางวิทยาศาสตร์สุขภาพและการนำความรู้ไปประยุกต์ใช้กับผู้ป่วยจริง ผมมองว่าการเรียนกายภาพบำบัดจำเป็นต้องอาศัยทั้งความรู้ ความรับผิดชอบ การสังเกต และทักษะการสื่อสาร ซึ่งเป็นสิ่งที่ผมอยากพัฒนาตนเองให้มากขึ้น
-          <br><br>
-          นอกจากนี้ ผมสนใจสภาพแวดล้อมทางการเรียนรู้ของมหาวิทยาลัยมหิดลที่เกี่ยวข้องกับวิทยาศาสตร์สุขภาพและการแพทย์ เพราะผมเชื่อว่าการได้เรียนรู้จากอาจารย์ ผู้เชี่ยวชาญ และประสบการณ์ที่หลากหลาย จะช่วยให้ผมเข้าใจบทบาทของนักกายภาพบำบัดได้ลึกซึ้งยิ่งขึ้น และสามารถนำความรู้ไปใช้ดูแลและช่วยเหลือผู้อื่นได้อย่างเหมาะสม
-          <br><br>
-          สำหรับผม มหาวิทยาลัยไม่ได้เป็นเพียงสถานที่สำหรับเรียนหนังสือ แต่เป็นพื้นที่ที่จะช่วยให้ผมเติบโตทั้งด้านความรู้ ทักษะการทำงานร่วมกับผู้อื่น และความรับผิดชอบต่อวิชาชีพ ผมจึงอยากใช้ช่วงเวลาของการศึกษาเพื่อพัฒนาตัวเองให้พร้อมสำหรับการก้าวเข้าสู่วิชาชีพกายภาพบำบัดในอนาคต
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         TIMELINE
-    ====================================================== -->
-
-    <section>
-
-      <div class="section-title">
-
-        <h2>
-          เส้นทางและเป้าหมาย
-        </h2>
-
-      </div>
-
-
-      <div class="timeline">
-
-
-        <!-- ระหว่างศึกษา -->
-
-        <div class="timeline-card">
-
-          <div class="particle-layer" aria-hidden="true"></div>
-
-          <div class="timeline-dot"></div>
-
-          <div class="timeline-year">
-            ระหว่างศึกษา
-          </div>
-
-          <h3>
-            พัฒนาตัวเองให้พร้อมสำหรับวิชาชีพ
-          </h3>
-
-          <p>
-            ผมตั้งใจพัฒนาความรู้ด้านวิทยาศาสตร์สุขภาพ โดยเฉพาะกายวิภาคศาสตร์ การทำงานของร่างกาย และหลักการเคลื่อนไหว รวมถึงฝึกทักษะการสื่อสาร การทำงานเป็นทีม และความรับผิดชอบ นอกจากนี้ผมต้องการเรียนรู้จากกิจกรรมและประสบการณ์ต่าง ๆ ที่ช่วยให้เข้าใจการทำงานของบุคลากรทางสุขภาพมากขึ้น เพื่อเตรียมตัวให้พร้อมสำหรับการเรียนในระดับมหาวิทยาลัยและการทำงานจริงในอนาคต
-          </p>
-
-        </div>
-
-
-        <!-- หลังสำเร็จการศึกษา -->
-
-        <div class="timeline-card">
-
-          <div class="particle-layer" aria-hidden="true"></div>
-
-          <div class="timeline-dot"></div>
-
-          <div class="timeline-year">
-            หลังสำเร็จการศึกษา
-          </div>
-
-          <h3>
-            ก้าวเข้าสู่เส้นทางวิชาชีพกายภาพบำบัด
-          </h3>
-
-          <p>
-            หลังจากสำเร็จการศึกษา ผมตั้งใจนำความรู้และทักษะที่ได้รับไปต่อยอดในวิชาชีพกายภาพบำบัด โดยต้องการเรียนรู้จากประสบการณ์จริงและพัฒนาความสามารถของตนเองอย่างต่อเนื่อง ผมอยากเป็นนักกายภาพบำบัดที่สามารถประเมินปัญหา วางแนวทางการฟื้นฟู และให้คำแนะนำแก่ผู้รับบริการด้วยความรับผิดชอบและความเข้าใจ
-          </p>
-
-        </div>
-
-
-        <!-- เป้าหมายระยะยาว -->
-
-        <div class="timeline-card">
-
-          <div class="particle-layer" aria-hidden="true"></div>
-
-          <div class="timeline-dot"></div>
-
-          <div class="timeline-year">
-            เป้าหมายระยะยาว
-          </div>
-
-          <h3>
-            เติบโตและสร้างคุณค่าให้กับผู้คน
-          </h3>
-
-          <p>
-            ในระยะยาว ผมอยากพัฒนาตนเองให้เป็นบุคลากรด้านกายภาพบำบัดที่มีทั้งความรู้ ความสามารถ และจรรยาบรรณในการทำงาน สามารถนำความรู้มาช่วยส่งเสริมการเคลื่อนไหวและคุณภาพชีวิตของผู้คน รวมถึงพร้อมเรียนรู้เทคโนโลยีและองค์ความรู้ใหม่ ๆ อยู่เสมอ เพื่อพัฒนาการดูแลผู้รับบริการให้มีประสิทธิภาพมากยิ่งขึ้น
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         ADMISSION
-    ====================================================== -->
-
-    <section>
-
-      <div class="section-title">
-
-        <h2>
-          รอบรับสมัครที่สนใจ
-        </h2>
-
-      </div>
-
-
-      <div class="admission-grid">
-
-
-        <!-- PORTFOLIO -->
-
-        <div class="admission-card">
-
-          <div class="particle-layer" aria-hidden="true"></div>
-
-          <div class="round-tag">
-            รอบที่ 1
-          </div>
-
-          <h3>
-            Portfolio
-          </h3>
-
-          <p>
-            ผมสนใจการสมัครในรอบ Portfolio เพราะเป็นรอบที่เปิดโอกาสให้ผมได้นำเสนอความสนใจ ความตั้งใจ และประสบการณ์ที่เกี่ยวข้องกับสายวิทยาศาสตร์สุขภาพและกายภาพบำบัดผ่านผลงานของตนเอง ผมต้องการใช้ Portfolio เป็นพื้นที่แสดงให้เห็นถึงความพยายามในการเรียนรู้ การเข้าร่วมกิจกรรม การพัฒนาทักษะ และความตั้งใจที่จะศึกษาต่อในสายวิชาชีพสุขภาพ
-          </p>
-
-        </div>
-
-
-        <!-- ADMISSION -->
-
-        <div class="admission-card">
-
-          <div class="particle-layer" aria-hidden="true"></div>
-
-          <div class="round-tag">
-            รอบที่ 3
-          </div>
-
-          <h3>
-            Admission
-          </h3>
-
-          <p>
-            ผมให้ความสำคัญกับรอบ Admission เช่นกัน เพราะเป็นอีกเส้นทางหนึ่งที่สามารถใช้ความรู้และผลการเรียนที่สะสมมาตลอดช่วงมัธยมศึกษาในการสมัครเข้าศึกษาต่อ ผมจึงตั้งใจเตรียมตัวทั้งด้านวิชาการและการสอบที่เกี่ยวข้อง พร้อมวางแผนการเรียนอย่างสม่ำเสมอ เพื่อเพิ่มความพร้อมสำหรับการเข้าสู่ระดับมหาวิทยาลัย
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         GOAL
-    ====================================================== -->
-
-    <section class="goal">
+      <h3>
+        พัฒนาตัวเองให้พร้อมสำหรับวิชาชีพ
+      </h3>
+
+      <p>
+        ผมตั้งใจพัฒนาความรู้ด้านวิทยาศาสตร์สุขภาพ
+        โดยเฉพาะกายวิภาคศาสตร์ การทำงานของร่างกาย
+        และหลักการเคลื่อนไหว
+        รวมถึงฝึกทักษะการสื่อสาร
+        การทำงานเป็นทีม และความรับผิดชอบ
+        นอกจากนี้ผมต้องการเรียนรู้จากกิจกรรม
+        และประสบการณ์ต่าง ๆ
+        ที่ช่วยให้เข้าใจการทำงานของบุคลากรทางสุขภาพมากขึ้น
+        เพื่อเตรียมตัวให้พร้อมสำหรับการเรียนในระดับมหาวิทยาลัย
+        และการทำงานจริงในอนาคต
+      </p>
+
+    </div>
+
+
+    <!-- หลังสำเร็จการศึกษา -->
+
+    <div class="timeline-card">
 
       <div class="particle-layer" aria-hidden="true"></div>
 
+      <div class="timeline-dot"></div>
 
-      <!-- CONSTELLATION -->
-
-      <div
-        class="constellation constellation-goal"
-        aria-hidden="true"
-      >
-
-        <svg
-          viewBox="0 0 390 270"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-
-          <path
-            class="const-line"
-            d="M32 205 L92 154 L150 176 L205 102 L267 131 L345 64"
-          />
-
-          <path
-            class="const-line purple"
-            d="M92 154 L125 77 L205 102"
-          />
-
-          <path
-            class="const-line"
-            d="M150 176 L198 224 L267 131"
-          />
-
-          <circle class="const-star" cx="32" cy="205" r="2"/>
-          <circle class="const-star" cx="92" cy="154" r="3"/>
-          <circle class="const-star" cx="150" cy="176" r="2"/>
-          <circle class="const-star" cx="205" cy="102" r="3.3"/>
-          <circle class="const-star" cx="267" cy="131" r="2.2"/>
-          <circle class="const-star" cx="345" cy="64" r="3"/>
-          <circle class="const-star" cx="125" cy="77" r="2"/>
-          <circle class="const-star" cx="198" cy="224" r="2"/>
-
-        </svg>
-
+      <div class="timeline-year">
+        หลังสำเร็จการศึกษา
       </div>
 
+      <h3>
+        ก้าวเข้าสู่เส้นทางวิชาชีพกายภาพบำบัด
+      </h3>
 
-      <!-- ANATOMY -->
+      <p>
+        หลังจากสำเร็จการศึกษา
+        ผมตั้งใจนำความรู้และทักษะที่ได้รับ
+        ไปต่อยอดในวิชาชีพกายภาพบำบัด
+        โดยต้องการเรียนรู้จากประสบการณ์จริง
+        และพัฒนาความสามารถของตนเองอย่างต่อเนื่อง
+        ผมอยากเป็นนักกายภาพบำบัดที่สามารถประเมินปัญหา
+        วางแนวทางการฟื้นฟู
+        และให้คำแนะนำแก่ผู้รับบริการ
+        ด้วยความรับผิดชอบและความเข้าใจ
+      </p>
 
-      <div
-        class="anatomy-art anatomy-card"
-        aria-hidden="true"
-        style="left:auto;right:-65px;bottom:-115px;"
-      >
+    </div>
 
-        <svg
-          viewBox="0 0 300 350"
-          xmlns="http://www.w3.org/2000/svg"
-        >
 
-          <path
-            class="anatomy-line anatomy-blue"
-            d="
-              M150 35
-              C132 53 123 76 127 101
-              C130 123 143 139 150 154
-              C157 139 170 123 173 101
-              C177 76 168 53 150 35
-            "
-          />
+    <!-- เป้าหมายระยะยาว -->
 
-          <path
-            class="anatomy-line"
-            d="
-              M127 101
-              C105 114 91 136 87 162
-              C83 190 96 213 112 228
-            "
-          />
+    <div class="timeline-card">
 
-          <path
-            class="anatomy-line"
-            d="
-              M173 101
-              C195 114 209 136 213 162
-              C217 190 204 213 188 228
-            "
-          />
+      <div class="particle-layer" aria-hidden="true"></div>
 
-          <path
-            class="anatomy-line anatomy-blue"
-            d="
-              M112 228
-              C125 244 136 256 150 270
-              C164 256 175 244 188 228
-            "
-          />
+      <div class="timeline-dot"></div>
 
-          <path
-            class="anatomy-line"
-            d="
-              M150 154
-              C133 169 123 187 126 207
-              C130 229 140 247 150 270
-            "
-          />
-
-          <path
-            class="anatomy-line"
-            d="
-              M150 154
-              C167 169 177 187 174 207
-              C170 229 160 247 150 270
-            "
-          />
-
-          <circle class="anatomy-node" cx="150" cy="154" r="2.5"/>
-          <circle class="anatomy-node" cx="150" cy="270" r="2"/>
-
-        </svg>
-
+      <div class="timeline-year">
+        เป้าหมายระยะยาว
       </div>
 
+      <h3>
+        เติบโตและสร้างคุณค่าให้กับผู้คน
+      </h3>
 
-      <div class="goal-content">
+      <p>
+        ในระยะยาว
+        ผมอยากพัฒนาตนเองให้เป็นบุคลากรด้านกายภาพบำบัด
+        ที่มีทั้งความรู้ ความสามารถ
+        และจรรยาบรรณในการทำงาน
+        สามารถนำความรู้มาช่วยส่งเสริมการเคลื่อนไหว
+        และคุณภาพชีวิตของผู้คน
+        รวมถึงพร้อมเรียนรู้เทคโนโลยี
+        และองค์ความรู้ใหม่ ๆ อยู่เสมอ
+        เพื่อพัฒนาการดูแลผู้รับบริการ
+        ให้มีประสิทธิภาพมากยิ่งขึ้น
+      </p>
 
-        <small>
-          MY GOAL
-        </small>
+    </div>
 
-        <h2>
-          เป้าหมายของผม
-        </h2>
+  </div>
 
-        <p>
-          เป้าหมายของผมคือการได้ศึกษาต่อในสาขากายภาพบำบัด และพัฒนาตนเองให้มีความรู้และทักษะที่จำเป็นต่อการประกอบวิชาชีพ ผมอยากเรียนรู้ตั้งแต่พื้นฐานของร่างกายมนุษย์ การเคลื่อนไหว การประเมินปัญหา ไปจนถึงแนวทางการฟื้นฟูที่เหมาะสมกับแต่ละบุคคล
-          <br><br>
-          ในอนาคต ผมอยากเป็นนักกายภาพบำบัดที่สามารถนำความรู้ที่เรียนมาใช้ช่วยให้ผู้คนกลับมาเคลื่อนไหวและใช้ชีวิตประจำวันได้ดีขึ้น ผมพร้อมที่จะเรียนรู้สิ่งใหม่ ๆ พัฒนาตนเอง และรับผิดชอบต่อหน้าที่ เพราะผมเชื่อว่าการดูแลผู้คนที่ดีต้องเริ่มจากทั้งความรู้ ความตั้งใจ และความเข้าใจ
-        </p>
+</section>
 
+
+
+<!-- =========================================================
+     ADMISSION
+========================================================= -->
+
+<section>
+
+  <div class="section-title">
+
+    <h2>
+      รอบรับสมัครที่สนใจ
+    </h2>
+
+  </div>
+
+
+  <div class="admission-grid">
+
+
+    <!-- PORTFOLIO -->
+
+    <div class="admission-card">
+
+      <div class="particle-layer" aria-hidden="true"></div>
+
+      <div class="round-tag">
+        รอบที่ 1
       </div>
 
-    </section>
+      <h3>
+        Portfolio
+      </h3>
 
-  </main>
+      <p>
+        ผมสนใจการสมัครในรอบ Portfolio
+        เพราะเป็นรอบที่เปิดโอกาสให้ผมได้นำเสนอความสนใจ
+        ความตั้งใจ และประสบการณ์ที่เกี่ยวข้องกับ
+        สายวิทยาศาสตร์สุขภาพและกายภาพบำบัด
+        ผ่านผลงานของตนเอง
+        ผมต้องการใช้ Portfolio เป็นพื้นที่แสดงให้เห็นถึง
+        ความพยายามในการเรียนรู้
+        การเข้าร่วมกิจกรรม
+        การพัฒนาทักษะ
+        และความตั้งใจที่จะศึกษาต่อในสายวิชาชีพสุขภาพ
+      </p>
+
+    </div>
 
 
-  <!-- FOOTER -->
+    <!-- ADMISSION -->
 
-  <footer>
-    Puttikan Ruekraisri · Physical Therapy Portfolio
-  </footer>
+    <div class="admission-card">
+
+      <div class="particle-layer" aria-hidden="true"></div>
+
+      <div class="round-tag">
+        รอบที่ 3
+      </div>
+
+      <h3>
+        Admission
+      </h3>
+
+      <p>
+        ผมให้ความสำคัญกับรอบ Admission เช่นกัน
+        เพราะเป็นอีกเส้นทางหนึ่งที่สามารถใช้ความรู้
+        และผลการเรียนที่สะสมมาตลอดช่วงมัธยมศึกษา
+        ในการสมัครเข้าศึกษาต่อ
+        ผมจึงตั้งใจเตรียมตัวทั้งด้านวิชาการ
+        และการสอบที่เกี่ยวข้อง
+        พร้อมวางแผนการเรียนอย่างสม่ำเสมอ
+        เพื่อเพิ่มความพร้อมสำหรับการเข้าสู่ระดับมหาวิทยาลัย
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     GOAL
+========================================================= -->
+
+<section class="goal">
+
+  <div class="particle-layer" aria-hidden="true"></div>
+
+
+  <div class="goal-content">
+
+    <small>
+      MY GOAL
+    </small>
+
+    <h2>
+      เป้าหมายของผม
+    </h2>
+
+    <p>
+
+      เป้าหมายของผมคือการได้ศึกษาต่อในสาขากายภาพบำบัด
+      และพัฒนาตนเองให้มีความรู้และทักษะที่จำเป็นต่อการประกอบวิชาชีพ
+      ผมอยากเรียนรู้ตั้งแต่พื้นฐานของร่างกายมนุษย์
+      การเคลื่อนไหว การประเมินปัญหา
+      ไปจนถึงแนวทางการฟื้นฟูที่เหมาะสมกับแต่ละบุคคล
+
+      <br><br>
+
+      ในอนาคต ผมอยากเป็นนักกายภาพบำบัด
+      ที่สามารถนำความรู้ที่เรียนมาใช้ช่วยให้ผู้คน
+      กลับมาเคลื่อนไหวและใช้ชีวิตประจำวันได้ดีขึ้น
+      ผมพร้อมที่จะเรียนรู้สิ่งใหม่ ๆ
+      พัฒนาตนเอง และรับผิดชอบต่อหน้าที่
+      เพราะผมเชื่อว่าการดูแลผู้คนที่ดี
+      ต้องเริ่มจากทั้งความรู้ ความตั้งใจ และความเข้าใจ
+
+    </p>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+  Puttikan Ruekraisri · Physical Therapy Portfolio
+</footer>
 
 
 </body>
