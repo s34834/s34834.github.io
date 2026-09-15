@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,6 +10,7 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
+
 
 :root{
     --bg:#05051b;
@@ -34,133 +36,120 @@
     --radius:28px;
 }
 
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+
 html{
     scroll-behavior:smooth;
 }
 
+
 body{
-    font-family:"Prompt","Kanit",sans-serif;
-    color:var(--text);
     min-height:100vh;
-    overflow-x:hidden;
+    font-family:'Prompt',sans-serif;
+    color:var(--text);
 
     background:
-        radial-gradient(circle at 15% 15%,rgba(95,72,220,.18),transparent 28%),
-        radial-gradient(circle at 85% 25%,rgba(52,123,255,.13),transparent 28%),
-        radial-gradient(circle at 50% 100%,rgba(130,70,220,.13),transparent 35%),
-        linear-gradient(145deg,#030313,#080824 48%,#05051b);
+        radial-gradient(circle at 15% 20%,rgba(123,111,240,.15),transparent 30%),
+        radial-gradient(circle at 85% 15%,rgba(79,172,254,.12),transparent 30%),
+        radial-gradient(circle at 50% 80%,rgba(167,139,250,.08),transparent 35%),
+        linear-gradient(135deg,var(--bg),var(--bg2) 55%,var(--deep));
+
+    overflow-x:hidden;
 }
 
-/* =========================================================
-   STAR FIELD
-========================================================= */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-10;
-    pointer-events:none;
 
     background-image:
-        radial-gradient(circle,rgba(255,255,255,.75) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(98,216,255,.45) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(167,139,250,.38) 1px,transparent 1.5px);
+        radial-gradient(circle,rgba(255,255,255,.75) 1px,transparent 1px),
+        radial-gradient(circle,rgba(98,216,255,.5) 1px,transparent 1px);
 
     background-size:
-        85px 85px,
-        145px 145px,
-        210px 210px;
+        90px 90px,
+        140px 140px;
 
     background-position:
         10px 20px,
-        40px 70px,
-        100px 30px;
+        40px 70px;
 
-    opacity:.38;
-
-    animation:starMove 35s linear infinite;
+    opacity:.15;
+    pointer-events:none;
+    z-index:-1;
 }
 
-@keyframes starMove{
-    from{
-        transform:translateY(0);
-    }
 
-    to{
-        transform:translateY(-130px);
-    }
-}
-
-/* =========================================================
+/* =========================
    SHOOTING STARS
-========================================================= */
+========================= */
 
 .shooting-star{
     position:fixed;
 
-    width:150px;
+    width:130px;
     height:2px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #fff,
-            var(--cyan),
-            transparent
-        );
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(98,216,255,.9),
+        white
+    );
 
-    filter:
-        drop-shadow(0 0 7px var(--cyan))
-        drop-shadow(0 0 15px var(--blue));
+    transform:rotate(-35deg);
 
-    transform:rotate(-32deg);
+    filter:drop-shadow(0 0 7px var(--cyan));
 
     opacity:0;
 
     pointer-events:none;
 
-    z-index:-2;
+    z-index:-1;
 }
 
-.shooting-star:nth-of-type(1){
-    top:15%;
-    left:-180px;
-    animation:shoot 9s linear infinite;
+
+.star-1{
+    top:18%;
+    left:-150px;
+    animation:shootingStar 7s linear infinite;
 }
 
-.shooting-star:nth-of-type(2){
-    top:38%;
+
+.star-2{
+    top:45%;
     left:-200px;
-    animation:shoot 12s linear infinite 4s;
+    animation:shootingStar 9s linear infinite 3s;
 }
 
-.shooting-star:nth-of-type(3){
-    top:67%;
-    left:-220px;
-    animation:shoot 14s linear infinite 8s;
+
+.star-3{
+    top:72%;
+    left:-250px;
+    animation:shootingStar 11s linear infinite 6s;
 }
 
-@keyframes shoot{
+
+@keyframes shootingStar{
 
     0%{
-        transform:translate(-100px,-20px) rotate(-32deg);
+        transform:translateX(0) rotate(-35deg);
         opacity:0;
     }
 
     8%{
-        opacity:.9;
+        opacity:1;
     }
 
-    22%{
-        transform:translate(120vw,420px) rotate(-32deg);
+    20%{
+        transform:translateX(110vw) rotate(-35deg);
         opacity:0;
     }
 
@@ -169,9 +158,10 @@ body::before{
     }
 }
 
-/* =========================================================
+
+/* =========================
    NAVIGATION
-========================================================= */
+========================= */
 
 nav{
     position:fixed;
@@ -181,246 +171,190 @@ nav{
 
     transform:translateX(-50%);
 
-    width:min(1100px,calc(100% - 28px));
+    width:min(1150px,calc(100% - 30px));
 
-    z-index:1000;
+    padding:13px 18px;
 
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 
-    padding:10px 14px;
-
-    background:rgba(6,6,29,.72);
+    background:rgba(7,7,34,.72);
 
     border:1px solid rgba(139,126,255,.25);
 
-    border-radius:20px;
+    border-radius:22px;
 
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,.35),
-        inset 0 1px rgba(255,255,255,.08);
+        0 15px 50px rgba(0,0,0,.3),
+        0 0 25px rgba(123,111,240,.08);
+
+    z-index:1000;
 }
 
-nav::before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:12%;
-    right:12%;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.5),
-            var(--cyan),
-            transparent
-        );
-
-    box-shadow:0 0 12px rgba(98,216,255,.35);
-}
 
 .logo{
-    font-weight:700;
-    font-size:1.05rem;
-    letter-spacing:2px;
+    color:white;
 
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            var(--violet),
-            var(--cyan),
-            #fff
-        );
+    font-family:'Kanit',sans-serif;
+    font-weight:600;
 
-    background-size:250% auto;
+    font-size:17px;
+    letter-spacing:1px;
 
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:textShine 5s linear infinite;
+    white-space:nowrap;
 }
+
+
+.logo span{
+    color:var(--cyan);
+
+    text-shadow:
+        0 0 12px rgba(98,216,255,.7);
+}
+
 
 .nav-links{
     display:flex;
     gap:5px;
-    list-style:none;
+    align-items:center;
 }
 
-.nav-links a{
-    position:relative;
 
-    color:#b9bbd8;
+.nav-links a{
+    color:var(--muted);
 
     text-decoration:none;
 
     font-size:13px;
     font-weight:500;
 
-    padding:10px 14px;
+    padding:10px 13px;
 
     border-radius:13px;
 
-    transition:.35s cubic-bezier(.2,.8,.2,1);
+    transition:.3s;
 }
 
-.nav-links a::after{
-    content:"";
 
-    position:absolute;
-
-    left:20%;
-    right:20%;
-    bottom:4px;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            transparent
-        );
-
-    transform:scaleX(0);
-
-    transition:.35s ease;
-}
-
-.nav-links a:hover{
-    color:#fff;
-
-    background:rgba(123,111,240,.11);
-
-    text-shadow:
-        0 0 10px rgba(167,139,250,.75);
-
-    transform:translateY(-2px);
-}
-
-.nav-links a:hover::after{
-    transform:scaleX(1);
-}
-
+.nav-links a:hover,
 .nav-links a.active{
-    color:#fff;
+    color:white;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(91,73,205,.9),
-            rgba(54,137,235,.72)
-        );
+    background:rgba(123,111,240,.16);
 
     box-shadow:
-        0 0 18px rgba(123,111,240,.32),
-        inset 0 1px rgba(255,255,255,.18);
-
-    text-shadow:
-        0 0 9px rgba(255,255,255,.55);
+        inset 0 0 15px rgba(123,111,240,.08),
+        0 0 15px rgba(123,111,240,.08);
 }
 
-/* =========================================================
-   MAIN
-========================================================= */
 
-main{
-    width:min(1100px,calc(100% - 30px));
+/* =========================
+   GENERAL
+========================= */
+
+.container{
+    width:min(1100px,calc(100% - 32px));
     margin:auto;
 }
 
-/* =========================================================
+
+.section{
+    padding:110px 0 40px;
+}
+
+
+.section-number{
+    color:var(--cyan);
+
+    font-size:12px;
+    letter-spacing:3px;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    text-shadow:
+        0 0 12px rgba(98,216,255,.45);
+}
+
+
+.section-title{
+    font-family:'Kanit',sans-serif;
+
+    font-size:clamp(30px,5vw,48px);
+
+    line-height:1.05;
+
+    margin-bottom:35px;
+
+    color:white;
+}
+
+
+.section-title span{
+    color:var(--violet);
+
+    text-shadow:
+        0 0 25px rgba(167,139,250,.25);
+}
+
+
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
     min-height:100vh;
 
-    display:grid;
-
-    grid-template-columns:1.05fr .95fr;
-
+    display:flex;
     align-items:center;
 
-    gap:60px;
-
-    padding:150px 0 90px;
-
-    position:relative;
+    padding-top:100px;
 }
 
-.hero::before{
-    content:"";
 
-    position:absolute;
+.hero-grid{
+    width:100%;
 
-    width:650px;
-    height:650px;
+    display:grid;
 
-    left:-280px;
-    top:150px;
+    grid-template-columns:1.25fr .75fr;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(104,75,235,.16),
-            transparent 68%
-        );
+    gap:55px;
 
-    filter:blur(35px);
-
-    pointer-events:none;
+    align-items:center;
 }
 
-/* =========================================================
-   HERO CONTENT
-========================================================= */
-
-.hero-content{
-    position:relative;
-    z-index:2;
-}
 
 .eyebrow{
     display:inline-flex;
 
     align-items:center;
-    gap:9px;
+    gap:10px;
 
-    padding:8px 15px;
+    padding:8px 14px;
 
-    margin-bottom:20px;
+    border:1px solid rgba(98,216,255,.25);
 
-    border:1px solid rgba(98,216,255,.27);
-
-    border-radius:50px;
+    border-radius:100px;
 
     background:rgba(98,216,255,.06);
 
-    color:#9be7ff;
+    color:var(--cyan);
 
-    font-size:.82rem;
-
+    font-size:11px;
     letter-spacing:2px;
 
-    box-shadow:
-        0 0 18px rgba(98,216,255,.10),
-        inset 0 0 15px rgba(98,216,255,.03);
+    margin-bottom:22px;
 
-    animation:floatBadge 4s ease-in-out infinite;
+    box-shadow:
+        0 0 20px rgba(98,216,255,.06);
 }
+
 
 .eyebrow::before{
     content:"";
@@ -433,112 +367,44 @@ main{
     background:var(--cyan);
 
     box-shadow:
-        0 0 8px var(--cyan),
-        0 0 18px var(--cyan);
+        0 0 12px var(--cyan);
 
-    animation:dotPulse 1.8s ease-in-out infinite;
+    animation:pulse 2s infinite;
 }
 
-@keyframes dotPulse{
+
+@keyframes pulse{
+
+    0%,100%{
+        opacity:.5;
+        transform:scale(.8);
+    }
+
     50%{
-        opacity:.3;
-        transform:scale(.7);
+        opacity:1;
+        transform:scale(1.15);
     }
 }
 
-@keyframes floatBadge{
-    50%{
-        transform:translateY(-4px);
-    }
-}
 
-/* =========================================================
-   HERO NAME
-========================================================= */
+.hero h1{
+    font-family:'Kanit',sans-serif;
 
-.hero-name{
-    position:relative;
+    font-size:clamp(48px,7vw,84px);
 
-    font-family:"Kanit","Prompt",sans-serif;
+    line-height:.98;
 
-    font-size:clamp(3.5rem,7vw,6.5rem);
-
-    line-height:1.02;
-
-    font-weight:700;
+    font-weight:600;
 
     letter-spacing:-2px;
 
     background:
         linear-gradient(
-            105deg,
-            #ffffff 0%,
-            #d8d5ff 18%,
-            #a78bfa 38%,
-            #62d8ff 55%,
-            #ffffff 72%,
-            #a78bfa 90%,
-            #ffffff 100%
-        );
-
-    background-size:300% auto;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:
-        nameShine 6s linear infinite,
-        namePulse 4s ease-in-out infinite;
-
-    filter:
-        drop-shadow(0 0 5px rgba(255,255,255,.25))
-        drop-shadow(0 0 15px rgba(123,111,240,.35));
-}
-
-@keyframes nameShine{
-
-    0%{
-        background-position:0% center;
-    }
-
-    100%{
-        background-position:300% center;
-    }
-}
-
-@keyframes namePulse{
-
-    0%,100%{
-        filter:
-            drop-shadow(0 0 5px rgba(255,255,255,.25))
-            drop-shadow(0 0 15px rgba(123,111,240,.35));
-    }
-
-    50%{
-        filter:
-            drop-shadow(0 0 9px rgba(255,255,255,.5))
-            drop-shadow(0 0 28px rgba(123,111,240,.58))
-            drop-shadow(0 0 55px rgba(79,172,254,.20));
-    }
-}
-
-.english-name{
-    margin-top:12px;
-
-    font-size:clamp(1rem,2vw,1.4rem);
-
-    letter-spacing:6px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7779b7,
-            #ffffff,
-            var(--cyan),
-            var(--violet),
-            #7779b7
+            110deg,
+            #fff,
+            #dcd8ff 35%,
+            #7edcff 75%,
+            #fff
         );
 
     background-size:250% auto;
@@ -548,91 +414,82 @@ main{
 
     color:transparent;
 
-    animation:textShine 5s linear infinite;
+    animation:gradientText 7s linear infinite;
 }
 
-@keyframes textShine{
 
-    0%{
-        background-position:0% center;
-    }
+@keyframes gradientText{
 
-    100%{
+    to{
         background-position:250% center;
     }
 }
 
+
+.hero-en{
+    margin-top:12px;
+
+    color:var(--violet);
+
+    font-family:'Kanit',sans-serif;
+
+    font-size:clamp(17px,2vw,23px);
+
+    letter-spacing:4px;
+
+    text-shadow:
+        0 0 18px rgba(167,139,250,.25);
+}
+
+
 .hero-description{
-    max-width:650px;
+    max-width:680px;
+
+    color:var(--muted);
+
+    line-height:1.9;
 
     margin-top:25px;
 
-    color:#bfc2df;
-
-    font-size:1.02rem;
-
-    line-height:1.9;
+    font-size:15px;
 }
 
-.hero-description strong{
-    color:#fff;
 
-    text-shadow:
-        0 0 7px rgba(255,255,255,.4),
-        0 0 18px rgba(123,111,240,.4);
-}
-
-/* =========================================================
-   TAGS
-========================================================= */
-
-.tags{
+.hero-tags{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
 
-    margin-top:28px;
+    gap:9px;
+
+    margin-top:22px;
 }
 
-.tag{
-    padding:8px 14px;
 
-    border-radius:50px;
+.hero-tag{
+    padding:7px 12px;
 
-    background:rgba(255,255,255,.035);
+    border-radius:100px;
 
-    border:1px solid rgba(130,120,255,.22);
+    font-size:10px;
+    letter-spacing:1.5px;
 
-    color:#d6d7ef;
+    color:#dcecff;
 
-    font-size:.8rem;
+    border:1px solid rgba(98,216,255,.18);
 
-    transition:.35s ease;
+    background:rgba(98,216,255,.045);
 }
 
-.tag:hover{
-    transform:translateY(-4px);
-
-    border-color:rgba(98,216,255,.55);
-
-    color:#fff;
-
-    box-shadow:
-        0 0 16px rgba(98,216,255,.15);
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
 
 .hero-buttons{
     display:flex;
     flex-wrap:wrap;
 
-    gap:13px;
+    gap:12px;
 
-    margin-top:32px;
+    margin-top:30px;
 }
+
 
 .btn{
     display:inline-flex;
@@ -640,895 +497,1002 @@ main{
     align-items:center;
     justify-content:center;
 
-    min-width:150px;
+    text-decoration:none;
 
     padding:13px 20px;
 
     border-radius:15px;
 
-    text-decoration:none;
+    font-family:'Prompt',sans-serif;
 
-    font-size:.9rem;
+    font-size:13px;
     font-weight:500;
 
-    transition:.35s ease;
+    transition:.35s;
 }
+
 
 .btn-primary{
     color:white;
 
     background:
         linear-gradient(
-            110deg,
-            #584bd1,
-            #7b6ff0,
-            #4facfe
+            135deg,
+            rgba(123,111,240,.9),
+            rgba(79,172,254,.8)
         );
 
+    border:1px solid rgba(255,255,255,.15);
+
     box-shadow:
-        0 0 15px rgba(123,111,240,.35),
-        0 10px 35px rgba(0,0,0,.25);
+        0 10px 30px rgba(79,172,254,.12),
+        0 0 25px rgba(123,111,240,.15);
 }
 
-.btn-secondary{
-    color:#d8d9f5;
 
-    border:1px solid rgba(130,120,255,.3);
+.btn-primary:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(79,172,254,.2),
+        0 0 35px rgba(123,111,240,.25);
+}
+
+
+.btn-secondary{
+    color:var(--text);
+
+    border:1px solid rgba(139,126,255,.3);
 
     background:rgba(255,255,255,.035);
 }
 
-.btn:hover{
-    transform:translateY(-5px);
 
-    box-shadow:
-        0 0 25px rgba(123,111,240,.35),
-        0 15px 35px rgba(0,0,0,.25);
+.btn-secondary:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(98,216,255,.45);
+
+    background:rgba(98,216,255,.06);
 }
 
-/* =========================================================
-   PHOTO ORBIT
-========================================================= */
 
-.hero-visual{
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.hero-image{
     display:flex;
-
     justify-content:center;
 
     position:relative;
 }
 
-.photo-orbit{
-    position:relative;
 
-    width:min(390px,80vw);
+.profile-orbit{
+    position:absolute;
 
-    aspect-ratio:1;
+    width:370px;
+    height:370px;
 
-    display:flex;
+    border:1px solid rgba(98,216,255,.13);
 
-    align-items:center;
-    justify-content:center;
+    border-radius:50%;
+
+    animation:orbit 15s linear infinite;
 }
 
-.photo-orbit::before,
-.photo-orbit::after{
+
+.profile-orbit::before{
     content:"";
 
     position:absolute;
 
+    width:10px;
+    height:10px;
+
+    top:15px;
+    left:50%;
+
     border-radius:50%;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 15px var(--cyan),
+        0 0 35px var(--cyan);
+}
+
+
+@keyframes orbit{
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+.profile-frame{
+    width:300px;
+    height:380px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(123,111,240,.18),
+            rgba(79,172,254,.06)
+        );
+
+    border:1px solid rgba(139,126,255,.25);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        0 0 45px rgba(123,111,240,.13);
+
+    backdrop-filter:blur(12px);
+}
+
+
+.profile-frame::before{
+    content:"";
+
+    position:absolute;
+    inset:12px;
+
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,.07);
 
     pointer-events:none;
 }
 
-.photo-orbit::before{
-    inset:-25px;
 
-    border:1px solid rgba(123,111,240,.23);
+.profile-frame img{
+    width:90%;
+    height:90%;
 
-    transform:rotate(25deg) scaleX(.78);
+    object-fit:contain;
 
-    box-shadow:
-        0 0 25px rgba(123,111,240,.08);
+    filter:
+        drop-shadow(0 15px 25px rgba(0,0,0,.45))
+        drop-shadow(0 0 25px rgba(123,111,240,.12));
 }
 
-.photo-orbit::after{
-    inset:-50px;
 
-    border:1px solid rgba(98,216,255,.14);
-
-    transform:rotate(-35deg) scaleX(.72);
-}
-
-.photo-card{
-    position:relative;
-
-    width:78%;
-
-    aspect-ratio:1;
-
-    padding:9px;
-
-    border-radius:35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(167,139,250,.55),
-            rgba(79,172,254,.25),
-            rgba(255,255,255,.06)
-        );
-
-    box-shadow:
-        0 0 25px rgba(123,111,240,.30),
-        0 0 70px rgba(79,172,254,.14),
-        0 30px 70px rgba(0,0,0,.45);
-
-    transform:rotate(2deg);
-
-    transition:.6s ease;
-
-    overflow:hidden;
-}
-
-.photo-card::after{
-    content:"";
-
-    position:absolute;
-
-    top:-30%;
-    left:-100%;
-
-    width:55%;
-    height:160%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.3),
-            transparent
-        );
-
-    transform:rotate(15deg);
-
-    animation:photoShine 6s ease-in-out infinite;
-
-    z-index:3;
-}
-
-@keyframes photoShine{
-
-    0%,55%{
-        left:-100%;
-    }
-
-    75%,100%{
-        left:150%;
-    }
-}
-
-.photo-card:hover{
-    transform:
-        rotate(0deg)
-        translateY(-10px)
-        scale(1.025);
-}
-
-.profile-photo{
-    width:100%;
-    height:100%;
-
-    display:block;
-
-    object-fit:cover;
-
-    border-radius:28px;
-
-    border:1px solid rgba(255,255,255,.20);
-
-    position:relative;
-
-    z-index:1;
-}
-
-/* =========================================================
-   ORBIT STARS
-========================================================= */
-
-.orbit-star{
-    position:absolute;
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:
-        0 0 7px white,
-        0 0 18px var(--cyan),
-        0 0 35px rgba(98,216,255,.7);
-
-    animation:starPulse 2.5s ease-in-out infinite;
-}
-
-.orbit-star:nth-child(1){
-    top:5%;
-    left:18%;
-}
-
-.orbit-star:nth-child(2){
-    right:5%;
-    top:28%;
-
-    width:5px;
-    height:5px;
-
-    animation-delay:.7s;
-}
-
-.orbit-star:nth-child(3){
-    bottom:8%;
-    left:13%;
-
-    width:6px;
-    height:6px;
-
-    animation-delay:1.3s;
-}
-
-.orbit-star:nth-child(4){
-    right:18%;
-    bottom:2%;
-
-    width:4px;
-    height:4px;
-
-    animation-delay:1.8s;
-}
-
-@keyframes starPulse{
-
-    0%,100%{
-        opacity:.35;
-        transform:scale(.7);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.25);
-    }
-}
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.section{
-    width:min(1100px,100%);
-
-    margin:0 auto;
-
-    padding:90px 0;
-
-    position:relative;
-}
-
-.section-title{
-    text-align:center;
-
-    margin-bottom:45px;
-}
-
-.section-number{
-    display:block;
-
-    color:var(--cyan);
-
-    font-size:.72rem;
-
-    letter-spacing:4px;
-
-    text-shadow:
-        0 0 10px rgba(98,216,255,.6);
-}
-
-.section-title h2{
-    margin-top:7px;
-
-    font-family:"Kanit","Prompt",sans-serif;
-
-    font-size:clamp(2rem,5vw,3.5rem);
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            var(--violet),
-            var(--cyan),
-            #fff
-        );
-
-    background-size:220% auto;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:textShine 6s linear infinite;
-}
-
-.section-divider{
-    width:170px;
-
-    height:2px;
-
-    margin:15px auto 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--purple),
-            var(--cyan),
-            transparent
-        );
-
-    box-shadow:
-        0 0 10px rgba(98,216,255,.45);
-}
-
-/* =========================================================
+/* =========================
    GLASS CARD
-========================================================= */
+========================= */
 
 .glass-card{
     position:relative;
 
-    overflow:hidden;
+    padding:35px;
 
-    padding:42px;
-
-    border-radius:30px;
+    border-radius:var(--radius);
 
     background:
         linear-gradient(
-            145deg,
-            rgba(27,27,78,.67),
-            rgba(10,10,40,.58)
+            135deg,
+            rgba(20,20,63,.72),
+            rgba(8,8,36,.58)
         );
 
     border:1px solid var(--border);
 
+    box-shadow:var(--shadow);
+
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.30),
-        inset 0 1px rgba(255,255,255,.08);
-
-    transition:.5s ease;
+    overflow:hidden;
 }
+
 
 .glass-card::before{
     content:"";
 
     position:absolute;
 
-    top:0;
-    left:8%;
-    right:8%;
+    top:-100px;
+    right:-100px;
 
-    height:1px;
+    width:250px;
+    height:250px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(98,216,255,.09),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+.glass-card::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-100px;
+    left:-100px;
+
+    width:250px;
+    height:250px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(167,139,250,.08),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   PROFILE INFO
+========================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:14px;
+
+    position:relative;
+    z-index:2;
+}
+
+
+.info-box{
+    padding:18px 20px;
+
+    border-radius:19px;
+
+    border:1px solid rgba(139,126,255,.14);
+
+    background:rgba(255,255,255,.025);
+
+    transition:.35s;
+}
+
+
+.info-box:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(98,216,255,.28);
+
+    background:rgba(98,216,255,.035);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.15);
+}
+
+
+.info-label{
+    color:var(--cyan);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-bottom:6px;
+}
+
+
+.info-value{
+    color:var(--text);
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   EDUCATION
+========================= */
+
+.education-section{
+    position:relative;
+
+    z-index:2;
+
+    margin-top:45px;
+
+    padding-top:35px;
+
+    border-top:1px solid rgba(139,126,255,.14);
+}
+
+
+.education-heading{
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:24px;
+}
+
+
+.education-heading .mini-label{
+    color:var(--cyan);
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    margin-bottom:5px;
+}
+
+
+.education-heading h3{
+    font-family:'Kanit',sans-serif;
+
+    font-size:27px;
+
+    color:white;
+}
+
+
+.education-heading p{
+    color:var(--muted);
+
+    font-size:12px;
+
+    text-align:right;
+}
+
+
+/* Education cards */
+
+.education-list{
+    display:grid;
+
+    gap:17px;
+}
+
+
+.education-item{
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:145px 1fr;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:23px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
+
+    border:1px solid rgba(139,126,255,.17);
+
+    overflow:visible;
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+
+.education-item:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(98,216,255,.35);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.25),
+        0 0 30px rgba(98,216,255,.08);
+}
+
+
+/* =========================
+   PREMIUM SCHOOL LOGO
+========================= */
+
+.education-logo-wrap{
+    position:relative;
+
+    width:125px;
+    height:125px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    overflow:visible;
+}
+
+
+/* วงแสงด้านหลัง */
+
+.education-logo-wrap::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-8px;
+
+    border-radius:30px;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            #7b6ff0,
+            #62d8ff,
+            #a78bfa,
+            #4facfe,
+            #62d8ff,
+            #7b6ff0
+        );
+
+    animation:
+        logoGlowRotate 5s linear infinite;
+
+    filter:blur(6px);
+
+    opacity:.9;
+
+    z-index:0;
+}
+
+
+/* กรอบไล่แสง */
+
+.education-logo-wrap::after{
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:27px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98,216,255,.95),
+            rgba(167,139,250,.95),
+            rgba(79,172,254,.95),
+            rgba(98,216,255,.95)
+        );
+
+    background-size:300% 300%;
+
+    animation:
+        logoBorderMove 3.5s ease-in-out infinite;
+
+    z-index:1;
+}
+
+
+/* ตัวโลโก้ */
+
+.education-logo{
+    position:relative;
+
+    z-index:2;
+
+    width:115px;
+    height:115px;
+
+    object-fit:contain;
+
+    padding:8px;
+
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.99),
+            rgba(235,240,255,.96)
+        );
+
+    border:1px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 0 15px rgba(98,216,255,.4),
+        0 0 35px rgba(123,111,240,.4),
+        inset 0 0 18px rgba(255,255,255,.5);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+
+.education-logo-wrap:hover .education-logo{
+    transform:
+        scale(1.08)
+        rotate(-2deg);
+
+    box-shadow:
+        0 0 20px rgba(98,216,255,.8),
+        0 0 45px rgba(123,111,240,.7),
+        0 0 70px rgba(167,139,250,.4),
+        inset 0 0 20px rgba(255,255,255,.8);
+}
+
+
+/* แสงวิ่งผ่านโลโก้ */
+
+.logo-shine{
+    position:absolute;
+
+    z-index:3;
+
+    width:35px;
+    height:155px;
+
+    left:-70px;
+
+    top:-15px;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.5),
-            rgba(98,216,255,.5),
+            rgba(255,255,255,.8),
             transparent
         );
+
+    transform:rotate(25deg);
+
+    animation:
+        logoShine 4s ease-in-out infinite;
+
+    pointer-events:none;
 }
 
-.glass-card:hover{
-    border-color:rgba(123,111,240,.48);
 
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.38),
-        0 0 35px rgba(123,111,240,.12);
-}
-
-/* =========================================================
-   PARTICLES
-========================================================= */
-
-.particle{
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    box-shadow:
-        0 0 6px var(--cyan);
-
-    opacity:.35;
-
-    animation:particleFall linear infinite;
-}
-
-.particle:nth-child(1){
-    left:8%;
-    top:-5%;
-    animation-duration:8s;
-}
-
-.particle:nth-child(2){
-    left:28%;
-    top:-10%;
-    animation-duration:12s;
-    animation-delay:2s;
-}
-
-.particle:nth-child(3){
-    left:52%;
-    top:-8%;
-    animation-duration:9s;
-    animation-delay:1s;
-}
-
-.particle:nth-child(4){
-    left:76%;
-    top:-12%;
-    animation-duration:14s;
-    animation-delay:4s;
-}
-
-.particle:nth-child(5){
-    left:91%;
-    top:-6%;
-    animation-duration:10s;
-    animation-delay:2.5s;
-}
-
-@keyframes particleFall{
+@keyframes logoGlowRotate{
 
     from{
-        transform:translateY(0);
+        transform:rotate(0deg);
     }
 
     to{
-        transform:translateY(650px);
+        transform:rotate(360deg);
     }
 }
 
-/* =========================================================
-   PROFILE
-========================================================= */
 
-.profile-grid{
-    display:grid;
+@keyframes logoBorderMove{
 
-    grid-template-columns:repeat(2,1fr);
+    0%{
+        background-position:0% 50%;
+        opacity:.65;
+    }
 
-    gap:15px;
+    50%{
+        background-position:100% 50%;
+        opacity:1;
+    }
+
+    100%{
+        background-position:0% 50%;
+        opacity:.75;
+    }
 }
 
-.info-box{
-    padding:22px;
 
-    border-radius:20px;
+@keyframes logoShine{
 
-    background:rgba(255,255,255,.025);
+    0%{
+        left:-75px;
+        opacity:0;
+    }
 
-    border:1px solid rgba(130,120,255,.16);
+    15%{
+        opacity:0;
+    }
 
-    transition:.35s ease;
+    35%{
+        opacity:.8;
+    }
+
+    55%{
+        left:165px;
+        opacity:0;
+    }
+
+    100%{
+        left:165px;
+        opacity:0;
+    }
 }
 
-.info-box:hover{
-    transform:translateY(-5px);
 
-    background:rgba(123,111,240,.07);
+/* Education text */
 
-    border-color:rgba(98,216,255,.35);
+.education-year{
+    display:inline-flex;
 
-    box-shadow:
-        0 0 25px rgba(98,216,255,.08);
+    padding:5px 10px;
+
+    border-radius:100px;
+
+    color:var(--cyan);
+
+    background:rgba(98,216,255,.06);
+
+    border:1px solid rgba(98,216,255,.18);
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+
+    margin-bottom:9px;
 }
 
-.info-label{
-    font-size:.72rem;
 
-    letter-spacing:2px;
+.education-level{
+    font-family:'Kanit',sans-serif;
 
-    color:#7fdfff;
+    font-size:21px;
 
-    text-shadow:
-        0 0 8px rgba(98,216,255,.45);
+    color:white;
+
+    margin-bottom:3px;
 }
 
-.info-value{
-    margin-top:6px;
 
-    color:#fff;
+.education-school{
+    font-size:14px;
 
-    font-size:1rem;
+    color:#d9dbf3;
+
+    line-height:1.6;
+
+    margin-bottom:5px;
+}
+
+
+.education-program{
+    color:var(--violet);
+
+    font-size:12px;
 
     line-height:1.6;
 }
 
-/* =========================================================
-   QUESTIONS
-========================================================= */
+
+.education-status{
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:5px 10px;
+
+    border-radius:100px;
+
+    font-size:10px;
+
+    color:#dffaff;
+
+    background:rgba(98,216,255,.06);
+
+    border:1px solid rgba(98,216,255,.16);
+}
+
+
+/* =========================
+   ABOUT ME
+========================= */
+
+.question-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:18px;
+}
+
 
 .question-card{
-    margin-top:25px;
-}
+    padding:22px;
 
-.question{
-    margin-bottom:24px;
-}
-
-.question:last-child{
-    margin-bottom:0;
-}
-
-.question label{
-    display:block;
-
-    color:var(--violet);
-
-    font-weight:600;
-
-    margin-bottom:9px;
-
-    font-size:15px;
-
-    text-shadow:
-        0 0 9px rgba(167,139,250,.35);
-}
-
-.question textarea{
-    width:100%;
-
-    padding:17px 18px;
-
-    color:#e9eaff;
-
-    border:1px solid rgba(139,126,255,.18);
-
-    border-radius:15px;
-
-    background:rgba(5,5,25,.45);
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    line-height:1.8;
-
-    outline:none;
-
-    resize:vertical;
-
-    transition:.35s ease;
-
-    box-shadow:
-        inset 0 1px rgba(255,255,255,.03);
-
-    min-height:120px;
-}
-
-.question textarea:focus{
-    border-color:rgba(98,216,255,.55);
-
-    background:rgba(11,11,43,.72);
-
-    box-shadow:
-        0 0 0 3px rgba(98,216,255,.06),
-        0 0 25px rgba(98,216,255,.08);
-}
-
-/* =========================================================
-   SOP
-========================================================= */
-
-.sop-card{
-    padding:65px 45px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(123,111,240,.14),
-            transparent 58%
-        ),
-        rgba(12,12,46,.68);
-}
-
-.sop{
-    position:relative;
-
-    z-index:2;
-
-    text-align:center;
-
-    font-family:"Kanit",sans-serif;
-
-    font-size:clamp(5rem,15vw,11rem);
-
-    line-height:.9;
-
-    font-weight:700;
-
-    letter-spacing:10px;
-
-    background:
-        linear-gradient(
-            100deg,
-            #ffffff,
-            var(--violet),
-            var(--cyan),
-            #ffffff,
-            var(--violet)
-        );
-
-    background-size:300% auto;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:
-        textShine 5s linear infinite,
-        sopPulse 3.5s ease-in-out infinite;
-}
-
-@keyframes sopPulse{
-
-    50%{
-        filter:
-            drop-shadow(0 0 18px rgba(123,111,240,.65))
-            drop-shadow(0 0 45px rgba(98,216,255,.2));
-    }
-}
-
-.sop-subtitle{
-    position:relative;
-
-    z-index:2;
-
-    margin-top:20px;
-
-    text-align:center;
-
-    color:#c9c9e5;
-
-    font-size:1rem;
-
-    letter-spacing:2px;
-}
-
-.sop-content{
-    position:relative;
-
-    z-index:2;
-
-    max-width:920px;
-
-    margin:40px auto 0;
-
-    padding:30px 35px;
+    border-radius:22px;
 
     background:rgba(255,255,255,.025);
 
-    border:1px solid rgba(130,120,255,.16);
+    border:1px solid rgba(139,126,255,.14);
 
-    border-left:3px solid rgba(98,216,255,.55);
-
-    border-radius:0 22px 22px 0;
-
-    box-shadow:
-        inset 0 0 30px rgba(98,216,255,.025),
-        0 10px 35px rgba(0,0,0,.12);
+    transition:.3s;
 }
 
-.sop-content h3{
-    text-align:center;
 
-    margin-bottom:25px;
+.question-card:hover{
+    border-color:rgba(98,216,255,.28);
 
-    font-size:clamp(1.35rem,3vw,2rem);
+    transform:translateY(-3px);
+}
 
-    font-weight:600;
+
+.question-number{
+    color:var(--cyan);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-bottom:9px;
+}
+
+
+.question-title{
+    color:white;
+
+    font-family:'Kanit',sans-serif;
+
+    font-size:19px;
+
+    margin-bottom:12px;
+}
+
+
+.question-card textarea{
+    width:100%;
+
+    min-height:125px;
+
+    resize:none;
+
+    border:none;
+    outline:none;
+
+    color:var(--muted);
+
+    background:transparent;
+
+    font-family:'Prompt',sans-serif;
+
+    font-size:13px;
+
+    line-height:1.85;
+}
+
+
+/* =========================
+   SOP
+========================= */
+
+.sop-card{
+    position:relative;
+
+    padding:40px;
+
+    border-radius:var(--radius);
 
     background:
         linear-gradient(
-            90deg,
-            #fff,
-            var(--violet),
-            var(--cyan),
-            #fff
+            135deg,
+            rgba(123,111,240,.09),
+            rgba(79,172,254,.035)
         );
 
-    background-size:220% auto;
+    border:1px solid rgba(139,126,255,.2);
 
-    -webkit-background-clip:text;
-    background-clip:text;
+    box-shadow:var(--shadow);
 
-    color:transparent;
-
-    animation:textShine 5s linear infinite;
+    overflow:hidden;
 }
 
-.sop-content p{
-    margin:0 0 20px;
 
-    color:#c7c9df;
+.sop-card::before{
+    content:"“";
 
-    font-family:"Prompt","Kanit",sans-serif;
+    position:absolute;
 
-    font-size:1rem;
+    right:30px;
+    top:-20px;
+
+    font-family:Georgia,serif;
+
+    font-size:170px;
+
+    color:rgba(167,139,250,.055);
+
+    line-height:1;
+}
+
+
+.sop-card p{
+    position:relative;
+    z-index:2;
+
+    color:#cfd1e8;
+
+    font-size:14px;
 
     line-height:2;
 
-    text-align:justify;
-
-    text-indent:2em;
-
-    transition:.3s ease;
+    margin-bottom:20px;
 }
 
-.sop-content p:last-child{
+
+.sop-card p:last-child{
     margin-bottom:0;
 }
 
-.sop-content p:hover{
-    color:#e2e4f5;
+
+.sop-highlight{
+    color:white;
+
+    font-weight:500;
 }
 
-/* =========================================================
+
+/* =========================
    GOAL
-========================================================= */
+========================= */
 
 .goal-card{
-    text-align:center;
+    padding:45px;
 
-    padding:55px 35px;
+    border-radius:var(--radius);
+
+    text-align:center;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(79,172,254,.10),
+            rgba(123,111,240,.12),
             transparent 60%
         ),
-        rgba(12,12,45,.66);
+        rgba(12,12,43,.62);
+
+    border:1px solid rgba(139,126,255,.2);
+
+    box-shadow:var(--shadow);
+
+    position:relative;
+
+    overflow:hidden;
 }
+
+
+.goal-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    border:1px solid rgba(98,216,255,.08);
+
+    box-shadow:
+        0 0 0 40px rgba(98,216,255,.015),
+        0 0 0 80px rgba(123,111,240,.015);
+}
+
+
+.goal-small{
+    position:relative;
+
+    color:var(--cyan);
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+}
+
 
 .goal-card h3{
-    font-size:clamp(1.8rem,4vw,3rem);
+    position:relative;
 
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            var(--violet),
-            var(--cyan),
-            #fff
-        );
+    font-family:'Kanit',sans-serif;
 
-    background-size:220% auto;
+    font-size:clamp(32px,6vw,58px);
 
-    -webkit-background-clip:text;
-    background-clip:text;
+    color:white;
 
-    color:transparent;
-
-    animation:textShine 5s linear infinite;
+    margin-bottom:18px;
 }
+
 
 .goal-card p{
-    max-width:750px;
+    position:relative;
 
-    margin:20px auto 0;
+    max-width:760px;
 
-    color:#b9bbd8;
+    margin:auto;
+
+    color:var(--muted);
 
     line-height:1.9;
+
+    font-size:14px;
 }
 
-/* =========================================================
+
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer{
-    padding:35px 20px 45px;
+    padding:60px 20px 35px;
 
     text-align:center;
 
-    color:#777ba9;
+    color:#777b9f;
 
-    font-size:.78rem;
+    font-size:11px;
 
     letter-spacing:1px;
-
-    border-top:1px solid rgba(130,120,255,.10);
 }
+
 
 footer span{
-    color:var(--violet);
-
-    text-shadow:
-        0 0 8px rgba(167,139,250,.45);
+    color:var(--cyan);
 }
 
-/* =========================================================
-   REVEAL
-========================================================= */
 
-.reveal{
-    opacity:0;
-
-    transform:translateY(25px);
-
-    animation:
-        reveal .9s cubic-bezier(.2,.8,.2,1)
-        forwards;
-}
-
-@keyframes reveal{
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* =========================================================
+/* =========================
    RESPONSIVE
-========================================================= */
+========================= */
 
 @media(max-width:850px){
 
     nav{
-        padding:9px;
-    }
-
-    .logo{
-        display:none;
+        top:10px;
     }
 
     .nav-links{
-        width:100%;
-
-        justify-content:center;
-
-        flex-wrap:wrap;
-    }
-
-    .nav-links a{
-        font-size:11px;
-
-        padding:8px 9px;
+        display:none;
     }
 
     .hero{
+        padding-top:130px;
+    }
+
+    .hero-grid{
         grid-template-columns:1fr;
 
         text-align:center;
-
-        padding-top:150px;
-
-        gap:60px;
     }
 
     .hero-description{
@@ -1536,130 +1500,133 @@ footer span{
         margin-right:auto;
     }
 
-    .tags,
+    .hero-tags,
     .hero-buttons{
         justify-content:center;
     }
 
-    .hero-visual{
+    .hero-image{
         order:-1;
     }
 
-    .photo-orbit{
-        width:min(320px,78vw);
+    .profile-orbit{
+        width:310px;
+        height:310px;
     }
 
-    .profile-grid{
+    .profile-frame{
+        width:260px;
+        height:330px;
+    }
+
+    .education-heading{
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .education-heading p{
+        text-align:left;
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    .section{
+        padding-top:85px;
+    }
+
+    .glass-card,
+    .sop-card{
+        padding:23px;
+    }
+
+    .info-grid,
+    .question-grid{
         grid-template-columns:1fr;
     }
 
-    .glass-card{
-        padding:28px 22px;
+    .education-item{
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        gap:18px;
     }
 
-    .sop-card{
-        padding:55px 25px;
+    .education-logo-wrap{
+        margin:0 auto;
     }
+
+    .education-school,
+    .education-program{
+        max-width:500px;
+
+        margin-left:auto;
+        margin-right:auto;
+    }
+
 }
+
 
 @media(max-width:520px){
 
-    nav{
-        top:9px;
-
-        border-radius:17px;
+    .container{
+        width:min(100% - 22px,1100px);
     }
 
-    .nav-links{
-        gap:1px;
+    .hero h1{
+        font-size:48px;
+
+        letter-spacing:-1px;
     }
 
-    .nav-links a{
-        padding:7px 6px;
+    .hero-en{
+        font-size:15px;
 
-        font-size:9px;
+        letter-spacing:2.5px;
     }
 
-    main{
-        width:calc(100% - 20px);
+    .profile-orbit{
+        width:280px;
+        height:280px;
     }
 
-    .hero{
-        padding-left:8px;
-        padding-right:8px;
+    .profile-frame{
+        width:235px;
+        height:300px;
     }
 
-    .hero-name{
-        font-size:clamp(2.6rem,12vw,4.2rem);
+    .education-item{
+        padding:20px 15px;
     }
 
-    .english-name{
-        letter-spacing:4px;
+    .education-logo-wrap{
+        width:135px;
+        height:135px;
     }
 
-    .hero-description{
-        font-size:.92rem;
+    .education-logo{
+        width:125px;
+        height:125px;
     }
 
-    .section{
-        width:100%;
-
-        padding:65px 0;
+    .education-level{
+        font-size:19px;
     }
 
-    .glass-card{
-        border-radius:23px;
+    .sop-card p{
+        font-size:13px;
     }
 
-    .question textarea{
-        font-size:14px;
-
-        line-height:1.75;
-    }
-
-    .sop-card{
-        padding:50px 15px;
-    }
-
-    .sop{
-        font-size:clamp(4.5rem,23vw,7rem);
-
-        letter-spacing:4px;
-    }
-
-    .sop-subtitle{
-        font-size:.82rem;
-    }
-
-    .sop-content{
-        margin-top:30px;
-
-        padding:22px 18px;
-    }
-
-    .sop-content h3{
-        font-size:1.25rem;
-
-        margin-bottom:22px;
-    }
-
-    .sop-content p{
-        font-size:.88rem;
-
-        line-height:1.9;
-
-        text-align:left;
-
-        text-indent:1.5em;
-
-        margin-bottom:18px;
+    .goal-card{
+        padding:35px 20px;
     }
 
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1667,292 +1634,469 @@ footer span{
     *::before,
     *::after{
         animation-duration:.01ms !important;
-
         animation-iteration-count:1 !important;
 
         scroll-behavior:auto !important;
-
-        transition-duration:.01ms !important;
     }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- =======================================================
+
+<!-- =========================
      SHOOTING STARS
-======================================================= -->
+========================= -->
 
-<div class="shooting-star"></div>
-<div class="shooting-star"></div>
-<div class="shooting-star"></div>
+<div class="shooting-star star-1"></div>
+<div class="shooting-star star-2"></div>
+<div class="shooting-star star-3"></div>
 
 
-<!-- =======================================================
+<!-- =========================
      NAVIGATION
-======================================================= -->
+========================= -->
 
 <nav>
 
     <div class="logo">
-        PT · PORTFOLIO
+        PT <span>·</span> PORTFOLIO
     </div>
 
-    <ul class="nav-links">
+    <div class="nav-links">
 
-        <li>
-            <a href="portfolio.html" class="active">
-                หน้าหลัก
-            </a>
-        </li>
+        <a href="portfolio.html" class="active">
+            หน้าหลัก
+        </a>
 
-        <li>
-            <a href="cumnum.html">
-                คำนำ
-            </a>
-        </li>
+        <a href="cumnum.html">
+            คำนำ
+        </a>
 
-        <li>
-            <a href="work.html">
-                ผลงาน
-            </a>
-        </li>
+        <a href="work.html">
+            ผลงาน
+        </a>
 
-        <li>
-            <a href="university.html">
-                มหาวิทยาลัย
-            </a>
-        </li>
+        <a href="university.html">
+            มหาวิทยาลัย
+        </a>
 
-        <li>
-            <a href="contract.html">
-                ติดต่อ
-            </a>
-        </li>
+        <a href="contract.html">
+            ติดต่อ
+        </a>
 
-    </ul>
+    </div>
 
 </nav>
 
 
-<main>
-
-<!-- =======================================================
+<!-- =========================
      HERO
-======================================================= -->
+========================= -->
 
-<section class="hero">
+<header class="hero">
 
-    <div class="hero-content reveal">
+    <div class="container">
 
-        <div class="eyebrow">
-            PHYSICAL THERAPY PORTFOLIO
-        </div>
+        <div class="hero-grid">
 
-        <h1 class="hero-name">
-            นายพุฒิกันย์<br>
-            ฤๅไกรศรี
-        </h1>
+            <div class="hero-content">
 
-        <div class="english-name">
-            PUTTIKAN RUEKRAISRI
-        </div>
-
-        <p class="hero-description">
-
-            นักเรียนชั้น
-            <strong>มัธยมศึกษาปีที่ 6/2</strong>
-            แผนการเรียน Gifted จาก
-            <strong>
-                โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
-            </strong>
-
-            ผู้มีความสนใจด้านกายวิภาค การเคลื่อนไหว
-            และการฟื้นฟูสมรรถภาพของร่างกาย
-
-        </p>
-
-        <div class="tags">
-
-            <span class="tag">
-                ANATOMY
-            </span>
-
-            <span class="tag">
-                MOVEMENT
-            </span>
-
-            <span class="tag">
-                REHABILITATION
-            </span>
-
-            <span class="tag">
-                HEALTH SCIENCE
-            </span>
-
-        </div>
-
-        <div class="hero-buttons">
-
-            <a href="#profile" class="btn btn-primary">
-                ดู Portfolio
-            </a>
-
-            <a href="#sop" class="btn btn-secondary">
-                อ่าน SOP
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="hero-visual reveal">
-
-        <div class="photo-orbit">
-
-            <span class="orbit-star"></span>
-            <span class="orbit-star"></span>
-            <span class="orbit-star"></span>
-            <span class="orbit-star"></span>
-
-            <div class="photo-card">
-
-                <img
-                    class="profile-photo"
-                    src="https://i.postimg.cc/HL02qpGv/pooh2.png"
-                    alt="Puttikan Ruekraisri"
-                >
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     PROFILE
-======================================================= -->
-
-<section class="section" id="profile">
-
-    <div class="section-title reveal">
-
-        <span class="section-number">
-            01 / PROFILE
-        </span>
-
-        <h2>
-            ABOUT ME
-        </h2>
-
-        <div class="section-divider"></div>
-
-    </div>
-
-
-    <div class="glass-card reveal">
-
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-
-
-        <div class="profile-grid">
-
-            <div class="info-box">
-                <div class="info-label">
-                    NAME
+                <div class="eyebrow">
+                    PHYSICAL THERAPY PORTFOLIO
                 </div>
 
-                <div class="info-value">
-                    นายพุฒิกันย์ ฤๅไกรศรี
-                </div>
-            </div>
+
+                <h1>
+                    นายพุฒิกันย์<br>
+                    ฤๅไกรศรี
+                </h1>
 
 
-            <div class="info-box">
-                <div class="info-label">
-                    NICKNAME
-                </div>
-
-                <div class="info-value">
-                    ใบภู
-                </div>
-            </div>
-
-
-            <div class="info-box">
-                <div class="info-label">
-                    BIRTHDAY
+                <div class="hero-en">
+                    PUTTIKAN RUEKRAISRI
                 </div>
 
-                <div class="info-value">
-                    วันพุธที่ 3 กันยายน พ.ศ. 2551
-                </div>
-            </div>
 
+                <p class="hero-description">
 
-            <div class="info-box">
-                <div class="info-label">
-                    SCHOOL
-                </div>
-
-                <div class="info-value">
+                    นักเรียนชั้นมัธยมศึกษาปีที่ 6/2
+                    แผนการเรียน Gifted
                     โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
+                    ผู้สนใจด้านกายวิภาคศาสตร์
+                    การเคลื่อนไหวของร่างกาย
+                    และการฟื้นฟูสมรรถภาพ
+
+                </p>
+
+
+                <div class="hero-tags">
+
+                    <div class="hero-tag">
+                        ANATOMY
+                    </div>
+
+                    <div class="hero-tag">
+                        MOVEMENT
+                    </div>
+
+                    <div class="hero-tag">
+                        REHABILITATION
+                    </div>
+
+                    <div class="hero-tag">
+                        HEALTH SCIENCE
+                    </div>
+
                 </div>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#profile"
+                        class="btn btn-primary"
+                    >
+                        ดูประวัติ
+                    </a>
+
+                    <a
+                        href="#sop"
+                        class="btn btn-secondary"
+                    >
+                        อ่าน SOP
+                    </a>
+
+                </div>
+
             </div>
 
 
-            <div class="info-box">
-                <div class="info-label">
-                    LEVEL
+            <div class="hero-image">
+
+                <div class="profile-orbit"></div>
+
+                <div class="profile-frame">
+
+                    <img
+                        src="https://i.postimg.cc/HL02qpGv/pooh2.png"
+                        alt="Puttikan Ruekraisri"
+                    >
+
                 </div>
 
-                <div class="info-value">
-                    มัธยมศึกษาปีที่ 6/2
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     01 PROFILE
+========================= -->
+
+<section
+    class="section"
+    id="profile"
+>
+
+    <div class="container">
+
+        <div class="section-number">
+            01 / PROFILE
+        </div>
+
+        <h2 class="section-title">
+            ABOUT <span>ME</span>
+        </h2>
+
+
+        <div class="glass-card">
+
+            <div class="info-grid">
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        NAME
+                    </div>
+
+                    <div class="info-value">
+                        นายพุฒิกันย์ ฤๅไกรศรี
+                    </div>
+
                 </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        NICKNAME
+                    </div>
+
+                    <div class="info-value">
+                        ใบภู
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        BIRTHDAY
+                    </div>
+
+                    <div class="info-value">
+                        วันพุธที่ 3 กันยายน พ.ศ. 2551
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        SCHOOL
+                    </div>
+
+                    <div class="info-value">
+                        โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        LEVEL
+                    </div>
+
+                    <div class="info-value">
+                        มัธยมศึกษาปีที่ 6/2
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        PROGRAM
+                    </div>
+
+                    <div class="info-value">
+                        Gifted
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        INTEREST
+                    </div>
+
+                    <div class="info-value">
+                        การออกกำลังกาย ร่างกายมนุษย์
+                        และการทำงานของระบบต่าง ๆ ในร่างกาย
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        GOAL
+                    </div>
+
+                    <div class="info-value">
+                        ศึกษาต่อด้านกายภาพบำบัด
+                    </div>
+
+                </div>
+
             </div>
 
 
-            <div class="info-box">
-                <div class="info-label">
-                    PROGRAM
+            <!-- =========================
+                 EDUCATION HISTORY
+            ========================= -->
+
+            <div class="education-section">
+
+                <div class="education-heading">
+
+                    <div>
+
+                        <div class="mini-label">
+                            EDUCATION HISTORY
+                        </div>
+
+                        <h3>
+                            ประวัติการศึกษา
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        เส้นทางการศึกษาและแผนการเรียน
+                    </p>
+
                 </div>
 
-                <div class="info-value">
-                    Gifted
+
+                <div class="education-list">
+
+
+                    <!-- PRIMARY -->
+
+                    <div class="education-item">
+
+                        <div class="education-logo-wrap">
+
+                            <img
+                                class="education-logo"
+                                src="https://i.postimg.cc/ZKLSHwhy/1789439617783.jpg"
+                                alt="ตราโรงเรียนกุญแจคริสเตียนวิทยา"
+                                loading="lazy"
+                            >
+
+                            <div class="logo-shine"></div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="education-year">
+                                ELEMENTARY EDUCATION
+                            </div>
+
+                            <div class="education-level">
+                                ระดับประถมศึกษา
+                            </div>
+
+                            <div class="education-school">
+                                โรงเรียนกุญแจคริสเตียนวิทยา
+                            </div>
+
+                            <div class="education-program">
+                                แผนการเรียน English Program (EP)
+                            </div>
+
+                            <div class="education-status">
+                                สำเร็จการศึกษา
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOWER SECONDARY -->
+
+                    <div class="education-item">
+
+                        <div class="education-logo-wrap">
+
+                            <img
+                                class="education-logo"
+                                src="https://i.postimg.cc/0jcwdp5v/1789441180107.jpg"
+                                alt='ตราโรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"'
+                                loading="lazy"
+                            >
+
+                            <div class="logo-shine"></div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="education-year">
+                                LOWER SECONDARY
+                            </div>
+
+                            <div class="education-level">
+                                ระดับมัธยมศึกษาตอนต้น
+                            </div>
+
+                            <div class="education-school">
+                                โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
+                            </div>
+
+                            <div class="education-program">
+                                แผนการเรียน English Program (EP)
+                            </div>
+
+                            <div class="education-status">
+                                สำเร็จการศึกษา
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- UPPER SECONDARY -->
+
+                    <div class="education-item">
+
+                        <div class="education-logo-wrap">
+
+                            <img
+                                class="education-logo"
+                                src="https://i.postimg.cc/0jcwdp5v/1789441180107.jpg"
+                                alt='ตราโรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"'
+                                loading="lazy"
+                            >
+
+                            <div class="logo-shine"></div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="education-year">
+                                UPPER SECONDARY
+                            </div>
+
+                            <div class="education-level">
+                                ระดับมัธยมศึกษาตอนปลาย
+                            </div>
+
+                            <div class="education-school">
+                                โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
+                            </div>
+
+                            <div class="education-program">
+                                แผนการเรียน Gifted
+                            </div>
+
+                            <div class="education-status">
+                                กำลังศึกษาอยู่
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
                 </div>
-            </div>
 
-
-            <div class="info-box">
-                <div class="info-label">
-                    INTEREST
-                </div>
-
-                <div class="info-value">
-                    การออกกำลังกาย ร่างกายมนุษย์
-                    และการทำงานของระบบต่าง ๆ ในร่างกาย
-                </div>
-            </div>
-
-
-            <div class="info-box">
-                <div class="info-label">
-                    GOAL
-                </div>
-
-                <div class="info-value">
-                    ศึกษาต่อด้านกายภาพบำบัด
-                </div>
             </div>
 
         </div>
@@ -1962,98 +2106,118 @@ footer span{
 </section>
 
 
-<!-- =======================================================
-     QUESTIONS
-======================================================= -->
+<!-- =========================
+     02 ABOUT ME
+========================= -->
 
-<section class="section">
+<section
+    class="section"
+    id="about"
+>
 
-    <div class="section-title reveal">
+    <div class="container">
 
-        <span class="section-number">
+        <div class="section-number">
             02 / ABOUT ME
-        </span>
+        </div>
 
-        <h2>
-            คำถามเกี่ยวกับตัวฉัน
+        <h2 class="section-title">
+            WHO <span>I AM</span>
         </h2>
 
-        <div class="section-divider"></div>
 
-    </div>
-
-
-    <div class="glass-card question-card reveal">
-
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
+        <div class="question-grid">
 
 
-        <div class="question">
+            <div class="question-card">
 
-            <label>
-                ฉันเป็นคนอย่างไร?
-            </label>
+                <div class="question-number">
+                    01
+                </div>
 
-            <textarea readonly>ผมเป็นคนที่มีความคิดแน่วแน่และมีความรับผิดชอบต่อสิ่งที่ได้รับมอบหมาย เมื่อได้รับหน้าที่แล้วผมมักจะตั้งใจทำให้เสร็จอย่างเต็มที่และไม่ชอบปล่อยงานค้างไว้โดยไม่จำเป็น ผมเป็นคนที่ชอบเรียนรู้และลองทำสิ่งใหม่ ๆ ที่ตัวเองสนใจอยู่เสมอ เพราะผมเชื่อว่าประสบการณ์ใหม่ ๆ สามารถช่วยให้เราได้ค้นพบความสามารถและมุมมองที่หลากหลายมากขึ้น นอกจากนี้ผมยังชอบพบเจอผู้คนใหม่ ๆ และเรียนรู้จากสังคมใหม่ ๆ ที่ดี เพราะการได้พูดคุยและแลกเปลี่ยนความคิดเห็นกับผู้อื่นช่วยให้ผมเข้าใจคนรอบข้างมากขึ้นและสามารถนำประสบการณ์เหล่านั้นมาพัฒนาตัวเองได้</textarea>
+                <div class="question-title">
+                    ฉันเป็นคนอย่างไร?
+                </div>
 
-        </div>
+                <textarea readonly>ผมเป็นคนที่มีความมุ่งมั่นและรับผิดชอบต่อสิ่งที่ได้รับมอบหมาย เป็นคนที่พร้อมเรียนรู้สิ่งใหม่ ๆ และสามารถปรับตัวให้เข้ากับสถานการณ์หรือสภาพแวดล้อมที่เปลี่ยนแปลงได้ดี นอกจากนี้ยังเป็นคนที่ชอบทำความรู้จักผู้คนและเรียนรู้จากประสบการณ์รอบตัว</textarea>
 
-
-        <div class="question">
-
-            <label>
-                จุดเด่นของฉันคืออะไร?
-            </label>
-
-            <textarea readonly>จุดเด่นของผมคือการเป็นคนที่มีความยุติธรรมและซื่อตรงอย่างแน่วแน่ ผมเป็นคนตรงไปตรงมาและให้ความสำคัญกับความถูกต้องของสิ่งต่าง ๆ หากพบเห็นสิ่งที่ไม่ถูกต้อง ผมไม่สามารถนิ่งเฉยได้และจะพยายามแสดงความคิดเห็นหรือช่วยแก้ไขปัญหาอย่างเหมาะสม ผมเชื่อว่าความซื่อสัตย์และความรับผิดชอบเป็นพื้นฐานสำคัญในการอยู่ร่วมกับผู้อื่น และเป็นสิ่งที่ผมพยายามยึดถือในการเรียน การทำงาน และการใช้ชีวิตประจำวัน</textarea>
-
-        </div>
+            </div>
 
 
-        <div class="question">
+            <div class="question-card">
 
-            <label>
-                งานอดิเรกของฉันคืออะไร?
-            </label>
+                <div class="question-number">
+                    02
+                </div>
 
-            <textarea readonly>งานอดิเรกของผมคือการออกกำลังกายประเภทคาร์ดิโอ เพราะเป็นกิจกรรมที่ช่วยให้ผมได้ดูแลสุขภาพและฝึกความสม่ำเสมอของตัวเอง นอกจากการออกกำลังกายแล้ว ผมยังชอบหาความรู้เพิ่มเติมเกี่ยวกับการทำงานของร่างกายและสิ่งต่าง ๆ รอบตัว โดยเฉพาะเรื่องที่เกี่ยวข้องกับการเคลื่อนไหวของมนุษย์ เช่น เมื่อเราขยับนิ้ว กล้ามเนื้อส่วนใดทำงานบ้าง กล้ามเนื้อแต่ละส่วนมีชื่อเรียกว่าอะไร และแต่ละส่วนมีหน้าที่อย่างไร ความสนใจเหล่านี้ทำให้ผมสนุกกับการเรียนรู้และอยากเข้าใจการทำงานของร่างกายให้มากขึ้น</textarea>
+                <div class="question-title">
+                    จุดเด่นของฉัน
+                </div>
 
-        </div>
+                <textarea readonly>ผมให้ความสำคัญกับความถูกต้อง ความยุติธรรม และความซื่อสัตย์ หากพบสิ่งที่ไม่ถูกต้องผมพร้อมที่จะพูดและแก้ไขอย่างตรงไปตรงมา อีกทั้งยังเป็นคนที่สามารถทำงานร่วมกับผู้อื่นและรับฟังความคิดเห็นที่แตกต่างได้</textarea>
 
-
-        <div class="question">
-
-            <label>
-                ความสามารถพิเศษ
-            </label>
-
-            <textarea readonly>ความสามารถพิเศษของผมคือสามารถสื่อสารภาษาอังกฤษได้อย่างคล่องแคล่ว สามารถพูดและสื่อสารกับผู้อื่นด้วยภาษาอังกฤษได้อย่างมั่นใจ และสามารถเลือกใช้ภาษาให้เหมาะสมกับสถานการณ์ต่าง ๆ ได้ นอกจากนี้ผมยังสามารถปรับตัวเข้ากับสังคมและผู้คนใหม่ ๆ ได้ดี ไม่ว่าจะเป็นการทำงานร่วมกับผู้อื่นหรือการพบเจอสภาพแวดล้อมที่ไม่คุ้นเคย ผมพร้อมเรียนรู้สิ่งใหม่ ๆ อยู่เสมอและพยายามนำสิ่งที่ได้เรียนรู้มาปรับใช้กับตัวเองอย่างเหมาะสม เพื่อพัฒนาทั้งทักษะและประสบการณ์ของตัวเองให้ดีขึ้น</textarea>
-
-        </div>
+            </div>
 
 
-        <div class="question">
+            <div class="question-card">
 
-            <label>
-                ทำไมถึงสนใจกายภาพบำบัด?
-            </label>
+                <div class="question-number">
+                    03
+                </div>
 
-            <textarea readonly>ผมสนใจคณะกายภาพบำบัด เพราะผมมีความสนใจเกี่ยวกับร่างกายมนุษย์ โดยเฉพาะกล้ามเนื้อ กระดูก และการทำงานของระบบต่าง ๆ ในร่างกาย อีกทั้งผมเคยมีประสบการณ์จากการได้เห็นคนใกล้ตัวเข้ารับการกายภาพบำบัด ทำให้ผมเห็นว่าการกายภาพบำบัดมีส่วนสำคัญในการช่วยให้ผู้ป่วยกลับมาเคลื่อนไหวและใช้ชีวิตประจำวันได้ดีขึ้น ประสบการณ์ดังกล่าวทำให้ผมอยากทำความเข้าใจเกี่ยวกับการฟื้นฟูร่างกายอย่างจริงจัง และอยากนำความรู้ที่ได้ไปใช้ในการช่วยเหลือและดูแลผู้ป่วยในอนาคต</textarea>
+                <div class="question-title">
+                    งานอดิเรก
+                </div>
 
-        </div>
+                <textarea readonly>ผมชอบออกกำลังกาย โดยเฉพาะการออกกำลังกายแบบคาร์ดิโอและการฝึกความแข็งแรง นอกจากนี้ยังสนใจศึกษาเกี่ยวกับร่างกายมนุษย์ กล้ามเนื้อ กระดูก และการทำงานของระบบต่าง ๆ ในร่างกาย</textarea>
+
+            </div>
 
 
-        <div class="question">
+            <div class="question-card">
 
-            <label>
-                คติประจำใจ
-            </label>
+                <div class="question-number">
+                    04
+                </div>
 
-            <textarea readonly>จงทำสิ่งที่จะไม่เสียใจในภายหลัง ผมเชื่อว่าทุกโอกาสที่เข้ามาในชีวิตมีคุณค่า และเราไม่สามารถย้อนกลับไปแก้ไขสิ่งที่เกิดขึ้นแล้วได้ ดังนั้นผมจึงพยายามตัดสินใจและลงมือทำในสิ่งที่ตั้งใจอย่างเต็มที่ แม้บางครั้งผลลัพธ์อาจไม่เป็นอย่างที่หวัง แต่ผมคิดว่าการได้ลงมือทำและเรียนรู้จากประสบการณ์ย่อมดีกว่าการปล่อยให้โอกาสผ่านไปเพราะความกลัวหรือความลังเล เพราะอย่างน้อยเมื่อมองย้อนกลับมา ผมจะสามารถบอกกับตัวเองได้ว่าผมได้พยายามอย่างเต็มที่แล้ว และจะไม่เสียใจกับสิ่งที่ไม่ได้ทำ คตินี้จึงเป็นสิ่งที่เตือนให้ผมกล้าที่จะก้าวออกจากพื้นที่เดิม ๆ เปิดรับโอกาสใหม่ ๆ และรับผิดชอบต่อการตัดสินใจของตัวเองอยู่เสมอ</textarea>
+                <div class="question-title">
+                    ความสามารถพิเศษ
+                </div>
+
+                <textarea readonly>ผมสามารถสื่อสารภาษาอังกฤษได้อย่างคล่องแคล่ว และสามารถปรับตัวเข้ากับผู้คน สถานการณ์ และสภาพแวดล้อมใหม่ ๆ ได้ดี ทำให้สามารถเรียนรู้และทำงานร่วมกับผู้อื่นได้อย่างมีประสิทธิภาพ</textarea>
+
+            </div>
+
+
+            <div class="question-card">
+
+                <div class="question-number">
+                    05
+                </div>
+
+                <div class="question-title">
+                    ทำไมสนใจกายภาพบำบัด?
+                </div>
+
+                <textarea readonly>ผมสนใจกายภาพบำบัดเพราะเป็นศาสตร์ที่เกี่ยวข้องกับร่างกายมนุษย์โดยตรง โดยเฉพาะกล้ามเนื้อ กระดูก และการเคลื่อนไหว อีกทั้งผมเคยเห็นคนใกล้ตัวเข้ารับการทำกายภาพบำบัด จึงได้เห็นถึงความสำคัญของนักกายภาพบำบัดในการช่วยให้ผู้ป่วยกลับมาใช้ชีวิตและเคลื่อนไหวได้ดีขึ้น</textarea>
+
+            </div>
+
+
+            <div class="question-card">
+
+                <div class="question-number">
+                    06
+                </div>
+
+                <div class="question-title">
+                    คติประจำใจ
+                </div>
+
+                <textarea readonly>“จงทำสิ่งที่จะไม่เสียใจในภายหลัง” เพราะผมเชื่อว่าทุกการตัดสินใจในปัจจุบันจะกลายเป็นส่วนหนึ่งของอนาคต การกล้าที่จะลงมือทำในสิ่งที่ตั้งใจและพยายามอย่างเต็มที่ ทำให้เมื่อมองย้อนกลับมาเราจะไม่ต้องเสียใจกับสิ่งที่ไม่ได้ทำเพราะความกลัวหรือความลังเล</textarea>
+
+            </div>
+
 
         </div>
 
@@ -2062,79 +2226,130 @@ footer span{
 </section>
 
 
-<!-- =======================================================
-     SOP
-======================================================= -->
+<!-- =========================
+     03 SOP
+========================= -->
 
-<section class="section" id="sop">
+<section
+    class="section"
+    id="sop"
+>
 
-    <div class="section-title reveal">
+    <div class="container">
 
-        <span class="section-number">
+        <div class="section-number">
             03 / STATEMENT OF PURPOSE
-        </span>
+        </div>
 
-        <h2>
-            MY JOURNEY
+        <h2 class="section-title">
+            MY <span>JOURNEY</span>
         </h2>
 
-        <div class="section-divider"></div>
+
+        <div class="sop-card">
+
+            <p>
+                ตั้งแต่เด็กผมมีความสนใจเกี่ยวกับวิทยาศาสตร์และร่างกายมนุษย์
+                โดยเฉพาะการทำงานของกล้ามเนื้อ กระดูก และระบบประสาท
+                เมื่อได้ศึกษาเกี่ยวกับชีววิทยามากขึ้น
+                ผมจึงเริ่มสนใจว่าร่างกายสามารถเคลื่อนไหว
+                ฟื้นฟู และกลับมาทำงานได้อย่างไรหลังจากเกิดความผิดปกติ
+            </p>
+
+
+            <p>
+                ความสนใจดังกล่าวทำให้ผมได้รู้จักกับ
+                <span class="sop-highlight">
+                    วิชาชีพกายภาพบำบัด
+                </span>
+                มากขึ้น ผมมองว่านักกายภาพบำบัดไม่ได้มีหน้าที่เพียงช่วยผู้ป่วย
+                ลดอาการเจ็บปวด แต่ยังช่วยให้ผู้ป่วยสามารถกลับมาเคลื่อนไหว
+                และดำเนินชีวิตประจำวันได้อย่างมีคุณภาพ
+            </p>
+
+
+            <p>
+                ประสบการณ์ที่ทำให้ผมเข้าใจเรื่องนี้มากขึ้น
+                คือการได้เห็นคนใกล้ตัวเข้ารับการทำกายภาพบำบัด
+                ทำให้ผมเห็นว่าการฟื้นฟูร่างกายต้องอาศัยทั้งความรู้
+                ความเข้าใจในร่างกายมนุษย์ และความใส่ใจต่อผู้ป่วย
+                สิ่งเหล่านี้ทำให้ผมเริ่มมองเห็นตัวเองในบทบาทของนักกายภาพบำบัด
+            </p>
+
+
+            <p>
+                ผมจึงต้องการศึกษาต่อใน
+                <span class="sop-highlight">
+                    คณะกายภาพบำบัด มหาวิทยาลัยมหิดล
+                </span>
+                เพราะเป็นสถาบันที่มีความโดดเด่นด้านวิทยาศาสตร์สุขภาพ
+                และมีสภาพแวดล้อมที่เอื้อต่อการเรียนรู้ทั้งภาคทฤษฎี
+                และการนำความรู้ไปประยุกต์ใช้กับผู้ป่วยจริง
+            </p>
+
+
+            <p>
+                หากได้รับโอกาสเข้าศึกษา
+                ผมตั้งใจที่จะพัฒนาความรู้ด้านกายวิภาคศาสตร์
+                สรีรวิทยา การเคลื่อนไหว และการฟื้นฟูสมรรถภาพ
+                พร้อมทั้งพัฒนาทักษะการสื่อสารและการทำงานร่วมกับผู้อื่น
+                เพื่อให้สามารถดูแลผู้ป่วยได้อย่างเหมาะสม
+            </p>
+
+
+            <p>
+                ในอนาคตผมต้องการเป็นนักกายภาพบำบัดที่ไม่ได้มองผู้ป่วย
+                เพียงในมุมของอาการบาดเจ็บ
+                แต่เข้าใจถึงความต้องการและเป้าหมายในการใช้ชีวิตของแต่ละคน
+                และสามารถใช้ความรู้ที่เรียนมาเพื่อช่วยให้ผู้ป่วย
+                กลับไปใช้ชีวิตได้อย่างมั่นใจและมีคุณภาพอีกครั้ง
+            </p>
+
+        </div>
 
     </div>
 
-
-    <div class="glass-card sop-card reveal">
-
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
+</section>
 
 
-        <div class="sop">
-            SOP
+<!-- =========================
+     04 GOAL
+========================= -->
+
+<section
+    class="section"
+    id="goal"
+>
+
+    <div class="container">
+
+        <div class="section-number">
+            04 / MY GOAL
         </div>
 
-        <div class="sop-subtitle">
-            STATEMENT OF PURPOSE
-        </div>
+        <h2 class="section-title">
+            PHYSICAL <span>THERAPY</span>
+        </h2>
 
 
-        <div class="sop-content">
+        <div class="goal-card">
+
+            <div class="goal-small">
+                DREAM · LEARN · HEAL
+            </div>
+
 
             <h3>
-                คณะกายภาพบำบัด มหาวิทยาลัยมหิดล
+                นักกายภาพบำบัด
             </h3>
 
 
             <p>
-                ผมมีความสนใจในด้านวิทยาศาสตร์สุขภาพ และเริ่มมองเห็นความสำคัญของการฟื้นฟูร่างกายจากประสบการณ์และกิจกรรมต่าง ๆ ที่ได้เรียนรู้เกี่ยวกับการดูแลสุขภาพ ทำให้ผมรู้สึกว่าการรักษาที่ดีไม่ได้มีเพียงการรักษาอาการเท่านั้น แต่ยังรวมถึงการช่วยให้ผู้ป่วยสามารถกลับมาใช้ชีวิตประจำวันและทำสิ่งต่าง ๆ ได้ใกล้เคียงกับเดิมมากที่สุด ซึ่งเป็นสิ่งที่ทำให้ผมสนใจในวิชาชีพกายภาพบำบัด
-            </p>
-
-
-            <p>
-                สิ่งที่ผมชอบเกี่ยวกับกายภาพบำบัดคือการนำความรู้ทางวิทยาศาสตร์มาประยุกต์ใช้กับร่างกายของมนุษย์ โดยต้องอาศัยทั้งความรู้ ความละเอียดรอบคอบ การสังเกต และการสื่อสารกับผู้ป่วย ผมมองว่านักกายภาพบำบัดไม่ได้มีหน้าที่เพียงช่วยฟื้นฟูร่างกาย แต่ยังเป็นคนที่คอยให้กำลังใจและอยู่เคียงข้างผู้ป่วยในระหว่างการฟื้นตัว ความรู้สึกที่ได้ช่วยให้ใครสักคนกลับมาเคลื่อนไหวหรือกลับไปทำกิจกรรมที่เขาชอบได้อีกครั้ง เป็นสิ่งที่ผมคิดว่ามีคุณค่าและตรงกับสิ่งที่ผมอยากทำในอนาคต
-            </p>
-
-
-            <p>
-                ตลอดช่วงที่ผ่านมา ผมได้พยายามเรียนรู้เกี่ยวกับสายวิทยาศาสตร์สุขภาพผ่านกิจกรรมและการอบรมต่าง ๆ ทั้งด้านการปฐมพยาบาลพื้นฐาน การกู้ชีพขั้นพื้นฐาน รวมถึงกิจกรรมที่เกี่ยวข้องกับวิทยาศาสตร์สุขภาพ ประสบการณ์เหล่านี้ทำให้ผมได้เรียนรู้ว่าการทำงานด้านสุขภาพต้องอาศัยทั้งความรู้ ความรับผิดชอบ และการทำงานร่วมกับผู้อื่น นอกจากนี้ยังทำให้ผมมั่นใจมากขึ้นว่าตนเองต้องการศึกษาต่อในสายสุขภาพอย่างจริงจัง
-            </p>
-
-
-            <p>
-                เหตุผลที่ผมสนใจศึกษาต่อที่คณะกายภาพบำบัด มหาวิทยาลัยมหิดล เพราะผมต้องการพัฒนาตนเองในสภาพแวดล้อมที่เปิดโอกาสให้ได้เรียนรู้ทั้งภาคทฤษฎีและการประยุกต์ใช้ความรู้กับสถานการณ์จริง ผมเชื่อว่าการได้เรียนรู้จากอาจารย์ บุคลากรทางการแพทย์ และประสบการณ์จากผู้ป่วย จะช่วยให้ผมเติบโตทั้งด้านความรู้ ทักษะ และความรับผิดชอบต่อวิชาชีพ
-            </p>
-
-
-            <p>
-                ในอนาคต ผมอยากเป็นนักกายภาพบำบัดที่สามารถใช้ความรู้และทักษะของตนเองเพื่อช่วยให้ผู้ป่วยมีคุณภาพชีวิตที่ดีขึ้น ผมพร้อมที่จะเรียนรู้สิ่งใหม่ ๆ พัฒนาตนเอง และเผชิญกับความท้าทายที่เกิดขึ้นระหว่างการเรียน เพราะผมเชื่อว่าการเป็นบุคลากรทางการแพทย์ที่ดีไม่ได้เกิดจากความรู้เพียงอย่างเดียว แต่เกิดจากความตั้งใจ ความรับผิดชอบ และความเข้าใจในผู้ที่เรากำลังดูแล
-            </p>
-
-
-            <p>
-                สำหรับผม กายภาพบำบัดจึงไม่ใช่เพียงคณะที่อยากเข้า แต่เป็นเส้นทางที่ผมอยากใช้เพื่อพัฒนาตัวเองและนำความสามารถของตัวเองไปสร้างประโยชน์ให้กับผู้อื่นในอนาคต
+                เป้าหมายของผมคือการศึกษาต่อด้านกายภาพบำบัด
+                เพื่อพัฒนาความรู้และทักษะเกี่ยวกับร่างกายมนุษย์
+                การเคลื่อนไหว และการฟื้นฟูสมรรถภาพ
+                และนำความรู้เหล่านั้นไปช่วยให้ผู้ป่วยสามารถกลับมา
+                เคลื่อนไหวและใช้ชีวิตประจำวันได้อย่างมีคุณภาพ
             </p>
 
         </div>
@@ -2144,67 +2359,15 @@ footer span{
 </section>
 
 
-<!-- =======================================================
-     GOAL
-======================================================= -->
-
-<section class="section">
-
-    <div class="section-title reveal">
-
-        <span class="section-number">
-            04 / MY GOAL
-        </span>
-
-        <h2>
-            PHYSICAL THERAPY
-        </h2>
-
-        <div class="section-divider"></div>
-
-    </div>
-
-
-    <div class="glass-card goal-card reveal">
-
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-
-
-        <h3>
-            DREAM · LEARN · HEAL
-        </h3>
-
-
-        <p>
-            เป้าหมายของผมคือการศึกษาต่อในสาขากายภาพบำบัด
-            พัฒนาความรู้และทักษะอย่างต่อเนื่อง
-            และนำความรู้ไปใช้เพื่อช่วยให้ผู้คนกลับมาใช้ชีวิต
-            และเคลื่อนไหวได้อย่างมีคุณภาพ
-        </p>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-<!-- =======================================================
+<!-- =========================
      FOOTER
-======================================================= -->
+========================= -->
 
 <footer>
 
-    <span>
-        Puttikan Ruekraisri
-    </span>
-
-    · Physical Therapy Portfolio
+    Puttikan Ruekraisri
+    <span>·</span>
+    Physical Therapy Portfolio
 
 </footer>
 
